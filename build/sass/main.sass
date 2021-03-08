@@ -1,61 +1,109 @@
 /*
     border: 1px solid blue 
 
-body 
-    h1
-        color: #4B502C
-        font-size: 24px
-        font-size: 2.4rem
-        font-family: 'IBM Plex Sans', sans-serif
-        font-weight: 500
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap')
 
-    p
-        color: #292c13
-        font-size: 16px
-        font-size: 1rem
-        font-family: 'IBM Plex Mono', monospace
-        font-weight: 300
+$font-h: 'Neue Machina'
+$font-p: 'Neue Machina'
+$primary-color: #344BFB
 
-.navbar
+body
+    cursor: url('../img/cursor.svg'), auto
+    background-image: url("../img/bg1.png")
+    background-repeat: repeat
+    background-color: #A5A4AD
+
+::selection 
+    color: white
+    background: #344BFB
+    /* WebKit/Blink Browsers */
+
+::-moz-selection 
+    color: white
+    background: #344BFB
+    /* Gecko Browsers */
+
+a 
+    color: #344BFB
+    text-decoration: none
+    border-bottom: 2px solid #c7c7c7
+    font-family: $font-h !important
+
+
+h1
+    color: #344BFB
+    font-size: 48px
+    font-size: 3rem
+    font-family: $font-h
+    font-weight: 500
+    font-display: swap
+    font-kerning: normal
+    line-height: 150%
+
+p
+    color: #344BFB
+    font-size: 18px
+    font-size: 1.125rem
+    font-family: $font-p
+    font-weight: 300
+    letter-spacing: 0.02em
+    line-height: 150%
+
+header
     position: fixed
-    overflow: hidden
-    top: 0 /* Position the navbar at the top of the page */
     width: 100%
-    backdrop-filter: blur(12px)
-    background-color: #ffffff6c
+    background-color: #A5A4AD
+    border-bottom: 1px solid #344BFB
+    padding: 10px
 
     img
-        height: 20px
-        padding-top: 10px
+        height: 16px
+        margin-bottom: -3px
 
-    .box-2
-        position: relative
-        height: 42px
-        margin: 0 auto 0 auto
-        padding: 10px
-        max-width: 1200px
-        border-bottom: 1px solid #51524e
-
-.container
-    height: 500px
+#jumbotron
     margin: 0 auto 0 auto
-    padding: 10px
-    max-width: 1200px
-    padding-top: 10%
+    padding: 10% 10px 10% 10px
 
 .sticky
-    height: 240px
-    width: 235px
-    background: linear-gradient(180deg, #8FFF8C 0%, #B1FFAF 100%)
-    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1)
-    padding: 20px
-    margin-top: 50px
+        grid-column: 1
+        height: 240px
+        width: 235px
+        background: linear-gradient(180deg, #90ff8c00 0%, #7f977e00 100%)
+        box-shadow: 8px 8px 0px #344BFB
+        padding: 20px
+        border: 1px solid #344BFB
+
+#know-how
+    padding: 10% 10px 10% 10px
+    max-width: 1220px
+    margin: 0 auto 0 auto
 
 .container-2
-    background-color: #EAFFF9
+    margin: 0 auto 0 auto
+
+
+button  
+    padding: 18px 40px 18px 40px
+    border-radius: 99px
+    background-color: #344BFB
+    color: #A5A4AD
+    border: none
+    cursor: pointer
+    font-family: $font-h !important
+    
 
 .box
     height: 300px
     margin: 0 auto 0 auto
-    padding: 10% 10px 10px 10px
+    padding: 10% 10px 10% 10px
     max-width: 1200px
+
+footer
+    height: 200px
+    margin: 0 auto 0 auto
+    padding: 10px
+    background-color: #344BFB
+
+.container
+    text-align: center
+    padding: 10% 10px 10% 10px
