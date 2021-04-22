@@ -1,16 +1,16 @@
 /*
-    border: 1px solid blue 
+    border: 1px dotted #0cff04 
 
 @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=IBM+Plex+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap')
 
-$font-h: 'Neue Machina'
-$font-p: 'Neue Machina'
-$primary-color: #344BFB
+$font-h: 'Candor'
+$font-p: 'Frekuent'
+$primary-color: #3D3D3D
 
 body
-    cursor: url('../img/cursor.svg'), auto
-    background-image: url("../img/bg1.png")
-    background-repeat: repeat
+    /* cursor: url('../img/cursor.svg'), auto
+    /* background-image: url("../img/bg1.png")
+    /* background-repeat: repeat
     background-color: #A5A4AD
 
 ::selection 
@@ -24,16 +24,15 @@ body
     /* Gecko Browsers */
 
 a 
-    color: #344BFB
+    color: $primary-color
     text-decoration: none
     border-bottom: 2px solid #c7c7c7
     font-family: $font-h !important
 
 
 h1
-    color: #344BFB
-    font-size: 48px
-    font-size: 3rem
+    color: $primary-color
+    font-size: 36px !important
     font-family: $font-h
     font-weight: 500
     font-display: swap
@@ -41,9 +40,8 @@ h1
     line-height: 150%
 
 p
-    color: #344BFB
-    font-size: 18px
-    font-size: 1.125rem
+    color: $primary-color
+    font-size: 16px
     font-family: $font-p
     font-weight: 300
     letter-spacing: 0.02em
@@ -52,17 +50,37 @@ p
 header
     position: fixed
     width: 100%
-    background-color: #A5A4AD
-    border-bottom: 1px solid #344BFB
+    background-color: #a5a4ad4b
+    /* border-bottom: 1px solid #344BFB
     padding: 10px
+    backdrop-filter: blur(10px)
+    -webkit-backdrop-filter: blur(10px)
 
     img
         height: 16px
         margin-bottom: -3px
 
+    ul.ic-social
+        display: inline
+        list-style-type: none
+        margin: 0
+        padding: 0 10px 0 0
+        float: right
+        li
+            display: inline-block
+            padding: 0px 8px 0px 8px
+        img path
+            fill: red
+
 #jumbotron
     margin: 0 auto 0 auto
     padding: 10% 10px 10% 10px
+
+.line-1
+    border-top: 1px solid #344BFB
+
+.line-2
+    border-top: 2px solid #344BFB
 
 .sticky
         grid-column: 1
@@ -74,9 +92,13 @@ header
         border: 1px solid #344BFB
 
 #know-how
-    padding: 10% 10px 10% 10px
-    max-width: 1220px
+    padding: 10px
     margin: 0 auto 0 auto
+    h2
+        font-family: 'CandorBold'
+        font-weight: bold
+        font-size: bold
+        color: $primary-color
 
 .container-2
     margin: 0 auto 0 auto
@@ -90,7 +112,6 @@ button
     border: none
     cursor: pointer
     font-family: $font-h !important
-    
 
 .box
     height: 300px
@@ -104,6 +125,6 @@ footer
     padding: 10px
     background-color: #344BFB
 
-.container
+#contact
     text-align: center
     padding: 10% 10px 10% 10px

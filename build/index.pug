@@ -1,0 +1,89 @@
+doctype html
+html
+  head
+    |  
+    title In Progress
+    link(rel='stylesheet', type='text/css', href='css/main.css')
+    link(rel='stylesheet', type='text/css', href='css/normalize.css')
+    link(rel='stylesheet', type='text/css', href='css/flexboxgrid.min.css') 
+    link(rel='stylesheet', type='text/css', href='font/stylesheet.css') 
+    |  
+    meta(name='viewport', content='width=device-width, initial-scale=1.0')    
+    |  
+  body
+
+    header
+      img(src='img/logo.svg', alt='Nonduality')
+      p 23.4210° S, 51.9331° W
+      p BRAZIL 
+
+      #clock
+      // ul.ic-social
+        li
+          img(src='img/ic-dribbble.svg' alt='Dribbble')
+        li
+          img(src='img/ic-behance.svg' alt='Behance')
+        li
+          img(src='img/ic-instagram.svg' alt='Instagram')
+        li 
+          img(src='img/ic-linkedin.svg' alt='Linkedin')
+
+    #jumbotron.row
+      .col-lg-6
+        h1  Hello, world! 🖖🏼
+        p I’m a seasoned product designer and cognitive science enthusiast. Since 2013 I’ve helped startups, companies, and nonprofits across a myriad of verticals leverage design to craft products, services, and systems that people love. 
+      
+    #know-how
+      .row
+        .col-lg-12
+          h1 All your design needs 
+        .col-lg-12
+          p I can help you take a product idea from end to end, uncover new opportunities, expand into new markets, create desirable products and services as well as foster a culture of innovation. Let’s collaborate!
+      .row
+        .col-lg-3
+            h2 Design Strategy
+            p Survey the landscape, draw the map, and set the path. Research existing conditions but plan what we are going to build, and define objectives and key results.
+
+        .col-lg-3
+            h2 UX Research
+            p Identify and prove or disprove assumptions. Find commonalities across target audience, and investigate their needs, goals, and mental models. 
+
+        .col-lg-3
+            h2 UX Design
+            p Synthesize research and insights. Develop a sound solution that meets identified needs. Create a prototype, test it, refine it. Try again.
+
+        .col-lg-3
+            h2 UI Design
+            p Make user's interaction as simple and efficient as possible, and develop a comprehensive collection of standards for design and front end code.
+
+    #contact
+      h1 Let's build something great together 
+      p If you think I might be able to help grow your business, solve problems for your users, strengthen audience and revenue, inspire and drive your design and engineering teams, or even build a website like mine, I’d love to hear from you.
+      button(type='button') Start convo!
+
+    footer
+    script.
+      function DisplayTime(timeZoneOffsetminutes){
+      if (!document.all && !document.getElementById)
+      return
+      timeElement=document.getElementById? document.getElementById("clock"): document.all.tick2
+      var requiredDate=getTimeZoneTimeObj(timeZoneOffsetminutes)
+      var hours=requiredDate.h;
+      var minutes=requiredDate.m;
+      var seconds=requiredDate.s;
+      var DayNight="PM";
+      if (hours<12) DayNight="AM";
+      if (hours>12) hours=hours-12;
+      if (hours==0) hours=12;
+      if (minutes<=9) minutes="0"+minutes;
+      if (seconds<=9) seconds="0"+seconds;
+      var currentTime=hours+":"+minutes+":"+seconds+" "+DayNight;
+      timeElement.innerHTML="<font style='font-family:Frekuent;font-size:16px;color:#3d3d3d;'>"+currentTime+"</b>"
+      setTimeout("DisplayTime(+180)",1000)
+      }
+      window.onload=DisplayTime(-330);
+      function getTimeZoneTimeObj(timeZoneOffsetminutes){
+      var localdate = new Date()
+      var timeZoneDate = new Date(localdate.getTime() + ((localdate.getTimezoneOffset()- timeZoneOffsetminutes)*60*1000));
+      return {'h':timeZoneDate.getHours(),'m':timeZoneDate.getMinutes(),'s':timeZoneDate.getSeconds()};
+      }

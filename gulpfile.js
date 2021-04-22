@@ -1,30 +1,31 @@
-// We have to require our dependencies
+'use strict'
 var gulp = require('gulp');
-var $ = require('gulp-load-plugins')();
+const sass = require('gulp-sass');
+const pug = require('gulp-pug');
+const browserSync = require('browser-sync').create();
 
-// create a TASK to compile Jade to HTML using gulp-jade
-gulp.task('jade', function() {
-   gulp.src(['./build/**/*.jade'])
-   .pipe($.jade({pretty: true, doctype: 'html'}))
-   .on('error', $.util.log)
-   .pipe(gulp.dest('./'));
+gulp.task('sass', function () {   
+    return gulp.src('build/sass/*.sass')
+        .pipe(sass())
+        .pipe(gulp.dest('./css')) 
+        .pipe(browserSync.reload({stream: true}));
+ })
+
+ gulp.task('pug', function () {
+    return gulp.src('build/*.pug')
+        .pipe(pug({ pretty: false }))
+        .pipe(gulp.dest('.'))    
+        .pipe(browserSync.reload({stream: true}));
+ })
+
+// Static server
+gulp.task('serve', function() {
+    browserSync.init({
+        server: {
+            baseDir: "./"
+        }
+    });
+
+    gulp.watch('build/sass/**/*.sass', gulp.series('sass'));
+    gulp.watch('build/**/*.pug', gulp.series('pug'));
 });
-
-// create a TASK to compile Sass into CSS using gulp-sass
-gulp.task('sass', function() {
-   gulp.src(['./app/**/*.sass'])
-   .pipe($.sass({style: 'expanded'}))
-   .pipe(gulp.dest('./'));
-});
-
-// create a TASK to WATCH for changes in your files
-// this will "watch" for any changes in your files and rerun gulp if necessary
-gulp.task('watch', function() {
-   gulp.watch('./build/**/*.jade', gulp.series('jade'));
-   gulp.watch('./build/**/*.sass', gulp.series('sass'));
-});
-
-// finally, create a TASK that will run all commands when typing "gulp"
-// in Terminal
-
-gulp.task('default',  gulp.series('jade', 'sass', 'watch'), function() {});

@@ -1,58 +1,32 @@
-<!DOCTYPE html>
-<html>
-  <head> 
-    <title>In Progress</title>
-    <link rel="stylesheet" type="text/css" href="css/main.css">
-    <link rel="stylesheet" type="text/css" href="css/normalize.css">
-    <link rel="stylesheet" type="text/css" href="css/flexboxgrid.min.css">
-    <link rel="stylesheet" type="text/css" href="font/font.css"> 
-    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
-  </head>
-  <body>
-    <header><img src="img/logo.svg" alt="Nonduality"></header>
-    <div id="jumbotron" class="row">
-      <div class="col-lg-6">
-        <h1> Create world-class digital products & fuel growth</h1>
-        <p>I work with startups, corporations, and nonprofits across a myriad of verticals, leveraging design to craft app and software solutions that make a real impact.</p>
-        <button type="button">Click Me!</button>
-      </div>
-      <div class="col-lg-6"> <a href="url">link text</a></div>
-    </div>
-    <div id="know-how">
-      <div class="container-2 row">
-        <div class="col-lg-6">
-          <h1>How can I help you?</h1>
-        </div>
-        <div class="col-lg-6">
-          <p>When done right, UX research gives your users a voice. Understanding why they behave a specific way and how they respond emotionally will deliver both short- and long-term value.</p>
-        </div>
-      </div>
-      <div class="row">
-        <div class="col-lg-4">
-          <div class="sticky">
-            <h1>Strategy</h1>
-            <p>Survey the landscape, draw the map, and set the path. Research existing conditions but start to plan what we are going to build together.</p>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="sticky">
-            <h1>Design</h1>
-            <p>Synthesize research and inspiration into a solution. Architect the approach, create a prototype, test it, refine it. Try again.</p>
-          </div>
-        </div>
-        <div class="col-lg-4">
-          <div class="sticky">
-            <h1>System</h1>
-            <p>Avoid the chaos of scaling.  A design system provides a comprehensive collection of standards for design and front end code.</p>
-          </div>
-        </div>
-      </div>
-    </div>
-    <div class="container">
-      <h1>Let's build something great together.</h1>
-      <p>If you think I might be able to help grow your business, solve problems for your users, strengthen audience and revenue, inspire and drive your design and engineering teams, or even build a website like mine, I’d love to hear from you.</p>
-      <button type="button">Start convo!</button>
-    </div>
-    <footer></footer>
-  </body>
-</html>
+<!DOCTYPE html><html><head> <title>In Progress</title><link rel="stylesheet" type="text/css" href="css/main.css"><link rel="stylesheet" type="text/css" href="css/normalize.css"><link rel="stylesheet" type="text/css" href="css/flexboxgrid.min.css"><link rel="stylesheet" type="text/css" href="font/stylesheet.css"> <meta name="viewport" content="width=device-width, initial-scale=1.0"> </head><body><header><img src="img/logo.svg" alt="Nonduality"><p>23.4210° S, 51.9331° W</p><p>BRAZIL </p><div id="clock"></div><!-- ul.ic-socialli
+  img(src='img/ic-dribbble.svg' alt='Dribbble')
+li
+  img(src='img/ic-behance.svg' alt='Behance')
+li
+  img(src='img/ic-instagram.svg' alt='Instagram')
+li 
+  img(src='img/ic-linkedin.svg' alt='Linkedin')
+--></header><div class="row" id="jumbotron"><div class="col-lg-6"><h1> Hello, world! 🖖🏼</h1><p>I’m a seasoned product designer and cognitive science enthusiast. Since 2013 I’ve helped startups, companies, and nonprofits across a myriad of verticals leverage design to craft products, services, and systems that people love. </p></div></div><div id="know-how"><div class="row"><div class="col-lg-12"><h1>All your design needs </h1></div><div class="col-lg-12"><p>I can help you take a product idea from end to end, uncover new opportunities, expand into new markets, create desirable products and services as well as foster a culture of innovation. Let’s collaborate!</p></div></div><div class="row"><div class="col-lg-3"><h2>Design Strategy</h2><p>Survey the landscape, draw the map, and set the path. Research existing conditions but plan what we are going to build, and define objectives and key results.</p></div><div class="col-lg-3"><h2>UX Research</h2><p>Identify and prove or disprove assumptions. Find commonalities across target audience, and investigate their needs, goals, and mental models. </p></div><div class="col-lg-3"><h2>UX Design</h2><p>Synthesize research and insights. Develop a sound solution that meets identified needs. Create a prototype, test it, refine it. Try again.</p></div><div class="col-lg-3"><h2>UI Design</h2><p>Make user's interaction as simple and efficient as possible, and develop a comprehensive collection of standards for design and front end code.</p></div></div></div><div id="contact"><h1>Let's build something great together </h1><p>If you think I might be able to help grow your business, solve problems for your users, strengthen audience and revenue, inspire and drive your design and engineering teams, or even build a website like mine, I’d love to hear from you.</p><button type="button">Start convo!</button></div><footer></footer><script>function DisplayTime(timeZoneOffsetminutes){
+if (!document.all && !document.getElementById)
+return
+timeElement=document.getElementById? document.getElementById("clock"): document.all.tick2
+var requiredDate=getTimeZoneTimeObj(timeZoneOffsetminutes)
+var hours=requiredDate.h;
+var minutes=requiredDate.m;
+var seconds=requiredDate.s;
+var DayNight="PM";
+if (hours<12) DayNight="AM";
+if (hours>12) hours=hours-12;
+if (hours==0) hours=12;
+if (minutes<=9) minutes="0"+minutes;
+if (seconds<=9) seconds="0"+seconds;
+var currentTime=hours+":"+minutes+":"+seconds+" "+DayNight;
+timeElement.innerHTML="<font style='font-family:Frekuent;font-size:16px;color:#3d3d3d;'>"+currentTime+"</b>"
+setTimeout("DisplayTime(+180)",1000)
+}
+window.onload=DisplayTime(-330);
+function getTimeZoneTimeObj(timeZoneOffsetminutes){
+var localdate = new Date()
+var timeZoneDate = new Date(localdate.getTime() + ((localdate.getTimezoneOffset()- timeZoneOffsetminutes)*60*1000));
+return {'h':timeZoneDate.getHours(),'m':timeZoneDate.getMinutes(),'s':timeZoneDate.getSeconds()};
+}</script></body></html>
