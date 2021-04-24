@@ -11,13 +11,19 @@ html
     meta(name='viewport', content='width=device-width, initial-scale=1.0')    
     |  
   body
+    nav
+      .row
+        .col-lg-12
+          ul.nav-info
+            li
+              img(src='img/logo.svg', alt='Nonduality')
+            li 
+              a(href='https://osm.org/go/M95FqUa' target='_blank') 23.4210° S, 51.9331° W
+            li 
+              p 📍BRAZIL 
+            li
+              #clock
 
-    header
-      img(src='img/logo.svg', alt='Nonduality')
-      p 23.4210° S, 51.9331° W
-      p BRAZIL 
-
-      #clock
       // ul.ic-social
         li
           img(src='img/ic-dribbble.svg' alt='Dribbble')
@@ -28,30 +34,30 @@ html
         li 
           img(src='img/ic-linkedin.svg' alt='Linkedin')
 
-    #jumbotron.row
-      .col-lg-6
-        h1  Hello, world! 🖖🏼
-        p I’m a seasoned product designer and cognitive science enthusiast. Since 2013 I’ve helped startups, companies, and nonprofits across a myriad of verticals leverage design to craft products, services, and systems that people love. 
+    header
+      .row
+        .col-lg-12
+          .box
+            h1  Hello, world! 🖖🏼
+            p I’m a seasoned product designer, digital nomad and cognitive science enthusiast. Since 2013 I’ve helped startups, companies, and nonprofits across a myriad of verticals leverage design to craft products, services, and systems that people love. 
       
     #know-how
       .row
         .col-lg-12
           h1 All your design needs 
         .col-lg-12
-          p I can help you take a product idea from end to end, uncover new opportunities, expand into new markets, create desirable products and services as well as foster a culture of innovation. Let’s collaborate!
+          p(style='display:inline') I can help you take a product idea from end to end, uncover new opportunities, expand into new markets, create desirable products and services as well as foster a culture of innovation. 
+            a(href='mailto:m@mrcl.design') Let’s collaborate!
       .row
         .col-lg-3
             h2 Design Strategy
             p Survey the landscape, draw the map, and set the path. Research existing conditions but plan what we are going to build, and define objectives and key results.
-
         .col-lg-3
             h2 UX Research
             p Identify and prove or disprove assumptions. Find commonalities across target audience, and investigate their needs, goals, and mental models. 
-
         .col-lg-3
             h2 UX Design
             p Synthesize research and insights. Develop a sound solution that meets identified needs. Create a prototype, test it, refine it. Try again.
-
         .col-lg-3
             h2 UI Design
             p Make user's interaction as simple and efficient as possible, and develop a comprehensive collection of standards for design and front end code.
@@ -59,7 +65,7 @@ html
     #contact
       h1 Let's build something great together 
       p If you think I might be able to help grow your business, solve problems for your users, strengthen audience and revenue, inspire and drive your design and engineering teams, or even build a website like mine, I’d love to hear from you.
-      button(type='button') Start convo!
+      button(onclick="location.href='mailto:m@mrcl.design'" type='button') Start convo!
 
     footer
     script.
