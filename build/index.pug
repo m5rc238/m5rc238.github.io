@@ -6,11 +6,13 @@ html
     link(rel='stylesheet', type='text/css', href='css/main.css')
     link(rel='stylesheet', type='text/css', href='css/normalize.css')
     link(rel='stylesheet', type='text/css', href='css/flexboxgrid.min.css') 
-    link(rel='stylesheet', type='text/css', href='font/stylesheet.css') 
+    link(rel='stylesheet', type='text/css', href='font/stylesheet.css')
+    script(src='js/clock.js')
     |  
     meta(name='viewport', content='width=device-width, initial-scale=1.0')    
     |  
   body
+    .banner
     nav
       .row
         .col-lg-12
@@ -20,9 +22,10 @@ html
             li 
               a(href='https://osm.org/go/M95FqUa' target='_blank') 23.4210° S, 51.9331° W
             li 
-              p 📍BRAZIL 
+              p BRAZIL 
             li
               #clock
+          button(onclick="location.href='mailto:m@mrcl.design'" type='button' class="btn-nav") Start convo!
 
       // ul.ic-social
         li
@@ -44,10 +47,10 @@ html
     #know-how
       .row
         .col-lg-12
-          h1 All your design needs 
+          h1 Let's build something great together 
         .col-lg-12
-          p(style='display:inline') I can help you take a product idea from end to end, uncover new opportunities, expand into new markets, create desirable products and services as well as foster a culture of innovation. 
-            a(href='mailto:m@mrcl.design') Let’s collaborate!
+          p I can help you take a product idea from end to end, uncover new opportunities, expand into new markets, create desirable products and services as well as foster a culture of innovation. 
+           
       .row
         .col-lg-3
             h2 Design Strategy
@@ -62,10 +65,7 @@ html
             h2 UI Design
             p Make user's interaction as simple and efficient as possible, and develop a comprehensive collection of standards for design and front end code.
 
-    #contact
-      h1 Let's build something great together 
-      p If you think I might be able to help grow your business, solve problems for your users, strengthen audience and revenue, inspire and drive your design and engineering teams, or even build a website like mine, I’d love to hear from you.
-      button(onclick="location.href='mailto:m@mrcl.design'" type='button') Start convo!
+    // button(onclick="location.href='mailto:m@mrcl.design'" type='button') Start convo!
 
     footer
     script.

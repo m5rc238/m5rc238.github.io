@@ -1,3 +1,4 @@
+
 /*
     border: 1px dotted #0cff04 
 
@@ -26,8 +27,16 @@ body
 a 
     color: $primary-color
     text-decoration: none
-    border-bottom: 2px solid #c7c7c7
+    //border-bottom: 2px solid #c7c7c7
     font-family: $font-p !important
+    -webkit-transition: opacity 1s ease-in-out
+    -moz-transition: opacity 1s ease-in-out
+    transition: opacity 1s ease-in-out
+
+a:hover
+    border-bottom: 2px solid #c7c7c7
+    color: red
+
 
 
 h1
@@ -45,51 +54,58 @@ p
     font-family: $font-p
     font-weight: 300
     letter-spacing: 0.02em
+    font-kerning: auto
+    line-height: calc(2ex / 0.32)
+  
 
 nav
     max-width: 1200px
-    margin: 5% auto 0 auto
+    margin-left: auto
+    margin-right: auto
+    position: sticky
+    position: -webkit-sticky
+    top: 0
+    background-color: #A5A4AD
     /*border: 1px solid red
-    background-color: #a5a4ad4b
     /* border-bottom: 1px solid #344BFB
-
-    img
-        height: 16px
-        margin-bottom: -3px
-
-    ul.ic-social
-        display: inline
-        list-style-type: none
-        margin: 0
-        padding: 0 10px 0 0
-        float: right
-        li
-            display: inline-block
-            padding: 0px 8px 0px 8px
-        img path
-            fill: red
     ul.nav-info
         list-style: none
         padding: 0
         margin: 0
- 
+        float: left
         li
             padding-right: 20px
             display: inline-block
+
+.banner
+    height: 80px
+    width: 100%
+    background-color: #A5A4AD
+
+.sticky
+    position: fixed
+    width: 100%
+    
+
+.btn-nav 
+    float: right
+    margin-top: 8px
+    padding: 14px 32px 14px 32px
+    border-radius: 5px
+    background-color: #A5A4AD
+    font-size: 14px
+    border: 1px solid #3d3d3d
+    color: #3d3d3d
+    cursor: pointer
+    font-family: $font-p !important
 
 header
     max-width: 1200px
     margin: auto
     /* border: 1px solid blue
 
-.sticky
-    grid-column: 1
-    height: 240px
-    width: 235px
-    background: linear-gradient(180deg, #90ff8c00 0%, #7f977e00 100%)
-    box-shadow: 8px 8px 0px #344BFB
-    padding: 20px
-    border: 1px solid #344BFB
+
+    
 
 #know-how
     max-width: 1200px
@@ -100,14 +116,6 @@ header
         font-size: bold
         color: $primary-color
 
-button  
-    padding: 18px 40px 18px 40px
-    border-radius: 99px
-    background-color: #344BFB
-    color: #A5A4AD
-    border: none
-    cursor: pointer
-    font-family: $font-h !important
 
 .box
     margin: 0 auto 0 0
