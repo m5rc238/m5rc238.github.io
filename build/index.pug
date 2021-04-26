@@ -13,19 +13,20 @@ html
     |  
   body
     .banner
-    nav
-      .row
-        .col-lg-12
-          ul.nav-info
-            li
-              img(src='img/logo.svg', alt='Nonduality')
-            li 
-              a(href='https://osm.org/go/M95FqUa' target='_blank') 23.4210° S, 51.9331° W
-            li 
-              p BRAZIL 
-            li
-              #clock
-          button(onclick="location.href='mailto:m@mrcl.design'" type='button' class="btn-nav") Start convo!
+    nav 
+      .nav-container
+        .row
+          .col-lg-12
+            ul.nav-info
+              li
+                img(src='img/logo.svg', alt='Nonduality', class='logo')
+              li 
+                a(href='https://osm.org/go/M95FqUa' target='_blank') 23.4210° S, 51.9331° W
+              li 
+                p BRAZIL 
+              li
+                #clock
+            button(onclick="location.href='mailto:m@mrcl.design'" type='button' class="btn-nav") Start convo!
 
       // ul.ic-social
         li
@@ -73,6 +74,8 @@ html
     // button(onclick="location.href='mailto:m@mrcl.design'" type='button') Start convo!
 
     footer
+      p All rights reserved. © 2021 Marcel Akiyama.
+
     script.
       function DisplayTime(timeZoneOffsetminutes){
       if (!document.all && !document.getElementById)
