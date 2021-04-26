@@ -40,7 +40,7 @@ h1 {
 
 p {
   color: #3D3D3D;
-  font-size: 16px;
+  font-size: 15px;
   font-family: "Frekuent";
   font-weight: 300;
   letter-spacing: 0.02em;
@@ -71,10 +71,6 @@ nav {
   width: 100%;
   background-color: #A5A4AD; }
 
-.sticky {
-  position: fixed;
-  width: 100%; }
-
 .btn-nav {
   float: right;
   margin-top: 8px;
@@ -93,18 +89,35 @@ header {
   /* border: 1px solid blue */ }
 
 #know-how {
-  max-width: 1200px;
-  margin: 0 auto 0 auto; }
+  width: 100%;
+  margin: 0 auto 0 auto;
+  background-color: #344BFB;
+  color: white !important; }
   #know-how h2 {
     font-family: 'CandorBold';
     font-weight: bold;
     font-size: bold;
-    color: #3D3D3D; }
+    color: #A5A4AD; }
+  #know-how h1 {
+    color: #A5A4AD; }
+  #know-how p {
+    color: #A5A4AD; }
+  #know-how .blocks {
+    padding: 6% 0px 5% 0px; }
+    #know-how .blocks img {
+      height: 50px; }
+  #know-how .block {
+    padding: 0px 50px 0px 0px; }
 
 .box {
   margin: 0 auto 0 0;
-  padding: 10% 0px 10% 0px;
+  padding: 10% 0px 15% 0px;
   max-width: 700px; }
+
+.container {
+  margin: 0 auto 0 0;
+  padding: 5% 0px 5% 0px;
+  max-width: 1200px; }
 
 footer {
   height: 200px;
