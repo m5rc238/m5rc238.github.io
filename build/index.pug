@@ -74,7 +74,9 @@ html
     // button(onclick="location.href='mailto:m@mrcl.design'" type='button') Start convo!
 
     footer
-      p All rights reserved. © 2021 Marcel Akiyama.
+      p ©
+      p#copyright 
+      p Marcel Akiyama
 
     script.
       function DisplayTime(timeZoneOffsetminutes){
@@ -101,3 +103,5 @@ html
       var timeZoneDate = new Date(localdate.getTime() + ((localdate.getTimezoneOffset()- timeZoneOffsetminutes)*60*1000));
       return {'h':timeZoneDate.getHours(),'m':timeZoneDate.getMinutes(),'s':timeZoneDate.getSeconds()};
       }
+    script.
+      document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))

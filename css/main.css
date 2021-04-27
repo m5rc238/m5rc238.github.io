@@ -129,3 +129,7 @@ footer {
   margin: 0 auto 0 auto;
   padding: 10px 0px 10px 0px;
   text-align: center; }
+  footer p {
+    display: inline; }
+  footer #copyright {
+    margin: 0px 5px 10px -3px; }
