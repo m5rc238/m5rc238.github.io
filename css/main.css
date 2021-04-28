@@ -38,6 +38,15 @@ h1 {
   font-kerning: normal;
   line-height: 150%; }
 
+h2 {
+  color: #3D3D3D;
+  font-size: 24px !important;
+  font-family: 'CandorBold';
+  font-weight: 500;
+  font-display: swap;
+  font-kerning: normal;
+  line-height: 150%; }
+
 p {
   color: #3D3D3D;
   font-size: 15px;
@@ -118,6 +127,10 @@ header {
   margin: 0 auto 0 0;
   padding: 10% 0px 15% 0px;
   max-width: 700px; }
+
+main {
+  margin: 0 auto 0 auto;
+  max-width: 1200px; }
 
 .container {
   margin: 0 auto 0 0;

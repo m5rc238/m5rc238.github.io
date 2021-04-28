@@ -1,0 +1,32 @@
+<!DOCTYPE html><html><head> <title>About - Marcel Akiyama</title><link rel="stylesheet" type="text/css" href="css/main.css"><link rel="stylesheet" type="text/css" href="css/normalize.css"><link rel="stylesheet" type="text/css" href="css/flexboxgrid.min.css"><link rel="stylesheet" type="text/css" href="font/stylesheet.css"><script src="js/clock.js"></script> <meta name="viewport" content="width=device-width, initial-scale=1.0"> </head><body><div class="banner"></div><nav> <div class="nav-container"><div class="row"><div class="col-lg-12"><ul class="nav-info"><li><img class="logo" src="img/logo.svg" alt="Nonduality"></li><li> <a href="https://osm.org/go/M95FqUa" target="_blank">23.4210° S, 51.9331° W</a></li><li> <p>BRAZIL </p></li><li><div id="clock"></div></li></ul><button class="btn-nav" onclick="location.href='mailto:m@mrcl.design'" type="button">Start convo!</button></div></div></div><!-- ul.ic-socialli
+  img(src='img/ic-dribbble.svg' alt='Dribbble')
+li
+  img(src='img/ic-behance.svg' alt='Behance')
+li
+  img(src='img/ic-instagram.svg' alt='Instagram')
+li 
+  img(src='img/ic-linkedin.svg' alt='Linkedin')
+--></nav><header><div class="row"><div class="col-lg-12"><div class="box"><h1> About</h1><p>I believe developing products is an inquisitive journey in an ambiguous and uncertain world (VUCA). I enjoy solving complex problems and the investigative process to understand human needs, motivations, desires, and the mental models that shape our perception.</p><p>My strengths encompass defining product strategy, user research, and designing seamless, human-centered experiences. I thrive on building multidisciplinary teams, solving business problems, and envisioning experiences that delight users.</p></div></div></div></header><main><div class="row"><div class="col-lg-12"><h1>Career Resume </h1><h2>Please / 2018</h2><p>Senior Digital Product Designer</p><h2>Alpaca / 2014-2016</h2><p>Senior Digital Product Designer → VP of Design</p><h2>Mobigraph / 2013-2015</h2><p>Senior UI Designer → Mid-level UX Researcher → Senior Digital Product Designer</p><h2>Freelance / 2009-2012</h2><p>Graphic Designer & Web Designer</p><h2>Dentsu / 2006-2008</h2><p>Graphic Designer → Art Director</p></div></div></main><!-- button(onclick="location.href='mailto:m@mrcl.design'" type='button') Start convo!--><footer><p>©</p><p id="copyright"> </p><p>Marcel Akiyama</p></footer><script>function DisplayTime(timeZoneOffsetminutes){
+if (!document.all && !document.getElementById)
+return
+timeElement=document.getElementById? document.getElementById("clock"): document.all.tick2
+var requiredDate=getTimeZoneTimeObj(timeZoneOffsetminutes)
+var hours=requiredDate.h;
+var minutes=requiredDate.m;
+var seconds=requiredDate.s;
+var DayNight="PM";
+if (hours<12) DayNight="AM";
+if (hours>12) hours=hours-12;
+if (hours==0) hours=12;
+if (minutes<=9) minutes="0"+minutes;
+if (seconds<=9) seconds="0"+seconds;
+var currentTime=hours+":"+minutes+":"+seconds+" "+DayNight;
+timeElement.innerHTML="<font style='font-family:Frekuent;font-size:16px;color:#3d3d3d;'>"+currentTime+"</b>"
+setTimeout("DisplayTime(+180)",1000)
+}
+window.onload=DisplayTime(-330);
+function getTimeZoneTimeObj(timeZoneOffsetminutes){
+var localdate = new Date()
+var timeZoneDate = new Date(localdate.getTime() + ((localdate.getTimezoneOffset()- timeZoneOffsetminutes)*60*1000));
+return {'h':timeZoneDate.getHours(),'m':timeZoneDate.getMinutes(),'s':timeZoneDate.getSeconds()};
+}</script><script>document.getElementById('copyright').appendChild(document.createTextNode(new Date().getFullYear()))</script></body></html>
