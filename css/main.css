@@ -132,6 +132,9 @@ main {
   margin: 0 auto 0 auto;
   max-width: 1200px; }
 
+.about-header img {
+  border-radius: 999px; }
+
 .container {
   margin: 0 auto 0 0;
   padding: 5% 0px 5% 0px;
