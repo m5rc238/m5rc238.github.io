@@ -135,6 +135,16 @@ main {
 .about-header img {
   border-radius: 999px; }
 
+.tags {
+  height: 200px;
+  max-width: 1200px; }
+  .tags span {
+    border: 1px solid blue;
+    line-height: 50px;
+    padding: 10px 20px 10px 20px;
+    margin: 0px 10px 0px 10px;
+    border-radius: 10px; }
+
 .container {
   margin: 0 auto 0 0;
   padding: 5% 0px 5% 0px;
