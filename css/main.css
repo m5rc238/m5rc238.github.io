@@ -6,7 +6,8 @@ body {
   /* background-image: url("../img/bg1.png") */
   /* background-repeat: repeat */
   background-color: #A5A4AD;
-  border: 10px solid #3d3d3d; }
+  border: 10px solid #3d3d3d;
+  scrollbar-color: #0A4C95 #C2D2E4; }
 
 ::selection {
   color: white;
@@ -17,6 +18,9 @@ body {
   color: white;
   background: #A5A4AD;
   /* Gecko Browsers */ }
+
+::-webkit-scrollbar {
+  scrollbar-color: #0A4C95 #C2D2E4; }
 
 a {
   color: #3D3D3D;
@@ -50,19 +54,20 @@ h2 {
 
 p {
   color: #3D3D3D;
-  font-size: 15px;
+  font-size: 0.875rem;
   font-family: "Frekuent";
   font-weight: 300;
   letter-spacing: 0.02em;
   font-kerning: auto;
-  line-height: calc(2ex / 0.32); }
+  line-height: 24px; }
 
 nav {
   width: 100%;
   background-color: #a5a4ad;
   position: sticky;
   position: -webkit-sticky;
-  top: 0; }
+  top: 0;
+  padding: 10px 0px 10px 0px; }
 
 .nav-container {
   max-width: 1200px;
@@ -88,7 +93,6 @@ nav {
 
 .btn-nav {
   float: right;
-  margin-top: 4px;
   padding: 14px 32px 14px 32px;
   border-radius: 5px;
   background-color: #A5A4AD;
@@ -102,6 +106,16 @@ header {
   max-width: 1200px;
   margin: auto;
   /* border: 1px solid blue */ }
+
+.ic-social {
+  list-style-type: none;
+  padding: 0; }
+  .ic-social li {
+    display: inline-flex; }
+  .ic-social img {
+    padding: 0px 10px 0px 0px; }
+  .ic-social svg:hover {
+    fill: red; }
 
 #know-how {
   width: 100%;
