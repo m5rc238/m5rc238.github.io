@@ -5,16 +5,17 @@ body {
   /* cursor: url('../img/cursor.svg'), auto */
   /* background-image: url("../img/bg1.png") */
   /* background-repeat: repeat */
-  background-color: #A5A4AD; }
+  background-color: #A5A4AD;
+  border: 10px solid #3d3d3d; }
 
 ::selection {
   color: white;
-  background: #344BFB;
+  background: #A5A4AD;
   /* WebKit/Blink Browsers */ }
 
 ::-moz-selection {
   color: white;
-  background: #344BFB;
+  background: #A5A4AD;
   /* Gecko Browsers */ }
 
 a {
