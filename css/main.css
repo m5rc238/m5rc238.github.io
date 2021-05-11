@@ -19,8 +19,9 @@ body {
   background: #A5A4AD;
   /* Gecko Browsers */ }
 
-::-webkit-scrollbar {
-  scrollbar-color: #0A4C95 #C2D2E4; }
+body {
+  scrollbar-color: dark;
+  scrollbar-width: thin; }
 
 a {
   color: #3D3D3D;
@@ -59,15 +60,19 @@ p {
   font-weight: 300;
   letter-spacing: 0.02em;
   font-kerning: auto;
-  line-height: 24px; }
+  line-height: 1.6em; }
 
 nav {
   width: 100%;
-  background-color: #a5a4ad;
+  background-color: #a5a4adcb;
   position: sticky;
   position: -webkit-sticky;
   top: 0;
-  padding: 10px 0px 10px 0px; }
+  padding: 10px 0px 10px 0px;
+  background-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px); }
+  nav a:hover {
+    color: white; }
 
 .nav-container {
   max-width: 1200px;
@@ -100,7 +105,11 @@ nav {
   border: 1px solid #3d3d3d;
   color: #3d3d3d;
   cursor: pointer;
-  font-family: "Frekuent" !important; }
+  font-family: "Frekuent"; }
+
+.btn-nav:hover {
+  background-color: #3d3d3d;
+  color: #fff; }
 
 header {
   max-width: 1200px;
@@ -142,6 +151,10 @@ header {
   margin: 0 auto 0 0;
   padding: 10% 0px 15% 0px;
   max-width: 700px; }
+  .box a {
+    float: right;
+    font-size: 0.775rem;
+    color: white; }
 
 main {
   margin: 0 auto 0 auto;
