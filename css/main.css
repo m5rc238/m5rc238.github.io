@@ -24,16 +24,18 @@ body {
   scrollbar-width: thin; }
 
 a {
+  background: linear-gradient(to bottom, var(--mainColor) 0%, var(--mainColor) 100%);
   color: #3D3D3D;
   text-decoration: none;
   font-family: "Frekuent" !important;
-  -webkit-transition: opacity 1s ease-in-out;
-  -moz-transition: opacity 1s ease-in-out;
-  transition: opacity 1s ease-in-out; }
+  transition: 0.3s; }
 
 a:hover {
-  border-bottom: 2px solid #c7c7c7;
-  color: red; }
+  transition: 0.3s;
+  border-bottom: 1px solid white; }
+
+.icon-dribbble {
+  background-image: url(./img/ic-dribbble.svg); }
 
 h1 {
   color: #3D3D3D;
@@ -64,13 +66,11 @@ p {
 
 nav {
   width: 100%;
-  background-color: #a5a4adcb;
+  background-color: #a5a4ad;
   position: sticky;
   position: -webkit-sticky;
   top: 0;
-  padding: 10px 0px 10px 0px;
-  background-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px); }
+  padding: 10px 0px 10px 0px; }
   nav a:hover {
     color: white; }
 
@@ -78,6 +78,7 @@ nav {
   max-width: 1200px;
   margin-left: auto;
   margin-right: auto;
+  line-height: 42px;
   /*border: 1px solid red */
   /* border-bottom: 1px solid #344BFB */ }
   .nav-container ul.nav-info {
@@ -121,10 +122,12 @@ header {
   padding: 0; }
   .ic-social li {
     display: inline-flex; }
-  .ic-social img {
-    padding: 0px 10px 0px 0px; }
-  .ic-social svg:hover {
-    fill: red; }
+  .ic-social i {
+    padding: 0px 12px 0px 0px;
+    color: #3d3d3d;
+    font-size: 22px; }
+  .ic-social i:hover {
+    color: white; }
 
 #know-how {
   width: 100%;

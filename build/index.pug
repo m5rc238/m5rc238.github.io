@@ -7,7 +7,7 @@ html
     link(rel='stylesheet', type='text/css', href='css/normalize.css')
     link(rel='stylesheet', type='text/css', href='css/flexboxgrid.min.css') 
     link(rel='stylesheet', type='text/css', href='font/stylesheet.css')
-    script(src='js/clock.js')
+    link(rel='stylesheet' href='http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.4.0/css/font-awesome.min.css')
     |  
     meta(name='viewport', content='width=device-width, initial-scale=1.0')    
     |  
@@ -32,21 +32,17 @@ html
           .box
             h1  Hello, world! 🖖🏼
             p I’m a seasoned product designer, digital nomad and cognitive science enthusiast. Since 2013 I’ve helped startups, companies, and nonprofits across a myriad of verticals leverage design to craft products, services, and systems that people love. 
-            a(href='/about.html' target='_self') more about me →
+            //a(href='/about.html' target='_self') more about me →
 
             ul.ic-social
               li
-                a(href='https://dribbble.com/mrcl' target='_blank')
-                  img(src='img/ic-dribbble.svg' alt='Dribbble')
+                i.fa.fa-dribbble
               li
-                a(href='https://www.behance.net/kultvar' target='_blank')
-                  img(src='img/ic-behance.svg' alt='Behance')
+                i.fa.fa-behance
               li
-                a(href='https://github.com/m5rc238' target='_blank')
-                  img(src='img/ic-github.svg' alt='Github')
+                i.fa.fa-github
               li 
-                a(href='https://www.linkedin.com/in/marcel-akiyama' target='_blank')
-                  img(src='img/ic-linkedin.svg' alt='Linkedin')
+                i.fa.fa-linkedin
 
       
     #know-how
@@ -55,20 +51,20 @@ html
           .col-lg-6
             h1 Let's build something great together 
           .col-lg-6
-            p I can help you take a product idea from end to end, uncover new opportunities, expand into new markets, create desirable products and services as well as foster a culture of innovation. 
+            p Take a product idea from end to end, uncover new opportunities, expand into new markets, create desirable products and services as well as foster a culture of innovation. 
             
         .row.blocks
           .col-lg-3.block
               img(src='img/d-strategy.png' alt='Design Strategy')
-              h2 Design Strategy →
+              h2 Design Strategy
               p Survey the landscape, draw the map, and set the path. Research existing conditions but plan what we are going to build, and define objectives and key results.
           .col-lg-3.block
               img(src='img/ux-research.png' alt='UX Research')
-              h2 UX Research →
+              h2 UX Research
               p Identify and prove or disprove assumptions. Find commonalities across target audience, and investigate their needs, goals, and mental models. 
           .col-lg-3.block
               img(src='img/ux-design.png' alt='UX Design')
-              h2 UX Design →
+              h2 UX Design
               p Synthesize research and insights. Develop a sound solution that meets identified needs. Create a prototype, test it, refine it. Try again.
           .col-lg-3.block
               img(src='img/ui-design.png' alt='UI Design')
@@ -76,6 +72,10 @@ html
               p Make user's interaction as simple and efficient as possible, and develop a comprehensive collection of standards for design and front end code.
 
     // button(onclick="location.href='mailto:m@mrcl.design'" type='button') Start convo!
+    #latest-projects
+      .container
+        .row
+          h1 Latest Projects
 
     footer
       p ©
