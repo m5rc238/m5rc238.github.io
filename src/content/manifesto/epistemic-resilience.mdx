@@ -4,6 +4,17 @@ standfirst: 'Our ability to produce information has grown faster than our abilit
 updatedDate: 2026-09-29
 ---
 
+import SceneAbundance from '../../components/manifesto/SceneAbundance.astro';
+import SceneDecompose from '../../components/manifesto/SceneDecompose.astro';
+import SceneUncertainty from '../../components/manifesto/SceneUncertainty.astro';
+import SceneBlackbox from '../../components/manifesto/SceneBlackbox.astro';
+import SceneChallenge from '../../components/manifesto/SceneChallenge.astro';
+import SceneRelationships from '../../components/manifesto/SceneRelationships.astro';
+import SceneRevision from '../../components/manifesto/SceneRevision.astro';
+import SceneOptimize from '../../components/manifesto/SceneOptimize.astro';
+import SceneAutomation from '../../components/manifesto/SceneAutomation.astro';
+import SceneLoop from '../../components/manifesto/SceneLoop.astro';
+
 We live in a time when information is cheap.
 
 We can generate more text, images, software, analysis, and explanations than anyone can realistically examine. AI has made this even easier.
@@ -14,6 +25,8 @@ We have built machines that can answer almost any question. We have not built en
 
 This is not only an AI problem. It is a problem with how we produce, organize, verify, and use knowledge.
 
+<SceneAbundance />
+
 ## 1. Plausibility is not knowledge
 
 A convincing answer is not necessarily a true answer. A citation is not proof. A retrieved document is not understanding. A model's confidence is not evidence.
@@ -21,6 +34,8 @@ A convincing answer is not necessarily a true answer. A citation is not proof. A
 Information can look authoritative while being wrong, incomplete, outdated, or misleading.
 
 We should therefore keep important conclusions connected to the evidence, assumptions, reasoning, and uncertainty behind them.
+
+<SceneDecompose />
 
 **Plausibility is not knowledge.**
 
@@ -32,6 +47,8 @@ AI makes this especially easy. It can produce a plausible answer even when the e
 
 But sometimes the right answer is uncertainty. Sometimes we need more evidence. Sometimes there are competing explanations. Sometimes the system should ask for help or stop.
 
+<SceneUncertainty />
+
 **"We don't know" is a valid result.**
 
 A system should not hide uncertainty simply because its interface expects an answer.
@@ -41,6 +58,8 @@ A system should not hide uncertainty simply because its interface expects an ans
 A single AI system can now retrieve information, interpret it, reason about it, make a recommendation, and sometimes take action.
 
 This is convenient, but it can make mistakes difficult to understand or correct.
+
+<SceneBlackbox />
 
 We should be able to distinguish retrieval from interpretation, evidence from inference, prediction from policy, and recommendation from action.
 
@@ -56,6 +75,8 @@ The interface can therefore make a weak conclusion feel stronger than it is.
 
 For consequential decisions, people should be able to understand what the system concluded, what evidence it used, what assumptions mattered, what remains uncertain, and what could change the result.
 
+<SceneChallenge />
+
 Human involvement is not enough. People need a real ability to question and revise the system's conclusions.
 
 **Human agency requires meaningful challenge, not just human presence.**
@@ -67,6 +88,8 @@ Organizations already have enormous amounts of information. More documents do no
 Useful knowledge depends on relationships between claims, evidence, assumptions, decisions, actions, and outcomes.
 
 A fact should be distinguishable from an inference. An assumption from a decision. A hypothesis from a conclusion. A disagreement should not disappear simply because one source is easier to retrieve.
+
+<SceneRelationships />
 
 Good knowledge systems should preserve enough of these relationships to help people understand not only **what was decided, but why, based on what, and what could change it.**
 
@@ -80,6 +103,8 @@ We should build systems that can fail without becoming impossible to recover fro
 
 Important decisions should be traceable. Errors should be detectable. Assumptions should be revisable. New evidence should be able to change conclusions. Consequential actions should be contained or reversible when possible.
 
+<SceneRevision />
+
 The goal is not perfect systems.
 
 **The goal is systems that can recognize, explain, and recover from failure.**
@@ -91,6 +116,8 @@ Every system optimizes something: speed, growth, engagement, accuracy, automatio
 Optimization is useful, but every metric also leaves something out.
 
 A system can optimize engagement while reducing information quality. It can optimize answer completion while discouraging uncertainty. It can optimize automation while weakening human judgment.
+
+<SceneOptimize />
 
 So we should always ask:
 
@@ -106,6 +133,8 @@ It becomes a problem when it removes judgment that is still necessary.
 
 AI can retrieve, compare, summarize, generate hypotheses, find patterns, and challenge assumptions. These capabilities can strengthen human reasoning.
 
+<SceneAutomation />
+
 But the more consequential or irreversible an action is, the stronger the requirements for evidence, verification, authorization, and accountability should be.
 
 The goal is not to keep humans involved in everything.
@@ -119,6 +148,8 @@ Epistemic resilience is the ability of a system to remain useful and correctable
 A resilient system maintains a connection between:
 
 **evidence → interpretation → decision → action → outcome → new evidence**
+
+<SceneLoop />
 
 It can distinguish what was observed from what was inferred. It can represent uncertainty. It can surface disagreement. It can be challenged. It can incorporate new evidence and change its conclusions.
 

@@ -3,53 +3,88 @@
 
 /* ---------------------------------------------------------------------------
    Design tokens. Tailwind v4 is CSS-first: everything under `@theme` becomes a
-   real utility (e.g. `--color-ink-900` -> `text-ink-900`, `bg-surface`).
+   real utility (e.g. `--color-ink-900` -> `text-charcoal`, `bg-surface`).
    Keep the ramps small and intentional.
 --------------------------------------------------------------------------- */
 @theme {
-	/* Self-hosted via @fontsource-variable/inter — no third-party request.
-	   Family name must match the one the package declares. */
+	/* --- Fonts ------------------------------------------------------------
+	   Self-hosted via Fontsource — no third-party request at runtime.
+	   Names must match what each package declares:
+	     'Source Serif 4 Variable', 'Instrument Serif', 'Inter Variable'.
+	   Display is the serif; body and UI are the neo-grotesque sans. */
 	--font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system,
 		'Segoe UI', sans-serif;
-	--font-display: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+	--font-display: 'Source Serif 4 Variable', 'Instrument Serif',
+		ui-serif, Georgia, serif;
+	--font-serif: 'Instrument Serif', 'Source Serif 4 Variable', ui-serif,
+		Georgia, serif;
 	--font-mono: ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, monospace;
 
-	/* Neutrals */
-	--color-ink-50: oklch(0.985 0.002 265);
-	--color-ink-100: oklch(0.96 0.004 265);
-	--color-ink-300: oklch(0.79 0.008 265);
-	--color-ink-500: oklch(0.58 0.012 265);
-	--color-ink-700: oklch(0.38 0.014 265);
-	--color-ink-900: oklch(0.21 0.014 265);
-	--color-ink-950: oklch(0.15 0.014 265);
+	/* --- Palette ---------------------------------------------------------
+	   Warm neutrals plus a single lavender accent.
 
-	/* Accent */
-	--color-accent-400: oklch(0.78 0.16 195);
-	--color-accent-500: oklch(0.7 0.17 195);
-	--color-accent-600: oklch(0.6 0.15 195);
+	   Contrast measured against #FAF7F2:
+	     #1A1A1A  16.3:1  body text
+	     #55524D   7.3:1  secondary text
+	     #AAA69D   2.3:1  — NOT text-safe, decorative and borders only
+	     #9D8FFF   2.5:1  — NOT text-safe on light; charcoal on it is 6.5:1
+
+	   Both failures are inherent to the brief's values, so the two low-contrast
+	   colours are deliberately confined to large type, rules, and fills. Text
+	   that must be read always uses #1A1A1A or #55524D. */
+	--color-alabaster: #faf7f2;
+	--color-warm-gray: #ece7e0;
+	--color-charcoal: #1a1a1a;
+	--color-slate: #55524d;
+	--color-muted: #aaa69d;
+	--color-inverse: #ffffff;
+	--color-accent: #9d8fff;
+
+	/* Accent variants. `accent-strong` darkens the lavender enough to be
+	   legible as small text on alabaster (4.8:1) — used for links, eyebrows,
+	   and focus rings where the base value would fail AA. */
+	--color-accent-strong: #6a55e8;
+	--color-accent-wash: color-mix(in oklch, var(--color-accent) 22%, transparent);
 
 	/* Semantic surfaces */
-	--color-surface: var(--color-ink-950);
-	--color-raised: var(--color-ink-900);
-	--color-line: var(--color-ink-700);
-	--color-body: var(--color-ink-100);
-	--color-muted: var(--color-ink-300);
+	--color-surface: var(--color-alabaster);
+	--color-raised: var(--color-warm-gray);
+	--color-line: color-mix(in oklch, var(--color-muted) 55%, transparent);
+	--color-body: var(--color-charcoal);
+	--color-soft: var(--color-slate);
 
-	/* Fluid type scale */
-	--text-display: clamp(2.75rem, 1.5rem + 6vw, 7rem);
-	--text-display--line-height: 0.95;
-	--text-display--letter-spacing: -0.035em;
-	--text-title: clamp(1.75rem, 1.1rem + 3vw, 3.25rem);
-	--text-title--line-height: 1.05;
-	--text-title--letter-spacing: -0.02em;
-	--text-lede: clamp(1.05rem, 0.95rem + 0.5vw, 1.35rem);
+	/* --- Type scale ------------------------------------------------------
+	   Display and lede are the serif; everything else is the sans. Sizes are
+	   fluid so headline reveals never wrap awkwardly at the extremes. */
+	--text-display: clamp(2.75rem, 1.35rem + 6.5vw, 7.5rem);
+	--text-display--line-height: 0.98;
+	--text-display--letter-spacing: -0.025em;
+	--text-display--font-weight: 400;
+
+	--text-title: clamp(1.85rem, 1.1rem + 3.2vw, 3.5rem);
+	--text-title--line-height: 1.06;
+	--text-title--letter-spacing: -0.018em;
+
+	--text-lede: clamp(1.1rem, 0.98rem + 0.55vw, 1.4rem);
 	--text-lede--line-height: 1.5;
+	--text-lede--letter-spacing: -0.005em;
 
-	--radius-card: 1rem;
+	--text-eyebrow: 0.75rem;
+	--text-eyebrow--line-height: 1.4;
+	--text-eyebrow--letter-spacing: 0.18em;
+
+	/* Body copy per the brief: sans, 400, 1.5–1.6 leading. */
+	--text-body: 1rem;
+	--text-body--line-height: 1.55;
+
+	--radius-card: 1.25rem;
 	--radius-pill: 999px;
 
 	--ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
 	--ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+
+	/* Editorial measure. Narrow enough for the serif to stay readable. */
+	--container-page: 76rem;
 }
 
 /* ---------------------------------------------------------------------------
@@ -57,7 +92,7 @@
 --------------------------------------------------------------------------- */
 @layer base {
 	:root {
-		color-scheme: dark;
+		color-scheme: light;
 		/* Drives the scroll-progress bar and any JS that reads scroll state. */
 		--scroll-progress: 0;
 	}
@@ -73,13 +108,47 @@
 		background-color: var(--color-surface);
 		color: var(--color-body);
 		font-family: var(--font-sans);
+		font-size: var(--text-body);
+		line-height: var(--text-body--line-height);
 		/* Horizontal overflow from parallax/overshoot animations would
 		   otherwise create a horizontal scrollbar on mobile. */
 		overflow-x: clip;
+		/* The serif has a much smaller x-height; a hair of extra tracking keeps
+		   lowercase from reading as grey at body sizes. */
+		-webkit-font-smoothing: antialiased;
+	}
+
+	/* Display headlines are serif per the brief. Weight 400 — the serif's
+	   medium is its natural voice, and 500 looks over-inked. */
+	h1,
+	h2 {
+		font-family: var(--font-display);
+		font-weight: 400;
+		color: var(--color-charcoal);
+	}
+
+	h3,
+	h4,
+	h5,
+	h6 {
+		/* Section headings are sans, semi-bold, per the brief. */
+		font-family: var(--font-sans);
+		font-weight: 600;
+		color: var(--color-charcoal);
+	}
+
+	/* Navigation and UI chrome read as sans at medium weight. */
+	nav,
+	button,
+	.eyebrow {
+		font-family: var(--font-sans);
+		font-weight: 500;
 	}
 
 	:focus-visible {
-		outline: 2px solid var(--color-accent-400);
+		/* accent-strong, not accent: the lavender is 2.5:1 on alabaster and
+		   would be invisible as a focus indicator. */
+		outline: 2px solid var(--color-accent-strong);
 		outline-offset: 3px;
 		border-radius: 2px;
 	}
@@ -107,7 +176,7 @@
 	.container-page {
 		width: 100%;
 		margin-inline: auto;
-		max-width: 76rem;
+		max-width: var(--container-page);
 		padding-inline: 1.5rem;
 	}
 
@@ -127,6 +196,25 @@
 			var(--color-line) 80%,
 			transparent
 		);
+	}
+
+	/* Standfirst under a display headline. Instrument Serif's italic is the
+	   editorial voice the brief calls for; it has no roman partner here, so it
+	   is used only for this one role. */
+	.standfirst {
+		font-family: var(--font-serif);
+		font-style: italic;
+		color: var(--color-slate);
+	}
+
+	/* Small-caps label above sections and in the nav. */
+	.eyebrow {
+		font-family: var(--font-sans);
+		font-size: var(--text-eyebrow);
+		font-weight: 500;
+		letter-spacing: var(--text-eyebrow--letter-spacing);
+		text-transform: uppercase;
+		color: var(--color-accent-strong);
 	}
 }
 

@@ -3,49 +3,11 @@
 import { defineCollection } from 'astro:content';
 import { glob } from 'astro/loaders';
 import { z } from 'zod';
-import { REVEAL_PRESETS, DEFAULT_REVEAL } from './lib/motion/types';
-
-const blog = defineCollection({
-	loader: glob({ base: './src/content/blog', pattern: '**/*.{md,mdx}' }),
-	schema: z.object({
-		title: z.string(),
-		description: z.string().optional(),
-		pubDate: z.coerce.date(),
-		updatedDate: z.coerce.date().optional(),
-		draft: z.boolean().default(false),
-		tags: z.array(z.string()).default([]),
-		heroImage: z.string().optional(),
-		heroAlt: z.string().optional(),
-		/**
-		 * Selects a GSAP reveal preset applied to this page's hero.
-		 * See `src/lib/motion/presets.ts`.
-		 */
-		reveal: z.enum(REVEAL_PRESETS).default(DEFAULT_REVEAL),
-	}),
-});
-
-const work = defineCollection({
-	loader: glob({ base: './src/content/work', pattern: '**/*.{md,mdx}' }),
-	schema: z.object({
-		title: z.string(),
-		description: z.string().optional(),
-		date: z.coerce.date(),
-		draft: z.boolean().default(false),
-		tags: z.array(z.string()).default([]),
-		link: z.url().optional(),
-		repo: z.url().optional(),
-		featured: z.boolean().default(false),
-		/** Ordinal used to order cards on the work index. */
-		order: z.number().default(0),
-		heroImage: z.string().optional(),
-		heroAlt: z.string().optional(),
-	}),
-});
 
 /**
- * Standing documents rather than dated posts — currently the manifesto.
- * Kept separate from `blog` so it can be linked, versioned, and rendered at a
- * permanent URL without inheriting publication dates or draft semantics.
+ * The site is a single document — the manifesto — rendered at the root.
+ * The collection exists so the prose stays authored and versioned as content
+ * rather than markup.
  */
 const manifesto = defineCollection({
 	loader: glob({ base: './src/content/manifesto', pattern: '**/*.{md,mdx}' }),
@@ -60,4 +22,4 @@ const manifesto = defineCollection({
 	}),
 });
 
-export const collections = { blog, work, manifesto };
+export const collections = { manifesto };

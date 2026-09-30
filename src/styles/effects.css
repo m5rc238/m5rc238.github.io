@@ -22,8 +22,8 @@
 	transform-origin: 0 50%;
 	background: linear-gradient(
 		to right,
-		var(--color-accent-600),
-		var(--color-accent-400)
+		var(--color-accent-strong),
+		var(--color-accent)
 	);
 	z-index: 100;
 	scale: var(--scroll-progress, 0) 1;
@@ -66,19 +66,29 @@
 	will-change: transform;
 }
 
-/* --- Text treatments ------------------------------------------------------ */
+/* --- Text treatments ------------------------------------------------------
+   On a light ground a gradient must stay dark enough to read. This runs
+   charcoal -> secondary -> accent-strong, all of which clear 4.5:1 on
+   alabaster. The lavender itself only reaches 2.5:1, so it anchors the end
+   of the ramp as accent-strong rather than accent.
+--------------------------------------------------------------------------- */
 .text-gradient {
 	background: linear-gradient(
 		120deg,
-		var(--color-ink-50),
-		var(--color-ink-300) 45%,
-		var(--color-accent-400) 100%
+		var(--color-charcoal) 0%,
+		var(--color-slate) 50%,
+		var(--color-accent-strong) 100%
 	);
 	-webkit-background-clip: text;
 	background-clip: text;
 	color: transparent;
 	/* Descenders get clipped without a little breathing room. */
 	padding-block-end: 0.08em;
+}
+
+/* Accent rule that reads as a printed band above a section. */
+.banner-accent {
+	border-block-start: 2px solid var(--color-accent);
 }
 
 /* Underline that wipes in from the left on hover. */
@@ -105,19 +115,7 @@
 	transform-origin: 0 50%;
 }
 
-/* --- Grid + glow backdrop ------------------------------------------------- */
-.grid-backdrop {
-	position: fixed;
-	inset: 0;
-	z-index: -1;
-	background-image:
-		linear-gradient(to right, color-mix(in oklch, var(--color-line) 35%, transparent) 1px, transparent 1px),
-		linear-gradient(to bottom, color-mix(in oklch, var(--color-line) 35%, transparent) 1px, transparent 1px);
-	background-size: 64px 64px;
-	/* Fades the grid out toward the edges so it never competes with text. */
-	mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 75%);
-}
-
+/* --- Glow backdrop -------------------------------------------------------- */
 .glow {
 	position: absolute;
 	inset-block-start: -20%;
@@ -127,7 +125,7 @@
 	border-radius: 50%;
 	background: radial-gradient(
 		circle,
-		color-mix(in oklch, var(--color-accent-500) 22%, transparent),
+		color-mix(in oklch, var(--color-accent) 30%, transparent),
 		transparent 65%
 	);
 	filter: blur(40px);
@@ -154,7 +152,7 @@
 	inset: 0;
 	background: radial-gradient(
 		18rem circle at var(--mx, 50%) var(--my, 50%),
-		color-mix(in oklch, var(--color-accent-400) 12%, transparent),
+		color-mix(in oklch, var(--color-accent) 16%, transparent),
 		transparent 60%
 	);
 	opacity: 0;
@@ -164,7 +162,7 @@
 
 .card:hover,
 .card:focus-within {
-	border-color: var(--color-accent-600);
+	border-color: var(--color-accent);
 	transform: translateY(-2px);
 }
 
@@ -173,47 +171,16 @@
 	opacity: 1;
 }
 
-/* --- Marquee --------------------------------------------------------------
-   Continuous horizontal ticker for tag/keyword rails.
---------------------------------------------------------------------------- */
-@keyframes marquee {
-	from {
-		transform: translateX(0);
-	}
-	to {
-		/* -50% assumes the track holds exactly two copies of the content. */
-		transform: translateX(-50%);
-	}
-}
-
-.marquee-track {
-	display: flex;
-	width: max-content;
-	animation: marquee linear infinite;
-	animation-duration: 32s;
-}
-
-.marquee:hover .marquee-track,
-.marquee:focus-within .marquee-track {
-	animation-play-state: paused;
-}
-
-@media (prefers-reduced-motion: reduce) {
-	.marquee-track {
-		animation: none;
-		flex-wrap: wrap;
-		width: 100%;
-	}
-}
-
 /* --- Noise ---------------------------------------------------------------- */
 .noise-overlay {
 	position: fixed;
 	inset: 0;
 	z-index: 200;
 	pointer-events: none;
-	opacity: 0.035;
-	mix-blend-mode: overlay;
+	/* `multiply`, not `overlay`: overlay is nearly a no-op on a light ground,
+	   which would make this texture pointless on the alabaster palette. */
+	opacity: 0.028;
+	mix-blend-mode: multiply;
 	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 

@@ -29,25 +29,25 @@ npm run preview   # serve the built output
 ```
 src/
   lib/motion/     plugins.ts, presets.ts, types.ts — GSAP setup and reveals
+  lib/manifesto/  engine.ts — scene pin/scrub timelines, rail, challenge state
   layouts/        Base.astro — the only layout; owns the motion bootstrap
-  components/     Header, Footer, Callout
-  styles/         global.css (tokens) + effects.css (visual effects)
-  content/        blog/, work/, manifesto/ — Astro content collections
-  pages/          /, /blog, /work, /manifesto
+  components/     Header, Footer
+  components/manifesto/  SysScene.astro + scene panels (one per manifesto section)
+  styles/         global.css (tokens) + effects.css (visual effects) + scenes.css
+  content/        manifesto/ — the single Astro content collection
+  pages/          / — the manifesto; /manifesto redirects to it
 ```
 
-## Writing
+## Content
 
-`src/content.config.ts` holds the schemas. Three collections:
+`src/content.config.ts` holds the schema. One collection:
 
-- **blog** — dated posts, `.md` or `.mdx`. `draft: true` keeps a post out of
-  the build.
-- **work** — projects. `featured` and `order` control the index.
-- **manifesto** — standing documents, no dates.
+- **manifesto** — a single standing document, authored in MDX, rendered at the
+  root. Section headings carry their own numbers; scene panels are embedded as
+  components in the MDX and animated by `src/lib/manifesto/engine.ts`.
 
-Adding a post means creating a file in `src/content/blog/`. Frontmatter is
-validated at build time, so a missing `title` or a malformed `pubDate` fails
-the build rather than shipping a blank page.
+Frontmatter is validated at build time, so a missing `title` or a malformed
+`updatedDate` fails the build rather than shipping a blank page.
 
 ## Motion
 

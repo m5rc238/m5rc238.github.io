@@ -1,5 +1,10 @@
 ---
 import '@fontsource-variable/inter';
+// Display serif. Only the 400 axis is imported — Source Serif's medium is
+// used for the italic editorial accents, not for body or headings.
+import '@fontsource-variable/source-serif-4';
+import '@fontsource-variable/source-serif-4/wght-italic.css';
+import '@fontsource/instrument-serif/400-italic.css';
 import '../styles/global.css';
 import { DEFAULT_REVEAL } from '../lib/motion/types';
 import type { RevealPreset } from '../lib/motion/types';
@@ -29,7 +34,7 @@ const {
 		<link rel="icon" href="/favicon.ico" />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
-		<meta name="color-scheme" content="dark" />
+		<meta name="color-scheme" content="light" />
 		<title>{title}</title>
 
 		{/*
@@ -43,12 +48,11 @@ const {
 
 	<body class="min-h-dvh bg-surface font-sans text-body antialiased">
 		<div class="scroll-progress" aria-hidden="true"></div>
-		<div class="grid-backdrop" aria-hidden="true"></div>
 		<div class="noise-overlay" aria-hidden="true"></div>
 
 		<a
 			href="#main"
-			class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[300] focus:rounded-full focus:bg-accent-500 focus:px-5 focus:py-2 focus:text-sm focus:font-medium focus:text-ink-950"
+			class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[300] focus:rounded-full focus:bg-charcoal focus:px-5 focus:py-2 focus:text-sm focus:font-medium focus:text-inverse"
 		>
 			Skip to content
 		</a>

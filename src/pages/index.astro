@@ -1,155 +1,110 @@
 ---
+import { getCollection, render } from 'astro:content';
 import Base from '../layouts/Base.astro';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import '../styles/scenes.css';
 
-const capabilities = [
-	{
-		title: 'Type systems',
-		body: 'Variable axes, optical sizing, and grids that hold up at every scale.',
-		reveal: 'split-lines',
-	},
-	{
-		title: 'Scroll choreography',
-		body: 'Pinned sequences and scrubbed timelines that stay smooth on mid-range phones.',
-		reveal: 'split-chars',
-	},
-	{
-		title: 'Interface detail',
-		body: 'State, focus, and reduced-motion handled before anything is celebrated.',
-		reveal: 'fade-up',
-	},
-];
+const [document] = await getCollection('manifesto', ({ data }) => !data.draft);
 
-const stack = [
-	'Astro',
-	'TypeScript',
-	'GSAP',
-	'ScrollTrigger',
-	'SplitText',
-	'Flip',
-	'MorphSVG',
-	'MotionPath',
-	'Tailwind CSS',
-	'MDX',
-];
+// The manifesto is the site now — one document, one page, no draft fallback.
+const { Content } = await render(document);
+
+const formatDate = (date: Date) =>
+	new Intl.DateTimeFormat('en-GB', {
+		day: 'numeric',
+		month: 'long',
+		year: 'numeric',
+	})
+		.format(date)
+		.replace(/ /g, ' ');
 ---
 
 <Base
-	title="m5rc238 — type, motion, and the web"
-	description="Designer and developer working in the space between type, motion, and the web."
+	title="m5rc238 — A Manifesto for Epistemic Resilience"
+	description={
+		document.data.standfirst ?? 'Epistemic resilience: the ability of an intelligent system to remain correctable.'
+	}
 	heroReveal="split-lines"
 >
 	<Header slot="header" />
 	<Footer slot="footer" />
 
-	{/* Hero */}
-	<section class="relative overflow-hidden">
-		<div class="glow" aria-hidden="true"></div>
+	<article class="container-page py-24">
+		<div class="sys-rail" data-sys-rail aria-hidden="true">
+			<span class="sys-rail__step" data-sys-rail-step>Information</span>
+			<span class="sys-rail__step" data-sys-rail-step>Claim</span>
+			<span class="sys-rail__step" data-sys-rail-step>Evidence</span>
+			<span class="sys-rail__step" data-sys-rail-step>Interpretation</span>
+			<span class="sys-rail__step" data-sys-rail-step>Decision</span>
+			<span class="sys-rail__step" data-sys-rail-step>Action</span>
+			<span class="sys-rail__step" data-sys-rail-step>Outcome</span>
+			<span class="sys-rail__step" data-sys-rail-step>New evidence</span>
+		</div>
 
-		<div class="container-page relative py-28 sm:py-40">
+		<header class="max-w-[62ch]">
 			<p
-				class="reveal mb-6 font-mono text-xs tracking-[0.2em] text-accent-400 uppercase"
+				class="reveal mb-8 font-mono text-xs tracking-[0.2em] text-accent-strong uppercase"
 				data-reveal="fade-up"
 			>
-				Portfolio — 2026
+				Manifesto
 			</p>
 
 			<h1
 				data-hero
-				class="max-w-[20ch] text-balance font-display font-semibold text-display text-gradient"
+				class="font-display text-balance text-display"
 			>
-				Design that moves like it means it.
+				{document.data.title}
 			</h1>
 
-			<p
-				class="reveal mt-8 max-w-[52ch] text-muted text-lede"
-				data-reveal="fade-up"
-			>
-				A new build. Astro for structure, Tailwind for surface, GSAP for
-				movement — and content in Markdown and MDX.
-			</p>
-		</div>
-
-		<div class="rule-gradient" aria-hidden="true"></div>
-	</section>
-
-	{/* Capabilities */}
-	<section class="container-page py-28">
-		<h2
-			class="reveal mb-14 max-w-[18ch] font-display font-semibold text-balance text-title"
-			data-reveal="split-lines"
-		>
-			What this site is built to show
-		</h2>
-
-		<div class="grid gap-px overflow-hidden rounded-card border border-line bg-line sm:grid-cols-3">
 			{
-				capabilities.map((item) => (
-					<article class="bg-surface p-8">
-						<h3
-							class="reveal font-display text-lg font-semibold tracking-tight"
-							data-reveal={item.reveal}
-						>
-							{item.title}
-						</h3>
-						<p
-							class="reveal mt-3 text-sm leading-relaxed text-muted"
-							data-reveal="fade-up"
-						>
-							{item.body}
-						</p>
-					</article>
-				))
+				document.data.standfirst && (
+					<p
+						class="standfirst reveal mt-8 text-balance text-lede"
+						data-reveal="fade-up"
+					>
+						{document.data.standfirst}
+					</p>
+				)
 			}
-		</div>
-	</section>
 
-	{/* Stack rail */}
-	<section class="overflow-hidden border-y border-line/60 py-10">
-		<div class="marquee" aria-hidden="true">
-			<div class="marquee-track gap-4 pr-4 font-mono text-sm text-ink-500">
-				{
-					[...stack, ...stack].map((item) => (
-						<span class="whitespace-nowrap rounded-pill border border-line px-4 py-1.5">
-							{item}
-						</span>
-					))
-				}
-			</div>
-		</div>
-		<p class="sr-only">Stack: {stack.join(', ')}</p>
-	</section>
+			{
+				document.data.updatedDate && (
+					<p class="mt-10 font-mono text-xs text-soft">
+						Last revised{' '}
+						<time datetime={document.data.updatedDate.toISOString()}>
+							{formatDate(document.data.updatedDate)}
+						</time>
+					</p>
+				)
+			}
+		</header>
 
-	{/* Call to action */}
-	<section class="container-page py-32">
-		<div class="card p-10 sm:p-16">
-		<h2
-			class="reveal max-w-[16ch] font-display font-semibold text-balance text-title"
-			data-reveal="split-lines"
-		>
-			A manifesto, and everything around it.
-		</h2>
-			<div class="mt-10 flex flex-wrap gap-3">
-				<a
-					href="/manifesto/"
-					class="rounded-pill bg-accent-500 px-6 py-3 text-sm font-medium text-ink-950 transition-transform duration-300 hover:-translate-y-0.5"
-				>
-					Read the manifesto
-				</a>
-				<a
-					href="/work/"
-					class="rounded-pill border border-line px-6 py-3 text-sm font-medium transition-colors duration-300 hover:border-accent-500 hover:text-accent-400"
-				>
-					See the work
-				</a>
-				<a
-					href="/blog/"
-					class="rounded-pill border border-line px-6 py-3 text-sm font-medium transition-colors duration-300 hover:border-accent-500 hover:text-accent-400"
-				>
-					Read the writing
-				</a>
-			</div>
+		<div class="rule-gradient my-16" aria-hidden="true"></div>
+
+		{/*
+			Prose is styled by `.m-prose` in `src/styles/scenes.css`; section
+			headings carry their own numbers in the source, so they need no
+			decoration. The scene panels (`.sys-scene`) break out of the column
+			to the full viewport and are animated by `src/lib/manifesto/engine.ts`.
+		*/}
+		<div class="m-prose">
+			<Content />
 		</div>
-	</section>
+
+		<div class="rule-gradient my-16" aria-hidden="true"></div>
+
+		<footer class="max-w-[68ch]">
+			<p class="text-sm text-soft">
+				This document is a position, not a settled conclusion. If part of it is
+				wrong, it should be correctable — which is rather the point.
+			</p>
+		</footer>
+	</article>
 </Base>
+
+<script>
+	import { initManifesto } from '../lib/manifesto/engine';
+
+	initManifesto();
+</script>

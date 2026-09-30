@@ -1,0 +1,799 @@
+/* ---------------------------------------------------------------------------
+   Epistemic-system scenes — the manifesto visualised as a living system.
+
+   Vocabulary (the brief's "small set of transformations"):
+     expand     simple thing reveals hidden structure
+     separate   kinds are made distinguishable
+     connect    relationships become visible
+     challenge  a conclusion is interrupted by new information
+     revise     a previous state changes without disappearing
+     loop       the outcome becomes new evidence
+
+   Hard rule (from the brief): every scene's END state is its static,
+   readable state. If JS is slow, broken, or the visitor prefers reduced
+   motion, the scene simply *is* its end state — never hidden content.
+
+   Each scene = one full-viewport panel, pinned in `src/lib/manifesto/`.
+   The 8-stage system rail on the right tracks INFORMATION → CLAIM → EVIDENCE
+   → INTERPRETATION → DECISION → ACTION → OUTCOME → NEW EVIDENCE (loop).
+--------------------------------------------------------------------------- */
+
+/* --- Scene frame ---------------------------------------------------------- */
+.sys-scene {
+	position: relative;
+	min-height: 100svh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: clamp(5rem, 9vh, 7rem) var(--container-page-pad, 1.5rem);
+	overflow: hidden;
+}
+
+.sys-scene-in {
+	position: relative;
+	width: 100%;
+	max-width: 64rem;
+	margin-inline: auto;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: clamp(2rem, 5vh, 3.5rem);
+	text-align: center;
+}
+
+@media (min-width: 768px) {
+	.sys-scene {
+		--container-page-pad: 2.5rem;
+	}
+}
+
+/* Stage eyebrow, top-left of every scene. */
+.sys-eyebrow {
+	font-family: var(--font-mono);
+	font-size: 0.72rem;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+	color: var(--color-accent-strong);
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+}
+
+.sys-eyebrow::before {
+	content: '';
+	width: 1.5rem;
+	height: 1px;
+	background: currentColor;
+	opacity: 0.5;
+}
+
+/* The manifesto line a scene answers, set in the editorial serif. */
+.sys-quote {
+	max-width: 34rem;
+	font-family: var(--font-display);
+	font-size: clamp(1.35rem, 1.15rem + 1vw, 1.85rem);
+	line-height: 1.35;
+	color: var(--color-slate);
+}
+
+.sys-quote::before {
+	content: '“';
+	display: block;
+	font-family: var(--font-serif);
+	font-style: italic;
+	color: var(--color-accent-strong);
+	opacity: 0.9;
+	margin-bottom: 0.25em;
+}
+
+.sys-quote--static::before {
+	content: '';
+	display: none;
+}
+
+/* --- System nodes ----------------------------------------------------------
+   The atomic unit: a labelled card with an optional caption. Tone doors say
+   what kind of object it is, so Separation never needs colour alone. */
+.sys-node {
+	position: relative;
+	display: inline-flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 0.4rem;
+	min-width: 7.5rem;
+	min-height: 4.5rem;
+	padding: 0.9rem 1.4rem;
+	border: 1px solid var(--color-line);
+	border-radius: var(--radius-card);
+	background: var(--color-surface);
+	box-shadow: 0 1px 0 color-mix(in oklch, var(--color-line) 40%, transparent);
+}
+
+.sys-node__label {
+	font-family: var(--font-mono);
+	font-size: 0.72rem;
+	letter-spacing: 0.16em;
+	text-transform: uppercase;
+	color: var(--color-body);
+}
+
+.sys-node__caption {
+	font-family: var(--font-sans);
+	font-size: 0.8rem;
+	line-height: 1.4;
+	color: var(--color-slate);
+	max-width: 14rem;
+}
+
+/* Tone doors — border-left colour says what kind of thing this is. */
+.sys-node--claim { border-block-start: 2px solid var(--color-charcoal); }
+.sys-node--evidence { border-block-start: 2px solid var(--color-accent-strong); }
+.sys-node--assumption { border-block-start: 2px solid var(--color-slate); }
+.sys-node--reasoning { border-block-start: 2px solid var(--color-muted); }
+.sys-node--uncertainty { border-block-start: 2px solid color-mix(in oklch, var(--color-accent) 75%, var(--color-charcoal) 25%); }
+.sys-node--decision { border-block-start: 2px solid var(--color-charcoal); }
+.sys-node--action { border-block-start: 2px solid var(--color-accent-strong); }
+.sys-node--outcome { border-block-start: 2px solid var(--color-slate); }
+.sys-node--human { border-block-start: 2px solid var(--color-charcoal); }
+.sys-node--judgment { border-block-start: 2px solid var(--color-accent-strong); }
+.sys-node--automation { border-block-start: 2px solid var(--color-muted); }
+.sys-node--input { border-block-start: 2px solid var(--color-slate); }
+.sys-node--output { border-block-start: 2px solid var(--color-accent-strong); }
+
+/* The big "ANSWER" object — the thing that later decomposes. */
+.sys-node--answer {
+	min-width: 11rem;
+	padding: 1.6rem 2.4rem;
+	background: var(--color-charcoal);
+	border-color: var(--color-charcoal);
+	box-shadow: 0 12px 32px -18px color-mix(in oklch, var(--color-charcoal) 60%, transparent);
+}
+.sys-node--answer .sys-node__label {
+	color: var(--color-inverse);
+	font-size: 0.9rem;
+}
+
+/* The "we don't know" terminal — a valid state, not an error. Decorative
+   lavender signal only; red/trouble colouring is forbidden in this system. */
+.sys-node--unknowing {
+	background: color-mix(in oklch, var(--color-accent) 12%, var(--color-surface));
+	border-color: var(--color-accent);
+}
+.sys-node--unknowing .sys-node__label { color: var(--color-accent-strong); }
+
+/* --- Connectors ------------------------------------------------------------
+   Vertical flow line with a direction tick. Drawn in by the engine. */
+.sys-flow {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.75rem;
+}
+
+.sys-flow__row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: 0.75rem;
+}
+
+.sys-flow__link {
+	position: relative;
+	width: 1px;
+	height: 1.6rem;
+	background: var(--color-line);
+	transform-origin: 50% 0;
+}
+
+.sys-flow__link::after {
+	content: '';
+	position: absolute;
+	inset-block-end: 0;
+	inset-inline-start: 50%;
+	width: 5px;
+	height: 5px;
+	transform: translateX(-50%) rotate(45deg);
+	background: var(--color-accent-strong);
+}
+
+.sys-flow__link--label {
+	width: auto;
+	height: auto;
+	background: transparent;
+	font-family: var(--font-mono);
+	font-size: 0.62rem;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: var(--color-slate);
+	padding: 0.25rem 0;
+}
+.sys-flow__link--label::after { display: none; }
+
+/* --- Generic stacking used by several scenes ------------------------------ */
+.sys-stack {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 1rem;
+}
+
+.sys-row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: stretch;
+	justify-content: center;
+	gap: 1rem;
+}
+
+.sys-pair {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	min-width: 10rem;
+	text-align: left;
+}
+.sys-pair__k {
+	font-family: var(--font-mono);
+	font-size: 0.62rem;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: var(--color-muted);
+}
+.sys-pair__v {
+	font-size: 0.95rem;
+	line-height: 1.45;
+	color: var(--color-body);
+}
+
+/* Striking-but-never-erased ghosts (Revision scene). */
+.sys-ghost {
+	color: var(--color-muted);
+	text-decoration-line: line-through;
+	text-decoration-color: color-mix(in oklch, var(--color-muted) 70%, transparent);
+	text-decoration-thickness: 1px;
+}
+
+/* --- Abundance scene: rows of information tiles --------------------------- */
+.sys-abundance {
+	position: relative;
+	width: 100%;
+	max-width: 44rem;
+}
+
+.sys-words {
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0.55rem;
+}
+
+.sys-words__w {
+	font-family: var(--font-mono);
+	font-size: 0.72rem;
+	letter-spacing: 0.06em;
+	color: var(--color-slate);
+	border: 1px solid var(--color-line);
+	background: var(--color-surface);
+	padding: 0.28rem 0.7rem;
+	border-radius: 999px;
+	/* Hidden ONLY via the engine's `tl.from` — the resting DOM state is the
+	   abundance state itself (everything visible = "too much information"). */
+}
+
+.sys-words--dim .sys-words__w {
+	opacity: 0.1;
+}
+
+.sys-abundance__ask {
+	margin-top: 2.5rem;
+	font-family: var(--font-display);
+	font-size: clamp(2rem, 1.6rem + 1.8vw, 3.25rem);
+	line-height: 1.08;
+	color: var(--color-charcoal);
+	text-wrap: balance;
+}
+
+/* --- Black box ------------------------------------------------------------- */
+.sys-shell {
+	position: relative;
+	margin-block: 0.5rem;
+	border: 2px solid var(--color-charcoal);
+	border-radius: var(--radius-card);
+	background: var(--color-charcoal);
+	padding: 1.4rem 1.8rem;
+	overflow: hidden;
+}
+
+.sys-shell__gate {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 1rem;
+	color: var(--color-inverse);
+}
+
+.sys-shell__gate .sys-node__label { color: var(--color-inverse); }
+
+.sys-shell__inner {
+	display: flex;
+	flex-direction: column;
+	gap: 0.6rem;
+	margin-top: 0.9rem;
+}
+
+.sys-shell__inner .sys-node {
+	background: color-mix(in oklch, var(--color-surface) 96%, transparent);
+	border-color: color-mix(in oklch, var(--color-line) 70%, transparent);
+	min-height: auto;
+	padding: 0.5rem 0.9rem;
+	flex-direction: row;
+	gap: 0.75rem;
+	justify-content: flex-start;
+	text-align: left;
+}
+
+.sys-shell__inner .sys-node__label { font-size: 0.66rem; min-width: 7.5rem; text-align: right; }
+.sys-shell__inner .sys-node__caption { font-size: 0.78rem; }
+
+/* --- Challenge scene ------------------------------------------------------- */
+.sys-challenge {
+	width: 100%;
+	max-width: 40rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+	text-align: left;
+}
+
+.sys-rec {
+	border: 1px solid var(--color-line);
+	border-radius: var(--radius-card);
+	background: var(--color-surface);
+	box-shadow: 0 12px 40px -24px color-mix(in oklch, var(--color-charcoal) 45%, transparent);
+	padding: 1.75rem;
+	display: flex;
+	flex-direction: column;
+	gap: 1.1rem;
+	transition:
+		border-color 0.5s var(--ease-out-expo);
+}
+
+.sys-rec--reviewed {
+	border-block-start: 2px solid var(--color-accent-strong);
+}
+
+.sys-rec__head {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	gap: 1rem;
+	flex-wrap: wrap;
+}
+
+.sys-rec__tag {
+	font-family: var(--font-mono);
+	font-size: 0.62rem;
+	letter-spacing: 0.2em;
+	text-transform: uppercase;
+	color: var(--color-muted);
+}
+
+.sys-rec__conclusion {
+	font-family: var(--font-display);
+	font-size: 1.6rem;
+	line-height: 1.2;
+	color: var(--color-charcoal);
+}
+
+.sys-rec__ev {
+	display: flex;
+	flex-direction: column;
+	gap: 0.45rem;
+}
+
+.sys-rec__ev-row {
+	display: flex;
+	gap: 0.75rem;
+	align-items: baseline;
+	font-size: 0.9rem;
+	line-height: 1.45;
+	color: var(--color-slate);
+}
+
+.sys-rec__ev-row strong { min-width: 6.5rem; font-weight: 500; color: var(--color-body); font-size: 0.72rem; letter-spacing: 0.14em; text-transform: uppercase; }
+
+.sys-confidence {
+	padding-block-start: 1.1rem;
+	border-block-start: 1px dashed var(--color-line);
+}
+
+.sys-confidence__label {
+	display: flex;
+	justify-content: space-between;
+	font-family: var(--font-mono);
+	font-size: 0.62rem;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: var(--color-slate);
+	margin-bottom: 0.5rem;
+}
+.sys-confidence__label strong { color: var(--color-accent-strong); font-weight: 500; }
+
+.sys-confidence__bar {
+	position: relative;
+	height: 6px;
+	border-radius: 999px;
+	background: var(--color-raised);
+	overflow: hidden;
+}
+.sys-confidence__fill {
+	position: absolute;
+	inset-block: 0;
+	inset-inline-start: 0;
+	border-radius: 999px;
+	background: linear-gradient(to right, var(--color-accent-strong), var(--color-accent));
+	transition: width 0.6s var(--ease-out-expo);
+}
+
+.sys-rec__actions {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 0.75rem;
+	margin-top: 0.25rem;
+}
+
+.sys-btn {
+	font-family: var(--font-sans);
+	font-size: 0.85rem;
+	font-weight: 500;
+	padding: 0.6rem 1.2rem;
+	border-radius: 999px;
+	border: 1px solid var(--color-line);
+	background: var(--color-surface);
+	color: var(--color-body);
+	cursor: pointer;
+	transition:
+		border-color 0.3s var(--ease-out-expo),
+		background-color 0.3s var(--ease-out-expo);
+}
+
+.sys-btn:hover { border-color: var(--color-accent); }
+.sys-btn:focus-visible { outline: 2px solid var(--color-accent-strong); outline-offset: 2px; }
+
+.sys-btn--primary {
+	background: var(--color-charcoal);
+	border-color: var(--color-charcoal);
+	color: var(--color-inverse);
+}
+.sys-btn--primary:hover { border-color: var(--color-accent-strong); }
+
+.sys-review {
+	display: grid;
+	gap: 1rem;
+	grid-template-columns: 1fr;
+	padding: 1.4rem;
+	border: 1px solid var(--color-line);
+	border-left: 2px solid var(--color-accent-strong);
+	border-radius: var(--radius-card);
+	background: color-mix(in oklch, var(--color-accent) 6%, var(--color-surface));
+}
+
+@media (min-width: 560px) {
+	.sys-review { grid-template-columns: 1fr 1fr; }
+}
+
+.sys-review__note {
+	font-size: 0.9rem;
+	line-height: 1.5;
+	color: var(--color-slate);
+}
+
+.sys-review__note strong { color: var(--color-body); font-weight: 500; }
+
+.sys-challenge-hidden { display: none; }
+
+/* The reviewed recommendation is rendered in the DOM from the start (it cannot
+   be invented client-side) but only *displayed* once the visitor challenges.
+   No-JS: the page still sentences the claim as the resting review. */
+
+/* --- Optimize scene -------------------------------------------------------- */
+.sys-opt {
+	width: 100%;
+	max-width: 40rem;
+	text-align: left;
+}
+
+.sys-opt__meta {
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+	gap: 0.5rem;
+	flex-wrap: wrap;
+	margin-bottom: 1.25rem;
+}
+
+.sys-opt__objective {
+	font-family: var(--font-mono);
+	font-size: 0.68rem;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: var(--color-slate);
+}
+
+.sys-opt__objective strong { color: var(--color-charcoal); font-weight: 500; }
+
+.sys-opt__blind {
+	font-family: var(--font-mono);
+	font-size: 0.68rem;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: var(--color-accent-strong);
+}
+
+.sys-opt__bars {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-end;
+	gap: 0.5rem;
+	height: 9rem;
+	padding: 1rem 1.25rem 0;
+	border: 1px solid var(--color-line);
+	border-radius: var(--radius-card);
+	background: var(--color-surface);
+}
+
+.sys-opt__col {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.6rem;
+	flex: 1;
+}
+
+.sys-opt__bar {
+	width: min(2.2rem, 60%);
+	border-radius: 4px 4px 0 0;
+	background: var(--color-raised);
+	transition:
+		height 0.6s var(--ease-out-expo),
+		background-color 0.6s var(--ease-out-expo);
+}
+
+.sys-opt__col--lit .sys-opt__bar {
+	background: linear-gradient(to top, var(--color-accent-strong), var(--color-accent));
+}
+
+.sys-opt__label {
+	font-family: var(--font-mono);
+	font-size: 0.6rem;
+	letter-spacing: 0.14em;
+	text-transform: uppercase;
+	color: var(--color-slate);
+}
+
+.sys-opt__col--dim .sys-opt__bar { background: var(--color-raised); opacity: 0.5; }
+.sys-opt__col--dim .sys-opt__label { opacity: 0.6; }
+
+/* Hidden a11y states toggle to the visible state (opacity only changes). */
+.sys-opt__col { transition: opacity 0.6s var(--ease-out-expo); }
+
+/* --- Automation scene ------------------------------------------------------ */
+.sys-auto-stage {
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+.sys-auto-stage__row {
+	display: flex;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: center;
+	gap: 0.75rem;
+}
+
+.sys-boundary {
+	width: 100%;
+	max-width: 26rem;
+	display: flex;
+	align-items: center;
+	gap: 0.75rem;
+	margin-block: 0.25rem;
+}
+
+.sys-boundary__rule { flex: 1; height: 1px; background: var(--color-muted); }
+.sys-boundary__label {
+	font-family: var(--font-mono);
+	font-size: 0.62rem;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: var(--color-muted);
+	white-space: nowrap;
+}
+
+/* Judgement flicker — the one moment that should feel subtly "off". */
+.sys-node--judgment.sys-auto--strained {
+	opacity: 0.55;
+	border-block-start-color: var(--color-muted);
+	filter: saturate(0.7);
+	transition:
+		opacity 0.8s var(--ease-out-expo),
+		border-color 0.8s var(--ease-out-expo),
+		filter 0.8s var(--ease-out-expo);
+}
+
+/* --- Loop scene ------------------------------------------------------------ */
+.sys-loop {
+	position: relative;
+	width: min(30rem, 92vw);
+	aspect-ratio: 1;
+}
+
+.sys-loop__ring {
+	position: absolute;
+	inset: 0;
+}
+
+.sys-loop__node {
+	position: absolute;
+	transform: translate(-50%, -50%);
+}
+
+.sys-loop__center {
+	position: absolute;
+	inset: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 0.25rem;
+	text-align: center;
+	padding: 2rem;
+}
+
+.sys-loop__center .sys-node__label {
+	font-size: 0.7rem;
+	color: var(--color-charcoal);
+}
+
+.sys-loop__center p {
+	font-family: var(--font-sans);
+	font-size: 0.8rem;
+	line-height: 1.5;
+	color: var(--color-slate);
+	max-width: 14rem;
+}
+
+.sys-loop__rotate {
+	animation: sys-loop-drift 140s linear infinite;
+	transform-origin: 50% 50%;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.sys-loop__rotate { animation: none; }
+}
+
+@keyframes sys-loop-drift {
+	from { transform: rotate(0deg); }
+	to { transform: rotate(360deg); }
+}
+
+/* --- System rail (desktop) ------------------------------------------------- */
+/* The rail is informative state (not decoration), so it needs no `js` gating —
+   it shows whenever the viewport has room and stays quiet under no-JS. */
+.sys-rail {
+	position: fixed;
+	inset-block-start: 50%;
+	inset-inline-end: 1.5rem;
+	transform: translateY(-50%);
+	z-index: 40;
+	display: none;
+	flex-direction: column;
+	gap: 0.45rem;
+}
+
+.sys-rail__step {
+	font-family: var(--font-mono);
+	font-size: 0.6rem;
+	letter-spacing: 0.18em;
+	text-transform: uppercase;
+	color: var(--color-muted);
+	text-align: right;
+	transition:
+		color 0.5s var(--ease-out-expo);
+}
+
+.sys-rail__step--done { color: var(--color-slate); }
+.sys-rail__step--on {
+	color: var(--color-accent-strong);
+	font-size: 0.64rem;
+}
+
+@media (min-width: 900px) {
+	.sys-rail {
+		display: flex;
+	}
+}
+
+/* --- Manifesto prose column ------------------------------------------------
+   The scene panels break out to the full viewport; everything else stays a
+   readable 68ch column. Selectors are direct-child only, matching the prose's
+   Markdown shape (paragraphs, h2s, the occasional bold sentence). */
+.m-prose {
+	line-height: 1.625;
+}
+
+.m-prose > * {
+	max-inline-size: 68ch;
+	margin-inline: auto;
+}
+
+.m-prose > p {
+	margin-block: 1.5rem;
+}
+
+.m-prose > p:first-of-type {
+	margin-block-start: 0;
+}
+
+.m-prose > h2 {
+	margin-block: 4rem 1.25rem;
+	font-family: var(--font-display);
+	font-size: 1.5rem;
+	line-height: 1.25;
+	letter-spacing: -0.01em;
+	color: var(--color-charcoal);
+	scroll-margin-top: 6rem;
+}
+
+.m-prose > a {
+	color: var(--color-accent-strong);
+	text-decoration: underline;
+	text-underline-offset: 4px;
+}
+
+.m-prose > p > strong {
+	font-weight: 600;
+	color: var(--color-body);
+}
+
+/* The scene panels are full-viewport, so they leave the column and span the
+   whole viewport. `margin-inline` is the negative implied by a centered parent;
+   common window sizes keep it in range and `overflow-x: clip` on the body below
+   guards the one or two pixels a scrollbar would otherwise create. */
+.m-prose > .sys-scene {
+	width: 100vw;
+	max-inline-size: none;
+	margin-inline: calc(50% - 50vw);
+}
+
+/* ScrollTrigger reparents each pinned scene into a `.pin-spacer` and writes
+   inline width/max-width onto the scene for the duration of the pin. Re-assert
+   the full-bleed break-out there too, so the scene is 100vw pinned, unpinned,
+   and with JS disabled alike. While fixed the percentage in `calc(50% - 50vw)`
+   resolves against the viewport, so the margin is 0 and it centres itself. */
+.m-prose .sys-scene {
+	width: 100vw !important;
+	max-inline-size: none !important;
+	margin-inline: calc(50% - 50vw) !important;
+}
+
+body {
+	overflow-x: clip;
+}
+
+/* Long scenes scroll naturally; the header is sticky so nothing else needed. */
+@media (max-width: 560px) {
+	.sys-scene { padding-inline: 1rem; }
+	.sys-words__w { font-size: 0.66rem; }
+}
+
+.sys-note {
+	font-family: var(--font-mono);
+	font-size: 0.72rem;
+	letter-spacing: 0.16em;
+	text-transform: uppercase;
+	color: var(--color-slate);
+}

@@ -1,0 +1,47 @@
+---
+import SysScene from './SysScene.astro';
+
+/** Three objective states. Only the active objective's bar is lit and the
+ *  system labels its own blind spot — the thing that objective makes hard
+ *  to see. The engine drives the active state off scroll (reversible), so
+ *  the resting DOM is the end state: Automation lit, judging what it hides.
+ */
+const objectives = [
+	{ id: 'speed', bars: '92%', label: 'Speed', blind: 'What it hides: depth' },
+	{ id: 'engagement', bars: '88%', label: 'Engagement', blind: 'What it hides: accuracy' },
+	{ id: 'automation', bars: '85%', label: 'Automation', blind: 'What it hides: judgment' },
+];
+
+const active = objectives.length - 1;
+---
+
+<SysScene
+	scene="optimize"
+	label="08 · Blind spot"
+	quote="Every optimization creates a particular view of reality."
+>
+	<div class="sys-opt" data-sys-optimize>
+		<div class="sys-opt__meta">
+			<div class="sys-opt__objective">
+				Optimizing for <strong data-objective>{objectives[active].label}</strong>
+			</div>
+			<div class="sys-opt__blind" data-blind-spot>{objectives[active].blind}</div>
+		</div>
+
+		<div class="sys-opt__bars" data-bars>
+			{
+				objectives.map((o, i) => (
+					<div
+						class:list={['sys-opt__col', i === active && 'sys-opt__col--lit']}
+						data-opt-col={o.id}
+						data-opt-lbl={o.label}
+						data-opt-blind={o.blind}
+					>
+						<div class="sys-opt__bar" style={`height: ${o.bars}`}></div>
+						<span class="sys-opt__label">{o.label}</span>
+					</div>
+				))
+			}
+		</div>
+	</div>
+</SysScene>

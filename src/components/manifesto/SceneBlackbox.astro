@@ -1,0 +1,51 @@
+---
+import SysScene from './SysScene.astro';
+
+const layers = [
+	{ label: 'Retrieval', caption: 'which documents, which sources' },
+	{ label: 'Interpretation', caption: 'what the text actually says' },
+	{ label: 'Reasoning', caption: 'what follows and why' },
+	{ label: 'Recommendation', caption: 'what the system suggests' },
+	{ label: 'Action', caption: 'what it does next' },
+];
+---
+
+<SysScene
+	scene="blackbox"
+	label="04 · Inspection"
+	quote="Something produced this answer. → I can see what happened."
+>
+	<div class="sys-flow" data-sys-blackbox>
+		<div class="sys-flow__row">
+			<div class="sys-node sys-node--input">
+				<span class="sys-node__label">Input</span>
+			</div>
+		</div>
+
+		<div class="sys-flow__link" data-sys-blackbox-in-arrow aria-hidden="true"></div>
+
+		<div class="sys-shell" data-sys-blackbox-shell>
+			<div class="sys-shell__gate">
+				<span class="sys-node__label">AI</span>
+			</div>
+			<div class="sys-shell__inner" data-sys-blackbox-inner>
+				{
+					layers.map((l) => (
+						<div class="sys-node" data-sys-blackbox-layer>
+							<span class="sys-node__label">{l.label}</span>
+							<span class="sys-node__caption">{l.caption}</span>
+						</div>
+					))
+				}
+			</div>
+		</div>
+
+		<div class="sys-flow__link" data-sys-blackbox-out-arrow aria-hidden="true"></div>
+
+		<div class="sys-flow__row">
+			<div class="sys-node sys-node--output">
+				<span class="sys-node__label">Output</span>
+			</div>
+		</div>
+	</div>
+</SysScene>

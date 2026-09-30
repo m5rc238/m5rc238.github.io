@@ -1,93 +1,13 @@
----
-import { getCollection, render } from 'astro:content';
-import Base from '../layouts/Base.astro';
-import Header from '../components/Header.astro';
-import Footer from '../components/Footer.astro';
-
-const [document] = await getCollection('manifesto', ({ data }) => !data.draft);
-
-// Nothing published yet. Static build can't redirect at runtime, so render a
-// plain message rather than emitting a broken page.
-if (!document) {
-	return Astro.redirect('/');
-}
-
-const { Content } = await render(document);
-
-const formatDate = (date: Date) =>
-	new Intl.DateTimeFormat('en-GB', {
-		day: 'numeric',
-		month: 'long',
-		year: 'numeric',
-	})
-		.format(date)
-		.replace(/ /g, ' ');
----
-
-<Base
-	title={`${document.data.title} — m5rc238`}
-	description={document.data.standfirst ?? document.data.title}
-	heroReveal="split-lines"
->
-	<Header slot="header" />
-	<Footer slot="footer" />
-
-	<article class="container-page py-24">
-		<header class="max-w-[62ch]">
-			<p
-				class="reveal mb-8 font-mono text-xs tracking-[0.2em] text-accent-400 uppercase"
-				data-reveal="fade-up"
-			>
-				Manifesto
-			</p>
-
-			<h1
-				data-hero
-				class="font-display font-semibold text-balance text-display"
-			>
-				{document.data.title}
-			</h1>
-
-			{
-				document.data.standfirst && (
-					<p class="reveal mt-8 text-muted text-lede" data-reveal="fade-up">
-						{document.data.standfirst}
-					</p>
-				)
-			}
-
-			{
-				document.data.updatedDate && (
-					<p class="mt-10 font-mono text-xs text-ink-500">
-						Last revised{' '}
-						<time datetime={document.data.updatedDate.toISOString()}>
-							{formatDate(document.data.updatedDate)}
-						</time>
-					</p>
-				)
-			}
-		</header>
-
-		<div class="rule-gradient my-16" aria-hidden="true"></div>
-
-		{/*
-			Prose is styled here rather than through a plugin. Section headings
-			carry their own numbers in the source, so they need no decoration —
-			`scroll-mt` keeps them clear of the sticky header when linked.
-		*/}
-		<div
-			class="max-w-[68ch] leading-relaxed [&>p]:mt-6 [&>p:first-of-type]:mt-0 [&>h2]:mt-16 [&>h2]:mb-5 [&>h2]:font-display [&>h2]:text-2xl [&>h2]:font-semibold [&>h2]:tracking-tight [&>h2]:scroll-mt-24 [&>a]:text-accent-400 [&>a]:underline [&>a]:underline-offset-4 [&>strong]:font-semibold [&>strong]:text-body"
-		>
-			<Content />
-		</div>
-
-		<div class="rule-gradient my-16" aria-hidden="true"></div>
-
-		<footer class="max-w-[68ch]">
-			<p class="text-sm text-muted">
-				This document is a position, not a settled conclusion. If part of it is
-				wrong, it should be correctable — which is rather the point.
-			</p>
-		</footer>
-	</article>
-</Base>
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta http-equiv="refresh" content="0; url=/" />
+		<title>m5rc238 — Manifesto</title>
+	</head>
+	<body style="margin: 0; background: #faf7f2">
+		<p style="font-family: ui-monospace, monospace; font-size: 14px; padding: 3rem; color: #55524d">
+			The manifesto now lives at <a href="/">m5rc238.github.io</a>.
+		</p>
+	</body>
+</html>

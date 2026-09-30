@@ -1,0 +1,37 @@
+---
+/** Shared scene skeleton. Each `SysScene` is one pinned, full-viewport panel
+ *  in the manifesto. Motion comes from the engine keyed on `data-scene`.
+ *  Props mirror the brief's 8-stage epistemic progression.
+ */
+interface Props {
+	/** Engine key — which timeline to scrub on pin. */
+	scene: string;
+	/** Stage label, e.g. "06 · Decision". */
+	label: string;
+	/** The manifesto line the scene answers. Rendered in-editorial serif. */
+	quote?: string;
+	/** Optional note under the quote, in the mono voice. */
+	note?: string;
+}
+
+const { scene, label, quote, note } = Astro.props;
+---
+
+<section
+	class="sys-scene"
+	data-scene={scene}
+	aria-label={label}
+>
+	<div class="sys-scene-in">
+		<p class="sys-eyebrow">{label}</p>
+		<div class="sys-body" data-sys-body>
+			<slot />
+		</div>
+		{(quote ?? note) && (
+			<>
+				{quote && <p class="sys-quote">{quote}</p>}
+				{note && <p class="sys-note">{note}</p>}
+			</>
+		)}
+	</div>
+</section>
