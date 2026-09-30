@@ -1,0 +1,33 @@
+---
+title: 'An MDX post, to prove MDX is wired up'
+description: 'Same frontmatter as Markdown, but components are available in the body.'
+pubDate: 2026-03-04
+tags: ['mdx', 'astro']
+reveal: split-chars
+---
+
+import Callout from '../../components/Callout.astro';
+
+MDX behaves exactly like Markdown for frontmatter and syntax, and additionally
+lets you drop components into the body:
+
+<Callout tone="accent">
+	This block is an Astro component rendered from inside a `.mdx` file. The
+	import above is a real import.
+</Callout>
+
+Everything else stays the same — headings, lists, code, quotes.
+
+> Reduced-motion visitors still get this content. The entrance animation is
+> skipped, not the article.
+
+```md
+---
+title: 'An MDX post'
+pubDate: 2026-03-04
+---
+```
+
+The schema in `src/content.config.ts` validates both file types, so a missing
+`title` or an unparseable `pubDate` fails the build rather than shipping a
+blank page.

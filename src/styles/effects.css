@@ -1,0 +1,227 @@
+/* ---------------------------------------------------------------------------
+   Custom visual effects.
+
+   Everything here is plain CSS and costs no JS. Anything that needs a timeline
+   belongs in `src/lib/motion/` instead. Each effect is opt-in via a class or a
+   `data-` attribute so nothing animates by surprise.
+
+   All of these respect `prefers-reduced-motion` (see global.css base layer).
+--------------------------------------------------------------------------- */
+
+/* --- Scroll-driven progress bar ------------------------------------------
+   Uses `animation-timeline: scroll()`, which needs no JS and stays smooth off
+   the main thread. Where the browser lacks it, GSAP's ScrollTrigger sets
+   `--scroll-progress` instead (see Base.astro), so the bar still works rather
+   than sitting at zero width.
+--------------------------------------------------------------------------- */
+.scroll-progress {
+	position: fixed;
+	inset-block-start: 0;
+	inset-inline: 0;
+	height: 2px;
+	transform-origin: 0 50%;
+	background: linear-gradient(
+		to right,
+		var(--color-accent-600),
+		var(--color-accent-400)
+	);
+	z-index: 100;
+	scale: var(--scroll-progress, 0) 1;
+}
+
+@supports (animation-timeline: scroll()) {
+	.scroll-progress {
+		scale: 1 1;
+		transform-origin: 0 50%;
+		animation-name: scroll-progress-grow;
+		animation-timing-function: linear;
+		animation-fill-mode: both;
+		/* Must follow the longhands above: `animation` shorthand would reset
+		   this back to `auto`, disabling the scroll linkage. */
+		animation-timeline: scroll(root block);
+	}
+}
+
+/* `animation-timeline` is declared on its own line, after the `animation`
+   shorthand. The shorthand resets every animation-* longhand to initial, so a
+   trailing `animation: ... scroll(root)` gets undone by the parser and the bar
+   silently never animates. */
+@keyframes scroll-progress-grow {
+	from {
+		transform: scaleX(0);
+	}
+	to {
+		transform: scaleX(1);
+	}
+}
+
+/* --- Reveal hook ----------------------------------------------------------
+   Intentionally *not* setting `opacity: 0` here. Entrance animations use
+   `gsap.from()`, which applies its starting state only once the timeline
+   actually runs. Hiding the element in CSS instead would leave content
+   permanently invisible whenever JS is disabled, blocked, or slow.
+--------------------------------------------------------------------------- */
+.reveal {
+	/* Marker + styling hook only. */
+	will-change: transform;
+}
+
+/* --- Text treatments ------------------------------------------------------ */
+.text-gradient {
+	background: linear-gradient(
+		120deg,
+		var(--color-ink-50),
+		var(--color-ink-300) 45%,
+		var(--color-accent-400) 100%
+	);
+	-webkit-background-clip: text;
+	background-clip: text;
+	color: transparent;
+	/* Descenders get clipped without a little breathing room. */
+	padding-block-end: 0.08em;
+}
+
+/* Underline that wipes in from the left on hover. */
+.link-wipe {
+	position: relative;
+	text-decoration: none;
+}
+
+.link-wipe::after {
+	content: '';
+	position: absolute;
+	inset-inline: 0;
+	inset-block-end: -2px;
+	height: 1px;
+	background: currentColor;
+	transform: scaleX(0);
+	transform-origin: 100% 50%;
+	transition: transform 0.45s var(--ease-out-expo);
+}
+
+.link-wipe:hover::after,
+.link-wipe:focus-visible::after {
+	transform: scaleX(1);
+	transform-origin: 0 50%;
+}
+
+/* --- Grid + glow backdrop ------------------------------------------------- */
+.grid-backdrop {
+	position: fixed;
+	inset: 0;
+	z-index: -1;
+	background-image:
+		linear-gradient(to right, color-mix(in oklch, var(--color-line) 35%, transparent) 1px, transparent 1px),
+		linear-gradient(to bottom, color-mix(in oklch, var(--color-line) 35%, transparent) 1px, transparent 1px);
+	background-size: 64px 64px;
+	/* Fades the grid out toward the edges so it never competes with text. */
+	mask-image: radial-gradient(ellipse 80% 60% at 50% 40%, black 30%, transparent 75%);
+}
+
+.glow {
+	position: absolute;
+	inset-block-start: -20%;
+	inset-inline-end: -10%;
+	width: min(40rem, 90vw);
+	aspect-ratio: 1;
+	border-radius: 50%;
+	background: radial-gradient(
+		circle,
+		color-mix(in oklch, var(--color-accent-500) 22%, transparent),
+		transparent 65%
+	);
+	filter: blur(40px);
+	pointer-events: none;
+}
+
+/* --- Cards ---------------------------------------------------------------- */
+.card {
+	position: relative;
+	overflow: hidden;
+	border: 1px solid var(--color-line);
+	border-radius: var(--radius-card);
+	background: color-mix(in oklch, var(--color-raised) 70%, transparent);
+	transition:
+		border-color 0.4s var(--ease-out-expo),
+		transform 0.4s var(--ease-out-expo);
+}
+
+/* Pointer-tracking highlight. `--mx` / `--my` are written from JS on
+   pointermove; the gradient is a no-op until they are set. */
+.card::before {
+	content: '';
+	position: absolute;
+	inset: 0;
+	background: radial-gradient(
+		18rem circle at var(--mx, 50%) var(--my, 50%),
+		color-mix(in oklch, var(--color-accent-400) 12%, transparent),
+		transparent 60%
+	);
+	opacity: 0;
+	transition: opacity 0.4s var(--ease-out-expo);
+	pointer-events: none;
+}
+
+.card:hover,
+.card:focus-within {
+	border-color: var(--color-accent-600);
+	transform: translateY(-2px);
+}
+
+.card:hover::before,
+.card:focus-within::before {
+	opacity: 1;
+}
+
+/* --- Marquee --------------------------------------------------------------
+   Continuous horizontal ticker for tag/keyword rails.
+--------------------------------------------------------------------------- */
+@keyframes marquee {
+	from {
+		transform: translateX(0);
+	}
+	to {
+		/* -50% assumes the track holds exactly two copies of the content. */
+		transform: translateX(-50%);
+	}
+}
+
+.marquee-track {
+	display: flex;
+	width: max-content;
+	animation: marquee linear infinite;
+	animation-duration: 32s;
+}
+
+.marquee:hover .marquee-track,
+.marquee:focus-within .marquee-track {
+	animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+	.marquee-track {
+		animation: none;
+		flex-wrap: wrap;
+		width: 100%;
+	}
+}
+
+/* --- Noise ---------------------------------------------------------------- */
+.noise-overlay {
+	position: fixed;
+	inset: 0;
+	z-index: 200;
+	pointer-events: none;
+	opacity: 0.035;
+	mix-blend-mode: overlay;
+	background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='140' height='140'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+
+/* --- Clip wrapper for SplitText ------------------------------------------
+   `overflow: clip` (not `hidden`) so a card's rounded corners and any
+   position: sticky children still resolve against the same box.
+--------------------------------------------------------------------------- */
+.clip-radius {
+	overflow: clip;
+	border-radius: inherit;
+}

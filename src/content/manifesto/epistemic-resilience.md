@@ -1,0 +1,171 @@
+---
+title: 'A Manifesto for Epistemic Resilience'
+standfirst: 'Our ability to produce information has grown faster than our ability to determine what deserves to be believed.'
+updatedDate: 2026-09-29
+---
+
+We live in a time when information is cheap.
+
+We can generate more text, images, software, analysis, and explanations than anyone can realistically examine. AI has made this even easier.
+
+But our ability to produce information has grown faster than our ability to determine what deserves to be believed.
+
+We have built machines that can answer almost any question. We have not built enough systems that help us understand **when those answers should be trusted.**
+
+This is not only an AI problem. It is a problem with how we produce, organize, verify, and use knowledge.
+
+## 1. Plausibility is not knowledge
+
+A convincing answer is not necessarily a true answer. A citation is not proof. A retrieved document is not understanding. A model's confidence is not evidence.
+
+Information can look authoritative while being wrong, incomplete, outdated, or misleading.
+
+We should therefore keep important conclusions connected to the evidence, assumptions, reasoning, and uncertainty behind them.
+
+**Plausibility is not knowledge.**
+
+## 2. Uncertainty is part of the answer
+
+Most systems are built to produce answers. When information is missing or ambiguous, they tend to fill the gap.
+
+AI makes this especially easy. It can produce a plausible answer even when the evidence is weak.
+
+But sometimes the right answer is uncertainty. Sometimes we need more evidence. Sometimes there are competing explanations. Sometimes the system should ask for help or stop.
+
+**"We don't know" is a valid result.**
+
+A system should not hide uncertainty simply because its interface expects an answer.
+
+## 3. Don't put every kind of judgment in one system
+
+A single AI system can now retrieve information, interpret it, reason about it, make a recommendation, and sometimes take action.
+
+This is convenient, but it can make mistakes difficult to understand or correct.
+
+We should be able to distinguish retrieval from interpretation, evidence from inference, prediction from policy, and recommendation from action.
+
+Different parts of a system can have different responsibilities and different ways of being checked.
+
+**Intelligence should be composed, not concentrated.**
+
+## 4. Make important decisions challengeable
+
+Systems gain authority through their interfaces. A confident answer looks more trustworthy than an uncertain one. A number looks objective. A recommendation looks considered.
+
+The interface can therefore make a weak conclusion feel stronger than it is.
+
+For consequential decisions, people should be able to understand what the system concluded, what evidence it used, what assumptions mattered, what remains uncertain, and what could change the result.
+
+Human involvement is not enough. People need a real ability to question and revise the system's conclusions.
+
+**Human agency requires meaningful challenge, not just human presence.**
+
+## 5. Knowledge is more than stored information
+
+Organizations already have enormous amounts of information. More documents do not automatically produce better decisions.
+
+Useful knowledge depends on relationships between claims, evidence, assumptions, decisions, actions, and outcomes.
+
+A fact should be distinguishable from an inference. An assumption from a decision. A hypothesis from a conclusion. A disagreement should not disappear simply because one source is easier to retrieve.
+
+Good knowledge systems should preserve enough of these relationships to help people understand not only **what was decided, but why, based on what, and what could change it.**
+
+The future of knowledge software is not only better storage. It is better reasoning infrastructure.
+
+## 6. Build for correction
+
+We will not build systems that never fail.
+
+We should build systems that can fail without becoming impossible to recover from.
+
+Important decisions should be traceable. Errors should be detectable. Assumptions should be revisable. New evidence should be able to change conclusions. Consequential actions should be contained or reversible when possible.
+
+The goal is not perfect systems.
+
+**The goal is systems that can recognize, explain, and recover from failure.**
+
+## 7. Every optimization creates blind spots
+
+Every system optimizes something: speed, growth, engagement, accuracy, automation, cost, or throughput.
+
+Optimization is useful, but every metric also leaves something out.
+
+A system can optimize engagement while reducing information quality. It can optimize answer completion while discouraging uncertainty. It can optimize automation while weakening human judgment.
+
+So we should always ask:
+
+**What are we optimizing, and what does this make harder to see?**
+
+A metric measures something. It does not define what matters.
+
+## 8. Automate work, not necessary judgment
+
+Automation is valuable when it removes unnecessary work and helps people make better decisions.
+
+It becomes a problem when it removes judgment that is still necessary.
+
+AI can retrieve, compare, summarize, generate hypotheses, find patterns, and challenge assumptions. These capabilities can strengthen human reasoning.
+
+But the more consequential or irreversible an action is, the stronger the requirements for evidence, verification, authorization, and accountability should be.
+
+The goal is not to keep humans involved in everything.
+
+**The goal is to make sure automation does not quietly remove responsibility where judgment still matters.**
+
+## 9. What epistemic resilience means
+
+Epistemic resilience is the ability of a system to remain useful and correctable when information is incomplete, conflicting, uncertain, or wrong.
+
+A resilient system maintains a connection between:
+
+**evidence → interpretation → decision → action → outcome → new evidence**
+
+It can distinguish what was observed from what was inferred. It can represent uncertainty. It can surface disagreement. It can be challenged. It can incorporate new evidence and change its conclusions.
+
+It can also preserve enough history to explain how it arrived at an important decision.
+
+This applies to individuals, interfaces, AI systems, organizations, and the larger information systems they depend on.
+
+## 10. A different measure of progress
+
+The success of AI should not be measured only by how much it can generate or how much work it can automate.
+
+We should also ask:
+
+Can people understand why a system reached an important conclusion?
+
+Can they challenge it?
+
+Can the system recognize when its evidence is insufficient?
+
+Can important errors be detected?
+
+Can decisions be reconstructed?
+
+Can new evidence change the result?
+
+Can responsibility remain visible?
+
+Can people still make meaningful decisions for themselves?
+
+These are not secondary features. They are part of what makes an intelligent system reliable.
+
+## Our principle
+
+We believe information without verification can become a liability. We believe automation without agency can create dependence. We believe optimization without reflection can make systems better at pursuing the wrong goal. And we believe intelligence without epistemic discipline can produce more plausible answers without producing better knowledge.
+
+We should build systems that preserve evidence, represent uncertainty, expose important assumptions, support disagreement, enable verification, and make correction possible.
+
+We should build systems that can be questioned.
+
+We should build systems that can change their minds.
+
+We should build systems that preserve the connection between evidence and action.
+
+We should build systems that help people understand not only **what an answer is, but how much confidence it deserves and what could make it wrong.**
+
+That is epistemic resilience.
+
+Not the elimination of error, but the ability to remain oriented toward better understanding while error, uncertainty, and change are unavoidable.
+
+**Do not build systems that merely know more. Build systems that help us know what we know, recognize what we do not know, and act accordingly.**

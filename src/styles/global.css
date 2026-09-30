@@ -1,0 +1,153 @@
+@import 'tailwindcss';
+@import './effects.css';
+
+/* ---------------------------------------------------------------------------
+   Design tokens. Tailwind v4 is CSS-first: everything under `@theme` becomes a
+   real utility (e.g. `--color-ink-900` -> `text-ink-900`, `bg-surface`).
+   Keep the ramps small and intentional.
+--------------------------------------------------------------------------- */
+@theme {
+	/* Self-hosted via @fontsource-variable/inter — no third-party request.
+	   Family name must match the one the package declares. */
+	--font-sans: 'Inter Variable', ui-sans-serif, system-ui, -apple-system,
+		'Segoe UI', sans-serif;
+	--font-display: 'Inter Variable', ui-sans-serif, system-ui, sans-serif;
+	--font-mono: ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, monospace;
+
+	/* Neutrals */
+	--color-ink-50: oklch(0.985 0.002 265);
+	--color-ink-100: oklch(0.96 0.004 265);
+	--color-ink-300: oklch(0.79 0.008 265);
+	--color-ink-500: oklch(0.58 0.012 265);
+	--color-ink-700: oklch(0.38 0.014 265);
+	--color-ink-900: oklch(0.21 0.014 265);
+	--color-ink-950: oklch(0.15 0.014 265);
+
+	/* Accent */
+	--color-accent-400: oklch(0.78 0.16 195);
+	--color-accent-500: oklch(0.7 0.17 195);
+	--color-accent-600: oklch(0.6 0.15 195);
+
+	/* Semantic surfaces */
+	--color-surface: var(--color-ink-950);
+	--color-raised: var(--color-ink-900);
+	--color-line: var(--color-ink-700);
+	--color-body: var(--color-ink-100);
+	--color-muted: var(--color-ink-300);
+
+	/* Fluid type scale */
+	--text-display: clamp(2.75rem, 1.5rem + 6vw, 7rem);
+	--text-display--line-height: 0.95;
+	--text-display--letter-spacing: -0.035em;
+	--text-title: clamp(1.75rem, 1.1rem + 3vw, 3.25rem);
+	--text-title--line-height: 1.05;
+	--text-title--letter-spacing: -0.02em;
+	--text-lede: clamp(1.05rem, 0.95rem + 0.5vw, 1.35rem);
+	--text-lede--line-height: 1.5;
+
+	--radius-card: 1rem;
+	--radius-pill: 999px;
+
+	--ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+	--ease-out-back: cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* ---------------------------------------------------------------------------
+   Base
+--------------------------------------------------------------------------- */
+@layer base {
+	:root {
+		color-scheme: dark;
+		/* Drives the scroll-progress bar and any JS that reads scroll state. */
+		--scroll-progress: 0;
+	}
+
+	html {
+		scroll-behavior: smooth;
+		/* Anchor targets must clear the sticky header. */
+		scroll-padding-top: 5rem;
+		-webkit-text-size-adjust: 100%;
+	}
+
+	body {
+		background-color: var(--color-surface);
+		color: var(--color-body);
+		font-family: var(--font-sans);
+		/* Horizontal overflow from parallax/overshoot animations would
+		   otherwise create a horizontal scrollbar on mobile. */
+		overflow-x: clip;
+	}
+
+	:focus-visible {
+		outline: 2px solid var(--color-accent-400);
+		outline-offset: 3px;
+		border-radius: 2px;
+	}
+
+	/* Only animate when the visitor is happy with it. */
+	@media (prefers-reduced-motion: reduce) {
+		html {
+			scroll-behavior: auto;
+		}
+		*,
+		*::before,
+		*::after {
+			animation-duration: 0.01ms !important;
+			animation-iteration-count: 1 !important;
+			transition-duration: 0.01ms !important;
+			scroll-behavior: auto !important;
+		}
+	}
+}
+
+/* ---------------------------------------------------------------------------
+   Components
+--------------------------------------------------------------------------- */
+@layer components {
+	.container-page {
+		width: 100%;
+		margin-inline: auto;
+		max-width: 76rem;
+		padding-inline: 1.5rem;
+	}
+
+	@media (min-width: 768px) {
+		.container-page {
+			padding-inline: 2.5rem;
+		}
+	}
+
+	/* Gradient hairline used to separate the sticky header from content. */
+	.rule-gradient {
+		height: 1px;
+		background: linear-gradient(
+			to right,
+			transparent,
+			var(--color-line) 20%,
+			var(--color-line) 80%,
+			transparent
+		);
+	}
+}
+
+@layer utilities {
+	/* Hides scrollbar chrome on horizontal chip rails without losing scroll. */
+	.no-scrollbar {
+		scrollbar-width: none;
+		-ms-overflow-style: none;
+	}
+	.no-scrollbar::-webkit-scrollbar {
+		display: none;
+	}
+
+	.text-balance {
+		text-wrap: balance;
+	}
+
+	/* Locks scroll while an overlay is open, without the iOS jump that
+	   `overflow: hidden` on body causes. */
+	.scroll-lock {
+		overflow: hidden;
+		touch-action: none;
+	}
+}
