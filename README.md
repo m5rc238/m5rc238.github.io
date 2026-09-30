@@ -1,6 +1,13 @@
 # m5rc238.github.io
 
-Personal site. Static output, deployed to GitHub Pages.
+Personal site. The site is one document: a manifesto for epistemic resilience.
+
+"A Manifesto for Epistemic Resilience" argues that our ability to produce
+information has grown faster than our ability to determine what deserves to
+be believed. Each of the ten principles is a scene, and the manifesto lays
+out what it means to build knowledge systems that can be questioned, that
+can change their minds, and that preserve the connection between evidence
+and action.
 
 ## Stack
 
@@ -36,6 +43,8 @@ src/
   styles/         global.css (tokens) + effects.css (visual effects) + scenes.css
   content/        manifesto/ — the single Astro content collection
   pages/          / — the manifesto; /manifesto redirects to it
+standalone/       a self-contained, dependency-free preview of the deck
+                   (vanilla JS + GSAP via CDN), served from index.html
 ```
 
 ## Content
@@ -59,8 +68,20 @@ Reveals are built on `gsap.from()`. An element's resting state is its real CSS
 state, so if JavaScript fails or is blocked the content is simply visible —
 animations get cancelled, content does not. Nothing is hidden by CSS.
 
+Each manifesto scene is one full-viewport panel whose DOM *is* its end state.
+Under supported conditions each panel is pinned for one viewport of scroll and
+a timeline scrubs between a calmer opening and that end state ("growth →
+maturity").
+
 `prefers-reduced-motion: reduce` skips the animation and renders the final
-state. Verified in-browser, not assumed.
+state. Verified in-browser, not assumed. Motion is gated through
+`gsap.matchMedia()`.
+
+`standalone/` is a deliberate simplification of the same content without the
+Astro/MDX layer: ten full-height scrolling sections in normal flow (no
+pinning), with each section's internal art — scramble, kinetic blocks, Flip
+board, blind-spot lens, pipeline draw — scrubbed as it passes through the
+viewport.
 
 ## Deployment
 
