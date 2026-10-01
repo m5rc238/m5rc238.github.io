@@ -1,12 +1,16 @@
 ---
 ---
 
-<header
-	class="sticky top-0 z-50 border-b border-line/60 bg-surface/70 backdrop-blur-xl"
->
-	<div class="container-page flex h-16 items-center">
-		<a href={import.meta.env.BASE_URL} class="link-wipe font-display text-base tracking-tight">
-			m5rc238
-		</a>
-	</div>
+<header class="container-page flex h-16 items-center justify-between gap-6">
+	<a
+		href={import.meta.env.BASE_URL}
+		class="link-wipe text-sm font-medium tracking-tight text-sky"
+	>
+		m5rc238
+	</a>
+
+	<nav class="flex items-center gap-5 text-sm text-sky">
+		<a class="link-wipe" href="#work">Work</a>
+		<a class="link-wipe" href="#writing">Writing</a>
+	</nav>
 </header>

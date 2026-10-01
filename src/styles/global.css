@@ -53,6 +53,26 @@
 	--color-body: var(--color-charcoal);
 	--color-soft: var(--color-slate);
 
+	/* --- Home palette ---------------------------------------------------
+	   Three colours, used as fields rather than accents: a brown ground, a
+	   sky-blue slab, a lime band. Measured against #82632A:
+
+	     #48A6FF  2.2:1  display type and slab fill only
+	     #E7E95C  4.3:1  small type — clears AA for large text, sits just
+	                     under the 4.5:1 body threshold
+	     #1A1A1A  6.8:1 on the blue slab, 13.4:1 on the lime band
+
+	   So reading copy is lime, anything set on a rectangle is ink, and the
+	   blue is confined to the display size where it works as a shape. */
+	--color-canvas: #82632a;
+	--color-sky: #48a6ff;
+	--color-lime: #e7e95c;
+	--color-ink: #1a1a1a;
+
+	/* Google Sans, self-hosted via Fontsource. The brief's only typeface. */
+	--font-gsans: 'Google Sans Variable', ui-sans-serif, system-ui, -apple-system,
+		'Segoe UI', sans-serif;
+
 	/* --- Type scale ------------------------------------------------------
 	   Display and lede are the serif; everything else is the sans. Sizes are
 	   fluid so headline reveals never wrap awkwardly at the extremes. */
@@ -68,6 +88,12 @@
 	--text-lede: clamp(1.1rem, 0.98rem + 0.55vw, 1.4rem);
 	--text-lede--line-height: 1.5;
 	--text-lede--letter-spacing: -0.005em;
+
+	/* The one display size this site uses. Fluid so the headline sets its own
+	   measure at every width instead of wrapping by accident. */
+	--text-hero: clamp(2.6rem, 1.1rem + 6.4vw, 6.5rem);
+	--text-hero--line-height: 0.95;
+	--text-hero--letter-spacing: -0.035em;
 
 	--text-eyebrow: 0.75rem;
 	--text-eyebrow--line-height: 1.4;

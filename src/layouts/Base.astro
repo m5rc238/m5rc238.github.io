@@ -1,21 +1,21 @@
 ---
-import '@fontsource-variable/inter';
-// Display serif. Only the 400 axis is imported — Source Serif's medium is
-// used for the italic editorial accents, not for body or headings.
-import '@fontsource-variable/source-serif-4';
-import '@fontsource-variable/source-serif-4/wght-italic.css';
-import '@fontsource/instrument-serif/400-italic.css';
+// Google Sans is the site's only typeface — see `Base.astro` body below and
+// the `--font-gsans` token in global.css.
+import '@fontsource-variable/google-sans';
 import '../styles/global.css';
 
 interface Props {
 	title?: string;
 	description?: string;
+	/** Extra classes for <body>, so a page can set its own ground colour. */
+	bodyClass?: string;
 }
 
 const {
 	title = 'm5rc238',
 	description =
 		'Designer and developer working in the space between type, motion, and the web.',
+	bodyClass = '',
 } = Astro.props;
 ---
 
@@ -32,23 +32,18 @@ const {
 		<title>{title}</title>
 	</head>
 
-	<body class="min-h-dvh bg-surface font-sans text-body antialiased">
-		<div class="scroll-progress" aria-hidden="true"></div>
-		<div class="noise-overlay" aria-hidden="true"></div>
-
+	<body class:list={['min-h-dvh bg-canvas font-gsans text-lime antialiased', bodyClass]}>
 		<a
 			href="#main"
-			class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[300] focus:rounded-full focus:bg-charcoal focus:px-5 focus:py-2 focus:text-sm focus:font-medium focus:text-inverse"
+			class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-full focus:bg-lime focus:px-5 focus:py-2 focus:text-sm focus:font-medium focus:text-ink"
 		>
 			Skip to content
 		</a>
 
-		<div class="relative flex min-h-dvh flex-col">
-			<slot name="header" />
-			<main id="main" class="flex-1">
-				<slot />
-			</main>
-			<slot name="footer" />
-		</div>
+		<slot name="header" />
+		<main id="main" class="flex-1">
+			<slot />
+		</main>
+		<slot name="footer" />
 	</body>
 </html>

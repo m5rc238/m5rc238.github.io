@@ -1,30 +1,142 @@
 ---
 import Base from '../layouts/Base.astro';
 import Header from '../components/Header.astro';
+
+const projects = [
+	{ name: 'Tablox', note: 'Tabular structure as a first-class object' },
+	{ name: 'Mochi', note: 'Notes that hold uncertainty instead of hiding it' },
+	{ name: 'Glyph', note: 'A typographic drawing tool for the browser' },
+];
+
+// Only GitHub has a URL that can be inferred from the site's own domain, so the
+// other two stay unlinked until they exist rather than pointing somewhere wrong.
+const links = [
+	{ label: 'GitHub', href: 'https://github.com/m5rc238' },
+	{ label: 'LinkedIn', href: null },
+	{ label: 'Writing', href: null },
+];
 ---
 
 <Base
-	title="m5rc238"
-	description="Designer and developer working in the space between type, motion, and the web."
+	title="m5rc238 — designing software for how people actually think"
+	description="Product designer and researcher turning evidence, hypotheses, uncertainty, and revision into explicit software primitives."
+	bodyClass="bg-canvas"
 >
 	<Header slot="header" />
 
-	<section class="container-page flex flex-1 flex-col justify-center py-32">
-		<p class="eyebrow mb-6">m5rc238</p>
-		<h1 class="max-w-[20ch] text-balance text-title">
-			Designer and developer.
+	<section class="container-page pt-16 pb-20 md:pt-24 md:pb-28">
+		<p class="text-xs font-medium uppercase tracking-[0.18em] text-lime">
+			Product designer &amp; researcher
+		</p>
+
+		<h1 class="mt-6 max-w-[18ch] text-balance text-hero text-sky">
+			Designing software for how people actually think
 		</h1>
-		<p class="standfirst mt-6 max-w-[52ch] text-lede">
-			This site is being rebuilt. The manifesto that used to live here now has
-			its own home.
-		</p>
-		<p class="mt-10 max-w-[52ch] text-sm text-soft">
-			<a
-				class="link-wipe text-accent-strong"
-				href="https://m5rc238.github.io/epistemic-resilience/"
-			>
-				Read the manifesto
-			</a>
-		</p>
+
+		<div class="mt-10 max-w-[58ch] space-y-5 text-[1.0625rem] leading-relaxed text-lime md:text-lg">
+			<p>
+				I&rsquo;m a product designer and researcher exploring what happens when
+				AI makes producing outputs cheap.
+			</p>
+			<p>
+				The interesting problems are often elsewhere:
+				<span class="font-medium">evidence</span>,
+				<span class="font-medium">hypotheses</span>,
+				<span class="font-medium">uncertainty</span>,
+				<span class="font-medium">decisions</span>,
+				<span class="font-medium">competing explanations</span>, and
+				<span class="font-medium">revision</span>.
+			</p>
+			<p>
+				I&rsquo;m interested in turning these kinds of cognitive structures, which
+				often live in documents, meetings, spreadsheets, or people&rsquo;s heads,
+				into explicit software primitives.
+			</p>
+			<p>I build small products and prototypes to explore these ideas.</p>
+		</div>
+	</section>
+
+	<section id="work" class="container-page scroll-mt-8">
+		<div
+			class="rounded-[1.75rem] bg-sky px-6 py-12 text-ink md:px-12 md:py-16"
+		>
+			<div class="flex flex-col gap-10 md:flex-row md:items-start md:gap-16">
+				<h2
+					class="shrink-0 text-xs font-medium uppercase tracking-[0.18em] md:w-40"
+				>
+					Selected work
+				</h2>
+
+				<ul class="flex-1">
+					{
+						projects.map((project, i) => (
+							<li
+								class:list={[
+									'flex flex-col gap-1 py-6 md:flex-row md:items-baseline md:gap-8',
+									i > 0 && 'border-t border-ink/15',
+								]}
+							>
+								<span class="text-2xl font-medium tracking-tight md:w-48 md:text-3xl">
+									{project.name}
+								</span>
+								<span class="text-sm text-ink/70 md:flex-1">{project.note}</span>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+		</div>
+	</section>
+
+	<section id="writing" class="container-page scroll-mt-8 pt-8 pb-24 md:pt-10 md:pb-32">
+		<div
+			class="rounded-[1.75rem] bg-lime px-6 py-12 text-ink md:px-12 md:py-16"
+		>
+			<div class="flex flex-col gap-10 md:flex-row md:items-start md:gap-16">
+				<h2
+					class="shrink-0 text-xs font-medium uppercase tracking-[0.18em] md:w-40"
+				>
+					Writing
+				</h2>
+
+				<div class="flex-1">
+					<p class="max-w-[46ch] text-lg leading-relaxed">
+						Notes on AI, human-computer interaction, cognitive systems, and
+						software design.
+					</p>
+
+					<ul class="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-sm">
+						{
+							links.map((link) => (
+								<li>
+									{link.href ? (
+										<a
+											class="link-wipe font-medium"
+											href={link.href}
+											rel="me noopener"
+											target="_blank"
+										>
+											{link.label}
+										</a>
+									) : (
+										<span class="text-ink/45">{link.label}</span>
+									)}
+								</li>
+							))
+						}
+					</ul>
+				</div>
+			</div>
+		</div>
 	</section>
 </Base>
+
+<style>
+	/* The brief's type is Google Sans throughout; the global base layer still
+	   points headings at the serif, so the page opts back in. */
+	h1,
+	h2 {
+		font-family: var(--font-gsans);
+		font-weight: 500;
+	}
+</style>
