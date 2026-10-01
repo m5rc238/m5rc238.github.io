@@ -1,7 +1,6 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
 
-import mdx from '@astrojs/mdx';
 import tailwindcss from '@tailwindcss/vite';
 
 // https://astro.build/config
@@ -19,23 +18,12 @@ export default defineConfig({
 
 	trailingSlash: 'always',
 
-	integrations: [mdx()],
-
 	vite: {
 		plugins: [tailwindcss()],
 	},
 
 	build: {
-		// Split long-lived framework/plugin code out of the entry chunk.
-		// GSAP plugins are lazy and only load on pages that reference them.
 		inlineStylesheets: 'auto',
-	},
-
-	markdown: {
-		shikiConfig: {
-			theme: 'github-dark-default',
-			wrap: true,
-		},
 	},
 
 	prefetch: {

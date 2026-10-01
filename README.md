@@ -1,13 +1,12 @@
 # m5rc238.github.io
 
-Personal site. The site is one document: a manifesto for epistemic resilience.
+Personal site. Currently a shell — the Astro scaffold, design tokens, and a
+placeholder home page, waiting for real content.
 
-"A Manifesto for Epistemic Resilience" argues that our ability to produce
-information has grown faster than our ability to determine what deserves to
-be believed. Each of the ten principles is a scene, and the manifesto lays
-out what it means to build knowledge systems that can be questioned, that
-can change their minds, and that preserve the connection between evidence
-and action.
+The manifesto that used to live here ("A Manifesto for Epistemic Resilience")
+now has its own repo and is served from
+[`m5rc238/epistemic-resilience`](https://github.com/m5rc238/epistemic-resilience)
+at `m5rc238.github.io/epistemic-resilience/`.
 
 ## Stack
 
@@ -16,11 +15,6 @@ and action.
 | Astro | 7.x (static) |
 | TypeScript | 6.x, `astro/tsconfigs/strict` |
 | Tailwind CSS | 4.x (CSS-first, no `tailwind.config.js`) |
-| GSAP | 3.15 — ScrollTrigger, SplitText, Flip, MorphSVG, MotionPath |
-| MDX | via `@astrojs/mdx` |
-
-All GSAP plugins ship free in the public `gsap` package since 3.13. No Club
-account is required for SplitText or MorphSVG.
 
 ## Commands
 
@@ -35,53 +29,25 @@ npm run preview   # serve the built output
 
 ```
 src/
-  lib/motion/     plugins.ts, presets.ts, types.ts — GSAP setup and reveals
-  lib/manifesto/  engine.ts — scene pin/scrub timelines, rail, challenge state
-  layouts/        Base.astro — the only layout; owns the motion bootstrap
-  components/     Header, Footer
-  components/manifesto/  SysScene.astro + scene panels (one per manifesto section)
-  styles/         global.css (tokens) + effects.css (visual effects) + scenes.css
-  content/        manifesto/ — the single Astro content collection
-  pages/          / — the manifesto; /manifesto redirects to it
-standalone/       a self-contained, dependency-free preview of the deck
-                   (vanilla JS + GSAP via CDN), served from index.html
+  layouts/        Base.astro — the only layout
+  components/     Header.astro
+  styles/         global.css (tokens) + effects.css (zero-JS visual effects)
+  pages/          / — the home page
 ```
 
-## Content
+## Styles
 
-`src/content.config.ts` holds the schema. One collection:
+`src/styles/global.css` holds the design tokens under Tailwind v4's `@theme`:
+fonts (self-hosted via Fontsource, no third-party runtime requests), the warm
+neutral palette with a single lavender accent, the fluid type scale, and the
+base layer. Measured contrast ratios are recorded inline — the two colours
+that fail AA against the light ground are confined to large type, rules, and
+fills, never body text.
 
-- **manifesto** — a single standing document, authored in MDX, rendered at the
-  root. Section headings carry their own numbers; scene panels are embedded as
-  components in the MDX and animated by `src/lib/manifesto/engine.ts`.
-
-Frontmatter is validated at build time, so a missing `title` or a malformed
-`updatedDate` fails the build rather than shipping a blank page.
-
-## Motion
-
-Entrance animations use `data-reveal="<preset>"`, where preset is one of
-`split-lines`, `split-chars`, `fade-up`, `clip-reveal`, or `none`. The page
-hero uses `data-hero` and the preset passed to `Base`'s `heroReveal` prop.
-
-Reveals are built on `gsap.from()`. An element's resting state is its real CSS
-state, so if JavaScript fails or is blocked the content is simply visible —
-animations get cancelled, content does not. Nothing is hidden by CSS.
-
-Each manifesto scene is one full-viewport panel whose DOM *is* its end state.
-Under supported conditions each panel is pinned for one viewport of scroll and
-a timeline scrubs between a calmer opening and that end state ("growth →
-maturity").
-
-`prefers-reduced-motion: reduce` skips the animation and renders the final
-state. Verified in-browser, not assumed. Motion is gated through
-`gsap.matchMedia()`.
-
-`standalone/` is a deliberate simplification of the same content without the
-Astro/MDX layer: ten full-height scrolling sections in normal flow (no
-pinning), with each section's internal art — scramble, kinetic blocks, Flip
-board, blind-spot lens, pipeline draw — scrubbed as it passes through the
-viewport.
+`src/styles/effects.css` is plain CSS with no JS: the scroll progress bar (via
+`animation-timeline: scroll()`, no fallback needed), the noise overlay, link
+wipes, and card treatments. Every effect respects
+`prefers-reduced-motion`.
 
 ## Deployment
 
@@ -89,8 +55,7 @@ viewport.
 check`, build, upload `dist/`, deploy. Concurrency is set to cancel superseded
 runs so rapid pushes do not publish a stale build.
 
-Pages must be configured to build from the **GitHub Actions** source (already
-set for this repo).
+Pages builds from the **GitHub Actions** source.
 
 `base` is `/` because this is a user site served from the domain root. If the
 repo is ever renamed to a project site, `base` in `astro.config.mjs` must change
@@ -98,5 +63,5 @@ to `/<repo>` and asset paths need the prefix.
 
 ## Archived
 
-The previous site (Pug, Sass, gulp, Font Awesome) is preserved on the
-`archive/old-design` branch.
+- `archive/old-design` — the previous site (Pug, Sass, gulp, Font Awesome)
+- The manifesto lived here from `eb4c09b` through `9971887`

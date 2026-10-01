@@ -6,44 +6,30 @@ import '@fontsource-variable/source-serif-4';
 import '@fontsource-variable/source-serif-4/wght-italic.css';
 import '@fontsource/instrument-serif/400-italic.css';
 import '../styles/global.css';
-import { DEFAULT_REVEAL } from '../lib/motion/types';
-import type { RevealPreset } from '../lib/motion/types';
 
 interface Props {
 	title?: string;
 	description?: string;
-	/** Preset for this page's `[data-hero]` entrance animation. */
-	heroReveal?: RevealPreset;
 }
 
 const {
 	title = 'm5rc238',
 	description =
 		'Designer and developer working in the space between type, motion, and the web.',
-	heroReveal = DEFAULT_REVEAL,
 } = Astro.props;
 ---
 
 <!doctype html>
-{/* Lets the hero's preset be chosen per page without a JS variable. */}
-<html lang="en" data-hero-preset={heroReveal}>
+<html lang="en">
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
+		<link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
+		<link rel="icon" href={`${import.meta.env.BASE_URL}favicon.ico`} />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
 		<meta name="color-scheme" content="light" />
 		<title>{title}</title>
-
-		{/*
-			Marks the document as JS-capable before first paint. Any styling that
-			depends on this runs without a flash of the un-styled state.
-		*/}
-		<script is:inline>
-			document.documentElement.classList.add('js');
-		</script>
 	</head>
 
 	<body class="min-h-dvh bg-surface font-sans text-body antialiased">
@@ -64,86 +50,5 @@ const {
 			</main>
 			<slot name="footer" />
 		</div>
-
-		{/*
-			Plain module script, deliberately NOT using `define:vars`.
-			`define:vars` emits a classic script, which cannot contain `import`
-			statements — the un-bundled import would ship verbatim and throw a
-			syntax error. The preset name instead travels via a `data-` attribute.
-		*/}
-		<script>
-			import {
-				registerPlugins,
-				refreshAfterFonts,
-				reveal,
-				ScrollTrigger,
-			} from '../lib/motion';
-			import {
-				REVEAL_PRESETS,
-				DEFAULT_REVEAL,
-			} from '../lib/motion/types';
-			import type { RevealPreset } from '../lib/motion/types';
-
-			registerPlugins();
-			refreshAfterFonts();
-
-			// ScrollTrigger measures layout, so a refresh after the webfont swap
-			// prevents off-by-a-line trigger positions.
-			document.fonts?.ready.then(() => ScrollTrigger.refresh());
-
-			// Hero uses whichever preset the page declared via `data-hero-preset`.
-			const hero = document.querySelector<HTMLElement>('[data-hero]');
-			if (hero) {
-				// Page-level preset from `<html data-hero-preset>`, overridable
-				// per element. Falls back to the type-safe default.
-				const requested =
-					hero.dataset.heroPreset ?? document.documentElement.dataset.heroPreset;
-				const preset = REVEAL_PRESETS.includes(requested as RevealPreset)
-					? (requested as RevealPreset)
-					: DEFAULT_REVEAL;
-
-				reveal(hero, { preset, scrollTrigger: false, delay: 0.15 });
-			}
-
-			// Drives the CSS progress bar where `animation-timeline: scroll()` is
-			// unavailable. Writing a custom property lets CSS own the styling,
-			// so there is no duplicated transform to keep in sync.
-			const supportsScrollTimeline =
-				window.CSS?.supports?.('animation-timeline: scroll()') ?? false;
-
-			if (!supportsScrollTimeline) {
-				const bar = document.querySelector<HTMLElement>('.scroll-progress');
-				if (bar) {
-					ScrollTrigger.create({
-						trigger: document.documentElement,
-						start: 'top top',
-						end: 'bottom bottom',
-						onUpdate: (self) => {
-							bar.style.setProperty('--scroll-progress', self.progress.toFixed(4));
-						},
-					});
-				}
-			}
-
-			// Everything else opts in with `data-reveal` and picks its own preset.
-			document.querySelectorAll<HTMLElement>('[data-reveal]').forEach((el) => {
-				const preset = el.dataset.reveal;
-				if (!preset || !REVEAL_PRESETS.includes(preset as RevealPreset)) return;
-				reveal(el, { preset: preset as RevealPreset });
-			});
-
-			// Pointer-tracking highlight for `.card::before`. Guarded by
-			// `matchMedia` so hybrid touch devices don't pay for an effect
-			// they cannot trigger.
-			if (window.matchMedia('(hover: hover) and (pointer: fine)').matches) {
-				for (const card of document.querySelectorAll<HTMLElement>('.card')) {
-					card.addEventListener('pointermove', (event: PointerEvent) => {
-						const rect = card.getBoundingClientRect();
-						card.style.setProperty('--mx', `${event.clientX - rect.left}px`);
-						card.style.setProperty('--my', `${event.clientY - rect.top}px`);
-					});
-				}
-			}
-		</script>
 	</body>
 </html>
