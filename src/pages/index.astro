@@ -3,9 +3,21 @@ import Base from '../layouts/Base.astro';
 import Header from '../components/Header.astro';
 
 const projects = [
-	{ name: 'Tablox', note: 'Tabular structure as a first-class object' },
-	{ name: 'Mochi', note: 'Notes that hold uncertainty instead of hiding it' },
-	{ name: 'Glyph', note: 'A typographic drawing tool for the browser' },
+	{
+		name: 'Tablox',
+		note: 'Tabular structure as a first-class object',
+		href: 'https://github.com/gettablox/tablox',
+	},
+	{
+		name: 'Mochi',
+		note: 'Notes that hold uncertainty instead of hiding it',
+		href: 'https://github.com/m5rc238/mochi-prov',
+	},
+	{
+		name: 'Glyph',
+		note: 'A typographic drawing tool for the browser',
+		href: 'https://github.com/m5rc238/glyph-skill',
+	},
 ];
 
 // Only GitHub has a URL that can be inferred from the site's own domain, so the
@@ -78,7 +90,18 @@ const links = [
 								]}
 							>
 								<span class="text-2xl font-medium tracking-tight md:w-48 md:text-3xl">
-									{project.name}
+									{project.href ? (
+										<a
+											class="link-wipe"
+											href={project.href}
+											rel="noopener noreferrer"
+											target="_blank"
+										>
+											{project.name}
+										</a>
+									) : (
+										project.name
+									)}
 								</span>
 								<span class="text-sm text-ink/70 md:flex-1">{project.note}</span>
 							</li>
