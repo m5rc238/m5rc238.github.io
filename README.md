@@ -1,67 +1,40 @@
-# m5rc238.github.io
+# Hi, I’m Marcel
 
-Personal site. Currently a shell — the Astro scaffold, design tokens, and a
-placeholder home page, waiting for real content.
+**Product Designer & Researcher** exploring AI, human-computer interaction, and cognitive systems.
 
-The manifesto that used to live here ("A Manifesto for Epistemic Resilience")
-now has its own repo and is served from
-[`m5rc238/epistemic-resilience`](https://github.com/m5rc238/epistemic-resilience)
-at `m5rc238.github.io/epistemic-resilience/`.
+I’m interested in a simple question:
 
-## Stack
+> **What happens to software when AI makes producing outputs cheap?**
 
-| Piece | Version |
-| ----- | ------- |
-| Astro | 7.x (static) |
-| TypeScript | 6.x, `astro/tsconfigs/strict` |
-| Tailwind CSS | 4.x (CSS-first, no `tailwind.config.js`) |
+I think some of the most interesting opportunities are not about adding more AI features, but about turning important human work into software structures.
 
-## Commands
+Things like:
 
-```sh
-npm run dev       # dev server
-npm run check     # astro check (types + templates)
-npm run build     # static build to dist/
-npm run preview   # serve the built output
-```
+* evidence
+* hypotheses
+* assumptions
+* uncertainty
+* competing explanations
+* decisions
+* revision
 
-## Layout
+Today, much of this work still lives in documents, meetings, spreadsheets, and people’s heads.
 
-```
-src/
-  layouts/        Base.astro — the only layout
-  components/     Header.astro
-  styles/         global.css (tokens) + effects.css (zero-JS visual effects)
-  pages/          / — the home page
-```
+I build small products, prototypes, and experiments to explore what happens when these structures become explicit and computational.
 
-## Styles
+### Selected work
 
-`src/styles/global.css` holds the design tokens under Tailwind v4's `@theme`:
-fonts (self-hosted via Fontsource, no third-party runtime requests), the warm
-neutral palette with a single lavender accent, the fluid type scale, and the
-base layer. Measured contrast ratios are recorded inline — the two colours
-that fail AA against the light ground are confined to large type, rules, and
-fills, never body text.
+**[Tablox](https://github.com/gettablox/tablox)**
+A small browser extension exploring tabs as a proxy for contextual load.
 
-`src/styles/effects.css` is plain CSS with no JS: the scroll progress bar (via
-`animation-timeline: scroll()`, no fallback needed), the noise overlay, link
-wipes, and card treatments. Every effect respects
-`prefers-reduced-motion`.
+**[Mochi](https://github.com/m5rc238/mochi-prov)**
+An experiment in provenance and evidence-aware AI workflows.
 
-## Deployment
+**[Glyph](https://github.com/m5rc238/glyph-skill)**
+A small exploration of structured interaction with AI coding workflows.
 
-`.github/workflows/deploy.yml` runs on push to `master`: install, `astro
-check`, build, upload `dist/`, deploy. Concurrency is set to cancel superseded
-runs so rapid pushes do not publish a stale build.
+### More
 
-Pages builds from the **GitHub Actions** source.
+[Portfolio](https://mrcl.framer.website) · [LinkedIn](https://www.linkedin.com/in/marcel-akiyama/) · [Writing](https://cognist.substack.com)
 
-`base` is `/` because this is a user site served from the domain root. If the
-repo is ever renamed to a project site, `base` in `astro.config.mjs` must change
-to `/<repo>` and asset paths need the prefix.
-
-## Archived
-
-- `archive/old-design` — the previous site (Pug, Sass, gulp, Font Awesome)
-- The manifesto lived here from `eb4c09b` through `9971887`
+I use these projects as **public learning logs**, not as a claim to have everything figured out.
