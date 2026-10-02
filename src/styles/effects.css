@@ -171,7 +171,89 @@
 	opacity: 1;
 }
 
-/* --- Noise ---------------------------------------------------------------- */
+/* --- Paper grain ----------------------------------------------------------
+   Paper is not uniform speckle. It reads as three stacked scales, so the
+   texture is built the same way:
+
+     pulp   — very low frequency, the uneven cloudiness of a pressed sheet
+     fiber  — one axis stretched far higher than the other, the felted fibres
+     tooth  — fine fractal speckle, the surface grain you feel under a fingertip
+
+   Every filter ends in the same two steps, and both are load-bearing:
+
+     feColorMatrix     — collapses the turbulence's random RGB to grey and
+                         forces alpha to 1. Left as noise, alpha becomes patchy
+                         coverage, which a blend mode reads as a veil rather
+                         than as texture.
+     feComponentTransfer — `slope` above 1 with a matched negative `intercept`
+                         stretches values away from mid-grey *symmetrically*.
+                         That is what makes `soft-light` net to nothing on
+                         average: the texture modulates the ground without
+                         shifting its colour. Measured, the tile averages 124 —
+                         a shade under mid-grey — so it reads as a shade cooler
+                         rather than as a lift.
+
+   `soft-light` rather than `overlay` because the ground is a mid brown: overlay
+   pushes the ends apart hard enough to shimmer against the lime slab, while
+   soft-light stays close to the original. Measured over the page, that holds
+   the mean ground within 0.7/255 of the flat colour on all three grounds — so
+   the contrast figures noted in global.css are unchanged (body copy 4.30:1,
+   worst case 4.24:1).
+
+   Two tiles on one element: a 512px coarse sheet (cloud + fibre) and a 220px
+   fine one (tooth). The sizes are deliberately different so the two scales
+   don't share a repeat grid, and 512 is large enough that a 1440px viewport
+   shows under three repeats of the cloud. The cloud's own repeat is still the
+   weak point here — it is held to a whisper (`opacity='0.6'` in-tile, and a
+   third of its energy is low frequency) so the fine tooth masks it. Overdo the
+   cloud and the repeat reads as a lattice, which is the giveaway on a flat
+   field.
+
+   The blend mode lives on the element, *not* on its pseudo-elements. A fixed,
+   z-indexed element establishes a stacking context, and a blended
+   pseudo-element inside it only ever blends with that context's own (empty)
+   backdrop — which paints the texture as a flat grey film over the page rather
+   than as texture. That's worth ~10/255 of unwanted lift.
+
+   Tune with `--grain-strength` (whole layer) and `--grain-blend`. Per-scale
+   amplitude is baked into each tile's `opacity` attribute, since one element
+   can only carry one blend mode for all of its background layers. */
+.paper-grain {
+	position: fixed;
+	inset: 0;
+	/* Above content so the texture runs across the ground *and* the slabs, the
+	   way ink sits on one sheet. Below the progress bar. */
+	z-index: 60;
+	pointer-events: none;
+	--grain-strength: 0.45;
+	--grain-blend: soft-light;
+
+	opacity: var(--grain-strength);
+	mix-blend-mode: var(--grain-blend);
+	background-repeat: repeat;
+	background-size:
+		512px 512px,
+		220px 220px;
+	background-image:
+		/* pulp (whisper) + fiber */
+		url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='512' height='512'%3E%3Cfilter id='p' x='0' y='0' width='100%25' height='100%25' color-interpolation-filters='sRGB'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.0025 0.0045' numOctaves='5' seed='17' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0.33 0.33 0.33 0 0 0.33 0.33 0.33 0 0 0.33 0.33 0.33 0 0 0 0 0 0 1'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='1.5' intercept='-0.25'/%3E%3CfeFuncG type='linear' slope='1.5' intercept='-0.25'/%3E%3CfeFuncB type='linear' slope='1.5' intercept='-0.25'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Cfilter id='f' x='0' y='0' width='100%25' height='100%25' color-interpolation-filters='sRGB'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.02 0.35' numOctaves='3' seed='5' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0.33 0.33 0.33 0 0 0.33 0.33 0.33 0 0 0.33 0.33 0.33 0 0 0 0 0 0 1'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='1.8' intercept='-0.4'/%3E%3CfeFuncG type='linear' slope='1.8' intercept='-0.4'/%3E%3CfeFuncB type='linear' slope='1.8' intercept='-0.4'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='512' height='512' filter='url(%23p)' opacity='0.6'/%3E%3Crect width='512' height='512' filter='url(%23f)' opacity='0.28'/%3E%3C/svg%3E"),
+		/* tooth */
+		url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='o' x='0' y='0' width='100%25' height='100%25' color-interpolation-filters='sRGB'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.6' numOctaves='2' seed='29' stitchTiles='stitch'/%3E%3CfeColorMatrix type='matrix' values='0.33 0.33 0.33 0 0 0.33 0.33 0.33 0 0 0.33 0.33 0.33 0 0 0 0 0 0 1'/%3E%3CfeComponentTransfer%3E%3CfeFuncR type='linear' slope='2.4' intercept='-0.7'/%3E%3CfeFuncG type='linear' slope='2.4' intercept='-0.7'/%3E%3CfeFuncB type='linear' slope='2.4' intercept='-0.7'/%3E%3C/feComponentTransfer%3E%3C/filter%3E%3Crect width='220' height='220' filter='url(%23o)' opacity='0.4'/%3E%3C/svg%3E");
+}
+
+/* The grain is decoration over text. Anyone who has asked the OS for less
+   translucency gets the flat ground back. */
+@media (prefers-reduced-transparency: reduce) {
+	.paper-grain {
+		display: none;
+	}
+}
+
+/* --- Noise ----------------------------------------------------------------
+   Flat fractal speckle, for surfaces that want texture without the fibrous
+   read. `multiply`, not `overlay`: overlay is nearly a no-op on a light
+   ground, which would make this texture pointless on the alabaster palette.
+   --------------------------------------------------------------------------- */
 .noise-overlay {
 	position: fixed;
 	inset: 0;

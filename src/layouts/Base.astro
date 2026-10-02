@@ -45,5 +45,9 @@ const {
 			<slot />
 		</main>
 		<slot name="footer" />
+
+		<!-- Paper texture over the whole sheet. Decorative only, so it stays out
+		     of the accessibility tree and never intercepts a click. -->
+		<div class="paper-grain" aria-hidden="true"></div>
 	</body>
 </html>
