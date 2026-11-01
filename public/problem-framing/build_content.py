@@ -310,5 +310,10 @@ for m in modules:
         shift=(m["id"]+i)%4
         q["options"]=q["options"][shift:]+q["options"][:shift]
         q["correct"]=(q["correct"]-shift)%4
+from foundations import foundation, extra_sources, videos
+modules.insert(0, foundation)
+sources.extend(extra_sources)
+for m in modules:
+    m["videos"] = videos.get(m["id"], [])
 Path(__file__).with_name("course-data.js").write_text("window.COURSE = "+json.dumps(dict(modules=modules,sources=sources,rubric=rubric),ensure_ascii=False,indent=2)+";\n")
 print(f"{len(modules)} modules, {sum(len(m['quiz']) for m in modules)} quiz items, {sum(len(m['exercises']) for m in modules)} exercises")

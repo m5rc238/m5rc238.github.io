@@ -25,7 +25,9 @@ function save() {
   catch { storageWorks = false; notify('Browser storage is unavailable. Export your workbook before leaving.'); }
   updateProgress();
 }
-function passed(m) { return (entry(m.id).best || 0) >= (m.id === 11 ? 8 : 2); }
+const moduleLabel = m => m.id === 0 ? 'Foundations' : m.id === 11 ? 'Capstone' : 'Module '+String(m.id).padStart(2,'0');
+const passScore = m => m.quiz.length === 10 ? 8 : 2;
+function passed(m) { return (entry(m.id).best || 0) >= passScore(m); }
 function complete(m) {
   const e = entry(m.id);
   return Boolean(e.read && passed(m) && m.exercises.every((_, i) => (e.answers[i] || '').trim().length > 0 && e.review[i]));
@@ -33,16 +35,17 @@ function complete(m) {
 function updateProgress() {
   const count = modules.filter(complete).length;
   document.querySelector('#progress').value = count;
-  document.querySelector('#progress-text').textContent = count + ' / 11';
+  document.querySelector('#progress').max = modules.length;
+  document.querySelector('#progress-text').textContent = count + ' / ' + modules.length;
   document.querySelector('#navigation').innerHTML = '<a href="#/" class="'+(location.hash==='#/'||!location.hash?'active':'')+'">Course overview</a>' + modules.map(m =>
-    '<a href="#/module/'+m.id+'/lesson" '+(location.hash.startsWith('#/module/'+m.id+'/')?'class="active" aria-current="page"':'')+'><span class="number">'+String(m.id).padStart(2,'0')+'</span><span>'+esc(m.title)+'</span>'+(complete(m)?'<span class="done" aria-label="Complete">✓</span>':'')+'</a>').join('');
+    '<a href="#/module/'+m.id+'/lesson" '+(location.hash.startsWith('#/module/'+m.id+'/')?'class="active" aria-current="page"':'')+'><span class="number">'+(m.id===0?'F':String(m.id).padStart(2,'0'))+'</span><span>'+esc(m.title)+'</span>'+(complete(m)?'<span class="done" aria-label="Complete">✓</span>':'')+'</a>').join('');
 }
 function overview() {
   const next = modules.find(m => !complete(m)) || modules[0];
-  return '<section class="hero"><p class="eyebrow">A practical course for product designers</p><h1>Get better at deciding<br>what the problem is.</h1><p class="lead">Work through evidence, goals, boundaries, and competing explanations. Practice the judgment that turns an uncertain brief into a justified next step.</p><div class="meta"><span>10 modules + capstone</span><span>40 quiz items</span><span>23 exercises</span><span>Suggested pace · 8–12 hours</span></div><div class="actions"><a class="button primary" href="#/module/'+next.id+'/lesson">'+(modules.some(m => entry(m.id).read || Object.values(entry(m.id).answers).some(Boolean) || entry(m.id).best)?'Continue learning':'Start the course')+' →</a><a class="button" href="#/notebook">Open your workbook</a></div></section>'+
-    '<div class="intro-grid"><div><h3>Learn by making decisions</h3><p>Each module combines a short lesson, a worked example, two writing exercises, and three knowledge checks. The capstone adds evidence in stages and asks you to revise a real decision memo.</p></div><div><h3>Make your reasoning visible</h3><p>Write an answer before opening the example response. Compare against the review criteria. Exercises are self-reviewed and are not automatically graded for quality.</p></div></div>'+
-    '<div class="section-title"><h2>Your course path</h2><span class="small">All modules are open</span></div><div class="cards">'+modules.map(m=>'<article class="card"><p class="eyebrow">'+(m.id===11?'Final project':'Module '+String(m.id).padStart(2,'0'))+'</p><h3><a class="stretched" href="#/module/'+m.id+'/lesson">'+esc(m.title)+'</a></h3><p>'+esc(m.objective)+'</p><div class="card-foot"><span>'+m.minutes+' min · '+m.exercises.length+' exercises</span><span>'+(complete(m)?'Completed ✓':'Explore →')+'</span></div></article>').join('')+'</div>'+
-    '<div class="call"><h3>How completion works</h3><p class="small">Mark the lesson as read, save a response and self-review for each exercise, and answer at least 2 of 3 quiz items correctly. The capstone requires 8 of 10. Best quiz scores are retained. Completion indicates activity and knowledge checks, not validated professional competence.</p><p class="small">The course is an educational synthesis informed by design research and practitioner methods. It has not been evaluated as a complete training program. All supplied case studies are fictional. Your work is saved only in this browser, with no account or server submission.</p></div>';
+  return '<section class="hero"><p class="eyebrow">A practical course for product designers</p><h1>Get better at deciding<br>what the problem is.</h1><p class="lead">Work through evidence, goals, boundaries, and competing explanations. Practice the judgment that turns an uncertain brief into a justified next step.</p><div class="meta"><span>Foundations + 10 modules + capstone</span><span>50 quiz items</span><span>26 exercises</span><span>Suggested pace · 10–14 hours</span></div><div class="actions"><a class="button primary" href="#/module/'+next.id+'/lesson">'+(modules.some(m => entry(m.id).read || Object.values(entry(m.id).answers).some(Boolean) || entry(m.id).best)?'Continue learning':'Start the course')+' →</a><a class="button" href="#/notebook">Open your workbook</a></div></section>'+
+    '<div class="intro-grid"><div><h3>Understand why, then practice</h3><p>Start with seven theoretical foundations, a worked example, three exercises, and ten knowledge checks. Then apply them in ten practical modules with two exercises and three questions each. The capstone asks you to revise a decision memo as evidence arrives.</p></div><div><h3>Make your reasoning visible</h3><p>Write an answer before opening the example response. Compare against the review criteria. Exercises are self-reviewed and are not automatically graded for quality.</p></div></div>'+
+    '<div class="section-title"><h2>Your course path</h2><span class="small">All modules are open</span></div><div class="cards">'+modules.map(m=>'<article class="card '+(m.id===0?'foundation':'')+'"><p class="eyebrow">'+moduleLabel(m)+'</p><h3><a class="stretched" href="#/module/'+m.id+'/lesson">'+esc(m.title)+'</a></h3><p>'+esc(m.objective)+'</p><div class="card-foot"><span>'+m.minutes+' min · '+m.exercises.length+' exercises</span><span>'+(complete(m)?'Completed ✓':'Explore →')+'</span></div></article>').join('')+'</div>'+
+    '<div class="call"><h3>How completion works</h3><p class="small">Mark the lesson as read, save a response and self-review for each exercise, and answer at least 2 of 3 quiz items correctly. Foundations and the capstone each require 8 of 10. Best quiz scores are retained. Completion indicates activity and knowledge checks, not validated professional competence.</p><p class="small">The course is an educational synthesis informed by design research and practitioner methods. It has not been evaluated as a complete training program. All supplied case studies are fictional. Your work is saved only in this browser, with no account or server submission.</p></div>';
 }
 function modulePage(m, tab) {
   const e = entry(m.id);
@@ -52,10 +55,15 @@ function modulePage(m, tab) {
   if (tab === 'lesson') body = lesson(m);
   else if (tab === 'practice') body = practice(m);
   else body = quiz(m);
-  return '<p class="eyebrow">'+(m.id===11?'Capstone':'Module '+String(m.id).padStart(2,'0'))+' / 11</p><h1>'+esc(m.title)+'</h1><p class="lead">'+esc(m.objective)+'</p>'+status+tabs+body;
+  return '<p class="eyebrow">'+moduleLabel(m)+' · Part '+(modules.indexOf(m)+1)+' of '+modules.length+'</p><h1>'+esc(m.title)+'</h1><p class="lead">'+esc(m.objective)+'</p>'+status+tabs+body;
+}
+function videoResources(m) {
+  if (!m.videos?.length) return '';
+  return '<section class="video-resources"><h2>Selected viewing</h2><p class="small">Optional worked illustrations. These do not replace the readings or exercises.</p>'+m.videos.map(v=>'<article class="video-card"><p class="label">'+esc(v.creator)+'</p><h3><a href="'+esc(v.url)+'" target="_blank" rel="noopener noreferrer">'+esc(v.title)+' ↗</a></h3><p>'+esc(v.why)+'</p><p><strong>Keep in mind.</strong> '+esc(v.limit)+'</p><p><strong>Viewing task.</strong> '+esc(v.task)+'</p><p class="small">'+esc(v.review)+'</p></article>').join('')+'</section>';
 }
 function lesson(m) {
-  return '<div class="reading">'+m.sections.map((s,i)=>m.id===11&&(i===1||i===2)?'<details><summary>Open '+esc(s[0].toLowerCase())+'</summary><p>'+esc(s[1])+'</p></details>':'<section><h2>'+esc(s[0])+'</h2><p>'+esc(s[1])+'</p></section>').join('')+'<div class="example"><span class="label">Worked example</span>\n'+esc(m.worked)+'</div><label class="check"><input type="checkbox" data-read="'+m.id+'" '+(entry(m.id).read?'checked':'')+'> I have read this lesson and its example.</label><div class="actions"><a class="button primary" href="#/module/'+m.id+'/practice">Apply it in practice →</a></div></div>';
+  const paragraphs = text => text.split('\n\n').map(p=>'<p>'+esc(p)+'</p>').join('');
+  return '<div class="reading">'+m.sections.map((s,i)=>m.id===11&&(i===1||i===2)?'<details><summary>Open '+esc(s[0].toLowerCase())+'</summary>'+paragraphs(s[1])+'</details>':'<section><h2>'+esc(s[0])+'</h2>'+paragraphs(s[1])+(m.readings?.[i]?'<p class="reading-link"><a href="'+esc(m.readings[i][1])+'" target="_blank" rel="noopener noreferrer">Reading · '+esc(m.readings[i][0])+' ↗</a></p>':'')+'</section>').join('')+'<div class="example"><span class="label">Worked example</span>\n'+esc(m.worked)+'</div>'+videoResources(m)+'<label class="check"><input type="checkbox" data-read="'+m.id+'" '+(entry(m.id).read?'checked':'')+'> I have read this lesson and its example.</label><div class="actions"><a class="button primary" href="#/module/'+m.id+'/practice">Apply it in practice →</a></div></div>';
 }
 function practice(m) {
   const e = entry(m.id);
@@ -70,7 +78,7 @@ function rubricPage() {
 function quiz(m) {
   const e = entry(m.id);
   const result = e.result;
-  return '<p>Choose one answer for every question, then check your reasoning. '+(m.id===11?'This final review revisits concepts from across the course.':'You need 2 of 3 correct to complete the knowledge check.')+'</p><form id="quiz-form" data-module="'+m.id+'">'+m.quiz.map((q,i)=>{
+  return '<p>Choose one answer for every question, then check your reasoning. '+'You need '+passScore(m)+' of '+m.quiz.length+' correct to complete this knowledge check. '+(m.id===11?'This final review revisits concepts from across the course.':'')+'</p><form id="quiz-form" data-module="'+m.id+'">'+m.quiz.map((q,i)=>{
     const answer = e.choices[i];
     const graded = result && Number.isInteger(answer);
     return '<fieldset><legend>Question '+(i+1)+' of '+m.quiz.length+'</legend><p class="question">'+esc(q.prompt)+'</p>'+q.options.map((o,j)=>'<label class="option"><input type="radio" name="q'+i+'" value="'+j+'" '+(answer===j?'checked':'')+' '+(result?'disabled':'')+' required><span><strong>'+String.fromCharCode(65+j)+'.</strong> '+esc(o)+'</span></label>').join('')+'<details><summary>Hint</summary><p>'+esc(q.hint)+'</p></details>'+(graded?'<div class="feedback '+(answer===q.correct?'':'wrong')+'"><strong>'+(answer===q.correct?'Answer supported':'Review this distinction')+'</strong><p>'+esc(q.reason)+'</p><p>Supported answer · '+esc(q.options[q.correct])+'</p></div>':'')+'</fieldset>';
@@ -80,17 +88,17 @@ function notebook() {
   return '<p class="eyebrow">Your field notes</p><h1>Your workbook</h1><p class="lead">Your responses, review status, and best scores. Export a Markdown copy for your own records.</p><div class="actions"><button class="primary" data-export>Export workbook</button></div>'+modules.map(m=>{
     const e=entry(m.id);
     const answers=m.exercises.map((x,i)=>e.answers[i]?'<section><h3>'+esc(x.title)+'</h3><p class="notebook-answer">'+esc(e.answers[i])+'</p><p class="small">'+(e.review[i]?'Self-review recorded':'Self-review still open')+'</p></section>':'').join('');
-    return '<article class="exercise"><p class="eyebrow">Module '+m.id+'</p><h2>'+esc(m.title)+'</h2><p class="small">Lesson '+(e.read?'read':'open')+' · Best quiz '+(e.best||0)+' / '+m.quiz.length+'</p>'+(answers||'<p class="small">No written responses yet.</p>')+'<a href="#/module/'+m.id+'/practice">Open exercises →</a></article>';
+    return '<article class="exercise"><p class="eyebrow">'+moduleLabel(m)+'</p><h2>'+esc(m.title)+'</h2><p class="small">Lesson '+(e.read?'read':'open')+' · Best quiz '+(e.best||0)+' / '+m.quiz.length+'</p>'+(answers||'<p class="small">No written responses yet.</p>')+'<a href="#/module/'+m.id+'/practice">Open exercises →</a></article>';
   }).join('');
 }
 function sourcePage() {
-  return '<p class="eyebrow">Evidence and scope</p><h1>Research and course notes</h1><p class="lead">A practical synthesis for product designers working with ambiguous briefs.</p><p>The references include reviews, observational studies, experiments, theory, and practitioner guidance. These support distinctions and components, with different limits. They do not establish this course as a validated training or assessment instrument. Examples, timelines, and review criteria are educational recommendations.</p><p>Suggested study time is a planning estimate. Module completion tracks reading, attempts, and self-review. Exercise quality requires judgment, and sample responses are illustrative. The final quiz deliberately revisits earlier concepts.</p>'+sources.map(s=>'<article class="source"><a href="'+esc(s[2])+'" target="_blank" rel="noopener noreferrer">'+esc(s[0])+' ↗</a><p>'+esc(s[1])+'</p></article>').join('')+'<div class="call"><h2>Your data</h2><p>Progress and responses use local browser storage under this site origin. There is no server-side course account or automatic transmission of answers. Clearing site data or changing browsers can remove access to your notes. Export your workbook regularly. Other scripts served under the same origin may share access to browser storage.</p></div>';
+  return '<p class="eyebrow">Evidence and scope</p><h1>Research and course notes</h1><p class="lead">A practical synthesis for product designers working with ambiguous briefs.</p><p>The references include reviews, observational studies, experiments, theory, and practitioner guidance. These support distinctions and components, with different limits. They do not establish this course as a validated training or assessment instrument. Examples, timelines, and review criteria are educational recommendations.</p><p>Suggested study time is a planning estimate. Module completion tracks reading, attempts, and self-review. Exercise quality requires judgment, and sample responses are illustrative. The final quiz deliberately revisits earlier concepts.</p>'+sources.map(s=>'<article class="source"><a href="'+esc(s[2])+'" target="_blank" rel="noopener noreferrer">'+esc(s[0])+' ↗</a><p>'+esc(s[1])+'</p></article>').join('')+'<h2 class="resource-heading">Video illustrations</h2><p>Two original source pages are linked within the lessons, with attribution, a specific viewing task, and a limitation. Selection was based on the published talk script or edited transcript; the footage was not independently reviewed. These are practitioner illustrations from one creator, not independent research evidence or a representative survey.</p>'+modules.filter(m=>m.videos?.length).map(m=>videoResources(m)).join('')+'<div class="call"><h2>Your data</h2><p>Progress and responses use local browser storage under this site origin. There is no server-side course account or automatic transmission of answers. Clearing site data or changing browsers can remove access to your notes. Export your workbook regularly. Other scripts served under the same origin may share access to browser storage.</p></div>';
 }
 function exportWorkbook() {
   const lines=['# Problem framing workbook','', 'Exported '+new Date().toISOString(),'', 'Exercise reviews and rubric scores are self-assessments.',''];
   modules.forEach(m=>{
     const e=entry(m.id);
-    lines.push('## '+m.id+' '+m.title,'','Lesson read: '+Boolean(e.read),'Best quiz: '+(e.best||0)+' / '+m.quiz.length,'');
+    lines.push('## '+moduleLabel(m)+' · '+m.title,'','Lesson read: '+Boolean(e.read),'Best quiz: '+(e.best||0)+' / '+m.quiz.length,'');
     m.exercises.forEach((x,i)=>lines.push('### '+x.title,'',e.answers[i] || '(No response yet)','', 'Self-reviewed: '+Boolean(e.review[i]),''));
   });
   if(entry(11).rubric) { lines.push('## Capstone rubric','');rubric.forEach((r,i)=>lines.push(r[0]+': '+(entry(11).rubric[i]??'unscored'))); }
