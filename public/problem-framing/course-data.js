@@ -3,36 +3,36 @@ window.COURSE = {
     {
       "id": 0,
       "title": "Foundations of problem framing",
-      "objective": "Understand the theories behind the practical methods and the limits of each.",
+      "objective": "Learn the ideas behind the methods, what they explain, and where their limits are.",
       "minutes": "90–120",
       "sections": [
         [
           "1  Problem representation",
-          "A problem representation is a selective account of a situation. It identifies relevant actors, conditions, relationships, goals, and constraints. A frame guides what you notice and which actions seem appropriate. Design-framing research uses several definitions, so the term does not identify one universally agreed object.\n\nConsider a fictional dashboard with low use. An adoption frame asks how to increase visits. A decision-support frame asks whether people can make the decisions the dashboard was intended to support. The same usage count can matter differently in each account. Under the second frame, an effective scheduled report might already serve some people's needs.\n\nA representation can be useful for one decision and misleading for another. Examine its purpose, what it excludes, and what evidence would undermine it. Multiple representations can coexist while some empirical claims remain better supported than others.\n\nConnect this to Modules 1 and 5. You will inspect an inherited account and construct alternatives that change a decision."
+          "A problem representation is your account of a situation: who is involved, what is happening, how things are connected, what matters, and what limits your options. A frame directs your attention and makes some actions seem more useful than others. Researchers define design frames in several ways; there is no single agreed definition.\n\nImagine a dashboard that few people use. One frame asks how to increase visits. Another asks whether people can make the decisions the dashboard was meant to support. The same usage count means something different in each frame. Under the second frame, a scheduled report might already meet some people's needs.\n\nA frame can help with one decision and mislead you about another. Ask what it is for, what it leaves out, and what evidence would make you question it. Several frames can be useful at once. That does not mean their claims are equally well supported.\n\nYou will use this in Modules 1 and 5 to examine the first account you receive and develop alternatives that could change your next step."
         ],
         [
           "2  Well structured and ill structured problems",
-          "A well structured problem has reasonably specified goals, relevant conditions, permissible operations, and criteria for evaluating a result. Ill structured problems leave some of those elements uncertain or disputed. This difference concerns the task as represented, rather than how impressive or difficult it sounds.\n\nRepairing a reproducible button failure can have an agreed expected behavior. Deciding how a service should distribute scarce appointment slots may involve competing goals, unclear effects, and people who bear different costs. The second task requires decisions about what improvement means alongside technical investigation.\n\nRittel and Webber's account of wicked planning problems emphasizes contested formulations, evaluative disagreement, and consequences that resist clean experimental reversal. It is a conceptual account of planning, not a diagnostic scale for labeling every UX challenge. Use the relevant features to judge how much inquiry and negotiation a situation requires.\n\nConnect this to Modules 4 and 9. Establish what is unsettled before choosing the amount and kind of framing work."
+          "A well structured problem has fairly clear goals, starting conditions, allowed actions, and ways to judge the result. In an ill structured problem, some of these are unclear or disputed. These terms describe how the task is defined, not simply how difficult it is.\n\nA button that consistently fails may have an agreed expected behavior. Deciding how a service should allocate scarce appointments is different. People may disagree about the goal, the likely effects, and who should bear the costs. You need to decide what improvement means while investigating how the service works.\n\nRittel and Webber described wicked problems in planning: problems where people disagree about the definition and what counts as a good result, and where actions can have lasting consequences. Their account helps you recognize these difficulties. It is not a test for labeling every design task wicked.\n\nYou will use this in Modules 4 and 9 to identify what is unsettled and choose how much framing work the decision needs."
         ],
         [
           "3  Knowledge claims and their limits",
-          "Epistemology concerns what warrants a claim to knowledge. For framing, distinguish observations, interpretations, working premises, predictions, and priorities. Their status determines what kind of support or decision they need. These are working distinctions, and one sentence can contain several of them.\n\nAn observation comes through a method. A recorded event depends on instrumentation and definitions. An interview account depends on what a person noticed, remembers, and reports. Ask what the method can support and what it might miss. Fallibilism means treating even a justified empirical belief as open to revision.\n\nSuppose a participant says they left to compare prices. This supports an account of that person's stated reason. It does not establish the rate of price comparison among all visitors, or prove that a price-display change will increase purchases. Those are different claims.\n\nConnect this to Modules 2, 6, and 10. Seek support and counterevidence, keep source coverage visible, and update confidence without pretending that every uncertainty has a reliable percentage."
+          "Epistemology asks what gives us good reason to claim that we know something. For framing, separate what you observed, how you interpret it, what you assume, what you predict, and what you value. Each needs a different kind of support or decision. One sentence can contain several of these. A premise is a claim your reasoning relies on; it may be supported by evidence or still be an assumption.\n\nHow you gather evidence affects what it can tell you. A recorded event depends on tracking rules and definitions. An interview depends on what a person noticed, remembers, and reports. Ask what your method can show and what it might miss. Fallibilism means recognizing that even a belief supported by good evidence may need revision.\n\nSuppose a participant says they left to compare prices. That tells you their stated reason. It does not tell you how common price comparison is among all visitors, or prove that changing the price display will increase purchases. Those are separate claims.\n\nYou will use this in Modules 2, 6, and 10. Look for evidence that supports and challenges your account. Record who the evidence covers. Do not invent confidence percentages when you cannot justify them."
         ],
         [
           "4  Causal reasoning and counterfactuals",
-          "A causal question asks what would differ under one intervention compared with another. Observing that two events occur together does not identify that difference. Groups may differ in intention, context, or another factor that affects both what they encounter and their eventual outcome.\n\nImagine that people who open a help panel complete fewer purchases. Difficulty could cause both help-seeking and noncompletion. The association alone cannot tell you what removing the panel would do. A credible causal account must explain how the comparison handles alternative influences.\n\nDistinguish three questions. Does a mechanism occur? How widely does it occur? What effect would changing it have? Observation, records, interviews, and experiments can contribute different evidence, with assumptions and limitations. A randomized intervention can help identify its effect under a valid design, while leaving the original mechanism partly unresolved.\n\nConnect this to Modules 2, 6, and 8. Define the outcome and comparison before interpreting a metric movement as evidence for an explanation."
+          "Causal reasoning asks what difference a change would make. Causal inference uses evidence and assumptions to estimate such effects. A counterfactual is what would happen under an alternative action or condition. To ask whether a help panel improves completion, compare what would happen with the panel against what would happen without it. Seeing two events occur together does not answer that question. The groups you observe may differ in other ways that affect the result.\n\nImagine that people who open help complete fewer purchases. Difficulty may cause both help-seeking and leaving. This is a possible confounder: a shared influence that makes the comparison hard to interpret. The association alone cannot tell you what removing help would do. Explain how your comparison deals with such influences.\n\nKeep three questions separate. Does a process happen? How common is it? What would changing it do? A mechanism is the process through which an effect happens; prevalence is how common something is in a defined group. Observations, records, interviews, and experiments answer different questions and have different limits. A well-designed randomized experiment can help estimate the effect of a change without fully explaining how that effect happened.\n\nYou will use this in Modules 2, 6, and 8. State the outcome and comparison before treating a change in a metric as support for your explanation."
         ],
         [
-          "5  Abduction and the evolution of a frame",
-          "Deduction works from premises toward their implications. If a proposed mechanism operates under specified conditions, what should follow? Induction extends from observed cases toward patterns, with uncertainty about generalization. Abduction proposes an explanatory account, or in design a possible means and working principle that could realize a desired value.\n\nDorst analyzes design reasoning through abduction. In open design work, both what to create and how it could produce value may need to be developed. A frame supplies a way of organizing that search. It can change as a candidate solution exposes a dependency or a new interpretation.\n\nFor example, exploring an earlier delivery estimate may reveal that the estimate requires location information people hesitate to provide. This discovery can change the relevant question and the possible interventions. The sketch helps inquiry even if the team later discards it.\n\nConnect this to Modules 5 and 8. Generate plausible accounts, examine their implications, and revise. Plausibility alone does not establish a cause or the effectiveness of a proposed solution."
+          "5  Abduction and how a frame changes",
+          "Deduction asks what follows from stated premises. If your explanation is right under these conditions, what should you observe? Induction uses observed cases to infer a wider pattern, while recognizing that the pattern may not hold elsewhere. Abduction proposes a possible explanation. In design, it can also propose what to create and how it might achieve a desired result.\n\nDorst uses abduction to explain design reasoning. In open design work, you may need to develop both a possible solution and the principle through which it could help. A frame gives you a way to organize that search. Trying a solution can expose a requirement or suggest a different way to understand the problem.\n\nFor example, a sketch of an earlier delivery estimate may reveal that it needs location information people hesitate to share. That discovery can change both your question and the options you consider. The sketch helps you learn even if you later discard it.\n\nYou will use this in Modules 5 and 8. Propose possible accounts, work out what follows from them, and revise. A convincing explanation still needs evidence, and a promising solution still needs testing."
         ],
         [
           "6  Values and boundary judgments",
-          "A boundary judgment selects which people, effects, evidence, and standards count as relevant. Ulrich's boundary critique examines how observations, values, and the reference system condition one another. Choosing who participates is itself a boundary choice. A technically detailed account can still exclude people who bear its costs.\n\nImagine a service measuring success by reducing staff handling time. Customers may then have to repeat information or spend longer resolving an issue. A broader account changes which facts matter and how the result is evaluated. Evidence can reveal that burden. Choosing an acceptable distribution of costs also requires explicit judgment and authority.\n\nDistinguish the scope needed to understand a situation from the scope of action you can authorize. Include a relevant influence in the explanation even when you can only escalate it. Keep commitments feasible while examining whose interests the current boundary favors.\n\nConnect this to Modules 3, 4, and 7. Describe trade-offs rather than presenting an organizational preference as an empirical fact."
+          "A boundary judgment is a choice about which people, effects, evidence, and standards to include. Ulrich's boundary critique examines how those choices shape what we see and judge. What counts as relevant evidence depends partly on what we value and where we draw the boundary. Choosing who participates is also a boundary choice. Even a detailed technical account can leave out people who bear its costs.\n\nImagine a service that measures success by reducing staff handling time. Customers may then have to repeat information or spend longer resolving an issue. Including customer effort changes which facts matter and how you judge the result. Evidence can reveal that burden. Deciding which costs are acceptable, and for whom, also requires a clear priority and someone responsible for the choice.\n\nSeparate what you need to understand from what you have permission to change. Keep a relevant influence in your explanation even if you can only raise it with another team. Keep your commitments practical, while asking whose interests the current boundary favors.\n\nYou will use this in Modules 3, 4, and 7. Describe the trade-offs openly. Do not present an organizational preference as a fact about what happens."
         ],
         [
           "7  Bounded rationality and the value of information",
-          "Simon's model of rational choice takes limited information and computational capacity seriously. Decision procedures work within constraints. Satisficing searches for an option that meets an aspiration level, rather than assuming an exhaustive comparison of every possible option. The adequacy of that level still needs judgment.\n\nFor framing, this supports a practical question. How much more learning is worth its cost for this decision? Howard's work on information value connects uncertainty to its consequences for choices. In decision analysis, information has value when it improves expected choices enough to offset its costs. Reducing uncertainty and improving a decision are related but different aims.\n\nIf every plausible test result leaves the same bounded repair preferable, that test may have little immediate decision value. If one finding could prevent an expensive commitment, investigation may be worth more. Include the cost of delay and the consequences of error. Numerical estimates are useful only when their assumptions can be defended.\n\nConnect this to Modules 6 and 9. Explain a stopping rule and a revision trigger. Bounded rationality does not make arbitrary decisions reasonable, and this synthesis does not provide a universal stopping formula."
+          "Bounded rationality recognizes that people decide with limited information, time, and ability to process it. In Simon's account, satisficing means searching for an option that meets an aspiration level: a standard you judge good enough for the task. You do not assume you can compare every possible option. You still need to explain why your standard is acceptable.\n\nThis raises a practical question for framing: how much more learning is worth its cost for this decision? Howard's work on the value of information connects uncertainty to the consequences of choices. Information has value for a decision when it can improve your choice. To decide whether to gather it, weigh that expected benefit against the cost. Learning more does not always lead to a better decision.\n\nIf every likely test result leaves the same small repair as your best next step, that test may add little value to the current choice. If a finding could prevent an expensive mistake, investigating may be worth more. Include the cost of delay. Use numbers only when you can explain and defend the estimates.\n\nYou will use this in Modules 6 and 9. State when you will stop investigating and what would make you reconsider. Bounded rationality does not justify arbitrary choices, and there is no stopping rule that fits every decision."
         ]
       ],
       "readings": [
@@ -65,7 +65,7 @@ window.COURSE = {
           "https://doi.org/10.2307/1884852"
         ]
       ],
-      "worked": "One situation through three theoretical lenses\n\nReported condition • People who open help complete fewer purchases.\nRepresentation • Are we examining adoption, successful intended purchases, or recovery from difficulty?\nCausality • Difficulty may cause both help-seeking and noncompletion. Removing help does not follow from the association.\nValues and boundaries • Staff workload, customer effort, and intended purchase quality may conflict.\nDecision value • Check the uncertainty that could change a consequential choice. Preserve what remains unresolved.\n\nThis fictional example shows why theories lead to different questions before a technique is chosen.",
+      "worked": "One situation, viewed through the main theories\n\nReported observation • People who open help complete fewer purchases.\nProblem representation • Are we trying to increase use, help people complete intended purchases, or help them recover from difficulty?\nCausal reasoning • Difficulty may cause both help-seeking and leaving. The association alone does not justify removing help.\nValues and boundaries • Reducing staff work, reducing customer effort, and supporting informed purchases may call for different priorities.\nValue of information • Investigate an unknown that could change an important choice. Keep the remaining unknowns visible.\n\nThis fictional example shows how the theories help you ask useful questions before choosing a technique.",
       "exercises": [
         {
           "title": "Explain the difference between theories",
@@ -75,7 +75,7 @@ window.COURSE = {
             "Write one claim of fact and one choice of priority. Explain what each requires.",
             "Identify which uncertainty matters before committing six weeks of development."
           ],
-          "model": "Representation asks what the dashboard is for and which condition deserves attention. Causal reasoning asks which influences account for use and what an intervention could change. Boundary critique asks whose interests and costs are included. The rate needs measurement definitions. Prioritizing use over decision quality needs an explicit rationale. A consequential early uncertainty is whether the intended users have a recurring task the dashboard supports.",
+          "model": "Problem representation asks what the dashboard is for and what deserves attention. Causal reasoning asks what affects its use and what a change might do. Boundary critique asks whose interests and costs are included. To interpret the usage rate, we need to know how it was measured. Choosing usage over decision quality needs a stated reason. An important early question is whether intended users have a recurring task the dashboard helps with.",
           "review": [
             "I distinguished the theories rather than repeating one question.",
             "I explained evidence and priorities separately.",
@@ -83,29 +83,29 @@ window.COURSE = {
           ]
         },
         {
-          "title": "Derive an implication and a limit",
-          "brief": "Suppose interruptions during a task lead some people to open help and also lead some people to leave. No intervention has been tested.",
+          "title": "Work out what follows and what remains unknown",
+          "brief": "Suppose interruptions during a task lead some people to open help and also lead some people to leave. No change has been tested.",
           "tasks": [
-            "Explain why a link between help and leaving need not identify an effect of help.",
-            "Propose one observation that could inform the account and state what it would leave open.",
+            "Explain why a link between help and leaving does not by itself show an effect of help.",
+            "Propose one observation that could help you examine the account and state what it would leave open.",
             "Explain how a sketch could change your representation without proving a causal effect."
           ],
-          "model": "Interruptions are a possible common influence on both events. A record of task interruptions and sequence can inform this account while leaving causal assumptions and unrecorded factors open. A sketch might reveal that recovery information is missing. That changes the design question, while its benefit still requires evaluation.",
+          "model": "Interruptions may influence both opening help and leaving. Records of interruptions and the order of events could help us examine that account. They would not, by themselves, rule out other influences or establish a causal effect. A sketch might reveal missing information about how to resume a task. That could change the design question, while the benefit of adding that information would still need testing.",
           "review": [
             "I explained a common influence.",
             "I kept the conclusion within the method's limits.",
-            "I treated a prototype as evidence with a specific scope."
+            "I stated what the prototype could and could not show."
           ]
         },
         {
-          "title": "Write your theoretical position",
+          "title": "Explain how you will judge a frame",
           "brief": "Use 200–300 words to explain how you will judge a frame before learning the practical methods.",
           "tasks": [
             "Explain what makes a representation useful for a specific decision.",
-            "Describe how evidence and values constrain that judgment.",
-            "State when further inquiry is worth its cost and what would make you revise."
+            "Describe how evidence and values shape that judgment.",
+            "State when more investigation is worth its cost and what would make you revise."
           ],
-          "model": "A strong position gives an account that is relevant to a decision, supported in its empirical premises, explicit about priorities and exclusions, and open to revision. It recognizes limited information and meaningful disagreement. It justifies another inquiry by what it could change, rather than assuming that more research always helps.",
+          "model": "A strong answer explains how a frame helps with a specific choice. It shows which evidence supports its claims, states priorities and exclusions, and remains open to revision. It recognizes limited information and reasonable disagreement. It explains what another investigation could change, rather than assuming more research always helps.",
           "review": [
             "I used the theories accurately.",
             "I avoided claiming that one frame must be uniquely correct.",
@@ -118,7 +118,7 @@ window.COURSE = {
           "prompt": "Two teams see the same low-use measure. One prioritizes visits and the other decision quality. What differs?",
           "options": [
             "Only their interface preferences.",
-            "The outcome organizing their representations.",
+            "The outcome each frame treats as success.",
             "The underlying recorded count.",
             "The number of observations already collected."
           ],
@@ -139,7 +139,7 @@ window.COURSE = {
           "hint": "Ask what is specified, rather than how hard the task feels."
         },
         {
-          "prompt": "What does fallibilism imply for a well-supported empirical account?",
+          "prompt": "Under fallibilism, how should you treat an account supported by good evidence?",
           "options": [
             "It remains open to revision.",
             "All competing claims deserve equal confidence.",
@@ -147,31 +147,31 @@ window.COURSE = {
             "No action can be justified."
           ],
           "correct": 0,
-          "reason": "Being justified does not make an account immune to new evidence. This does not require equal confidence in weaker accounts.",
-          "hint": "Consider whether justification implies certainty."
+          "reason": "Good reasons do not make an account immune to new evidence. You do not need to give weaker accounts equal confidence.",
+          "hint": "Does having good reasons mean you can be certain?"
         },
         {
-          "prompt": "Difficulty causes both help-seeking and noncompletion. What does their association alone establish about removing help?",
+          "prompt": "Difficulty causes both opening help and leaving without finishing. What does their association alone tell you about removing help?",
           "options": [
             "It must improve completion.",
             "It must leave completion unchanged.",
             "It must harm completion.",
-            "Its causal effect remains unidentified."
+            "The association does not tell us its causal effect."
           ],
           "correct": 3,
-          "reason": "A common influence can produce the association. The effect of removing help requires a suitable causal comparison and assumptions.",
+          "reason": "A shared influence can produce the association. To estimate the effect of removing help, you need a suitable comparison and must explain its assumptions.",
           "hint": "Consider the influence shared by the two observed events."
         },
         {
-          "prompt": "A designer proposes a new working principle that could realize a desired outcome. Which reasoning pattern is central?",
+          "prompt": "A designer proposes how a new design might achieve a desired outcome. Which kind of reasoning is central?",
           "options": [
-            "Exhaustive enumeration.",
+            "Listing every possible option.",
             "Abductive design reasoning.",
-            "A measured population effect.",
-            "A proof that the outcome is ethically preferable."
+            "Measuring an effect across a defined group.",
+            "Proving that the outcome is ethically better."
           ],
           "correct": 1,
-          "reason": "Abductive design reasoning proposes a possible account of how value could be realized. It does not establish effectiveness or ethical priority by itself.",
+          "reason": "Abductive design reasoning proposes how a design might achieve a desired result. It does not prove that the design works or that the goal should take priority.",
           "hint": "Distinguish proposing a way forward from proving its consequences."
         },
         {
@@ -183,8 +183,8 @@ window.COURSE = {
             "Only whether the calculation is arithmetically correct."
           ],
           "correct": 2,
-          "reason": "Boundary critique examines selectivity and its implications. It does not prescribe one stakeholder's priority in every case.",
-          "hint": "Look for the selection that organizes the evaluation."
+          "reason": "Boundary critique asks what was included or excluded and what that choice means. It does not say the same group must always take priority.",
+          "hint": "Ask whose costs are being counted."
         },
         {
           "prompt": "Under bounded rationality, satisficing refers to what?",
@@ -192,16 +192,16 @@ window.COURSE = {
             "Choosing without criteria.",
             "Maximizing every possible outcome.",
             "Treating all constraints as permanent.",
-            "Searching for an option meeting an aspiration level."
+            "Searching for an option that meets a chosen standard."
           ],
           "correct": 3,
-          "reason": "Satisficing uses an acceptability threshold within limited search. The threshold and consequences still require examination.",
-          "hint": "Consider a stopping rule that does not assume exhaustive optimization."
+          "reason": "Satisficing looks for an option that meets a chosen standard without comparing every possibility. You still need to examine the standard and the consequences.",
+          "hint": "Consider how you could stop searching without comparing every option."
         },
         {
-          "prompt": "Under a specified decision model, a costless test cannot change which action is preferable in any result. What is its immediate decision value?",
+          "prompt": "Under a stated decision model, a free test leaves the same action best for every possible result. How much does it improve that choice?",
           "options": [
-            "Zero expected improvement in that choice.",
+            "No expected improvement in that choice.",
             "Necessarily high because it reduces uncertainty.",
             "Equal to the number of possible results.",
             "Impossible to discuss even under the model."
@@ -211,15 +211,15 @@ window.COURSE = {
           "hint": "Keep the question tied to the stated choice."
         },
         {
-          "prompt": "If a causal hypothesis is true, a team derives an observable implication. Which reasoning step is this?",
+          "prompt": "A team asks: if our causal hypothesis is true, what should we observe? Which kind of reasoning is this?",
           "options": [
             "Estimating prevalence by sampling.",
-            "Deducing an implication from premises.",
+            "Deduction: working out what follows from the premises.",
             "Choosing the preferred stakeholder.",
             "Proving that a frame is unbiased."
           ],
           "correct": 1,
-          "reason": "Deduction works from specified premises toward their implications. Testing the implication then contributes evidence with its own limits.",
+          "reason": "Deduction works out what follows from stated premises. Checking the prediction can then add evidence, within the limits of the test.",
           "hint": "Ask which direction the reasoning moves."
         },
         {
@@ -227,11 +227,11 @@ window.COURSE = {
           "options": [
             "Declare every product task wicked.",
             "Stop using evidence when goals conflict.",
-            "Recognize contested goals and consequential interventions.",
-            "Assume every planning choice is equally defensible."
+            "Recognize disputed goals and actions with lasting consequences.",
+            "Assume every planning choice is equally well supported."
           ],
           "correct": 2,
-          "reason": "The account draws attention to formulation, evaluation, and consequences in planning. It supplies no universal label or exemption from evidence.",
+          "reason": "The account helps you examine how planning problems are defined, judged, and changed by actions. It does not make every problem wicked or remove the need for evidence.",
           "hint": "Use the theory to inspect relevant features of the situation."
         }
       ],
@@ -241,8 +241,8 @@ window.COURSE = {
           "creator": "Teresa Torres · Mind the Product London 2017",
           "url": "https://www.producttalk.org/compare-and-contrast-decisions/",
           "review": "Content reviewed against the author's published talk script. The script is not a word-for-word transcript of the delivered talk.",
-          "why": "An alumni-community case makes conflicting interpretations visible, then revises the structure used to compare needs. Use it after the theoretical readings as a worked illustration.",
-          "limit": "The case is a retrospective practitioner account. It does not establish that the tree caused a measured business improvement or settle whether engagement is the right priority.",
+          "why": "A case about an alumni community shows conflicting interpretations and a change in how the team compares needs. Use it after the readings to see the ideas in practice.",
+          "limit": "The speaker looks back on her own work. The case does not show that the tree caused a measured business improvement or establish that engagement should take priority.",
           "task": "Track the change from unwanted messages to connecting people who need and can offer help. Identify the observations, interpretations, and priorities. Name one piece of additional evidence you would seek."
         }
       ]
@@ -254,28 +254,28 @@ window.COURSE = {
       "minutes": "40–60",
       "sections": [
         [
-          "A brief contains several kinds of claim",
-          "Imagine receiving this fictional request. Redesign checkout because 62% of sessions drop off at payment. The dashboard reading is a reported observation. The claim that the interface causes lost orders is an interpretation. The instruction to redesign is a proposed intervention. Each may deserve attention, but the report alone cannot establish the interpretation. Keep the original wording so you can inspect the reasoning it contains."
+          "A brief can mix facts, assumptions, and solutions",
+          "Imagine receiving this fictional request: redesign checkout because 62% of sessions drop off at payment. The dashboard reading is a reported observation. Saying that the interface causes lost orders is an interpretation. Redesigning is a proposed change. Each may deserve attention, but the report alone does not show that the interpretation is right. Keep the original wording so you can examine its reasoning."
         ],
         [
           "Find what must be decided",
-          "Ask what prompted concern, what changed, why this matters now, who can authorize action, and what delay would cost. The pending decision might be whether to spend a quarter rebuilding checkout or whether to investigate an incident today. Those decisions require different levels of confidence. A useful first frame can be an investigation question. You do not need to pretend you already know the user problem."
+          "Ask what prompted the concern, what changed, why it matters now, who can approve action, and what delay would cost. You might need to decide whether to spend a quarter rebuilding checkout or whether to investigate a payment incident today. Those choices need different levels of confidence. Your first frame can be a question to investigate. You do not need to pretend you already know the user problem."
         ],
         [
-          "Write a provisional brief",
-          "Name the people and situation, the condition of concern, the intended improvement, and the relevant scope. Keep evidence and unknowns alongside that account. A short paragraph is often more useful than a polished sentence. Record what the frame excludes. Revisit the account when inquiry, prototypes, or a change in priorities makes its assumptions less credible."
+          "Write a working brief",
+          "Name the people, situation, concern, intended improvement, and scope: what the work will cover and leave out. Record the evidence and unknowns alongside them. A short paragraph is often more useful than a polished sentence. Revisit the brief when research, prototypes, or changing priorities give you reason to question its assumptions."
         ]
       ],
-      "worked": "Inherited request • Add a chatbot because support tickets increased.\nWorking question • Establish which support needs increased and whether customers can resolve them, so we can choose an appropriate response.\nWhy this helps • It leaves automation, product repair, clearer information, and staffing available until the evidence supports a choice.",
+      "worked": "Original request • Add a chatbot because support tickets increased.\nWorking question • Find out which support needs increased and whether customers can resolve them, so we can choose how to respond.\nWhy this helps • Automation, a product repair, clearer information, and staffing remain options until the evidence supports a choice.",
       "exercises": [
         {
           "title": "Unpack the checkout brief",
           "brief": "The only supplied information is the reported 62% checkout drop and the redesign request.",
           "tasks": [
             "Separate the observation, interpretation, assumption, priority, and proposal.",
-            "Write the pending decision and three questions that would materially change it."
+            "State what needs to be decided and three questions whose answers could change that choice."
           ],
-          "model": "Observation • a dashboard reports a rate. Assumptions might include that the events are reliable, missing completion means no order, and the people intended to buy. The proposed intervention is redesign. A reasonable pending decision is whether to invest in redesign or investigate another explanation. The business priority has not yet been specified precisely.",
+          "model": "Observation • A dashboard reports a rate. Assumptions may include that tracking works, no recorded completion means no order, and people intended to buy. The proposed change is a redesign. The decision may be whether to fund that redesign or investigate another explanation. The business priority still needs a clearer definition.",
           "review": [
             "I did not treat the cause as known.",
             "I stated a decision that a person can make.",
@@ -287,12 +287,12 @@ window.COURSE = {
           "brief": "A director says that customers need an AI onboarding assistant.",
           "tasks": [
             "Write two possible needs that could motivate the request.",
-            "For each, explain what would make a non-assistant intervention plausible."
+            "For each, explain why a different approach might help without an AI assistant."
           ],
-          "model": "One possibility is that new administrators cannot configure permissions correctly. Another is that buyers cannot judge whether the product fits their workflow. Configuration defaults, clearer documentation, or better product information might help. These are candidate needs, not findings. Ask what specific events motivated the request.",
+          "model": "New administrators may struggle to set permissions correctly. Buyers may need help judging whether the product fits their workflow. Better defaults, clearer documentation, or better product information might help. These are possible needs to investigate, not findings. Ask which specific events led to the request.",
           "review": [
-            "I kept candidate needs provisional.",
-            "I allowed more than one intervention.",
+            "I treated possible needs as ideas to check.",
+            "I kept more than one possible change open.",
             "I identified missing evidence."
           ]
         }
@@ -307,7 +307,7 @@ window.COURSE = {
             "62% of people tried and failed to pay."
           ],
           "correct": 0,
-          "reason": "A report is evidence of what the system records. Intent, causality, and intervention effects need additional support.",
+          "reason": "A report shows what the system recorded. Intent, causes, and the effects of changes need more evidence.",
           "hint": "Distinguish the reporting system from the behavior it is meant to represent."
         },
         {
@@ -319,19 +319,19 @@ window.COURSE = {
             "The screen has ten fields."
           ],
           "correct": 0,
-          "reason": "Funding a rebuild is a choice with an owner and consequences. The other statements are an interpretation, a count, and a broad aspiration.",
+          "reason": "Funding a rebuild is a choice someone can make and be responsible for. The other statements offer an interpretation, a count, and a broad wish.",
           "hint": "Look for a choice that could lead to different actions."
         },
         {
-          "prompt": "No causal evidence is available yet. What can a defensible brief do?",
+          "prompt": "The cause is not known yet. What can a useful brief do?",
           "options": [
             "Require a redesign to preserve momentum.",
-            "State an investigation question and its decision purpose.",
+            "State what to investigate and which decision it will help with.",
             "Choose the most plausible cause as a fact.",
             "Delay all action until every cause is known."
           ],
           "correct": 1,
-          "reason": "An investigation brief can name the uncertainty and the choice it informs without inventing a diagnosis.",
+          "reason": "A brief can state what is unknown and which choice depends on it without pretending to know the cause.",
           "hint": "A useful brief can acknowledge what remains unknown."
         }
       ],
@@ -340,46 +340,46 @@ window.COURSE = {
     {
       "id": 2,
       "title": "Check evidence and measurement",
-      "objective": "Determine what a signal establishes and what remains uncertain.",
+      "objective": "Check what the evidence shows and what remains unknown.",
       "minutes": "40–60",
       "sections": [
         [
-          "Measurements have definitions",
-          "A rate requires a denominator, event definitions, a unit, and a time window. A session, person, attempt, and order are different units. Someone can fail twice, succeed once, and appear in several sessions. Ask whether external payment providers, delayed events, consent settings, or returns on another device affect the data. These are checks to consider, not explanations to assume."
+          "Define what the numbers measure",
+          "To understand a rate, you need its denominator, meaning the total it is calculated from. You also need the event definitions, what is being counted, and the time window. A session, person, attempt, and order are different things to count. Someone can fail twice, succeed once, and appear in several sessions. Check whether outside payment providers, delayed events, consent settings, or a return on another device affect the data. Treat these as possibilities to check."
         ],
         [
-          "Use comparison carefully",
-          "An alarming number needs context. Compare relevant periods and populations, taking account of changes in traffic or instrumentation. An overall rate can change when the mix of visitors changes even if behavior inside each group stays stable. Split data when a distinction could change an action. Avoid searching endless segments for an exciting story."
+          "Compare carefully",
+          "A worrying number needs context. Compare relevant periods and groups, allowing for changes in visitors or event tracking. An overall rate can change because the mix of visitors changes, even when behavior within each group stays the same. Split the data into groups when that could change your next action. Avoid searching endless groups until you find an interesting story."
         ],
         [
-          "Keep coverage visible",
-          "Record where evidence came from, when it was collected, who it covers, and its known limits. A convenience sample can expose a tracking error without estimating its frequency across all users. Several reports quoting the same interview remain one underlying source. Missing evidence is informative only if your method could reasonably have detected the expected signal."
+          "Record who and what the evidence covers",
+          "Record where evidence came from, when it was collected, who it covers, and its known limits. A convenience sample includes cases because they are easy to reach. It can reveal a tracking error without telling you how common the error is among all users. Several reports quoting the same interview still rely on one source. Not finding an expected event tells you little unless your method had a reasonable chance of detecting it."
         ]
       ],
-      "worked": "Fictional check • Of 20 conveniently selected sessions marked as abandoned, 6 link to completed orders.\nSupported • At least some apparent exits in this sample are recorded purchases.\nStill open • The population tracking-error rate, the true purchase rate, and the reasons for genuine exits.",
+      "worked": "Fictional check • Of 20 sessions selected because they were easy to check, 6 were marked as abandoned but link to completed orders.\nSupported • Some apparent exits in this sample were purchases.\nStill unknown • How often this tracking error happens across all users, the true purchase rate, and why people who did not buy left.",
       "exercises": [
         {
           "title": "Audit a funnel",
-          "brief": "An analyst says that 600 of 1,000 sessions did not emit the completion event within 10 minutes.",
+          "brief": "An analyst says that 600 of 1,000 sessions did not record the completion event within 10 minutes.",
           "tasks": [
             "Write five checks before calling these 600 failed purchases.",
             "Name two claims the data cannot support on its own."
           ],
-          "model": "Check event behavior, time to completion, session-to-order linkage, retries or multiple sessions, and comparability of traffic. The statement describes missing recorded events in a window. It does not by itself establish purchase intent or interface difficulty. Longer windows should be justified by actual purchasing behavior.",
+          "model": "Check how events are recorded, how long purchases take, whether sessions can be linked to orders, how retries or multiple sessions are counted, and whether visitor groups are comparable. The number describes missing completion events within a time window. It does not by itself show intent to buy or difficulty with the interface. Choose a longer window only when actual purchasing behavior supports it.",
           "review": [
             "I checked the denominator and window.",
             "I separated attempt status from final outcome.",
-            "I avoided inferring intent from an event."
+            "I did not infer intent from a recorded event alone."
           ]
         },
         {
-          "title": "Explain a changing aggregate",
+          "title": "Explain a changing overall rate",
           "brief": "Period A has 100 returning visitors at 80% completion and 100 new visitors at 20%. Period B has 50 returning visitors at 80% and 150 new visitors at 20%.",
           "tasks": [
             "Calculate each period's overall completion rate.",
-            "Explain what changed and which causal claim would be premature."
+            "Explain what changed and which causal claim would go beyond the evidence."
           ],
-          "model": "A has 80 + 20 = 100 completions from 200 visitors, or 50%. B has 40 + 30 = 70 from 200, or 35%. Within-group rates stayed constant while the visitor mix changed. These counts do not show that an interface change caused the overall decline.",
+          "model": "A has 80 + 20 = 100 completions from 200 visitors: 50%. B has 40 + 30 = 70 from 200: 35%. Rates within each group stayed the same. The mix of visitors changed. These counts do not show that an interface change caused the overall decline.",
           "review": [
             "My calculations use the correct denominator.",
             "I noticed the change in traffic mix.",
@@ -389,7 +389,7 @@ window.COURSE = {
       ],
       "quiz": [
         {
-          "prompt": "Six of 20 convenience-sampled exits link to orders. What follows?",
+          "prompt": "Six of 20 exits selected because they were easy to check link to orders. What follows?",
           "options": [
             "The remaining 14 were caused by the form.",
             "Some sampled exits were completed purchases.",
@@ -397,8 +397,8 @@ window.COURSE = {
             "Most shoppers cannot pay."
           ],
           "correct": 1,
-          "reason": "The sample reveals a mismatch, but its selection does not establish a population rate or explain the other sessions.",
-          "hint": "Separate detecting an issue from estimating its prevalence."
+          "reason": "The sample reveals a mismatch. How the cases were chosen means you cannot use the rate to describe all sessions or explain the remaining ones.",
+          "hint": "Finding an issue is different from estimating how common it is."
         },
         {
           "prompt": "Two reports and a slide deck all cite one interview. How many independent participant accounts are present?",
@@ -430,23 +430,23 @@ window.COURSE = {
     {
       "id": 3,
       "title": "Choose whose outcome matters",
-      "objective": "Distinguish empirical claims from priorities and make trade-offs explicit.",
+      "objective": "Separate claims about what happens from choices about what matters. Explain the trade-offs.",
       "minutes": "40–60",
       "sections": [
         [
-          "A business concern can point to several needs",
-          "Lost conversion matters to a merchant. A shopper might want reliable payment, an affordable total, or enough information to decide. A real exit does not establish that the shopper experienced a failure. Ask about a recent concrete event and what the person was trying to achieve. Leave room for people to have different goals in the same interface."
+          "One business concern can point to several user needs",
+          "Lost sales matter to a merchant. A shopper might want payment that works, an affordable total, or enough information to decide. Leaving does not by itself mean the shopper experienced a failure. Ask about a specific recent event and what the person was trying to do. People using the same interface can have different goals."
         ],
         [
-          "Define improvement before selecting a metric",
-          "A measure should represent an intended outcome. Earlier price visibility may reduce wasted effort while purchases remain constant. A conversion increase accompanied by more accidental orders or refunds may involve an unwanted cost. State which outcomes are primary, which costs must be watched, and whose interests the choice prioritizes."
+          "Define improvement before choosing a metric",
+          "A metric should measure something you want to improve. Showing prices earlier may reduce wasted effort while purchases stay the same. More purchases may come with more accidental orders or refunds. State which outcomes take priority, which costs you will watch, and whose interests the choice serves."
         ],
         [
-          "Evidence informs a value choice",
-          "You can investigate when people discover shipping fees and what follows. Choosing whether to prioritize informed choice, revenue, or operational effort also involves values and authority. Ask who decides and who bears the consequences. More interviews can clarify experience while leaving a legitimate disagreement about priorities unresolved."
+          "Evidence helps with priorities but does not choose them for you",
+          "You can investigate when people discover shipping fees and what happens next. Choosing whether to prioritize informed choice, revenue, or staff effort also involves values and permission to decide. Ask who makes the choice and who lives with its consequences. More interviews can clarify people's experiences while leaving a reasonable disagreement about priorities unresolved."
         ]
       ],
-      "worked": "Fictional alternatives • Help intending buyers complete payment. Help shoppers evaluate total cost. Help support staff resolve payment incidents.\nDifferent success criteria • Successful intended purchases, earlier informed decisions, and lower recovery effort.\nThese frames can coexist, and the team must choose a justified scope.",
+      "worked": "Fictional alternatives • Help people who want to buy complete payment. Help shoppers assess the total cost. Help support staff resolve payment incidents.\nDifferent measures of success • Completed intended purchases, earlier informed decisions, and less effort resolving problems.\nThese frames can overlap. The team still needs to explain which work it will take on.",
       "exercises": [
         {
           "title": "Compare outcomes",
@@ -455,7 +455,7 @@ window.COURSE = {
             "Explain a possible user improvement and a business interpretation.",
             "Name evidence you still need before claiming the change helped all shoppers."
           ],
-          "model": "The estimator may help people judge affordability with less effort. Stable purchases do not establish a revenue benefit or harm. Check coverage, other groups, errors in estimates, and whether the observed time reduction generalizes. An earlier exit alone is ambiguous.",
+          "model": "The estimator may help people judge affordability with less effort. Unchanged purchase counts do not show whether revenue benefited or suffered. Check who the observations cover, other user groups, inaccurate estimates, and whether others also save time. An earlier exit alone does not show whether the change helped.",
           "review": [
             "I distinguished the goals.",
             "I did not assume every exit is bad.",
@@ -469,25 +469,25 @@ window.COURSE = {
             "Write each perspective fairly.",
             "Propose one investigation and one decision that evidence alone cannot settle."
           ],
-          "model": "Investigate which information affects account quality and where applicants incur effort or make errors. The acceptable trade-off between speed, reliability, and operating costs requires accountable judgment. Do not label the disagreement a bias before understanding its basis.",
+          "model": "Investigate which information affects account quality and where applicants spend effort or make errors. Someone responsible for the decision must explain the acceptable trade-off between speed, reliability, and operating costs. Understand the disagreement before calling it a bias.",
           "review": [
             "I represented each interest without stereotyping.",
-            "I separated an empirical question from a priority.",
+            "I separated a question evidence can answer from a choice about priorities.",
             "I named who needs to decide."
           ]
         }
       ],
       "quiz": [
         {
-          "prompt": "Purchases stay flat while shoppers discover total cost earlier and spend less time finding it. Which statement is defensible?",
+          "prompt": "Purchases stay the same while shoppers find the total cost earlier and spend less time finding it. Which claim is supported?",
           "options": [
             "Every shopper now understands all costs.",
-            "A user outcome may improve while conversion stays flat.",
+            "A user outcome may improve while the purchase rate stays the same.",
             "The redesign must have failed.",
             "The business is guaranteed to gain revenue."
           ],
           "correct": 1,
-          "reason": "A shorter, better-informed decision can be valuable without more purchases. The evidence does not guarantee broader comprehension or revenue.",
+          "reason": "Helping someone decide sooner with better information can be useful without increasing purchases. It does not guarantee that everyone understands the costs or that revenue increases.",
           "hint": "Consider the shopper's goal as well as the merchant's."
         },
         {
@@ -495,11 +495,11 @@ window.COURSE = {
           "options": [
             "When does shipping cost appear?",
             "How many attempts failed?",
-            "Which provider emitted the error?",
+            "Which provider recorded the error?",
             "Whose outcome should this project prioritize?"
           ],
           "correct": 3,
-          "reason": "Choosing whose outcome receives priority involves values and decision authority, although evidence can inform the consequences.",
+          "reason": "Choosing whose outcome takes priority involves values and who has permission to decide. Evidence can help show the consequences.",
           "hint": "Distinguish a measurable event from a choice about what matters."
         },
         {
@@ -520,36 +520,36 @@ window.COURSE = {
     {
       "id": 4,
       "title": "Set boundaries and verify constraints",
-      "objective": "Understand enough of the system while keeping commitments feasible.",
+      "objective": "Understand the wider situation and choose work the team can actually do.",
       "minutes": "40–60",
       "sections": [
         [
-          "Understanding and authority have different limits",
-          "The explanation boundary includes relationships you need to understand. The intervention boundary covers what you can change, influence, or escalate. A team may need to understand acquisition promises and shipping policy even when it owns only checkout. Excluding an influence because you cannot control it can distort the account."
+          "What you need to understand may exceed what you can change",
+          "The explanation boundary covers what you need to understand. The intervention boundary covers what you can change, influence, or raise with someone else. A checkout team may need to understand advertising promises and shipping policy even if it controls only checkout. Leaving out an influence because you cannot control it can give you a misleading account."
         ],
         [
-          "Check consequential constraints",
-          "For a constraint that changes the available options, ask who established it, its scope, its evidence, and what changing it costs. Some requirements are binding for the present decision. Some historical choices can be revisited. Avoid assuming either that every obstacle is fixed or that every rule is negotiable. Record relevant dependencies and their owners."
+          "Check constraints that affect your options",
+          "A constraint is a limit on what you can do. If it changes your options, ask who set it, where it applies, what supports it, and what changing it would cost. Some requirements must be followed for the current decision. Some past choices can be reconsidered. Do not assume every obstacle is fixed or every rule can change. Record what depends on another team or system, and who is responsible."
         ],
         [
-          "Adjust the level of the question",
-          "Abstraction laddering moves between a proposed task and its purpose. Ask why a shorter form matters, then consider other ways to serve that purpose. This differs from asking why a person left, which concerns causes. Widen the inquiry when it could change a decision. Return to feasible action when further expansion adds no useful distinction."
+          "Move between the task and its purpose",
+          "Abstraction laddering moves between a task and the purpose it serves. Ask why a shorter form matters, then consider other ways to serve that purpose. This is different from asking why someone left, which asks about causes. Broaden the question when doing so could change a decision. Return to actions you can take when broadening it further no longer helps."
         ]
       ],
-      "worked": "Checkout team • Cannot change delivery fees, but can change when estimates appear.\nExplanation scope • Include delivery policy and earlier promises.\nAction scope • Evaluate earlier disclosure, and escalate policy issues with evidence.\nA fee outside the team's control can remain relevant to its explanation.",
+      "worked": "Checkout team • Cannot change delivery fees, but can change when estimates appear.\nWhat to understand • Delivery policy and earlier promises.\nWhat to do • Test earlier fee information and raise policy issues with evidence.\nA fee outside the team's control can still help explain what happens.",
       "exercises": [
         {
           "title": "Draw two boundaries",
           "brief": "A product team owns a booking page. Call-center staff promise appointments that the scheduling system cannot reliably confirm.",
           "tasks": [
             "List what must be understood and what the team can act on.",
-            "Propose a bounded next step and an escalation."
+            "Propose a limited next step and an issue to raise with someone who can act on it."
           ],
-          "model": "Understand the promises, capacity data, confirmation process, and failure consequences. The team may improve status clarity or investigate synchronization while escalating staffing and promise policies. Confirm authority before committing another department to changes.",
+          "model": "Understand what staff promise, how appointment availability is recorded, how confirmation works, and what happens when it fails. The team may clarify booking status or investigate whether systems stay in sync. It can raise staffing and promise policies with the people responsible. Check who can approve a change before promising work from another department.",
           "review": [
             "I included relevant external influences.",
-            "I bounded the action.",
-            "I identified an owner for dependencies."
+            "I limited the proposed work to what the team can do.",
+            "I named who is responsible for work we depend on."
           ]
         },
         {
@@ -557,9 +557,9 @@ window.COURSE = {
           "brief": "A manager says that the current workflow cannot change because customers expect it.",
           "tasks": [
             "Write questions that distinguish evidence, preference, and switching cost.",
-            "Name evidence that could justify retaining the workflow."
+            "Name evidence that could justify keeping the workflow."
           ],
-          "model": "Ask which customers, what they expect, the supporting observations, the consequences of change, and whether alternatives preserve essential behavior. Existing integrations, training costs, or demonstrated reliance may justify keeping parts of it. Tradition alone leaves the rationale unresolved.",
+          "model": "Ask which customers expect the current workflow, what evidence supports that claim, what a change would cost, and whether alternatives could preserve essential behavior. Existing integrations, training costs, or evidence that people rely on it may justify keeping parts of the workflow. Saying it has always worked this way does not explain why it should stay.",
           "review": [
             "I investigated rather than dismissed the claim.",
             "I considered costs of changing it.",
@@ -577,11 +577,11 @@ window.COURSE = {
             "Nowhere until the fee can be removed."
           ],
           "correct": 1,
-          "reason": "Relevance to an explanation does not depend on direct control. The team may alter disclosure or escalate the policy.",
-          "hint": "Separate causal relevance from authority."
+          "reason": "A fee can help explain what happens even if the team cannot change it. The team may show it earlier or raise the policy with someone who can act on it.",
+          "hint": "Separate what affects the result from what you have permission to change."
         },
         {
-          "prompt": "In abstraction laddering, why does this task matter mainly explores what?",
+          "prompt": "In abstraction laddering, asking \"Why does this task matter?\" mainly explores what?",
           "options": [
             "Its technical implementation.",
             "The purpose behind the task.",
@@ -601,7 +601,7 @@ window.COURSE = {
             "Accept it because a manager said it."
           ],
           "correct": 1,
-          "reason": "A constraint needs a specific rationale. Neither immediate dismissal nor automatic acceptance establishes its scope.",
+          "reason": "Ask why the constraint applies and where its limits are. Rejecting or accepting it without checking does not answer those questions.",
           "hint": "Find what makes the constraint real for this decision."
         }
       ],
@@ -610,32 +610,32 @@ window.COURSE = {
     {
       "id": 5,
       "title": "Construct meaningful alternative frames",
-      "objective": "Compare different accounts without forcing a single cause or inventing equivalence.",
+      "objective": "Compare different accounts without forcing one cause or treating all explanations as equally strong.",
       "minutes": "40–60",
       "sections": [
         [
-          "Change something that matters",
-          "An alternative can change the group, goal, scope, or explanatory account. Ten possible form defects can still sit inside one frame about helping intending buyers finish payment. Helping people judge whether to buy changes what success means. A new causal account can also change scope, ownership, and intervention. Frames and causal hypotheses are related rather than cleanly separable boxes."
+          "Change something that affects the decision",
+          "An alternative frame can change the group, goal, scope, or explanation. Ten possible form defects may still belong to one frame: helping people who want to buy finish payment. Helping people decide whether to buy changes what success means. A different causal explanation can also change the scope, who is responsible, and what you do. Frames and causal hypotheses are connected; they are not always separate categories."
         ],
         [
-          "Use overlap intelligently",
-          "Reliable payment and price clarity may both matter to one person. Preserve simultaneous mechanisms and different populations when merging them would hide a consequential distinction. Do not require three mutually exclusive frames. Start with a small number of credible alternatives and ask what each would change in the next action."
+          "Allow frames to overlap",
+          "Working payment and clear prices may both matter to one person. Keep different processes and user groups visible when combining them would hide something that affects the decision. You do not need three mutually exclusive frames. Start with a few credible alternatives and ask how each would change your next step."
         ],
         [
-          "Compare support and relevance",
-          "A coherent story is a candidate account. Check whether its premises hold here, how much of the situation it covers, and whether addressing it serves a worthwhile outcome. Give stronger evidence more weight. Keep weak but consequential possibilities visible when investigating them is justified. Avoid pretending every imaginable story is equally plausible."
+          "Compare the evidence and why it matters",
+          "A coherent story is a possible account, not an established fact. Check whether its claims hold here, how much of the situation it explains, and whether addressing it would serve a worthwhile goal. Give stronger evidence more weight. Keep a less supported possibility visible when the cost of missing it justifies checking. Do not treat every imaginable story as equally likely."
         ]
       ],
-      "worked": "Symptom • Administrators rarely use a reporting dashboard.\nPossible frames • Help administrators find the report they need. Help teams get decisions supported by reliable data. Help managers understand whether the dashboard is needed at all.\nThe third frame allows an existing report or another workflow to meet the need.",
+      "worked": "Observation • Administrators rarely use a reporting dashboard.\nPossible frames • Help administrators find the report they need. Help teams make decisions using reliable data. Find out whether the dashboard is needed at all.\nThe third frame allows for an existing report or another workflow to meet the need.",
       "exercises": [
         {
           "title": "Three accounts with consequences",
           "brief": "Trial users rarely return after their first session. Nothing else is known.",
           "tasks": [
             "Write three plausible working frames.",
-            "For each, state the relevant outcome, a critical premise, and a different next investigation."
+            "For each, state the relevant outcome, a key claim it relies on, and a different next investigation."
           ],
-          "model": "Candidates might concern completing a recurring task, evaluating product fit, or distinguishing one-time visitors from recurring users. Ask about goals, task frequency, acquisition promises, or identity tracking as appropriate. Low return alone does not establish a habit problem. Alternatives can overlap.",
+          "model": "Possible frames include helping people complete a recurring task, helping them decide whether the product fits, or separating one-time visitors from people with a reason to return. Ask about goals, task frequency, promises made before signup, or how returning users are tracked. Low return alone does not show a habit problem. The frames can overlap.",
           "review": [
             "My frames change an outcome or next action.",
             "I did not invent findings.",
@@ -649,11 +649,11 @@ window.COURSE = {
             "Explain why the categories may overlap.",
             "Rewrite the comparison so it remains useful."
           ],
-          "model": "A person can face a confusing price presentation, reject the price, and be miscounted. Compare evidence for each account, affected groups, and the action each would justify. Select an investigation or bounded intervention without asserting exclusivity.",
+          "model": "Someone can find a price confusing, decide it is too high, and also be counted incorrectly. Compare the evidence, affected groups, and action each account would support. Choose a useful investigation or limited change without assuming only one account can be true.",
           "review": [
-            "I kept mechanisms distinguishable.",
+            "I kept the different processes visible.",
             "I did not force a single winner.",
-            "I explained what choice the comparison informs."
+            "I explained which choice the comparison helps with."
           ]
         }
       ],
@@ -667,7 +667,7 @@ window.COURSE = {
             "Shorten the form / improve its labels."
           ],
           "correct": 2,
-          "reason": "The final pair prioritizes completing a purchase versus making an informed purchase decision. The other pairs mainly vary interface interventions.",
+          "reason": "Helping buyers pay prioritizes completing a purchase. Helping shoppers judge affordability prioritizes an informed decision. The other pairs mainly offer different interface changes.",
           "hint": "Compare what success would mean."
         },
         {
@@ -675,23 +675,23 @@ window.COURSE = {
           "options": [
             "Their evidence cancels out.",
             "The groups must share one cause.",
-            "Both may deserve attention with an explicit scope.",
+            "Both may deserve attention, with the scope clearly stated.",
             "One must be eliminated."
           ],
           "correct": 2,
-          "reason": "Different groups can have distinct needs. Decide scope using support, consequences, and resources.",
-          "hint": "Frames need not compete for logical truth."
+          "reason": "Different groups can have different needs. Choose the scope using evidence, likely consequences, and available time and resources.",
+          "hint": "Different frames can apply at the same time."
         },
         {
-          "prompt": "A plausible account fits one observation. What has been established?",
+          "prompt": "An account could explain one observation. What does that establish?",
           "options": [
             "All other accounts are false.",
-            "Its population prevalence.",
-            "A candidate explanation worth evaluating.",
-            "Its intervention will work."
+            "How common it is in the wider group.",
+            "A possible explanation worth checking.",
+            "Its proposed change will work."
           ],
           "correct": 2,
-          "reason": "Fitting an observation establishes plausibility, with cause, coverage, and intervention effects still open.",
+          "reason": "The account could fit the observation. Its cause, how widely it applies, and the effects of a change still need checking.",
           "hint": "Several explanations can fit the same observation."
         }
       ],
@@ -701,8 +701,8 @@ window.COURSE = {
           "creator": "Teresa Torres · Product Talk",
           "url": "https://www.producttalk.org/sourcing-opportunities/",
           "review": "Content reviewed against the author's published lightly edited transcript. The original video and transcript are linked on the source page.",
-          "why": "Contrasts a broad viewing difficulty with specific situations involving finding a film and judging whether it fits a person's preferences.",
-          "limit": "Specific wording makes a need actionable, but it does not establish that the need is important or widespread. A remembered customer story still has source and recall limits.",
+          "why": "Compares a broad difficulty choosing what to watch with specific needs: finding a film and judging whether you would like it.",
+          "limit": "Specific wording helps you see what to investigate or change. It does not prove that the need is important or common. A customer's story can still leave things out or depend on imperfect memory.",
           "task": "Rewrite a broad need from an earlier exercise into two context-specific candidates. Mark which details are supported by evidence and which you invented. State how the candidates would change the next investigation."
         }
       ]
@@ -710,32 +710,32 @@ window.COURSE = {
     {
       "id": 6,
       "title": "Choose research that changes a decision",
-      "objective": "Design proportionate probes and interpret their limits.",
+      "objective": "Choose checks that fit the decision and understand what their results can tell you.",
       "minutes": "40–60",
       "sections": [
         [
-          "Prioritize a consequential uncertainty",
-          "Ask which premise could change a costly or important choice if wrong. Consider how uncertain it is, how damaging a mistake would be, and how feasible learning is. These are judgments to explain, not numbers to fabricate. If every likely finding supports the same bounded next action, further distinction may be unnecessary now."
+          "Choose an unknown that could change the decision",
+          "Ask which assumption could change an important choice if it were wrong. Consider how uncertain it is, what a mistake would cost, and what you can realistically learn. Explain those judgments rather than inventing numbers. If every likely finding supports the same limited next step, you may not need to investigate the difference now."
         ],
         [
-          "Specify the probe",
-          "Write the claim, a credible alternative, expected observations, method, and interpretation before looking. Explain what each possible result would change and what the method cannot reveal. Choose a reasonable observation window and avoid redefining success after seeing the result. A fixed 48 to 72 hour rule cannot fit all decisions."
+          "Plan the check before looking at the results",
+          "Write the claim, a credible alternative, what you expect to observe, and how you will check. State what each possible result would change and what the method cannot tell you. Choose a suitable observation period. Avoid changing the definition of success after seeing the result. A fixed rule to finish within 48 to 72 hours cannot fit every decision."
         ],
         [
           "Update confidence carefully",
-          "Missing evidence weakens a claim when the method had a reasonable chance to detect the expected event. An inconclusive check leaves uncertainty. A well-designed experiment can support an intervention's effect in its conditions without uniquely establishing the original cause. Keep mechanism, prevalence, and effect separate."
+          "Missing evidence weakens a claim when your method had a reasonable chance of detecting what the claim predicts. An unclear result leaves the question open. A well-designed experiment can show the effect of a change under the tested conditions without proving that you have found the only original cause. Keep the mechanism, how common it is, and the effect of changing it separate."
         ]
       ],
-      "worked": "Claim • External-provider purchases are missing from the funnel.\nProbe • Reconcile reliably linkable sessions with order records over a justified window.\nIf supported • Repair measurement and assess the remaining gap.\nIf not observed • Assess coverage before lowering confidence.\nLimit • This does not explain why genuine nonbuyers left.",
+      "worked": "Claim • Purchases through an outside payment provider are missing from the funnel.\nCheck • Match sessions to order records where the link is reliable. Choose a time window that fits actual purchasing behavior.\nIf supported • Repair tracking and examine the remaining gap.\nIf no missing purchases are found • Check whether the records cover the relevant cases before becoming less confident in the claim.\nLimit • This does not explain why people who did not buy left.",
       "exercises": [
         {
-          "title": "Write a probe card",
+          "title": "Plan a useful check",
           "brief": "The team suspects failed verification causes onboarding exits.",
           "tasks": [
-            "State a rival account and predictions.",
-            "Choose a feasible check, a decision for each result, and one limitation."
+            "Give another possible explanation and say what each explanation predicts.",
+            "Choose a check you can carry out. State what you would do for each result and one thing the check cannot tell you."
           ],
-          "model": "Compare people unable to verify with visitors who did not intend to finish. Inspect verification attempts and final outcomes, then observe relevant flows and ask about goals. Reliable failure records support investigating recovery. No failures in an incomplete logging system are inconclusive. Intent needs additional evidence.",
+          "model": "Compare failed verification with another account: some visitors never intended to finish. Check verification attempts and final outcomes, observe relevant steps, and ask people about their goals. Reliable failure records support investigating how people recover. No recorded failures tell you little if logging is incomplete. Intent needs separate evidence.",
           "review": [
             "My check distinguishes accounts.",
             "I explained both possible results.",
@@ -747,13 +747,13 @@ window.COURSE = {
           "brief": "You have one day before a launch decision. A suspected issue affects a costly integration that takes weeks to test.",
           "tasks": [
             "Explain what can be learned now and what remains unknown.",
-            "Propose a bounded commitment and revision trigger."
+            "Propose what to commit to now and what would make you reconsider."
           ],
-          "model": "Inspect existing records and dependencies, assess consequences, and choose whether a limited launch, staged exposure, or delay is justified. Name the owner and unresolved risk. A quick interview cannot verify an integration's reliability. More than one action can be defensible if the reasoning addresses the consequences.",
+          "model": "Check existing records and what depends on the integration. Consider whether a limited launch, gradual rollout, or delay is justified. Name who decides and what risk remains. A quick interview cannot establish that an integration is reliable. More than one choice may be reasonable if its costs and risks are addressed.",
           "review": [
             "I matched the check to the uncertainty.",
             "I considered delay and error costs.",
-            "I defined an observable trigger."
+            "I named an event or finding that would make me reconsider."
           ]
         }
       ],
@@ -761,13 +761,13 @@ window.COURSE = {
         {
           "prompt": "A log system is known to miss many failures. No failures appear in one sample. What follows?",
           "options": [
-            "Detection limits make this check inconclusive.",
+            "The logs miss too many failures for this check to settle the question.",
             "Users lack intent.",
             "Failures are impossible.",
             "The frame is falsified."
           ],
           "correct": 0,
-          "reason": "Absence from an unreliable detector does not strongly support absence in reality.",
+          "reason": "Not seeing failures in unreliable logs is weak evidence that no failures happened.",
           "hint": "Ask whether the method could have seen the predicted event."
         },
         {
@@ -779,8 +779,8 @@ window.COURSE = {
             "The error explains the full funnel drop."
           ],
           "correct": 1,
-          "reason": "The observation reveals a concrete failure. Frequency, contribution, and intervention effects need further evidence.",
-          "hint": "Separate mechanism from coverage."
+          "reason": "The observation shows a failure in that case. You need more evidence to know how common it is, how much it explains the overall drop, or whether a change would help.",
+          "hint": "Separate what happened in one case from how widely it happens."
         },
         {
           "prompt": "All credible frames support the same small reversible next action. What is reasonable?",
@@ -800,23 +800,23 @@ window.COURSE = {
     {
       "id": 7,
       "title": "Handle bias and organizational pressure",
-      "objective": "Make disagreement productive and expose hidden premises without blaming people.",
+      "objective": "Use disagreement to improve the reasoning and uncover assumptions without blaming people.",
       "minutes": "40–60",
       "sections": [
         [
-          "Look at behavior before labels",
-          "A bias label is less useful than an observable weakness in reasoning. A team might ask why people struggle before establishing that they do, recruit only vocal complainants, or treat a senior person's account as a premise. Ask which evidence or perspective is missing and how its inclusion could change the choice."
+          "Examine the reasoning before labeling a bias",
+          "It is more useful to identify a specific weakness in reasoning than to name a bias. A team might ask why people struggle before checking that they do, recruit only people who complain, or accept a senior person's account without checking it. Ask what evidence or perspective is missing and how including it could change the choice."
         ],
         [
-          "Design the conversation",
-          "Independent initial notes can preserve alternatives before discussion anchors on one account. Ask each participant to identify information others may lack. Include affected people or relevant operational knowledge. Agreement can authorize a direction, but a vote does not establish an empirical claim. Record legitimate dissent and let the accountable owner decide priority conflicts."
+          "Make room for different views",
+          "Ask people to write initial notes independently before the discussion settles on one account. Ask what each person knows that others may not. Include affected people or people who understand day-to-day operations. A vote can choose a direction, but it cannot establish a fact. Record disagreements that still matter. For conflicts about priorities, identify who is responsible for deciding."
         ],
         [
-          "Respond to pressure concretely",
-          "A stakeholder under time pressure may reasonably want action. Explain which pending decision a check informs, its cost, and what error it could prevent. Present a bounded next step rather than an abstract request for more discovery. Examine incentives without assuming malicious intent. Ask who bears the cost when the process changes."
+          "Explain what the next check is for",
+          "Someone under time pressure may reasonably want action. Explain which decision a check will help with, what it costs, and which mistake it might prevent. Propose a specific next step rather than asking vaguely for more research. Examine incentives without assuming bad intent. Ask who bears the cost when the process changes."
         ]
       ],
-      "worked": "Stakeholder • We promised a chatbot. Research will slow us down.\nResponse • Before committing the build, we can inspect the top support categories and a small set of recent cases. If the increase comes from failed account setup, the chatbot needs to address that mechanism or we should compare a direct repair. The check informs this week's scope decision.",
+      "worked": "Stakeholder • We promised a chatbot. Research will slow us down.\nResponse • Before we commit to building it, we can check the most common support categories and a few recent cases. If failed account setup explains the increase, we should compare how a chatbot and a direct repair would address it. This check helps us choose what to build this week.",
       "exercises": [
         {
           "title": "Repair a loaded interview",
@@ -825,7 +825,7 @@ window.COURSE = {
             "Rewrite three questions around a concrete recent event.",
             "Identify people missing if recruitment includes only complainants."
           ],
-          "model": "Ask what the person was trying to do, what happened at a particular step, and what they did next. Include people who completed smoothly, people who left without complaining, and relevant other groups. Their inclusion explores contrasting experiences rather than guaranteeing a representative prevalence estimate.",
+          "model": "Ask what the person was trying to do, what happened at a particular step, and what they did next. Include people who completed without problems, people who left without complaining, and other relevant groups. This helps you explore different experiences. It does not guarantee that you can estimate how common each is among all users.",
           "review": [
             "My questions do not assume confusion.",
             "I asked about actions and goals.",
@@ -839,7 +839,7 @@ window.COURSE = {
             "Draft a respectful response linking one check to a decision.",
             "Identify what would change your mind and what might support the VP."
           ],
-          "model": "Acknowledge the concern, then propose checking whether intended users can find the dashboard and whether they need its information. Difficulty finding it supports examining navigation. Users finding it easily but using another trusted report suggests a different scope. Keep the request tied to resource allocation.",
+          "model": "Acknowledge the concern. Suggest checking whether intended users can find the dashboard and whether they need its information. Difficulty finding it supports examining navigation. Finding it easily but relying on another trusted report suggests different work. Connect the check to the choice about where to spend time and money.",
           "review": [
             "I made the check concrete.",
             "I gave the original account a fair test.",
@@ -849,7 +849,7 @@ window.COURSE = {
       ],
       "quiz": [
         {
-          "prompt": "Which question contains an unverified premise about experience?",
+          "prompt": "Which question assumes something about the person's experience before checking it?",
           "options": [
             "When did you last try it?",
             "What were you trying to do?",
@@ -866,10 +866,10 @@ window.COURSE = {
             "A causal effect.",
             "A representative user sample.",
             "A population rate.",
-            "A preferred team account, with causality still requiring evidence."
+            "The account the team prefers. Its causal claim still needs evidence."
           ],
           "correct": 3,
-          "reason": "Voting reveals or selects a team position. It does not supply empirical support for the cause.",
+          "reason": "A vote shows or chooses the team's position. It does not provide evidence of a cause.",
           "hint": "Distinguish agreement from evidence."
         },
         {
@@ -878,10 +878,10 @@ window.COURSE = {
             "Which team has the lower IQ.",
             "How to collect identical data again.",
             "How to force a single shared preference.",
-            "Their trade-offs and decision authority."
+            "Their trade-offs and who can decide."
           ],
           "correct": 3,
-          "reason": "A priority conflict needs explicit trade-offs and accountable judgment. Repeating agreed evidence may not resolve it.",
+          "reason": "A conflict about priorities needs clear trade-offs and someone responsible for deciding. Collecting the same evidence again may not resolve it.",
           "hint": "Ask what kind of disagreement remains."
         }
       ],
@@ -890,23 +890,23 @@ window.COURSE = {
     {
       "id": 8,
       "title": "Learn through prototypes and revise",
-      "objective": "Use solution exploration without allowing it to silently lock the frame.",
+      "objective": "Explore solutions, learn from them, and keep the problem open to revision.",
       "minutes": "40–60",
       "sections": [
         [
-          "Making can expose assumptions",
-          "A prototype can reveal a missing constraint, an unclear state, or a different user goal. Let this reshape the account of the problem. Dorst and Cross examined how problem and solution understanding developed together among nine experienced industrial designers. This supports revisiting the frame while exploring, with no universal rule about how much time experts must spend framing."
+          "Making something can reveal assumptions",
+          "A prototype can reveal a missing constraint, an unclear status, or a different user goal. Use that discovery to revise your understanding. Dorst and Cross studied how nine experienced industrial designers developed their understanding of problems and solutions together. This supports revisiting a frame while exploring solutions. It does not establish a rule for how long experts must spend framing."
         ],
         [
-          "Distinguish artifact behavior from reality",
-          "A functioning prototype establishes that the prototype behaves in a certain way. An evaluator completing a scripted task can reveal usability in that situation. Neither alone establishes demand, long-term adoption, or benefit across the intended population. State what your test covers and which assumptions about the real context remain."
+          "Separate what the prototype shows from wider claims",
+          "A working prototype shows how that prototype behaves. Someone completing a scripted task can show how usable it is in that situation. Neither result alone establishes demand, continued use, or benefits for all intended users. State what your test covers and which assumptions about real use remain untested."
         ],
         [
-          "Record revisions",
-          "Keep the earlier account, the new evidence, the change in understanding, and the resulting decision. Update the scope or goal explicitly. If an experiment increases a target metric, examine meaningful costs and alternatives before treating it as proof that the original diagnosis was complete. Outcomes depend on implementation and context as well as the frame."
+          "Record what changed and why",
+          "Keep the earlier account, the new evidence, what changed in your understanding, and the decision that followed. State any change in scope or goal. If an experiment improves a target metric, check for costs and other explanations before treating it as proof that your original explanation was complete. Results depend on how a change is built and used, as well as on the frame."
         ]
       ],
-      "worked": "Prototype discovery • Showing a shipping estimate requires an address, and shoppers hesitate to supply one before seeing any estimate.\nRevision • Investigate what level of location detail is enough for an honest range and how people interpret its uncertainty.\nThis expands the initial price-visibility frame with a new dependency.",
+      "worked": "Prototype discovery • Showing a shipping estimate requires an address. Shoppers hesitate to share one before seeing any estimate.\nRevision • Find out how much location detail is needed to give an honest price range, and how people understand the uncertainty in that range.\nThe original frame concerned showing prices earlier. The prototype reveals that this also depends on what information people will share.",
       "exercises": [
         {
           "title": "Learn from a prototype",
@@ -915,11 +915,11 @@ window.COURSE = {
             "Explain the change in problem understanding.",
             "Propose a revised scope and a next investigation."
           ],
-          "model": "The work may concern shared definitions and data trust in addition to display usability. Inspect the decisions the report supports, where definitions diverge, and who can authorize a common definition or clearly labeled differences. A polished interface does not resolve incompatible measures.",
+          "model": "The problem may involve shared definitions and trust in data, as well as how the report is displayed. Check which decisions it supports, where definitions differ, and who can approve a shared definition or clearly labeled differences. A polished interface does not resolve conflicting measures.",
           "review": [
             "I named the new evidence.",
-            "I changed a scope or premise explicitly.",
-            "I avoided treating sample data as deployment evidence."
+            "I stated which scope or assumption changed.",
+            "I did not assume that success with sample data proves it will work with real data."
           ]
         },
         {
@@ -929,11 +929,11 @@ window.COURSE = {
             "State what the result supports under valid test assumptions.",
             "Name two claims it cannot yet establish and an outcome to watch."
           ],
-          "model": "It supports an effect on measured completion in the tested conditions. It does not uniquely prove confusion caused earlier exits or establish long-term account quality. Watch intended completion, missing or inaccurate information, and subsequent recovery effort.",
+          "model": "Assuming the test was valid, the result supports an effect on measured completion in the tested conditions. It does not prove that confusion was the only reason for earlier exits or show long-term account quality. Watch whether completions were intended, whether information is missing or inaccurate, and how much effort later problems take to resolve.",
           "review": [
             "I kept the conclusion tied to the measured outcome.",
-            "I avoided unique-cause claims.",
-            "I considered downstream consequences."
+            "I did not claim that the test proved there was only one cause.",
+            "I considered what could happen later."
           ]
         }
       ],
@@ -951,7 +951,7 @@ window.COURSE = {
           "hint": "A revision can be targeted."
         },
         {
-          "prompt": "A scripted usability test is completed successfully. Which claim remains unestablished by that result alone?",
+          "prompt": "Someone successfully completes a scripted usability task. Which claim does that result alone fail to support?",
           "options": [
             "The product has broad market demand.",
             "The interface supported that observed completion.",
@@ -966,7 +966,7 @@ window.COURSE = {
           "prompt": "Which revision record is most useful?",
           "options": [
             "Leadership preferred the new frame.",
-            "Original account, new evidence, changed premise, changed decision.",
+            "Earlier account, new evidence, revised assumption, and the decision that changed.",
             "We aligned and moved forward.",
             "The new version looks better."
           ],
@@ -980,32 +980,32 @@ window.COURSE = {
     {
       "id": 9,
       "title": "Commit, communicate, and know when to stop",
-      "objective": "Deliver a decision record that supports action and revision.",
+      "objective": "Explain your decision, who acts next, and when to reconsider.",
       "minutes": "40–60",
       "sections": [
         [
-          "Calibrate the stopping point",
-          "More framing is worthwhile when additional learning could change the choice enough to justify cost and delay. Routine reproducible defects may need little inquiry. Expensive or hard-to-reverse decisions deserve more care. Contain urgent incidents while investigating. The goal is a justified commitment with visible limits."
+          "Decide when to stop investigating",
+          "More framing is worthwhile when what you could learn might improve the choice enough to justify the cost and delay. A defect you can reliably reproduce may need little investigation. Expensive changes and decisions that are hard to reverse deserve more care. Take steps to contain an urgent incident while investigating it. Aim for an action you can justify, with its limits clearly stated."
         ],
         [
-          "Write the decision record",
-          "State the group, situation, supported concern, desired improvement, scope, critical assumptions, alternatives, and reason for the chosen action. Name the decision owner and the next action owner. Include what remains unresolved and an observable review trigger. A problem statement can summarize the account, but it cannot carry the whole justification."
+          "Write a decision record",
+          "State who is affected, what is happening, the evidence for the concern, the desired improvement, the scope, key assumptions, alternatives, and why you chose the next action. Name who makes the decision and who carries out the next step. Include what remains unknown and a specific event or finding that would make you reconsider. A problem statement can summarize this reasoning, but it cannot explain all of it."
         ],
         [
-          "Use a small set of methods",
-          "TOSCA prompts trouble, owner, success, constraints, and actors. Abstraction laddering changes the level of the question through purpose and means. Frame Creation explores persistent situations through history, stakeholders, themes, alternatives, and possible futures. How Might We helps express a challenge, while a question containing a feature may still embed a solution. Methods support judgment and cannot guarantee it."
+          "Choose a few methods that help you think",
+          "TOSCA asks about trouble, owner, success, constraints, and actors: what is wrong, who owns the decision, what improvement means, what limits apply, and who is involved. Abstraction laddering moves between a task, its purpose, and ways to achieve that purpose. Frame Creation examines a persistent situation through its history, people, recurring themes, alternatives, and possible futures. A How Might We question can express a challenge, but it can still hide a chosen solution. Methods help you reason; none guarantees a good decision."
         ]
       ],
-      "worked": "Decision record • We will investigate failures among people attempting to pay with method X. Existing records show repeated errors in this group. We will check recovery before a broad redesign. The reliability owner will report findings on Friday. We will revisit scope if records reveal missing completions or if the problem also appears in other methods.\nThis example is fictional.",
+      "worked": "Decision record • We will investigate failures among people attempting to pay with method X. Existing records show repeated errors in this group. We will check whether people can recover before proposing a broad redesign. The person responsible for reliability will report findings on Friday. We will reconsider the scope if records reveal purchases missing from the funnel or show that the problem affects other payment methods.\nThis example is fictional.",
       "exercises": [
         {
           "title": "A five-sentence handoff",
           "brief": "Return to one earlier exercise.",
           "tasks": [
             "Write a five-sentence decision record.",
-            "Include a priority, supported premise, unresolved assumption, owner, and review trigger."
+            "Include a priority, evidence-backed claim, unchecked assumption, responsible person, and reason to review the decision."
           ],
-          "model": "A good record lets a colleague understand the choice without attending the meeting. It connects a specific next action to evidence and priorities, names remaining uncertainty, and gives a reason to reopen the question. Several scopes can earn a strong review if their justifications are coherent and proportionate.",
+          "model": "A good record lets a colleague understand the choice without attending the meeting. It connects the next action to evidence and priorities, names what remains unknown, and says when to reconsider. Different choices about scope can be well supported if their reasons are clear and fit the decision.",
           "review": [
             "I identified who acts next.",
             "I connected the action to evidence.",
@@ -1019,29 +1019,29 @@ window.COURSE = {
             "Choose a next step and explain the appropriate amount of framing.",
             "Name a discovery that would justify widening the scope."
           ],
-          "model": "Repair and verify the bounded defect while checking the supported entry point. Broad discovery may add little to this choice. Widen the investigation if the issue reveals a larger dependency, affects other flows, or the intended behavior turns out to be disputed.",
+          "model": "Repair the specific defect and check that the button works through the supported route. A broad investigation may add little to this choice. Widen the work if you discover that the defect depends on a larger system issue, affects other flows, or involves disagreement about the expected behavior.",
           "review": [
             "I matched effort to the decision.",
-            "I preserved verification.",
+            "I included a check that the repair works.",
             "I named a specific reason to expand."
           ]
         }
       ],
       "quiz": [
         {
-          "prompt": "A small reproducible defect has an agreed expected behavior. What is a proportionate next step?",
+          "prompt": "A small reproducible defect has an agreed expected behavior. What is a next step that fits the decision?",
           "options": [
             "Run a mandatory two-week framing workshop.",
             "Invent three mutually exclusive user needs.",
             "Wait until every system dependency is mapped.",
-            "Repair and verify the bounded defect."
+            "Repair and verify the specific defect."
           ],
           "correct": 3,
-          "reason": "The known defect and agreed behavior support a bounded repair. Widen inquiry when evidence warrants it.",
+          "reason": "The known defect and agreed behavior support a repair with a clear, limited scope. Investigate more widely when new evidence gives you a reason.",
           "hint": "Consider the uncertainty relevant to this commitment."
         },
         {
-          "prompt": "Which review trigger is most actionable?",
+          "prompt": "Which reason to review the decision is most actionable?",
           "options": [
             "Whenever the frame seems imperfect.",
             "When everyone agrees.",
@@ -1049,19 +1049,19 @@ window.COURSE = {
             "If repeated payment errors persist after the release."
           ],
           "correct": 3,
-          "reason": "Persistence of a defined observable issue can prompt review. Feelings and agreement do not specify an outcome signal.",
+          "reason": "Repeated payment errors give you something specific to check. Feelings and agreement do not define what result should prompt a review.",
           "hint": "Choose something a colleague could observe."
         },
         {
-          "prompt": "What is a reasonable reason to continue framing?",
+          "prompt": "When is more framing worth doing?",
           "options": [
-            "An unresolved premise could change a costly commitment.",
+            "An unchecked assumption could change an expensive decision.",
             "Another workshop is already booked.",
             "The brief lacks elegant wording.",
             "The team has not used every framework."
           ],
           "correct": 0,
-          "reason": "Further inquiry is justified by its potential effect on an important decision, weighed against cost and delay.",
+          "reason": "More investigation is worth considering when it could improve an important choice. Weigh that benefit against the cost and delay.",
           "hint": "Ask what another round of learning could change."
         }
       ],
@@ -1070,32 +1070,32 @@ window.COURSE = {
     {
       "id": 10,
       "title": "Use AI and build your own judgment",
-      "objective": "Audit generated reasoning and transfer the method to unfamiliar situations.",
+      "objective": "Check AI-generated reasoning and use what you learn in unfamiliar situations.",
       "minutes": "40–60",
       "sections": [
         [
-          "Use AI as a source of candidates",
-          "AI can propose alternative frames, expose hidden premises, or criticize a draft. Generated accounts do not establish what people using your product actually do. Verify factual claims against appropriate evidence and trace references to their sources. Several models repeating an idea are not necessarily independent corroboration."
+          "Use AI to suggest possibilities",
+          "AI can suggest alternative frames, point out hidden assumptions, or criticize a draft. Its answers do not show what people using your product actually do. Check factual claims against suitable evidence and follow references back to their sources. Several models repeating an idea do not necessarily provide independent confirmation."
         ],
         [
-          "Ask for boundaries and counterevidence",
-          "Supply what is known and ask the model to mark invented examples. Request alternatives that would change an outcome or next action, the assumptions each relies on, and feasible checks. Inspect whether the model preserves the original frame while producing many causes inside it. Keep your own provisional account so you can notice when generated fluency anchors the discussion."
+          "Ask what is known and what could challenge the account",
+          "Give the model the known evidence and ask it to label invented examples. Request alternatives that could change the goal or next action, the assumptions behind each, and practical ways to check them. See whether it keeps the original frame while listing many possible causes within it. Write down your own working account first, so you can notice when fluent AI writing starts to steer the discussion."
         ],
         [
-          "Practice with a decision journal",
-          "Before a project, record the initial account and the uncertainty driving the next move. Afterward, note what changed your understanding and which decisions changed. Review methods that consumed time without affecting a choice. Judge what was knowable at the time as well as eventual outcomes. A favorable result can coexist with weak reasoning, and a well-supported decision can encounter an unexpected event."
+          "Keep a decision journal",
+          "Before a project, record your starting account and the unknown that matters to your next step. Afterward, note what changed your understanding and which decisions changed. Review methods that took time without affecting a choice. Judge the decision using what you could reasonably have known then, as well as what happened later. Weak reasoning can lead to a good result, and a well-supported decision can be disrupted by an unexpected event."
         ]
       ],
-      "worked": "Useful AI request • Use only the supplied evidence. Mark observations, interpretations, priorities, and missing information. Suggest two plausible frames that change a decision. For each, name a critical premise, possible counterevidence, and a feasible next action. Label every invented example.\nReview • Verify both the claims and the relevance of the proposed checks.",
+      "worked": "Useful AI request • Use only the supplied evidence. Label observations, interpretations, priorities, and missing information. Suggest two credible frames that could change a decision. For each, name a key assumption, evidence that could challenge it, and a next step we can carry out. Label every invented example.\nReview • Check the claims and whether the proposed checks would help with the decision.",
       "exercises": [
         {
           "title": "Audit generated certainty",
           "brief": "AI says that low retention proves users lack motivation, that gamification will solve it, and that three generated personas validate the need.",
           "tasks": [
-            "Identify three unsupported moves.",
-            "Rewrite the advice as an investigation brief and a candidate intervention."
+            "Identify three claims or steps in the reasoning that lack support.",
+            "Rewrite the advice as an investigation brief and a possible change to test."
           ],
-          "model": "Low return does not prove a motivation mechanism. Gamification is an untested intervention. Generated personas are not participant evidence. Investigate task frequency, product fit, and actual return behavior before choosing a commitment. A gamification idea may remain a candidate if its rationale and consequences are examined.",
+          "model": "Low return does not prove low motivation caused it. Gamification is an idea that has not been tested. Generated personas are not evidence from participants. Investigate task frequency, product fit, and actual return behavior before choosing what to build. You can still consider gamification if you examine why it might help and what its consequences could be.",
           "review": [
             "I separated cause, solution, and evidence.",
             "I kept plausible alternatives visible.",
@@ -1109,10 +1109,10 @@ window.COURSE = {
             "Complete the course's decision record.",
             "List what changed since your first interpretation and the next evidence to seek."
           ],
-          "model": "Review the record using the capstone rubric. A strong answer names actual evidence, labels unknowns, represents affected people fairly, bounds action, and explains why the next move is worth its cost. If you use a real case, keep sensitive details out of exports you share.",
+          "model": "Review the record using the final project rubric. Show the evidence, label unknowns, describe affected people fairly, limit the work to a practical scope, and explain why the next step is worth its cost. If you use a real case, remove sensitive details from any export you share.",
           "review": [
-            "I traced consequential claims to evidence.",
-            "I made a proportionate commitment.",
+            "I showed the evidence for claims that could change the decision.",
+            "I chose work whose effort and risk fit the decision.",
             "I explained what would change my mind."
           ]
         }
@@ -1131,7 +1131,7 @@ window.COURSE = {
           "hint": "Ask where the behavioral evidence came from."
         },
         {
-          "prompt": "Which AI request best preserves evidence boundaries?",
+          "prompt": "Which AI request best separates evidence from assumptions and inventions?",
           "options": [
             "Write ten confident causes without caveats.",
             "Explain why users are lazy.",
@@ -1139,7 +1139,7 @@ window.COURSE = {
             "Prove the executive's idea is right."
           ],
           "correct": 2,
-          "reason": "Explicit evidence boundaries and checks help inspect the output. You must still verify its claims.",
+          "reason": "Labeling evidence, assumptions, and inventions makes the answer easier to inspect. You still need to check its claims.",
           "hint": "Look for a request that exposes the status of claims."
         },
         {
@@ -1159,38 +1159,38 @@ window.COURSE = {
     },
     {
       "id": 11,
-      "title": "Capstone · The reporting dashboard",
-      "objective": "Make and revise a defensible decision as new evidence arrives.",
+      "title": "Final project · The reporting dashboard",
+      "objective": "Make a decision you can justify, then revise it as new evidence arrives.",
       "minutes": "90–120",
       "sections": [
         [
           "Your assignment",
-          "All organizations, people, figures, and findings in this case are fictional. A director requests an AI assistant for a reporting dashboard because only 18% of eligible accounts opened it last month. You have one week to recommend a scope for the next six weeks. The team can change the interface and coordinate with data operations. It cannot commit another team to a policy change."
+          "All organizations, people, numbers, and findings in this case are fictional. A director requests an AI assistant for a reporting dashboard because only 18% of eligible accounts opened it last month. You have one week to recommend what the team should work on for the next six weeks. The team can change the interface and work with data operations. It cannot promise that another team will change its policies."
         ],
         [
           "Evidence round one",
-          "The 18% uses accounts as its unit. Eligibility means a feature flag is enabled, not that a person has a reporting responsibility. Three current users report difficulty finding a particular breakdown. Five account managers say some customers use scheduled spreadsheet exports. No representative study of nonusers has been conducted. The director wants visible AI progress for an upcoming demonstration."
+          "The 18% counts accounts. An account is called eligible when a feature flag is enabled; this does not mean someone on the account is responsible for reporting. Three current users report difficulty finding a particular breakdown. Five account managers say some customers use scheduled spreadsheet exports. There has been no study designed to represent nonusers. The director wants visible AI progress for an upcoming demonstration."
         ],
         [
           "Evidence round two",
-          "In a fictional audit of 30 deliberately selected accounts, 12 have no current reporting owner, 10 use scheduled exports, and 8 rely on the dashboard. Six of those 8 report delaying decisions when metric definitions conflict. Selection was purposeful, so these counts are not population estimates. The exports and dashboard share the definitions problem. Data operations can investigate definitions in two weeks; changing a core definition requires agreement across departments."
+          "A fictional audit examines 30 deliberately selected accounts. Twelve have no one currently responsible for reporting, 10 use scheduled exports, and 8 rely on the dashboard. Six of those 8 report delaying decisions when metric definitions conflict. This is a purposive sample: accounts were chosen for a reason, rather than to represent all accounts. Do not treat these counts as estimates for all users. The exports and dashboard share the definitions problem. Data operations can investigate definitions in two weeks. Changing a core definition requires agreement across departments."
         ],
         [
           "What you must decide",
-          "Recommend a scope, explain which outcome it prioritizes, specify the next checks, and name a review trigger. The evidence leaves several reasonable paths. You may propose a bounded navigation change, a definitions investigation, a narrower AI experiment, or another well-supported option. Explain the cost and limits of your choice."
+          "Recommend what the team should work on. Explain which outcome takes priority, what you will check next, and what would make you reconsider. Several paths could be reasonable: a small navigation change, an investigation into definitions, a focused AI experiment, or another option supported by the evidence. Explain the cost and limits of your choice."
         ]
       ],
-      "worked": "Work in sequence • Save an initial account before reading round one. Revise after round one, then again after round two. You can inspect all evidence, but preserving your earlier reasoning makes the revision exercise more informative.",
+      "worked": "Work in order • Save your starting account before reading round one. Revise after round one, then again after round two. All evidence is available, but keeping your earlier reasoning lets you examine what changed and why.",
       "exercises": [
         {
           "title": "Before opening the evidence",
           "brief": "Use only the assignment paragraph.",
           "tasks": [
-            "Write the pending decision and your initial frame.",
+            "State what needs to be decided and your starting frame.",
             "Identify assumptions behind both the 18% measure and the AI request.",
             "State two plausible alternative frames."
           ],
-          "model": "A reasonable starting question is whether the low usage represents unmet reporting needs and which intervention deserves six weeks. Eligibility, reporting intent, actual decision needs, and the AI mechanism remain open. Do not diagnose low motivation from the rate.",
+          "model": "A useful starting question is whether low dashboard use reflects unmet reporting needs and what deserves six weeks of work. We do not yet know whether eligible accounts need reports, what decisions they face, or how AI would help. The rate alone does not show low motivation.",
           "review": [
             "I preserved the unknowns.",
             "I separated the AI request from the concern.",
@@ -1202,29 +1202,29 @@ window.COURSE = {
           "brief": "Use the assignment and evidence round one.",
           "tasks": [
             "Update the affected groups and boundaries.",
-            "Propose a check that could change allocation.",
+            "Propose a check that could change where the team spends its time.",
             "Explain how the demonstration incentive affects the decision without assuming bad intent."
           ],
-          "model": "Distinguish people with a reporting task from all flagged accounts. Examine exports, navigation problems, and the job the dashboard serves. Check responsibility and workflow before treating all nonuse as failed adoption. The demonstration is a stakeholder priority to weigh explicitly.",
+          "model": "Separate people who need to report from accounts that merely have the feature enabled. Examine exports, navigation difficulties, and the task the dashboard serves. Check responsibilities and workflows before treating all nonuse as failed adoption. Include the demonstration as a stated priority when weighing the options.",
           "review": [
-            "I revised a meaningful premise.",
+            "I revised an assumption that matters to the decision.",
             "I represented user and director priorities.",
-            "I explained a feasible next check."
+            "I explained a check the team can carry out."
           ]
         },
         {
           "title": "Final decision after round two",
           "brief": "Use all evidence and the scoring rubric below.",
           "tasks": [
-            "Write a 400–600 word decision memo with source limits, alternatives, a chosen scope, owner, next action, and revision trigger.",
+            "Write a 400–600 word decision memo that explains source limits, alternatives, chosen work, who is responsible, the next action, and when to reconsider.",
             "Include user and business outcomes and a cost to monitor.",
-            "Explain what the purposeful sample cannot tell you."
+            "Explain what the purposive sample cannot tell you about all accounts."
           ],
-          "model": "One defensible route is a bounded definitions investigation with data operations, focused on decisions delayed by inconsistent measures. Preserve a small navigation repair if useful. A narrow AI experiment could compare explanation support only after definition provenance is addressed. The sample identifies mechanisms and affected workflows but does not estimate their prevalence among all eligible accounts. A different recommendation can score well if it addresses the evidence, trade-offs, dependencies, and uncertainty.",
+          "model": "One reasonable choice is a limited investigation with data operations into definitions that delay decisions. Keep a small navigation repair if it helps. A focused AI experiment could test help explaining metrics once their sources and meanings are clear. The sample reveals problems in particular workflows; it does not show how common they are across all eligible accounts. Another recommendation can score well if it addresses the evidence, trade-offs, dependencies, and unknowns.",
           "review": [
-            "I did not generalize sample percentages.",
+            "I did not assume the sample percentages describe all accounts.",
             "My scope connects to a supported need.",
-            "My action has an owner and review trigger."
+            "My action has an owner and reason to review the decision."
           ]
         }
       ],
@@ -1238,7 +1238,7 @@ window.COURSE = {
             "The payment form causes most lost orders."
           ],
           "correct": 2,
-          "reason": "A report is evidence of what the system records. Intent, causality, and intervention effects need additional support.",
+          "reason": "A report shows what the system recorded. Intent, causes, and the effects of changes need more evidence.",
           "hint": "Distinguish the reporting system from the behavior it is meant to represent."
         },
         {
@@ -1274,20 +1274,20 @@ window.COURSE = {
             "Inside its explanation even if outside its direct control."
           ],
           "correct": 3,
-          "reason": "Relevance to an explanation does not depend on direct control. The team may alter disclosure or escalate the policy.",
-          "hint": "Separate causal relevance from authority."
+          "reason": "A fee can help explain what happens even if the team cannot change it. The team may show it earlier or raise the policy with someone who can act on it.",
+          "hint": "Separate what affects the result from what you have permission to change."
         },
         {
           "prompt": "Two supported frames apply to different groups. What follows?",
           "options": [
             "The groups must share one cause.",
-            "Both may deserve attention with an explicit scope.",
+            "Both may deserve attention, with the scope clearly stated.",
             "One must be eliminated.",
             "Their evidence cancels out."
           ],
           "correct": 1,
-          "reason": "Different groups can have distinct needs. Decide scope using support, consequences, and resources.",
-          "hint": "Frames need not compete for logical truth."
+          "reason": "Different groups can have different needs. Choose the scope using evidence, likely consequences, and available time and resources.",
+          "hint": "Different frames can apply at the same time."
         },
         {
           "prompt": "All credible frames support the same small reversible next action. What is reasonable?",
@@ -1302,7 +1302,7 @@ window.COURSE = {
           "hint": "Consider the value of more information for this particular choice."
         },
         {
-          "prompt": "Which question contains an unverified premise about experience?",
+          "prompt": "Which question assumes something about the person's experience before checking it?",
           "options": [
             "Why was the payment step confusing?",
             "What happened next?",
@@ -1314,7 +1314,7 @@ window.COURSE = {
           "hint": "Identify which question already supplies a diagnosis."
         },
         {
-          "prompt": "A scripted usability test is completed successfully. Which claim remains unestablished by that result alone?",
+          "prompt": "Someone successfully completes a scripted usability task. Which claim does that result alone fail to support?",
           "options": [
             "The interface supported that observed completion.",
             "The test produced an observation.",
@@ -1326,15 +1326,15 @@ window.COURSE = {
           "hint": "Compare the test context with the broader claim."
         },
         {
-          "prompt": "What is a reasonable reason to continue framing?",
+          "prompt": "When is more framing worth doing?",
           "options": [
-            "An unresolved premise could change a costly commitment.",
+            "An unchecked assumption could change an expensive decision.",
             "Another workshop is already booked.",
             "The brief lacks elegant wording.",
             "The team has not used every framework."
           ],
           "correct": 0,
-          "reason": "Further inquiry is justified by its potential effect on an important decision, weighed against cost and delay.",
+          "reason": "More investigation is worth considering when it could improve an important choice. Weigh that benefit against the cost and delay.",
           "hint": "Ask what another round of learning could change."
         },
         {
@@ -1361,22 +1361,22 @@ window.COURSE = {
     ],
     [
       "Ananth, Baer, and Deichmann · 2025",
-      "Review across seven literatures on developing problem representations. Published online in 2024.",
+      "Review of research in seven fields on how people develop problem representations. Published online in 2024.",
       "https://doi.org/10.1177/01492063241291532"
     ],
     [
       "Dorst and Cross · 2001",
-      "Protocol study of nine experienced designers examining problem and solution development.",
+      "Study of nine experienced designers that examined their recorded design process as they developed problems and solutions.",
       "https://doi.org/10.1016/S0142-694X(01)00009-6"
     ],
     [
       "van der Bijl-Brouwer · 2019",
-      "Five agency case studies of evolving frames in public and social innovation.",
+      "Five case studies of agencies showing how frames change in public and social innovation work.",
       "https://www.sciencedirect.com/science/article/pii/S2405872618301114"
     ],
     [
       "Baer, Dirks, and Nickerson · 2013",
-      "Theory of organizational impediments and an illustrative structured inquiry process.",
+      "Theory about organizational obstacles to defining problems, with an example of a structured investigation.",
       "https://doi.org/10.1002/smj.2004"
     ],
     [
@@ -1396,27 +1396,27 @@ window.COURSE = {
     ],
     [
       "Jansson and Smith · 1991",
-      "Experiments examining fixation in conceptual design.",
+      "Experiments on design fixation: becoming stuck on an existing idea while developing a design.",
       "https://doi.org/10.1016/0142-694X(91)90003-F"
     ],
     [
       "Nickerson · 1998",
-      "Review of confirmation bias in evidence seeking and interpretation.",
+      "Review of confirmation bias: favoring evidence or interpretations that support an existing belief.",
       "https://doi.org/10.1037/1089-2680.2.2.175"
     ],
     [
       "Simon · 1955",
-      "Theoretical model of rational choice under limitations of information and computation.",
+      "Theory of how people decide when information and their ability to process it are limited.",
       "https://doi.org/10.2307/1884852"
     ],
     [
       "Rittel and Webber · 1973",
-      "Conceptual account of the difficulties of formulating and evaluating planning problems.",
+      "Theory about why planning problems can be hard to define and why people disagree about good results.",
       "https://doi.org/10.1007/BF01405730"
     ],
     [
       "Ulrich · Boundary critique",
-      "Author's account of how reference systems, observations, and values condition judgments.",
+      "The author explains how what we include, observe, and value shapes our judgments.",
       "https://wulrich.com/boundary_critique.html"
     ],
     [
@@ -1431,34 +1431,34 @@ window.COURSE = {
     ],
     [
       "Howard · 1966",
-      "Decision-theoretic account of information value, considering uncertainty together with consequences.",
+      "Theory of how information can help decisions, considering both uncertainty and the consequences of a choice.",
       "https://doi.org/10.1109/TSSC.1966.300074"
     ]
   ],
   "rubric": [
     [
       "Evidence",
-      "Claims trace to supplied information, measurement limits are explicit, and invented details are labeled."
+      "You show which evidence supports your claims, explain the limits of the measurements, and label invented details."
     ],
     [
       "People and outcomes",
-      "Affected groups, their purposes, the prioritized outcome, and trade-offs are represented fairly."
+      "You describe affected people and their goals fairly, state which outcome takes priority, and explain the trade-offs."
     ],
     [
       "Boundaries",
-      "The explanation includes relevant influences, while action respects authority and dependencies."
+      "Your explanation includes relevant influences. Your plan accounts for who can approve changes and what depends on others."
     ],
     [
       "Alternatives",
-      "Plausible alternatives change an outcome or action and can overlap where the evidence permits."
+      "You compare credible alternatives that could change the goal or next step, allowing overlap when the evidence supports it."
     ],
     [
       "Inquiry",
-      "The next check addresses a consequential uncertainty and includes interpretation limits."
+      "The next check addresses an unknown that could change the decision. You explain what the result could and could not tell you."
     ],
     [
       "Commitment and revision",
-      "The scope is proportionate, an owner is named, and an observable trigger supports revision."
+      "The planned work fits the decision, someone is responsible, and a specific event or finding would prompt a review."
     ]
   ]
 };
