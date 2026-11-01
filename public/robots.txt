@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://m5rc238.github.io/sitemap.xml

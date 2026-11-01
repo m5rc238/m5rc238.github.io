@@ -1,0 +1,12 @@
+---
+import Base from '../../layouts/Base.astro';
+import p from '../../data/profile.json';
+---
+<Base title="About Marcel Akiyama — Product Design, Research & Human–AI Interaction" kind="ProfilePage">
+ <header class="page-heading wrap"><p class="eyebrow">About / Marcel Akiyama</p><h1>Curious by nature.<br/><em>Concrete by practice.</em></h1><p class="page-lead">I’m Marcel Akiyama, a product designer, researcher, and builder. I work across product design, UX research, design systems, and human–AI interaction.</p></header>
+ <div class="reading-layout wrap"><aside class="reading-aside"><span class="eyebrow">On this page</span><a href="#background">Background</a><a href="#practice">What I work on</a><a href="#approach">How I approach it</a><a href="#profiles">Official profiles</a></aside>
+ <article class="prose"><section id="background"><h2>Background</h2><p>{p.intro}</p><p>I have 10+ years of experience across fintech, developer tools, B2B SaaS, and AI.</p><p>{p.background}</p><p>My work spans discovery, interaction design, prototyping, usability evaluation, and design systems. My <a href="https://mrcl.framer.website/">portfolio</a> contains more of that professional work.</p></section>
+ <section id="practice"><h2>What I work on</h2>{p.areas.map(a=><div class="practice-item"><h3>{a.name}</h3><p>{a.text}</p></div>)}</section>
+ <section id="approach"><h2>How I approach it</h2><p>{p.focus}</p><p>I want to distinguish what we have observed from what we think explains it. A polished interface or a fluent AI answer can still rest on an assumption that nobody has checked.</p><p>My public projects are ways to explore these questions through working software. They are experiments and learning records; their existence does not establish that a hypothesis is true.</p><a class="arrow-link" href="/work/">See the experiments ↗</a></section>
+ <section id="profiles"><h2>Find the same person elsewhere</h2><p>I use <strong>Marcel Akiyama</strong> professionally and <strong>m5rc238</strong> on GitHub. These are my official profiles:</p><ul>{p.links.map(l=><li><a href={l.url} rel="me">{l.label} ↗</a></li>)}</ul><p class="small muted">Profile updated <time datetime={p.updated}>November 1, 2026</time>. This is a first-person professional profile. Project descriptions link to their source documentation.</p><p class="small"><a href="/profile.md">Read the plain-text profile</a> · <a href="/profile.json">Structured profile</a></p></section></article></div>
+</Base>

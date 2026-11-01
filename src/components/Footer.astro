@@ -1,0 +1,8 @@
+---
+import profile from '../data/profile.json';
+---
+<footer class="site-footer wrap">
+ <div><a class="wordmark" href="/">Marcel Akiyama.</a><p>Design, research, and a healthy amount of questioning.</p></div>
+ <div class="footer-links">{profile.links.filter(l=>l.label!=='Portfolio').map(l=><a href={l.url} rel="me">{l.label} ↗</a>)}</div>
+ <div class="footer-bottom"><span>© 2026 Marcel Akiyama</span><a href="/colophon/">About this site</a><a href="/profile.md">Plain-text profile</a></div>
+</footer>

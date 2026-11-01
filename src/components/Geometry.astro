@@ -1,0 +1,18 @@
+---
+const petals=Array.from({length:12},(_,i)=>i*30);
+---
+<figure class="geometry" aria-labelledby="geometry-caption">
+ <div class="geometry-drawing">
+ <svg id="geometry-art" viewBox="0 0 520 520" role="img" aria-label="A slowly turning blue mandala made from repeating curves">
+ <defs><radialGradient id="paper-glow"><stop stop-color="#f9f7ef"/><stop offset="1" stop-color="#f5f2e9" stop-opacity="0"/></radialGradient></defs>
+ <circle cx="260" cy="260" r="252" fill="url(#paper-glow)"/>
+ <g id="pattern" fill="none" stroke="currentColor" stroke-width=".85">
+ <g class="turning" style="transform-origin:260px 260px">{petals.map(a=><g transform={`rotate(${a} 260 260)`}><ellipse cx="260" cy="166" rx="65" ry="138"/><ellipse cx="260" cy="192" rx="38" ry="106"/></g>)}<circle cx="260" cy="260" r="212"/><circle cx="260" cy="260" r="185"/></g>
+ <circle cx="260" cy="260" r="26" stroke="#a7442d"/><circle cx="260" cy="260" r="5" fill="#a7442d" stroke="none"/>
+ </g></svg>
+ <span class="drawing-coordinate coordinate-top" aria-hidden="true">FIG. 01 / REPEATING RULES</span>
+ <span class="drawing-coordinate coordinate-bottom" aria-hidden="true">SMALL CHANGES. DIFFERENT PATTERNS.</span>
+ </div>
+ <figcaption id="geometry-caption"><span>A small study in patterns.</span><div class="geometry-controls" hidden><label class="sr-only" for="pattern-select">Drawing pattern</label><select id="pattern-select"><option value="mandala">Mandala</option><option value="fractal">Fractal</option><option value="orbits">Orbits</option></select><button type="button" id="motion-toggle" aria-pressed="false">Pause motion</button></div><noscript><span>Geometric study</span></noscript></figcaption>
+</figure>
+<script src="../scripts/geometry.ts"></script>

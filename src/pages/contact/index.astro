@@ -1,0 +1,7 @@
+---
+import Base from '../../layouts/Base.astro';
+import p from '../../data/profile.json';
+---
+<Base title="Contact Marcel Akiyama — Product Design & Research" description="Get in touch with Marcel Akiyama about product design, UX research, design systems, and human–AI interaction. Official professional profiles and contact links.">
+ <section class="page-heading wrap contact-page"><p class="eyebrow">Contact</p><h1>Something worth<br/><em>figuring out?</em></h1><p class="page-lead">For product work, research, or a thoughtful conversation about human–AI interaction, you can reach me on LinkedIn.</p><a class="solid-link" href="https://www.linkedin.com/in/marcel-akiyama/" rel="me">Get in touch on LinkedIn ↗</a><div class="contact-profiles"><p class="eyebrow">Elsewhere</p>{p.links.filter(l=>l.label!=='LinkedIn').map(l=><a href={l.url} rel="me">{l.label} ↗</a>)}</div></section>
+</Base>

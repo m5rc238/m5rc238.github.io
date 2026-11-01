@@ -1,0 +1,79 @@
+{
+  "name": "Marcel Akiyama",
+  "handle": "m5rc238",
+  "role": "Product designer, researcher & builder",
+  "description": "Marcel Akiyama is a product designer, researcher, and builder with 10+ years of experience across fintech, developer tools, B2B SaaS, and AI. His work connects product design, UX research, design systems, and human–AI interaction.",
+  "intro": "I help teams catch product problems early, reduce avoidable rework, and make better decisions sooner.",
+  "background": "As a founding designer at Alpaca (YC W19), I helped shape products as the company evolved from machine learning for financial markets to an API-first brokerage.",
+  "focus": "I build prototypes to explore how software can make evidence, assumptions, uncertainty, and decisions easier to examine. I’m interested in AI that supports better thinking, and in how people evaluate its output and stay in control.",
+  "updated": "2026-11-01",
+  "links": [
+    {
+      "label": "GitHub",
+      "url": "https://github.com/m5rc238"
+    },
+    {
+      "label": "LinkedIn",
+      "url": "https://www.linkedin.com/in/marcel-akiyama/"
+    },
+    {
+      "label": "Portfolio",
+      "url": "https://mrcl.framer.website/"
+    },
+    {
+      "label": "Substack",
+      "url": "https://substack.com/@ahkwn"
+    }
+  ],
+  "areas": [
+    {
+      "name": "Product design",
+      "text": "I turn complex workflows into usable interfaces through interaction design, prototyping, and usability testing, with attention to technical constraints and business goals."
+    },
+    {
+      "name": "UX research & discovery",
+      "text": "I investigate user needs, challenge assumptions, and connect evidence to product decisions. I care about making findings traceable and easier to check."
+    },
+    {
+      "name": "Design systems",
+      "text": "I work across architecture, design tokens, components, and documentation to give teams shared constraints and reduce inconsistent, repeated decisions."
+    },
+    {
+      "name": "Human–AI interaction",
+      "text": "I explore how interfaces can make AI capabilities, uncertainty, and failure modes easier to understand, so people can evaluate outputs and maintain control."
+    },
+    {
+      "name": "Building & prototyping",
+      "text": "I use working interfaces to examine behavior and refine interactions beyond static designs. My public experiments are learning projects, with their limits made explicit."
+    }
+  ],
+  "projects": [
+    {
+      "id": "mochi",
+      "name": "Mochi",
+      "category": "Human–AI interaction",
+      "status": "Research prototypes",
+      "summary": "Can showing the evidence behind an AI answer help people check it?",
+      "detail": "A research catalog exploring links between questions, answers, claims, evidence, and sources. The prototypes use fictional demo data; their research question is not an established finding.",
+      "url": "https://github.com/m5rc238/mochi-prov"
+    },
+    {
+      "id": "tablox",
+      "name": "Tablox",
+      "category": "Attention & interaction",
+      "status": "Browser extension experiment",
+      "summary": "A small signal for how much browser context is open.",
+      "detail": "An extension that counts open tabs and signals changes in tab-count ranges. It explores a hypothesis about task switching; the count is not a measurement of cognitive load or attention.",
+      "url": "https://github.com/gettablox/tablox"
+    },
+    {
+      "id": "glyph",
+      "name": "Glyph",
+      "category": "Language & AI",
+      "status": "Open-source protocol",
+      "summary": "Clearer writing, without quietly changing the claim.",
+      "detail": "A language revision and epistemic calibration protocol for AI assistants. It aims to preserve meaning, attribution, scope, and uncertainty while reducing unnecessary reader effort.",
+      "url": "https://github.com/m5rc238/glyph-skill"
+    }
+  ]
+}

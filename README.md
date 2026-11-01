@@ -1,40 +1,30 @@
-# Hi, I’m Marcel
+# Marcel Akiyama — personal website
 
-**Product Designer & Researcher** exploring AI, human-computer interaction, and cognitive systems.
+Public professional home: https://m5rc238.github.io/
 
-I’m interested in a simple question:
+A static Astro site with a readable biography, source-linked work, writing, an interactive geometric study, and the existing problem-framing course.
 
-> **What happens to software when AI makes producing outputs cheap?**
+## Develop and verify
 
-I think some of the most interesting opportunities are not about adding more AI features, but about turning important human work into software structures.
+```sh
+npm ci
+npm run check
+npm run build
+node scripts/verify-site.mjs
+npm run dev
+```
 
-Things like:
+`master` is deployed by the existing GitHub Pages workflow. Do not commit `node_modules`, `dist`, or preview-only configuration.
 
-* evidence
-* hypotheses
-* assumptions
-* uncertainty
-* competing explanations
-* decisions
-* revision
+## Keep information accurate
 
-Today, much of this work still lives in documents, meetings, spreadsheets, and people’s heads.
+Edit `src/data/profile.json` for shared professional facts, project descriptions, areas of work, official links, and the real profile update date. This generates the site’s profile JSON, Markdown, llms.txt summary, and identity markup. Review editorial pages too when changing positioning.
 
-I build small products, prototypes, and experiments to explore what happens when these structures become explicit and computational.
+- Alpaca is past experience, not current employment.
+- Keep experiments separate from established findings and shipped client outcomes.
+- Do not add metrics without an attributable source and clear ownership.
+- Publish only professional information intended for public use.
 
-### Selected work
+Search setup and ownership verification: [docs/search-setup.md](docs/search-setup.md).
 
-**[Tablox](https://github.com/gettablox/tablox)**
-A small browser extension exploring tabs as a proxy for contextual load.
-
-**[Mochi](https://github.com/m5rc238/mochi-prov)**
-An experiment in provenance and evidence-aware AI workflows.
-
-**[Glyph](https://github.com/m5rc238/glyph-skill)**
-A small exploration of structured interaction with AI coding workflows.
-
-### More
-
-[Portfolio](https://mrcl.framer.website) · [LinkedIn](https://www.linkedin.com/in/marcel-akiyama/) · [Writing](https://cognist.substack.com)
-
-I use these projects as **public learning logs**, not as a claim to have everything figured out.
+Design and creative-coding inspiration is credited at `/colophon/`. The geometric SVG implementation is original.

@@ -1,166 +1,24 @@
 ---
 import Base from '../layouts/Base.astro';
-import Header from '../components/Header.astro';
-
-const projects = [
-	{
-		name: 'Tablox',
-		note: 'Tabular structure as a first-class object',
-		href: 'https://github.com/gettablox/tablox',
-	},
-	{
-		name: 'Mochi',
-		note: 'Notes that hold uncertainty instead of hiding it',
-		href: 'https://github.com/m5rc238/mochi-prov',
-	},
-	{
-		name: 'Glyph',
-		note: 'A typographic drawing tool for the browser',
-		href: 'https://github.com/m5rc238/glyph-skill',
-	},
-];
-
-// Only GitHub has a URL that can be inferred from the site's own domain, so the
-// other two stay unlinked until they exist rather than pointing somewhere wrong.
-const links = [
-	{ label: 'GitHub', href: 'https://github.com/m5rc238' },
-	{ label: 'LinkedIn', href: 'https://www.linkedin.com/in/marcel-akiyama/' },
-	{ label: 'Portfolio', href: 'https://mrcl.framer.website/' },
-	{ label: 'Substack', href: 'https://substack.com/@ahkwn' },
-];
+import Geometry from '../components/Geometry.astro';
+import p from '../data/profile.json';
 ---
-
-<Base
-	title="m5rc238 — designing software for how people actually think"
-	description="Product designer and researcher turning evidence, hypotheses, uncertainty, and revision into explicit software primitives."
-	bodyClass="bg-canvas"
->
-	<Header slot="header" />
-
-	<section class="container-page pt-16 pb-20 md:pt-24 md:pb-28">
-		<p class="text-xs font-medium uppercase tracking-[0.18em] text-lime">
-			Product designer &amp; researcher
-		</p>
-
-		<h1 class="mt-6 max-w-[18ch] text-balance text-hero text-sky">
-			Designing software for how people actually think
-		</h1>
-
-		<div class="mt-10 max-w-[58ch] space-y-5 text-[1.0625rem] leading-relaxed text-lime md:text-lg">
-			<p>
-				I&rsquo;m a product designer and researcher exploring what happens when
-				AI makes producing outputs cheap.
-			</p>
-			<p>
-				The interesting problems are often elsewhere:
-				<span class="font-medium">evidence</span>,
-				<span class="font-medium">hypotheses</span>,
-				<span class="font-medium">uncertainty</span>,
-				<span class="font-medium">decisions</span>,
-				<span class="font-medium">competing explanations</span>, and
-				<span class="font-medium">revision</span>.
-			</p>
-			<p>
-				I&rsquo;m interested in turning these kinds of cognitive structures, which
-				often live in documents, meetings, spreadsheets, or people&rsquo;s heads,
-				into explicit software primitives.
-			</p>
-			<p>I build small products and prototypes to explore these ideas.</p>
-		</div>
-	</section>
-
-	<section id="work" class="container-page scroll-mt-8">
-		<div
-			class="rounded-[1.75rem] bg-sky px-6 py-12 text-ink md:px-12 md:py-16"
-		>
-			<div class="flex flex-col gap-10 md:flex-row md:items-start md:gap-16">
-				<h2
-					class="shrink-0 text-xs font-medium uppercase tracking-[0.18em] md:w-40"
-				>
-					Selected work
-				</h2>
-
-				<ul class="flex-1">
-					{
-						projects.map((project, i) => (
-							<li
-								class:list={[
-									'flex flex-col gap-1 py-6 md:flex-row md:items-baseline md:gap-8',
-									i > 0 && 'border-t border-ink/15',
-								]}
-							>
-								<span class="text-2xl font-medium tracking-tight md:w-48 md:text-3xl">
-									{project.href ? (
-										<a
-											class="link-wipe"
-											href={project.href}
-											rel="noopener noreferrer"
-											target="_blank"
-										>
-											{project.name}
-										</a>
-									) : (
-										project.name
-									)}
-								</span>
-								<span class="text-sm text-ink/70 md:flex-1">{project.note}</span>
-							</li>
-						))
-					}
-				</ul>
-			</div>
-		</div>
-	</section>
-
-	<section id="writing" class="container-page scroll-mt-8 pt-8 pb-24 md:pt-10 md:pb-32">
-		<div
-			class="rounded-[1.75rem] bg-lime px-6 py-12 text-ink md:px-12 md:py-16"
-		>
-			<div class="flex flex-col gap-10 md:flex-row md:items-start md:gap-16">
-				<h2
-					class="shrink-0 text-xs font-medium uppercase tracking-[0.18em] md:w-40"
-				>
-					Writing
-				</h2>
-
-				<div class="flex-1">
-					<p class="max-w-[46ch] text-lg leading-relaxed">
-						Notes on AI, human-computer interaction, cognitive systems, and
-						software design.
-					</p>
-
-					<ul class="mt-8 flex flex-wrap gap-x-6 gap-y-3 text-sm">
-						{
-							links.map((link) => (
-								<li>
-									{link.href ? (
-										<a
-											class="link-wipe font-medium"
-											href={link.href}
-											rel="me noopener"
-											target="_blank"
-										>
-											{link.label}
-										</a>
-									) : (
-										<span class="text-ink/45">{link.label}</span>
-									)}
-								</li>
-							))
-						}
-					</ul>
-				</div>
-			</div>
-		</div>
-	</section>
+<Base>
+ <section class="hero wrap">
+  <div class="hero-intro"><p class="eyebrow">Independent practice / design & research</p><h1>Marcel Akiyama<span class="title-dot">.</span></h1><p class="hero-role">Product designer, researcher <em>& builder.</em></p></div>
+  <div class="hero-grid"><div class="hero-copy"><h2>Good questions.<br/>Clearer decisions.</h2><p>{p.intro}</p><p class="muted">10+ years across fintech, developer tools, B2B SaaS, and AI. Previously a founding designer at Alpaca.</p><div class="text-links"><a class="arrow-link" href="/work/">Explore my work <span>↗</span></a><a class="quiet-link" href="/about/">A little about me →</a></div></div><Geometry /></div>
+  <div class="hero-bottom"><span>Product design · UX research · Design systems · Human–AI interaction</span><a href="#selected-work">Keep exploring ↓</a></div>
+ </section>
+ <section id="selected-work" class="work-section section-space">
+  <div class="wrap"><div class="section-heading"><div><p class="eyebrow">01 / Selected explorations</p><h2>Questions I’m<br/><em>building around.</em></h2></div><p>Small products and prototypes that make ideas concrete enough to examine.</p></div>
+  <div class="project-grid">{p.projects.map((project,i)=><article class="project-card"><a class="project-art art-color" href={project.url} aria-label={`${project.name} — view repository`}>
+   {i===0?<svg viewBox="0 0 360 220" aria-hidden="true"><g fill="none" stroke="currentColor" stroke-width="1.1"><path d="M90 110L180 50L270 110L180 170ZM90 110L180 110L270 110M180 50V170"/>{[[90,110],[180,50],[270,110],[180,170],[180,110]].map(([x,y])=><circle cx={x} cy={y} r="17" fill="#e4ece9"/>)}</g><circle cx="180" cy="110" r="5" fill="#a7442d"/></svg>:i===1?<svg viewBox="0 0 360 220" aria-hidden="true"><g fill="#f1e3d9" stroke="currentColor" stroke-width="1.1">{[0,1,2,3,4].map(j=><rect x={95+j*17} y={48+j*13} width="112" height="85" rx="7"/>)}<path d="M163 116h88"/></g><circle cx="179" cy="105" r="3" fill="currentColor"/></svg>:<svg viewBox="0 0 360 220" aria-hidden="true"><text x="88" y="143" fill="currentColor" font-family="Georgia,serif" font-size="102" font-style="italic">Aa</text><path d="M84 156H268M240 70V143M230 70H250M230 143H250" stroke="currentColor" fill="none"/></svg>}
+   <span class="art-arrow">↗</span></a><p class="project-meta">{project.category}</p><h3><a href={project.url}>{project.name}</a></h3><p>{project.summary}</p><span class="project-status">{project.status}</span></article>)}</div>
+   <div class="section-tail"><span>Experiments, with their questions and limits left visible.</span><a class="arrow-link" href="/work/">All work & background ↗</a></div>
+  </div>
+ </section>
+ <section class="writing-feature wrap section-space"><div class="section-heading"><div><p class="eyebrow">02 / Writing & learning</p><h2>Start with<br/><em>a better question.</em></h2></div><a class="arrow-link" href="/writing/">Explore writing ↗</a></div>
+ <a class="course-feature" href="/writing/problem-framing/"><div class="course-illustration" aria-hidden="true"><svg viewBox="0 0 360 260"><g fill="none" stroke="currentColor" stroke-width="1.4"><rect x="93" y="47" width="175" height="175" transform="rotate(-10 180 130)"/><circle cx="180" cy="130" r="73"/><path d="M70 130H290M180 20V240M123 73L237 187M123 187L237 73"/><circle cx="180" cy="130" r="42"/></g><circle cx="180" cy="130" r="6" fill="#a7442d"/></svg></div><div class="course-copy"><p class="eyebrow">Field course / Product judgment</p><h3>How to frame<br/>a problem well.</h3><p>Examine evidence. Compare explanations. Decide what to investigate before jumping to a solution.</p><span class="arrow-link">Explore the course →</span></div></a></section>
+ <section class="about-band"><div class="wrap about-band-inner"><p class="eyebrow">03 / A way of working</p><div><h2>Make the thinking<br/><em>easier to see.</em></h2><p>{p.focus}</p><a class="arrow-link" href="/about/">More about my approach ↗</a></div></div></section>
+ <section class="contact-strip wrap"><p>Something worth figuring out?</p><a href="/contact/">Let’s talk <span>↗</span></a></section>
 </Base>
-
-<style>
-	/* The brief's type is Google Sans throughout; the global base layer still
-	   points headings at the serif, so the page opts back in. */
-	h1,
-	h2 {
-		font-family: var(--font-gsans);
-		font-weight: 500;
-	}
-</style>

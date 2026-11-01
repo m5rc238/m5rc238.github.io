@@ -1,16 +1,8 @@
 ---
+const links = [{href:'/work/',label:'Work'},{href:'/writing/',label:'Writing'},{href:'/about/',label:'About'},{href:'/contact/',label:'Contact'}];
+const current = Astro.url.pathname;
 ---
-
-<header class="container-page flex h-16 items-center justify-between gap-6">
-	<a
-		href={import.meta.env.BASE_URL}
-		class="link-wipe text-sm font-medium tracking-tight text-sky"
-	>
-		m5rc238
-	</a>
-
-	<nav class="flex items-center gap-5 text-sm text-sky">
-		<a class="link-wipe" href="#work">Work</a>
-		<a class="link-wipe" href="#writing">Writing</a>
-	</nav>
+<header class="site-header wrap">
+ <a class="wordmark" href="/" aria-label="Marcel Akiyama home"><span class="monogram" aria-hidden="true">✳</span> Marcel Akiyama<span class="wordmark-dot">.</span></a>
+ <nav aria-label="Main navigation">{links.map(l=><a href={l.href} aria-current={current.startsWith(l.href)?'page':undefined}>{l.label}</a>)}</nav>
 </header>

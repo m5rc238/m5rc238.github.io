@@ -1,0 +1,9 @@
+---
+import Base from '../../layouts/Base.astro';
+import {readFileSync} from 'node:fs';
+const course=JSON.parse(readFileSync('public/problem-framing/course-data.js','utf8').replace(/^window\.COURSE\s*=\s*/, '').replace(/;\s*$/, ''));
+---
+<Base title="Problem Framing Course — Text Edition | Marcel Akiyama" description="Read every lesson in the problem framing course without JavaScript: foundations, evidence, assumptions, competing frames, boundaries, and decisions.">
+ <header class="page-heading wrap"><p class="eyebrow">Problem framing / Text edition</p><h1>The lessons,<br/><em>at your own pace.</em></h1><p class="page-lead">The same lesson text as the interactive course. Use the interactive version for quizzes, exercises, and your saved workbook.</p><a class="solid-link" href="/problem-framing/">Open the interactive course →</a></header>
+ <div class="reading-layout wrap"><aside class="reading-aside"><span class="eyebrow">Contents</span>{course.modules.map((m:{id:number,title:string})=><a href={`#module-${m.id}`}>{m.title}</a>)}</aside><article class="prose course-reading">{course.modules.map((m:{id:number,title:string,objective:string,sections:string[][]})=><section id={`module-${m.id}`}><p class="eyebrow">{m.id===0?'Foundations':m.id===11?'Final project':`Module ${m.id}`}</p><h2>{m.title}</h2><p class="reading-objective">{m.objective}</p>{m.sections.map(([heading,text])=><div><h3>{heading}</h3>{text.split(/\n\n/).map(paragraph=><p>{paragraph}</p>)}</div>)}<a class="arrow-link" href={`/problem-framing/#/module/${m.id}/lesson`}>Practice this module →</a></section>)}<section><h2>Sources and course notes</h2><p>The interactive course includes its research references, source notes, and assessment rubric.</p><a href="/problem-framing/#/sources">Open the reference list →</a></section></article></div>
+</Base>

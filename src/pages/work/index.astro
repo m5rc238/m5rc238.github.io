@@ -1,0 +1,11 @@
+---
+import Base from '../../layouts/Base.astro';
+import p from '../../data/profile.json';
+---
+<Base title="Work by Marcel Akiyama — Product Design & Public Experiments" description="Professional background and public experiments by Marcel Akiyama: Alpaca, Mochi, Tablox, and Glyph. Project purposes, status, and source links.">
+ <header class="page-heading wrap"><p class="eyebrow">Selected work</p><h1>From a question<br/><em>to something tangible.</em></h1><p class="page-lead">Professional product work and independent experiments. Different contexts, with a shared interest in how people understand, decide, and act.</p></header>
+ <section class="wrap work-list"><div class="work-entry professional"><div><p class="eyebrow">Professional background</p><h2>Alpaca</h2><span class="project-status">Past professional work</span></div><div><h3>Designing through a company’s evolution.</h3><p>{p.background}</p><p>My professional experience includes fintech, developer tools, B2B SaaS, research, and design systems. Explore the portfolio for case studies and visual work.</p><a class="arrow-link" href="https://mrcl.framer.website/">View professional portfolio ↗</a></div></div>
+ <div class="work-list-label"><p class="eyebrow">Independent / Public experiments</p><p>These projects explore questions. Their descriptions do not claim measured improvements.</p></div>
+ {p.projects.map((x,i)=><article class="work-entry" id={x.id}><div><p class="eyebrow">0{i+1} / {x.category}</p><h2>{x.name}</h2><span class="project-status">{x.status}</span></div><div><h3>{x.summary}</h3><p>{x.detail}</p><a class="arrow-link" href={x.url}>Read the project & source ↗</a></div></article>)}
+ <div class="section-tail"><span>Interested in the thinking behind the work?</span><a class="arrow-link" href="/writing/">Writing & learning →</a></div></section>
+</Base>
