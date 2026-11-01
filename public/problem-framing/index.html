@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="A practical course in problem framing for product designers. Lessons, quizzes, exercises, and a capstone on evidence and judgment.">
+  <title>Frame · A course in problem framing</title>
+  <link rel="stylesheet" href="./styles.css">
+  <script defer src="./course-data.js"></script>
+  <script defer src="./app.js"></script>
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <aside id="sidebar" aria-label="Course navigation">
+    <a class="brand" href="#/"><span class="mark" aria-hidden="true">F</span> Frame<span class="edition">FIELD COURSE / 01</span></a>
+    <p class="side-intro">A course in better<br>product judgment.</p>
+    <div class="progress-label"><span>Your progress</span><span id="progress-text">0 / 11</span></div>
+    <progress id="progress" max="11" value="0" aria-label="Completed modules"></progress>
+    <nav id="navigation"></nav>
+    <div class="side-bottom"><a href="#/notebook">Your workbook ↗</a><a href="#/sources">Research and course notes ↗</a><p>Answers stay in this browser.<br>Export a copy to keep your work.</p></div>
+  </aside>
+  <div class="layout">
+    <header><button id="menu" aria-label="Toggle course navigation" aria-controls="sidebar" aria-expanded="false">☰</button><a href="#/">PROBLEM FRAMING</a><div><button id="export">Export workbook</button><button id="print">Print</button></div></header>
+    <main id="main" tabindex="-1"></main>
+    <footer>Frame · Practical learning for product designers <span>Evidence · Boundaries · Judgment</span></footer>
+  </div>
+  <div id="notice" role="status" aria-live="polite"></div>
+  <noscript><p>This course requires JavaScript for lessons, quizzes, and saved exercises.</p></noscript>
+</body>
+</html>
