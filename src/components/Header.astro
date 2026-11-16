@@ -7,26 +7,23 @@ const isCases = pathname.startsWith('/cases');
 ---
 
 <header
-	class="sticky top-0 z-40 border-b border-teal-dark/20 bg-white/72 backdrop-blur-xs"
+	class="sticky top-0 z-40 border-b border-teal-dark/20 bg-white/72 backdrop-blur-[5px]"
 >
 	<div class="container-page flex h-16 items-center justify-between gap-6">
 		<a
 			href="/"
 			aria-label="Marcel Akiyama — Home"
-			class="group flex items-center gap-2.5 text-sm font-medium text-teal-dark transition-opacity hover:opacity-80"
+			class="flex items-center text-ink transition-opacity hover:opacity-75"
 		>
-			<!-- Minimalist two-dot mark matching the Framer header logo -->
-			<svg
-				width="32"
-				height="24"
-				viewBox="0 0 32 24"
-				fill="none"
-				xmlns="http://www.w3.org/2000/svg"
-				aria-hidden="true"
-			>
-				<rect width="24" height="24" rx="6" fill="#034a43" />
-				<circle cx="9.5" cy="12" r="3.5" fill="#ffffff" />
-				<circle cx="28.5" cy="12" r="3.5" fill="#034a43" />
+			<svg width="28" height="16" viewBox="0 0 28 16" fill="none" aria-hidden="true">
+				<path
+					d="M 16 16 L 0 16 L 0 0 L 16 0 Z M 8 12 C 10.209 12 12 10.209 12 8 C 12 5.791 10.209 4 8 4 C 5.791 4 4 5.791 4 8 C 4 10.209 5.791 12 8 12 Z"
+					fill="currentColor"
+				/>
+				<path
+					d="M 28 8 C 28 10.209 26.209 12 24 12 C 21.791 12 20 10.209 20 8 C 20 5.791 21.791 4 24 4 C 26.209 4 28 5.791 28 8 Z"
+					fill="currentColor"
+				/>
 			</svg>
 		</a>
 
@@ -35,7 +32,7 @@ const isCases = pathname.startsWith('/cases');
 				href="/"
 				class:list={[
 					'transition-colors hover:text-teal-dark',
-					isHome ? 'text-teal-dark' : 'text-muted',
+					isHome ? 'text-ink' : 'text-muted',
 				]}
 			>
 				Home
@@ -44,7 +41,7 @@ const isCases = pathname.startsWith('/cases');
 				href="/cases/"
 				class:list={[
 					'transition-colors hover:text-teal-dark',
-					isCases ? 'text-teal-dark' : 'text-muted',
+					isCases ? 'text-ink' : 'text-muted',
 				]}
 			>
 				Case Studies
