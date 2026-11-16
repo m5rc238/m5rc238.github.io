@@ -11,28 +11,30 @@ const cases = (await getCollection('cases')).sort(
 <Base
 	title={`Case Studies — ${site.name}`}
 	description="Selected product design, systems thinking, and UX research case studies by Marcel Akiyama."
+	bodyClass="bg-dot-grid"
 >
-	<section class="py-16 md:py-24">
-		<div class="container-page">
-			<h1 class="section-eyebrow text-teal-dark">ALL CASE STUDIES</h1>
+	<section class="py-14 md:py-20">
+		<div class="container-page flex flex-col gap-[39px]">
+			<div class="border-b border-teal-dark/25 py-[17px]">
+				<h1 class="section-eyebrow tracking-[0.14em] text-ink">ALL CASE STUDIES</h1>
+			</div>
 
-			<div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+			<div class="grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
 				{
 					cases.map((entry) => (
-						<a href={`/cases/${entry.id}/`} class="case-card group flex flex-col">
-							<div class="aspect-16/11 w-full overflow-hidden bg-white">
+						<a href={`/cases/${entry.id}/`} class="framer-case-card reveal group">
+							<div class="framer-case-thumb">
 								<img
 									src={entry.data.coverImage}
 									alt={entry.data.coverAlt || entry.data.title}
 									loading="lazy"
-									class="h-full w-full object-cover"
 								/>
 							</div>
-							<div class="flex flex-1 flex-col gap-2 p-5">
-								<h2 class="text-lg font-semibold tracking-tight text-forest-deep group-hover:text-teal-dark">
+							<div class="flex flex-col gap-1.5">
+								<h2 class="text-[24px] font-medium leading-snug text-ink transition-colors group-hover:text-teal-dark">
 									{entry.data.title}
 								</h2>
-								<p class="text-sm leading-relaxed text-muted">
+								<p class="font-serif text-[16px] leading-[1.8] text-ink">
 									{entry.data.subtitle}
 								</p>
 							</div>

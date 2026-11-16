@@ -15,60 +15,73 @@ const journalPosts = (await getCollection('journal')).sort(
 
 <Base title={site.siteTitle} description={site.siteDescription}>
 	<!-- Hero Section -->
-	<section class="bg-mint py-16 md:py-24">
-		<div class="container-page flex flex-col gap-8">
-			<div class="flex items-center gap-4">
-				<img
-					src={site.hero.avatar}
-					alt={site.name}
-					width="64"
-					height="64"
-					class="h-16 w-16 rounded-full object-cover shadow-[inset_0_8px_6px_-3px_rgba(242,208,208,0.5)]"
-				/>
-				<p class="text-lg font-medium text-ink md:text-xl">
-					{site.hero.greeting}
-				</p>
-			</div>
+	<section class="bg-mint py-20 md:py-28">
+		<div class="container-page">
+			<div class="flex flex-col items-start gap-7 md:flex-row">
+				<div class="shrink-0">
+					<img
+						src={site.hero.avatar}
+						alt={site.name}
+						width="46"
+						height="46"
+						class="h-[46px] w-[46px] rounded-full border border-white/20 object-cover shadow-[inset_0_0.48px_0.38px_-0.83px_rgba(242,208,208,0.5),inset_0_1.83px_1.46px_-1.67px_rgba(242,208,208,0.5),inset_0_8px_6.4px_-2.5px_rgba(242,208,208,0.5)]"
+					/>
+				</div>
 
-			<h1 class="max-w-[26ch] text-3xl font-light leading-[1.3] tracking-tight text-ink md:text-[2.3125rem]">
-				{site.hero.bio}
-			</h1>
+				<div class="max-w-[1200px] text-[28px] leading-[1.3] tracking-tight text-ink sm:text-[34px] md:text-[37px]">
+					<p class="font-medium">{site.hero.greeting}</p>
+					<h1 class="mt-7 font-light">
+						{site.hero.bio}
+					</h1>
+				</div>
+			</div>
 		</div>
 	</section>
 
 	<!-- Featured Case Studies -->
-	<section class="py-20 md:py-24">
-		<div class="container-page">
-			<div class="flex items-center justify-between gap-4">
-				<h2 class="section-eyebrow text-teal-dark">
+	<section id="cases" class="bg-dot-grid pt-[18px] pb-[77px]">
+		<div class="container-page flex flex-col gap-[39px]">
+			<!-- Pill divider -->
+			<div class="flex justify-center">
+				<svg width="80" height="4" viewBox="0 0 80 4" fill="none" aria-hidden="true">
+					<path
+						d="M 0 1.999 C 0 0.895 0.895 0 1.999 0 C 13.086 0 66.91 0 77.999 0 C 79.104 0 80 0.896 80 2.001 C 80 2.001 80 2.001 80 2.002 C 80 3.105 79.105 4 78.002 4 C 66.917 4 13.087 4 2 4 C 0.895 4 0 3.105 0 2 C 0 2 0 2 0 1.999 Z"
+						fill="rgba(151, 153, 153, 0.3)"
+						stroke="rgba(82, 82, 82, 0.07)"
+					/>
+				</svg>
+			</div>
+
+			<!-- Section Header -->
+			<div class="flex items-center justify-between gap-4 border-b border-teal-dark/25 py-[17px]">
+				<h2 class="section-eyebrow tracking-[0.14em] text-ink">
 					{site.featuredHeading}
 				</h2>
 				<a
 					href="/cases/"
-					class="inline-flex items-center gap-1.5 text-sm font-medium text-teal-dark transition-colors hover:text-teal-mid"
+					class="rounded-[6px] border border-ink px-8 py-1.5 text-[14px] font-normal text-ink transition-colors hover:bg-ink hover:text-white sm:px-10"
 				>
 					See All
-					<span aria-hidden="true">&rarr;</span>
 				</a>
 			</div>
 
-			<div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+			<!-- 3-Column Framer Cards -->
+			<div class="grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
 				{
 					featuredCases.map((entry) => (
-						<a href={`/cases/${entry.id}/`} class="case-card reveal group flex flex-col">
-							<div class="aspect-16/11 w-full overflow-hidden bg-white">
+						<a href={`/cases/${entry.id}/`} class="framer-case-card reveal group">
+							<div class="framer-case-thumb">
 								<img
 									src={entry.data.coverImage}
 									alt={entry.data.coverAlt || entry.data.title}
 									loading="lazy"
-									class="h-full w-full object-cover"
 								/>
 							</div>
-							<div class="flex flex-1 flex-col gap-2 p-5">
-								<h3 class="text-lg font-medium tracking-tight text-forest-deep group-hover:text-teal-dark">
+							<div class="flex flex-col gap-1.5">
+								<h3 class="text-[24px] font-medium leading-snug text-ink transition-colors group-hover:text-teal-dark">
 									{entry.data.title}
 								</h3>
-								<p class="text-sm leading-relaxed text-muted">
+								<p class="font-serif text-[16px] leading-[1.8] text-ink">
 									{entry.data.subtitle}
 								</p>
 							</div>
@@ -80,37 +93,36 @@ const journalPosts = (await getCollection('journal')).sort(
 	</section>
 
 	<!-- Journal Section -->
-	<section class="bg-forest py-20 text-white md:py-24">
+	<section class="bg-forest-deep py-[66px] pb-[91px] text-teal-accent">
 		<div class="container-page">
-			<div class="flex items-center justify-between gap-4">
-				<h2 class="section-eyebrow text-teal-accent">
+			<div class="flex items-center justify-between gap-4 border-b border-teal-border py-[17px]">
+				<h2 class="section-eyebrow tracking-[0.14em] text-teal-accent">
 					{site.journalHeading}
 				</h2>
 				<a
 					href={site.journalUrl}
 					target="_blank"
 					rel="noopener noreferrer"
-					class="inline-flex items-center gap-1.5 text-sm font-medium text-mint-soft/80 transition-colors hover:text-teal-accent"
+					class="rounded-[6px] border border-teal-mid px-8 py-1.5 text-[14px] font-normal text-teal-accent/75 transition-colors hover:border-teal-accent hover:text-teal-accent sm:px-10"
 				>
-					Substack
-					<span aria-hidden="true">&nearr;</span>
+					See All
 				</a>
 			</div>
 
-			<ul class="mt-8 divide-y divide-teal-accent/15 border-y border-teal-accent/15">
+			<ul class="pt-4">
 				{
 					journalPosts.map((post) => (
-						<li class="reveal">
+						<li class="reveal border-b border-teal-border">
 							<a
 								href={post.data.url}
 								target="_blank"
 								rel="noopener noreferrer"
-								class="group flex flex-col justify-between gap-2 py-6 transition-colors sm:flex-row sm:items-baseline sm:gap-8"
+								class="group flex flex-col gap-2 py-5"
 							>
-								<span class="text-lg font-medium text-mint-soft transition-colors group-hover:text-teal-accent group-hover:underline group-hover:underline-offset-4 md:text-xl">
+								<span class="text-2xl font-medium leading-[1.3] text-teal-accent transition-opacity group-hover:opacity-80 sm:text-3xl md:text-[40px]">
 									{post.data.title}
 								</span>
-								<span class="shrink-0 font-mono text-xs tracking-wider text-teal-accent/70">
+								<span class="text-[14px] font-medium leading-[1.3] text-teal-accent/50">
 									{post.data.date}
 								</span>
 							</a>
@@ -122,16 +134,18 @@ const journalPosts = (await getCollection('journal')).sort(
 	</section>
 
 	<!-- Experience Section -->
-	<section class="bg-mint py-20 md:py-24">
-		<div class="container-page flex flex-col gap-10">
-			<h2 class="section-eyebrow text-teal-dark">
-				{site.experience.heading}
-			</h2>
+	<section class="border-t border-[#e6e3e3] bg-mint py-[66px] pb-[91px]">
+		<div class="container-page flex flex-col gap-2.5">
+			<div class="border-b border-[#0f5252]/20 py-[17px]">
+				<h2 class="section-eyebrow tracking-[0.14em] text-teal-mid">
+					{site.experience.heading}
+				</h2>
+			</div>
 
-			<div class="reveal flex flex-wrap items-center gap-8 sm:gap-12">
+			<div class="reveal flex flex-wrap items-center justify-between gap-8 py-5">
 				<!-- Y Combinator -->
 				<svg
-					class="h-8 w-auto sm:h-9"
+					class="h-10 w-auto sm:h-[47px]"
 					viewBox="0 0 170.278 40.024"
 					fill="none"
 					role="img"
@@ -158,7 +172,7 @@ const journalPosts = (await getCollection('journal')).sort(
 
 				<!-- Alpaca -->
 				<svg
-					class="h-9 w-auto sm:h-10"
+					class="h-10 w-auto sm:h-12"
 					viewBox="0 0 748 209"
 					fill="none"
 					role="img"
@@ -174,9 +188,11 @@ const journalPosts = (await getCollection('journal')).sort(
 				</svg>
 			</div>
 
-			<p class="max-w-[54ch] text-lg font-light leading-relaxed text-forest-deep md:text-xl">
-				{site.experience.summary}
-			</p>
+			<div class="border-t border-teal-dark/20 py-5">
+				<p class="max-w-[80%] text-lg font-light leading-relaxed text-ink md:text-xl">
+					{site.experience.summary}
+				</p>
+			</div>
 		</div>
 	</section>
 </Base>

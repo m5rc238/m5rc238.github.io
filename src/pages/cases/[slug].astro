@@ -25,9 +25,10 @@ const nextCase = entry.data.nextSlug
 <Base
 	title={`${entry.data.title} — ${site.name}`}
 	description={entry.data.subtitle}
+	bodyClass="bg-dot-grid"
 >
 	<article class="py-14 md:py-20">
-		<div class="container-page max-w-3xl">
+		<div class="container-page max-w-4xl">
 			<a
 				href="/cases/"
 				class="inline-flex items-center gap-1.5 text-sm font-medium text-teal-dark transition-colors hover:text-teal-mid"
@@ -37,34 +38,34 @@ const nextCase = entry.data.nextSlug
 			</a>
 
 			<header class="mt-8">
-				<h1 class="text-3xl font-semibold tracking-tight text-forest-deep md:text-5xl">
+				<h1 class="text-3xl font-medium tracking-tight text-ink md:text-5xl">
 					{entry.data.title}
 				</h1>
-				<p class="mt-4 text-lg leading-relaxed text-muted md:text-xl">
+				<p class="mt-4 font-serif text-lg leading-relaxed text-muted md:text-xl">
 					{entry.data.subtitle}
 				</p>
 
 				<dl class="mt-8 grid grid-cols-2 gap-6 border-y border-teal-dark/15 py-6 text-sm sm:grid-cols-4">
 					<div>
 						<dt class="font-mono text-xs uppercase tracking-wider text-muted">Role</dt>
-						<dd class="mt-1 font-medium text-forest-deep">{entry.data.role}</dd>
+						<dd class="mt-1 font-medium text-ink">{entry.data.role}</dd>
 					</div>
 					<div>
 						<dt class="font-mono text-xs uppercase tracking-wider text-muted">Scope</dt>
-						<dd class="mt-1 font-medium text-forest-deep">{entry.data.scope}</dd>
+						<dd class="mt-1 font-medium text-ink">{entry.data.scope}</dd>
 					</div>
 					<div>
 						<dt class="font-mono text-xs uppercase tracking-wider text-muted">Timeline</dt>
-						<dd class="mt-1 font-medium text-forest-deep">{entry.data.timeline}</dd>
+						<dd class="mt-1 font-medium text-ink">{entry.data.timeline}</dd>
 					</div>
 					<div>
 						<dt class="font-mono text-xs uppercase tracking-wider text-muted">Team</dt>
-						<dd class="mt-1 font-medium text-forest-deep">{entry.data.team}</dd>
+						<dd class="mt-1 font-medium text-ink">{entry.data.team}</dd>
 					</div>
 				</dl>
 			</header>
 
-			<div class="mt-10 overflow-hidden rounded-2xl border border-teal-dark/12 bg-white shadow-sm">
+			<div class="mt-10 overflow-hidden rounded-[8px] border border-black/10 bg-white">
 				<img
 					src={entry.data.coverImage}
 					alt={entry.data.coverAlt || entry.data.title}
@@ -74,7 +75,7 @@ const nextCase = entry.data.nextSlug
 
 			{
 				entry.data.youtubeId && (
-					<div class="mt-10 aspect-video overflow-hidden rounded-2xl border border-teal-dark/12 bg-black shadow-sm">
+					<div class="mt-10 aspect-video overflow-hidden rounded-[8px] border border-black/10 bg-black">
 						<iframe
 							src={`https://www.youtube-nocookie.com/embed/${entry.data.youtubeId}`}
 							title={`${entry.data.title} video`}
@@ -100,12 +101,12 @@ const nextCase = entry.data.nextSlug
 						{prevCase && (
 							<a
 								href={`/cases/${prevCase.id}/`}
-								class="group flex flex-col gap-1 rounded-xl border border-teal-dark/12 bg-white/70 p-5 transition-colors hover:border-teal-dark/30 hover:bg-white"
+								class="group flex flex-col gap-1 rounded-[8px] border border-black/10 bg-white/80 p-5 transition-colors hover:border-teal-dark/30 hover:bg-white"
 							>
 								<span class="font-mono text-xs uppercase tracking-wider text-muted">
 									&larr; Previous Project
 								</span>
-								<span class="text-base font-semibold text-forest-deep group-hover:text-teal-dark">
+								<span class="text-base font-medium text-ink group-hover:text-teal-dark">
 									{prevCase.data.title}
 								</span>
 							</a>
@@ -115,12 +116,12 @@ const nextCase = entry.data.nextSlug
 						{nextCase && (
 							<a
 								href={`/cases/${nextCase.id}/`}
-								class="group flex flex-col gap-1 rounded-xl border border-teal-dark/12 bg-white/70 p-5 transition-colors hover:border-teal-dark/30 hover:bg-white"
+								class="group flex flex-col gap-1 rounded-[8px] border border-black/10 bg-white/80 p-5 transition-colors hover:border-teal-dark/30 hover:bg-white"
 							>
 								<span class="font-mono text-xs uppercase tracking-wider text-muted">
 									Next Project &rarr;
 								</span>
-								<span class="text-base font-semibold text-forest-deep group-hover:text-teal-dark">
+								<span class="text-base font-medium text-ink group-hover:text-teal-dark">
 									{nextCase.data.title}
 								</span>
 							</a>
