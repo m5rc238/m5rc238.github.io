@@ -1,0 +1,75 @@
+backend:
+  name: github
+  repo: m5rc238/m5rc238.github.io
+  branch: master
+
+media_folder: public/images
+public_folder: /images
+
+collections:
+  - name: cases
+    label: Case Studies
+    folder: src/content/cases
+    create: true
+    slug: '{{slug}}'
+    sortable_fields: ['order', 'title', 'timeline']
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Subtitle', name: 'subtitle', widget: 'string' }
+      - { label: 'Display Order', name: 'order', widget: 'number', value_type: 'int' }
+      - { label: 'Featured on Home', name: 'featured', widget: 'boolean', default: false }
+      - { label: 'Cover Image', name: 'coverImage', widget: 'image' }
+      - { label: 'Cover Alt Text', name: 'coverAlt', widget: 'string', required: false }
+      - { label: 'Role', name: 'role', widget: 'string' }
+      - { label: 'Scope', name: 'scope', widget: 'string' }
+      - { label: 'Timeline', name: 'timeline', widget: 'string' }
+      - { label: 'Team', name: 'team', widget: 'string' }
+      - { label: 'YouTube Video ID', name: 'youtubeId', widget: 'string', required: false }
+      - { label: 'Previous Case Study Slug', name: 'prevSlug', widget: 'string', required: false }
+      - { label: 'Next Case Study Slug', name: 'nextSlug', widget: 'string', required: false }
+      - { label: 'Body', name: 'body', widget: 'markdown' }
+
+  - name: journal
+    label: Journal Articles
+    folder: src/content/journal
+    create: true
+    slug: '{{slug}}'
+    sortable_fields: ['order', 'title']
+    fields:
+      - { label: 'Title', name: 'title', widget: 'string' }
+      - { label: 'Date', name: 'date', widget: 'string', hint: 'e.g. SEP 09, 2026' }
+      - { label: 'Article URL', name: 'url', widget: 'string' }
+      - { label: 'Display Order', name: 'order', widget: 'number', value_type: 'int' }
+
+  - name: settings
+    label: Site Settings
+    files:
+      - label: 'Global Copy & Links'
+        name: 'site'
+        file: 'src/data/site.json'
+        fields:
+          - { label: 'Name', name: 'name', widget: 'string' }
+          - { label: 'Site Title', name: 'siteTitle', widget: 'string' }
+          - { label: 'Site Description', name: 'siteDescription', widget: 'text' }
+          - { label: 'Contact Email', name: 'email', widget: 'string' }
+          - label: 'Hero'
+            name: 'hero'
+            widget: 'object'
+            fields:
+              - { label: 'Greeting', name: 'greeting', widget: 'string' }
+              - { label: 'Bio', name: 'bio', widget: 'text' }
+              - { label: 'Avatar', name: 'avatar', widget: 'image' }
+          - label: 'Experience'
+            name: 'experience'
+            widget: 'object'
+            fields:
+              - { label: 'Heading', name: 'heading', widget: 'string' }
+              - { label: 'Banner Image', name: 'bannerImage', widget: 'image' }
+              - { label: 'Summary', name: 'summary', widget: 'text' }
+          - label: 'CTA'
+            name: 'cta'
+            widget: 'object'
+            fields:
+              - { label: 'Heading', name: 'heading', widget: 'string' }
+              - { label: 'Text', name: 'text', widget: 'text' }
+              - { label: 'Button Label', name: 'buttonLabel', widget: 'string' }

@@ -1,0 +1,133 @@
+---
+import { getCollection, render } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import site from '../../data/site.json';
+
+export async function getStaticPaths() {
+	const cases = await getCollection('cases');
+	return cases.map((entry) => ({
+		params: { slug: entry.id },
+		props: { entry, allCases: cases },
+	}));
+}
+
+const { entry, allCases } = Astro.props;
+const { Content } = await render(entry);
+
+const prevCase = entry.data.prevSlug
+	? allCases.find((c) => c.id === entry.data.prevSlug)
+	: undefined;
+const nextCase = entry.data.nextSlug
+	? allCases.find((c) => c.id === entry.data.nextSlug)
+	: undefined;
+---
+
+<Base
+	title={`${entry.data.title} — ${site.name}`}
+	description={entry.data.subtitle}
+>
+	<article class="py-14 md:py-20">
+		<div class="container-page max-w-3xl">
+			<a
+				href="/cases/"
+				class="inline-flex items-center gap-1.5 text-sm font-medium text-teal-dark transition-colors hover:text-teal-mid"
+			>
+				<span aria-hidden="true">&larr;</span>
+				All Case Studies
+			</a>
+
+			<header class="mt-8">
+				<h1 class="text-3xl font-semibold tracking-tight text-forest-deep md:text-5xl">
+					{entry.data.title}
+				</h1>
+				<p class="mt-4 text-lg leading-relaxed text-muted md:text-xl">
+					{entry.data.subtitle}
+				</p>
+
+				<dl class="mt-8 grid grid-cols-2 gap-6 border-y border-teal-dark/15 py-6 text-sm sm:grid-cols-4">
+					<div>
+						<dt class="font-mono text-xs uppercase tracking-wider text-muted">Role</dt>
+						<dd class="mt-1 font-medium text-forest-deep">{entry.data.role}</dd>
+					</div>
+					<div>
+						<dt class="font-mono text-xs uppercase tracking-wider text-muted">Scope</dt>
+						<dd class="mt-1 font-medium text-forest-deep">{entry.data.scope}</dd>
+					</div>
+					<div>
+						<dt class="font-mono text-xs uppercase tracking-wider text-muted">Timeline</dt>
+						<dd class="mt-1 font-medium text-forest-deep">{entry.data.timeline}</dd>
+					</div>
+					<div>
+						<dt class="font-mono text-xs uppercase tracking-wider text-muted">Team</dt>
+						<dd class="mt-1 font-medium text-forest-deep">{entry.data.team}</dd>
+					</div>
+				</dl>
+			</header>
+
+			<div class="mt-10 overflow-hidden rounded-2xl border border-teal-dark/12 bg-white shadow-sm">
+				<img
+					src={entry.data.coverImage}
+					alt={entry.data.coverAlt || entry.data.title}
+					class="h-auto w-full object-cover"
+				/>
+			</div>
+
+			{
+				entry.data.youtubeId && (
+					<div class="mt-10 aspect-video overflow-hidden rounded-2xl border border-teal-dark/12 bg-black shadow-sm">
+						<iframe
+							src={`https://www.youtube-nocookie.com/embed/${entry.data.youtubeId}`}
+							title={`${entry.data.title} video`}
+							loading="lazy"
+							allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+							allowfullscreen
+							class="h-full w-full border-0"
+						/>
+					</div>
+				)
+			}
+
+			<div class="case-prose mt-12">
+				<Content />
+			</div>
+
+			{(prevCase || nextCase) && (
+				<nav
+					aria-label="Case study pagination"
+					class="mt-16 grid gap-4 border-t border-teal-dark/15 pt-10 sm:grid-cols-2"
+				>
+					<div>
+						{prevCase && (
+							<a
+								href={`/cases/${prevCase.id}/`}
+								class="group flex flex-col gap-1 rounded-xl border border-teal-dark/12 bg-white/70 p-5 transition-colors hover:border-teal-dark/30 hover:bg-white"
+							>
+								<span class="font-mono text-xs uppercase tracking-wider text-muted">
+									&larr; Previous Project
+								</span>
+								<span class="text-base font-semibold text-forest-deep group-hover:text-teal-dark">
+									{prevCase.data.title}
+								</span>
+							</a>
+						)}
+					</div>
+					<div class="sm:text-right">
+						{nextCase && (
+							<a
+								href={`/cases/${nextCase.id}/`}
+								class="group flex flex-col gap-1 rounded-xl border border-teal-dark/12 bg-white/70 p-5 transition-colors hover:border-teal-dark/30 hover:bg-white"
+							>
+								<span class="font-mono text-xs uppercase tracking-wider text-muted">
+									Next Project &rarr;
+								</span>
+								<span class="text-base font-semibold text-forest-deep group-hover:text-teal-dark">
+									{nextCase.data.title}
+								</span>
+							</a>
+						)}
+					</div>
+				</nav>
+			)}
+		</div>
+	</article>
+</Base>

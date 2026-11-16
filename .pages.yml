@@ -1,0 +1,155 @@
+media:
+  input: public/images
+  output: /images
+
+content:
+  - name: cases
+    label: Case Studies
+    type: collection
+    path: src/content/cases
+    view:
+      fields: [order, title, timeline, featured]
+      primary: title
+      sort: [order, title]
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: subtitle
+        label: Subtitle
+        type: string
+        required: true
+      - name: order
+        label: Display Order
+        type: number
+        required: true
+      - name: featured
+        label: Featured on Home
+        type: boolean
+        default: false
+      - name: coverImage
+        label: Cover Image
+        type: image
+        required: true
+      - name: coverAlt
+        label: Cover Alt Text
+        type: string
+      - name: role
+        label: Role
+        type: string
+        required: true
+      - name: scope
+        label: Scope
+        type: string
+        required: true
+      - name: timeline
+        label: Timeline
+        type: string
+        required: true
+      - name: team
+        label: Team
+        type: string
+        required: true
+      - name: youtubeId
+        label: YouTube Video ID (optional)
+        type: string
+      - name: prevSlug
+        label: Previous Case Study Slug
+        type: string
+      - name: nextSlug
+        label: Next Case Study Slug
+        type: string
+      - name: body
+        label: Case Study Content
+        type: rich-text
+
+  - name: journal
+    label: Journal Articles
+    type: collection
+    path: src/content/journal
+    view:
+      fields: [order, title, date]
+      primary: title
+      sort: [order]
+    fields:
+      - name: title
+        label: Title
+        type: string
+        required: true
+      - name: date
+        label: Date (e.g. SEP 09, 2026)
+        type: string
+        required: true
+      - name: url
+        label: Article URL
+        type: string
+        required: true
+      - name: order
+        label: Display Order
+        type: number
+        required: true
+
+  - name: site
+    label: Site Settings & Copy
+    type: file
+    path: src/data/site.json
+    fields:
+      - name: name
+        label: Name
+        type: string
+      - name: siteTitle
+        label: Site Title
+        type: string
+      - name: siteDescription
+        label: Meta Description
+        type: string
+      - name: email
+        label: Contact Email
+        type: string
+      - name: hero
+        label: Hero Section
+        type: object
+        fields:
+          - name: greeting
+            label: Greeting
+            type: string
+          - name: bio
+            label: Bio
+            type: text
+          - name: avatar
+            label: Avatar Image
+            type: image
+      - name: experience
+        label: Experience Section
+        type: object
+        fields:
+          - name: heading
+            label: Heading
+            type: string
+          - name: bannerImage
+            label: Logos Banner
+            type: image
+          - name: summary
+            label: Summary
+            type: text
+      - name: cta
+        label: Call To Action
+        type: object
+        fields:
+          - name: heading
+            label: Heading
+            type: string
+          - name: text
+            label: Text
+            type: text
+          - name: buttonLabel
+            label: Button Label
+            type: string
+      - name: footer
+        label: Footer
+        type: object
+        fields:
+          - name: credit
+            label: Credit Text
+            type: string

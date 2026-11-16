@@ -1,0 +1,55 @@
+{
+  "name": "Marcel Akiyama",
+  "siteTitle": "Marcel Akiyama — Product Designer",
+  "siteDescription": "I help teams make better product decisions by connecting evidence, systems thinking, and hands-on design and engineering.",
+  "email": "marcel.akiyama@proton.me",
+  "hero": {
+    "greeting": "Hi, I'm Marcel 👋",
+    "bio": "I help teams make better product decisions by connecting evidence, systems thinking, and hands-on design and engineering.",
+    "avatar": "/images/avatar.png"
+  },
+  "featuredHeading": "FEATURED CASE STUDIES",
+  "journalHeading": "JOURNAL",
+  "journalUrl": "https://cognist.substack.com/",
+  "experience": {
+    "heading": "EXPERIENCE",
+    "bannerImage": "/images/experience-logos.png",
+    "bannerAlt": "Y Combinator, Plug and Play, and Alpaca logos",
+    "summary": "I’ve worked with early-stage and scaling teams, including YC- and Plug & Play-backed startups, on products ranging from 0→1 exploration to platform-scale systems. Designed Labellio acquired by Kyocera."
+  },
+  "cta": {
+    "heading": "LET'S TALK",
+    "text": "Working on a complex product, AI system, or interaction problem?",
+    "buttonLabel": "Contact"
+  },
+  "footer": {
+    "credit": "Crafted by Marcel Akiyama"
+  },
+  "socialLinks": [
+    {
+      "label": "GitHub",
+      "href": "https://github.com/m5rc238",
+      "icon": "github"
+    },
+    {
+      "label": "Dribbble",
+      "href": "https://dribbble.com/mrcl",
+      "icon": "dribbble"
+    },
+    {
+      "label": "Behance",
+      "href": "https://www.behance.net/kultvar",
+      "icon": "behance"
+    },
+    {
+      "label": "LinkedIn",
+      "href": "https://www.linkedin.com/in/marcel-akiyama/",
+      "icon": "linkedin"
+    },
+    {
+      "label": "Bluesky",
+      "href": "https://bsky.app/profile/akwn.bsky.social",
+      "icon": "bluesky"
+    }
+  ]
+}

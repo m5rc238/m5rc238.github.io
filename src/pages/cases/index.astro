@@ -1,0 +1,45 @@
+---
+import { getCollection } from 'astro:content';
+import Base from '../../layouts/Base.astro';
+import site from '../../data/site.json';
+
+const cases = (await getCollection('cases')).sort(
+	(a, b) => a.data.order - b.data.order,
+);
+---
+
+<Base
+	title={`Case Studies — ${site.name}`}
+	description="Selected product design, systems thinking, and UX research case studies by Marcel Akiyama."
+>
+	<section class="py-16 md:py-24">
+		<div class="container-page">
+			<h1 class="section-eyebrow text-teal-dark">ALL CASE STUDIES</h1>
+
+			<div class="mt-8 grid gap-6 sm:grid-cols-2 lg:grid-cols-3">
+				{
+					cases.map((entry) => (
+						<a href={`/cases/${entry.id}/`} class="case-card group flex flex-col">
+							<div class="aspect-16/11 w-full overflow-hidden bg-white">
+								<img
+									src={entry.data.coverImage}
+									alt={entry.data.coverAlt || entry.data.title}
+									loading="lazy"
+									class="h-full w-full object-cover"
+								/>
+							</div>
+							<div class="flex flex-1 flex-col gap-2 p-5">
+								<h2 class="text-lg font-semibold tracking-tight text-forest-deep group-hover:text-teal-dark">
+									{entry.data.title}
+								</h2>
+								<p class="text-sm leading-relaxed text-muted">
+									{entry.data.subtitle}
+								</p>
+							</div>
+						</a>
+					))
+				}
+			</div>
+		</div>
+	</section>
+</Base>

@@ -1,4 +1,24 @@
 ---
 import Base from '../layouts/Base.astro';
+import site from '../data/site.json';
 ---
-<Base title="Page Not Found — Marcel Akiyama" noindex><section class="page-heading wrap"><p class="eyebrow">404 / Page not found</p><h1>A wrong turn.<br/><em>An easy way back.</em></h1><p class="page-lead">This address doesn’t lead to a page on my site.</p><a class="solid-link" href="/">Back to the homepage →</a></section></Base>
+
+<Base title={`Page Not Found — ${site.name}`}>
+	<section class="py-24 md:py-32">
+		<div class="container-page max-w-2xl">
+			<p class="section-eyebrow text-teal-dark">404 / Page not found</p>
+			<h1 class="mt-4 text-3xl font-light tracking-tight text-forest-deep md:text-5xl">
+				This page doesn&rsquo;t exist.
+			</h1>
+			<p class="mt-4 text-lg text-muted">
+				The link you followed may have moved or been removed.
+			</p>
+			<a
+				href="/"
+				class="mt-8 inline-flex items-center gap-2 rounded-full bg-teal-dark px-6 py-3 text-sm font-medium text-white transition-colors hover:bg-forest-deep"
+			>
+				&larr; Back to Home
+			</a>
+		</div>
+	</section>
+</Base>
