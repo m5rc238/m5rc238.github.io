@@ -1,16 +1,28 @@
 ---
 import site from '../data/site.json';
 
+interface Props {
+	surface?: 'mint' | 'canvas';
+}
+
+const { surface = 'mint' } = Astro.props;
 const pathname = Astro.url.pathname;
 const isHome = pathname === '/' || pathname === '';
 const isCases = pathname.startsWith('/cases');
 ---
 
-<header class="sticky top-0 z-40 w-full backdrop-blur-[5px]">
+<header
+	data-site-header
+	data-surface={surface}
+	class:list={[
+		'sticky top-0 z-40 w-full backdrop-blur-md transition-colors duration-250',
+		surface === 'canvas' ? 'bg-canvas/95' : 'bg-mint/95',
+	]}
+>
 	<div class="container-page">
 		<nav
 			aria-label="Main navigation"
-			class="flex items-center justify-between gap-6 border-b border-teal-dark/20 py-5"
+			class="flex items-center justify-between gap-6 border-b border-ink/20 py-5"
 		>
 			<a
 				href="/"
@@ -29,12 +41,12 @@ const isCases = pathname.startsWith('/cases');
 				</svg>
 			</a>
 
-			<div class="flex items-center gap-6 sm:gap-10 text-[18px] font-normal">
+			<div class="flex items-center gap-6 sm:gap-10 text-base sm:text-lg font-normal">
 				<a
 					href="/"
 					class:list={[
 						'hidden sm:inline transition-opacity hover:opacity-70',
-						isHome ? 'text-ink' : 'text-ink/80',
+						isHome ? 'text-ink' : 'text-ink/85',
 					]}
 				>
 					Home
@@ -43,7 +55,7 @@ const isCases = pathname.startsWith('/cases');
 					href="/cases/"
 					class:list={[
 						'transition-opacity hover:opacity-70',
-						isCases ? 'text-ink' : 'text-ink/80',
+						isCases ? 'text-ink' : 'text-ink/85',
 					]}
 				>
 					Case Studies
@@ -52,13 +64,14 @@ const isCases = pathname.startsWith('/cases');
 					href={site.journalUrl}
 					target="_blank"
 					rel="noopener noreferrer"
-					class="hidden sm:inline text-ink/80 transition-opacity hover:opacity-70"
+					class="hidden sm:inline text-ink/85 transition-opacity hover:opacity-70"
 				>
 					Journal
 				</a>
 				<a
+					data-header-cta
 					href={`mailto:${site.email}`}
-					class="rounded-[6px] bg-white px-7 py-2 text-[17px] sm:px-12 sm:text-[19px] leading-[1.3] text-ink transition-transform hover:-translate-y-0.5"
+					class="rounded-[6px] border border-ink/25 bg-white px-7 py-2 text-base leading-[1.3] text-ink shadow-[0_1px_2px_rgba(3,74,67,0.06)] transition-[transform,border-color] hover:-translate-y-0.5 hover:border-ink/45 sm:px-12 sm:text-lg"
 				>
 					Contact
 				</a>

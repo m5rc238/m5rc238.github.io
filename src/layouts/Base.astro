@@ -1,5 +1,6 @@
 ---
 import '@fontsource-variable/source-serif-4';
+import '@fontsource-variable/source-serif-4/wght-italic.css';
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
@@ -23,12 +24,20 @@ const {
 	<head>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<link rel="preload" href={`${import.meta.env.BASE_URL}fonts/circular-air-pro-light.woff2`} as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href={`${import.meta.env.BASE_URL}fonts/circular-air-pro-book.woff2`} as="font" type="font/woff2" crossorigin />
+		<link rel="preload" href={`${import.meta.env.BASE_URL}fonts/circular-air-pro-medium.woff2`} as="font" type="font/woff2" crossorigin />
 		<link rel="icon" type="image/svg+xml" href={`${import.meta.env.BASE_URL}favicon.svg`} />
 		<link rel="icon" href={`${import.meta.env.BASE_URL}favicon.ico`} />
 		<meta name="generator" content={Astro.generator} />
 		<meta name="description" content={description} />
 		<meta name="color-scheme" content="light" />
 		<title>{title}</title>
+		<script is:inline>
+			if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+				document.documentElement.classList.add('has-motion');
+			}
+		</script>
 	</head>
 
 	<body class:list={['flex min-h-dvh flex-col font-sans text-ink antialiased', bodyClass]}>
@@ -39,29 +48,171 @@ const {
 			Skip to content
 		</a>
 
-		<Header />
+		<Header surface={bodyClass.includes('bg-dot-grid') ? 'canvas' : 'mint'} />
 		<main id="main" class="flex-1">
 			<slot />
 		</main>
 		<Footer />
 
 		<script>
-			const targets = document.querySelectorAll('.reveal');
-			if (targets.length > 0 && 'IntersectionObserver' in window) {
-				const observer = new IntersectionObserver(
-					(entries) => {
-						for (const entry of entries) {
-							if (entry.isIntersecting) {
-								entry.target.classList.add('is-visible');
-								observer.unobserve(entry.target);
-							}
+			const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+			function splitWords(el: Element) {
+				if (el.classList.contains('words-ready')) return;
+				const baseDelay = Number(el.getAttribute('data-reveal-delay') || 0);
+				const walker = document.createTreeWalker(el, NodeFilter.SHOW_TEXT);
+				const textNodes: Text[] = [];
+				let node: Node | null;
+				while ((node = walker.nextNode())) {
+					if (node.nodeValue && node.nodeValue.trim().length > 0) {
+						textNodes.push(node as Text);
+					}
+				}
+
+				let wordIndex = 0;
+				for (const textNode of textNodes) {
+					const frag = document.createDocumentFragment();
+					const parts = (textNode.nodeValue || '').split(/(\s+)/);
+					for (const part of parts) {
+						if (!part) continue;
+						if (/^\s+$/.test(part)) {
+							frag.appendChild(document.createTextNode(part));
+						} else {
+							const span = document.createElement('span');
+							span.className = 'reveal-word';
+							const delay = baseDelay + Math.min(wordIndex * 26, 360);
+							span.style.setProperty('--word-delay', `${delay}ms`);
+							span.textContent = part;
+							frag.appendChild(span);
+							wordIndex++;
 						}
-					},
-					{ threshold: 0.08, rootMargin: '0px 0px -30px 0px' },
-				);
-				for (const el of targets) observer.observe(el);
+					}
+					textNode.parentNode?.replaceChild(frag, textNode);
+				}
+
+				el.classList.add('words-ready');
+			}
+
+			const wordTargets = document.querySelectorAll('[data-reveal="words"]');
+			for (const el of wordTargets) {
+				splitWords(el);
+			}
+
+			const immediateTargets = document.querySelectorAll('[data-reveal-immediate]');
+			const scrollTargets = document.querySelectorAll(
+				'.reveal, [data-reveal]:not([data-reveal-immediate])',
+			);
+
+			if (reducedMotion) {
+				for (const el of [...immediateTargets, ...scrollTargets]) {
+					el.classList.add('is-visible');
+				}
 			} else {
-				for (const el of targets) el.classList.add('is-visible');
+				if (immediateTargets.length > 0) {
+					requestAnimationFrame(() => {
+						requestAnimationFrame(() => {
+							for (const el of immediateTargets) {
+								el.classList.add('is-visible');
+							}
+						});
+					});
+				}
+
+				if (scrollTargets.length > 0 && 'IntersectionObserver' in window) {
+					const observer = new IntersectionObserver(
+						(entries) => {
+							for (const entry of entries) {
+								if (entry.isIntersecting) {
+									entry.target.classList.add('is-visible');
+									observer.unobserve(entry.target);
+								}
+							}
+						},
+						{ threshold: 0.08, rootMargin: '0px 0px -30px 0px' },
+					);
+					for (const el of scrollTargets) observer.observe(el);
+				} else {
+					for (const el of scrollTargets) el.classList.add('is-visible');
+				}
+			}
+
+			const heroStage = document.querySelector<HTMLElement>('[data-hero-stage]');
+			const heroParallax = document.querySelector<HTMLElement>('[data-hero-parallax]');
+			const heroSheet = document.querySelector<HTMLElement>('[data-hero-sheet]');
+			const siteHeader = document.querySelector<HTMLElement>('[data-site-header]');
+
+			if (heroStage && heroParallax && heroSheet) {
+				let headerH = siteHeader?.offsetHeight || 84;
+				let stickyEnabled = false;
+				let ticking = false;
+
+				const syncMetrics = () => {
+					headerH = siteHeader?.offsetHeight || 84;
+					document.documentElement.style.setProperty('--header-h', `${headerH}px`);
+
+					const canStick =
+						!reducedMotion &&
+						window.innerHeight >= 600 &&
+						window.innerHeight - headerH >= heroStage.offsetHeight - 24;
+
+					stickyEnabled = canStick;
+					heroStage.classList.toggle('is-sticky-enabled', canStick);
+
+					if (!canStick) {
+						heroParallax.style.transform = '';
+						heroParallax.style.opacity = '';
+						heroParallax.style.visibility = '';
+						heroParallax.style.pointerEvents = '';
+					}
+				};
+
+				const updateHeroOnScroll = () => {
+					ticking = false;
+					const y = window.scrollY;
+
+					if (siteHeader) {
+						const sheetTop = heroSheet.getBoundingClientRect().top;
+						if (sheetTop <= headerH + 4) {
+							siteHeader.setAttribute('data-scrolled', 'true');
+						} else {
+							siteHeader.removeAttribute('data-scrolled');
+						}
+					}
+
+					if (!stickyEnabled) return;
+
+					const heroH = heroStage.offsetHeight || 550;
+					const clampedY = Math.min(Math.max(y, 0), heroH);
+					const translateY = clampedY * 0.2;
+					const opacity = Math.max(0, 1 - y / (heroH * 0.78));
+
+					heroParallax.style.transform = `translate3d(0, ${translateY.toFixed(2)}px, 0)`;
+					heroParallax.style.opacity = opacity.toFixed(3);
+
+					if (opacity <= 0.01) {
+						heroParallax.style.visibility = 'hidden';
+						heroParallax.style.pointerEvents = 'none';
+					} else {
+						heroParallax.style.visibility = '';
+						heroParallax.style.pointerEvents = '';
+					}
+				};
+
+				const onScroll = () => {
+					if (!ticking) {
+						ticking = true;
+						requestAnimationFrame(updateHeroOnScroll);
+					}
+				};
+
+				syncMetrics();
+				updateHeroOnScroll();
+
+				window.addEventListener('scroll', onScroll, { passive: true });
+				window.addEventListener('resize', () => {
+					syncMetrics();
+					updateHeroOnScroll();
+				});
 			}
 		</script>
 	</body>

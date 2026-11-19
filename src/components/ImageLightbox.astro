@@ -1,0 +1,80 @@
+<dialog
+	data-image-lightbox
+	aria-label="Enlarged image"
+	class="image-lightbox"
+>
+	<div
+		data-lightbox-chrome
+		class="flex w-full shrink-0 items-center justify-between gap-4 px-4 pt-4 pb-2 sm:px-8 sm:pt-6"
+	>
+		<span
+			data-lightbox-counter
+			class="image-lightbox-counter font-mono text-xs tracking-wider tabular-nums"
+		></span>
+		<button
+			type="button"
+			data-lightbox-close
+			aria-label="Close enlarged image"
+			class="image-lightbox-btn ml-auto"
+		>
+			<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+				<path
+					d="M5 5L15 15M15 5L5 15"
+					stroke="currentColor"
+					stroke-width="1.75"
+					stroke-linecap="round"
+				/>
+			</svg>
+		</button>
+	</div>
+
+	<div
+		data-lightbox-stage
+		class="flex min-h-0 w-full flex-1 items-center justify-center gap-2 px-3 pb-6 sm:gap-6 sm:px-8 sm:pb-10"
+	>
+		<button
+			type="button"
+			data-lightbox-prev
+			aria-label="Previous image"
+			class="image-lightbox-btn shrink-0"
+		>
+			<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+				<path
+					d="M12.5 4.5L7 10L12.5 15.5"
+					stroke="currentColor"
+					stroke-width="1.75"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+			</svg>
+		</button>
+
+		<figure class="flex min-w-0 max-w-full flex-col items-center gap-3.5">
+			<img data-lightbox-img class="image-lightbox-img" alt="" />
+			<figcaption data-lightbox-caption class="image-lightbox-caption text-center"></figcaption>
+		</figure>
+
+		<button
+			type="button"
+			data-lightbox-next
+			aria-label="Next image"
+			class="image-lightbox-btn shrink-0"
+		>
+			<svg width="20" height="20" viewBox="0 0 20 20" fill="none" aria-hidden="true">
+				<path
+					d="M7.5 4.5L13 10L7.5 15.5"
+					stroke="currentColor"
+					stroke-width="1.75"
+					stroke-linecap="round"
+					stroke-linejoin="round"
+				/>
+			</svg>
+		</button>
+	</div>
+</dialog>
+
+<script>
+	import { initImageLightbox } from '../scripts/image-lightbox';
+
+	initImageLightbox();
+</script>

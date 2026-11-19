@@ -15,22 +15,29 @@ const journalPosts = (await getCollection('journal')).sort(
 
 <Base title={site.siteTitle} description={site.siteDescription}>
 	<!-- Hero Section -->
-	<section class="bg-mint py-20 md:py-28">
-		<div class="container-page">
-			<div class="flex flex-col items-start gap-7 md:flex-row">
-				<div class="shrink-0">
+	<section data-hero-stage class="hero-stage bg-mint pt-24 pb-28 md:pt-36 md:pb-40">
+		<div class="container-page" data-hero-parallax>
+			<div class="flex flex-col items-start gap-8 md:flex-row">
+				<div class="shrink-0" data-reveal="fade" data-reveal-immediate>
 					<img
 						src={site.hero.avatar}
 						alt={site.name}
-						width="46"
-						height="46"
-						class="h-[46px] w-[46px] rounded-full border border-white/20 object-cover shadow-[inset_0_0.48px_0.38px_-0.83px_rgba(242,208,208,0.5),inset_0_1.83px_1.46px_-1.67px_rgba(242,208,208,0.5),inset_0_8px_6.4px_-2.5px_rgba(242,208,208,0.5)]"
+						width="52"
+						height="52"
+						class="h-[52px] w-[52px] rounded-full border border-ink/15 object-cover shadow-xs"
 					/>
 				</div>
 
-				<div class="max-w-[1200px] text-[28px] leading-[1.3] tracking-tight text-ink sm:text-[34px] md:text-[37px]">
-					<p class="font-medium">{site.hero.greeting}</p>
-					<h1 class="mt-7 font-light">
+				<div class="max-w-[1200px] text-[28px] leading-[1.36] tracking-tight text-ink sm:text-[34px] md:text-[37px]">
+					<p class="font-medium" data-reveal="words" data-reveal-immediate>
+						{site.hero.greeting}
+					</p>
+					<h1
+						class="mt-8 font-light md:mt-10"
+						data-reveal="words"
+						data-reveal-immediate
+						data-reveal-delay="120"
+					>
 						{site.hero.bio}
 					</h1>
 				</div>
@@ -38,111 +45,125 @@ const journalPosts = (await getCollection('journal')).sort(
 		</div>
 	</section>
 
-	<!-- Featured Case Studies -->
-	<section id="cases" class="bg-dot-grid pt-[18px] pb-[77px]">
-		<div class="container-page flex flex-col gap-[39px]">
-			<!-- Pill divider -->
-			<div class="flex justify-center">
-				<svg width="80" height="4" viewBox="0 0 80 4" fill="none" aria-hidden="true">
-					<path
-						d="M 0 1.999 C 0 0.895 0.895 0 1.999 0 C 13.086 0 66.91 0 77.999 0 C 79.104 0 80 0.896 80 2.001 C 80 2.001 80 2.001 80 2.002 C 80 3.105 79.105 4 78.002 4 C 66.917 4 13.087 4 2 4 C 0.895 4 0 3.105 0 2 C 0 2 0 2 0 1.999 Z"
-						fill="rgba(151, 153, 153, 0.3)"
-						stroke="rgba(82, 82, 82, 0.07)"
-					/>
-				</svg>
-			</div>
+	<div data-hero-sheet class="relative z-10">
+		<!-- Featured Case Studies -->
+		<section id="cases" class="bg-dot-grid pt-[18px] pb-[77px]">
+			<div class="container-page flex flex-col gap-[39px]">
+				<!-- Pill divider -->
+				<div class="flex justify-center">
+					<svg width="80" height="4" viewBox="0 0 80 4" fill="none" aria-hidden="true">
+						<path
+							d="M 0 1.999 C 0 0.895 0.895 0 1.999 0 C 13.086 0 66.91 0 77.999 0 C 79.104 0 80 0.896 80 2.001 C 80 2.001 80 2.001 80 2.002 C 80 3.105 79.105 4 78.002 4 C 66.917 4 13.087 4 2 4 C 0.895 4 0 3.105 0 2 C 0 2 0 2 0 1.999 Z"
+							fill="rgba(3, 74, 67, 0.16)"
+							stroke="rgba(3, 74, 67, 0.06)"
+						/>
+					</svg>
+				</div>
 
-			<!-- Section Header -->
-			<div class="flex items-center justify-between gap-4 border-b border-teal-dark/25 py-[17px]">
-				<h2 class="section-eyebrow tracking-[0.14em] text-ink">
-					{site.featuredHeading}
-				</h2>
-				<a
-					href="/cases/"
-					class="rounded-[6px] border border-ink px-8 py-1.5 text-[14px] font-normal text-ink transition-colors hover:bg-ink hover:text-white sm:px-10"
+				<!-- Section Header -->
+				<div class="flex items-center justify-between gap-4 border-b border-ink/25 py-[17px]">
+					<h2 class="section-eyebrow text-ink" data-reveal="words" data-reveal-immediate>
+						{site.featuredHeading}
+					</h2>
+					<a
+						href="/cases/"
+						data-reveal="fade"
+						data-reveal-immediate
+						class="rounded-[6px] border border-ink px-8 py-1.5 text-sm font-normal text-ink transition-colors hover:bg-ink hover:text-white sm:px-10"
+					>
+						See All
+					</a>
+				</div>
+
+				<!-- 3-Column Framer Cards -->
+				<div
+					class="grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3"
+					data-reveal="scale"
+					data-reveal-immediate
 				>
-					See All
-				</a>
-			</div>
-
-			<!-- 3-Column Framer Cards -->
-			<div class="grid gap-x-10 gap-y-8 sm:grid-cols-2 lg:grid-cols-3">
-				{
-					featuredCases.map((entry) => (
-						<a href={`/cases/${entry.id}/`} class="framer-case-card reveal group">
-							<div class="framer-case-thumb">
-								<img
-									src={entry.data.coverImage}
-									alt={entry.data.coverAlt || entry.data.title}
-									loading="lazy"
-								/>
-							</div>
-							<div class="flex flex-col gap-1.5">
-								<h3 class="text-[24px] font-medium leading-snug text-ink transition-colors group-hover:text-teal-dark">
-									{entry.data.title}
-								</h3>
-								<p class="font-serif text-[16px] leading-[1.8] text-ink">
-									{entry.data.subtitle}
-								</p>
-							</div>
-						</a>
-					))
-				}
-			</div>
-		</div>
-	</section>
-
-	<!-- Journal Section -->
-	<section class="bg-forest-deep py-[66px] pb-[91px] text-teal-accent">
-		<div class="container-page">
-			<div class="flex items-center justify-between gap-4 border-b border-teal-border py-[17px]">
-				<h2 class="section-eyebrow tracking-[0.14em] text-teal-accent">
-					{site.journalHeading}
-				</h2>
-				<a
-					href={site.journalUrl}
-					target="_blank"
-					rel="noopener noreferrer"
-					class="rounded-[6px] border border-teal-mid px-8 py-1.5 text-[14px] font-normal text-teal-accent/75 transition-colors hover:border-teal-accent hover:text-teal-accent sm:px-10"
-				>
-					See All
-				</a>
-			</div>
-
-			<ul class="pt-4">
-				{
-					journalPosts.map((post) => (
-						<li class="reveal border-b border-teal-border">
-							<a
-								href={post.data.url}
-								target="_blank"
-								rel="noopener noreferrer"
-								class="group flex flex-col gap-2 py-5"
-							>
-								<span class="text-2xl font-medium leading-[1.3] text-teal-accent transition-opacity group-hover:opacity-80 sm:text-3xl md:text-[40px]">
-									{post.data.title}
-								</span>
-								<span class="text-[14px] font-medium leading-[1.3] text-teal-accent/50">
-									{post.data.date}
-								</span>
+					{
+						featuredCases.map((entry) => (
+							<a href={`/cases/${entry.id}/`} class="framer-case-card group">
+								<div class="framer-case-thumb">
+									<img
+										src={entry.data.coverImage}
+										alt={entry.data.coverAlt || entry.data.title}
+										loading="lazy"
+									/>
+								</div>
+								<div class="flex flex-col gap-1.5">
+									<h3 class="text-2xl font-medium leading-snug text-ink transition-colors group-hover:text-teal-mid">
+										{entry.data.title}
+									</h3>
+									<p class="font-serif text-base leading-[1.6] text-ink">
+										{entry.data.subtitle}
+									</p>
+								</div>
 							</a>
-						</li>
-					))
-				}
-			</ul>
-		</div>
-	</section>
-
-	<!-- Experience Section -->
-	<section class="border-t border-[#e6e3e3] bg-mint py-[66px] pb-[91px]">
-		<div class="container-page flex flex-col gap-2.5">
-			<div class="border-b border-[#0f5252]/20 py-[17px]">
-				<h2 class="section-eyebrow tracking-[0.14em] text-teal-mid">
-					{site.experience.heading}
-				</h2>
+						))
+					}
+				</div>
 			</div>
+		</section>
 
-			<div class="reveal flex flex-wrap items-center justify-between gap-8 py-5">
+		<!-- Journal Section -->
+		<section class="bg-forest-deep py-[66px] pb-[91px] text-teal-accent">
+			<div class="container-page">
+				<div class="flex items-center justify-between gap-4 border-b border-teal-border py-[17px]">
+					<h2 class="section-eyebrow text-teal-accent" data-reveal="words">
+						{site.journalHeading}
+					</h2>
+					<a
+						href={site.journalUrl}
+						target="_blank"
+						rel="noopener noreferrer"
+						data-reveal="fade"
+						class="rounded-[6px] border border-teal-accent/50 px-8 py-1.5 text-sm font-normal text-teal-accent/80 transition-colors hover:border-teal-accent hover:text-teal-accent sm:px-10"
+					>
+						See All
+					</a>
+				</div>
+
+				<ul class="pt-4">
+					{
+						journalPosts.map((post) => (
+							<li class="border-b border-teal-border">
+								<a
+									href={post.data.url}
+									target="_blank"
+									rel="noopener noreferrer"
+									class="group flex flex-col gap-2 py-5"
+								>
+									<span
+										data-reveal="words"
+										class="text-2xl font-medium leading-[1.3] text-teal-accent transition-opacity group-hover:opacity-80 sm:text-3xl md:text-[40px]"
+									>
+										{post.data.title}
+									</span>
+									<span
+										data-reveal="fade"
+										class="text-sm font-medium leading-[1.3] tabular-nums text-teal-accent/65"
+									>
+										{post.data.date}
+									</span>
+								</a>
+							</li>
+						))
+					}
+				</ul>
+			</div>
+		</section>
+
+		<!-- Experience Section -->
+		<section class="bg-mint py-[66px] pb-[91px]">
+			<div class="container-page flex flex-col gap-2.5">
+				<div class="border-b border-ink/20 py-[17px]">
+					<h2 class="section-eyebrow text-teal-mid" data-reveal="words">
+						{site.experience.heading}
+					</h2>
+				</div>
+
+				<div class="flex flex-wrap items-center justify-between gap-8 py-5" data-reveal="scale">
 				<!-- Y Combinator -->
 				<svg
 					class="h-10 w-auto sm:h-[47px]"
@@ -188,11 +209,15 @@ const journalPosts = (await getCollection('journal')).sort(
 				</svg>
 			</div>
 
-			<div class="border-t border-teal-dark/20 py-5">
-				<p class="max-w-[80%] text-lg font-light leading-relaxed text-ink md:text-xl">
+			<div class="border-t border-ink/20 py-5">
+				<p
+					data-reveal="fade"
+					class="max-w-[65ch] text-lg font-light leading-relaxed text-ink md:text-xl"
+				>
 					{site.experience.summary}
 				</p>
 			</div>
 		</div>
 	</section>
+	</div>
 </Base>
