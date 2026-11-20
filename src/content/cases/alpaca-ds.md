@@ -1,7 +1,7 @@
 ---
 title: "Alpaca's Design System"
 subtitle: "Building a scalable visual language for financial infrastructure"
-order: 3
+order: 6
 featured: false
 coverImage: "/images/cases/alpaca-ds-1.png"
 coverAlt: "Dashboard view of the analytics homepage"

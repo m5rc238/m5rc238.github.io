@@ -1,7 +1,7 @@
 ---
 title: "Tablox"
 subtitle: "A small experiment in browser clutter, attention, and gentle intervention"
-order: 1
+order: 4
 featured: true
 coverImage: "/images/cases/tablox-1.png"
 coverAlt: "Tablox browser extension preview"
@@ -9,6 +9,7 @@ role: "Product Designer · Researcher"
 scope: "Research, UX, Interaction Design, Prototyping"
 timeline: "September 2026"
 team: "Solo + AI-assisted development"
+prevSlug: "decision-router"
 nextSlug: "easyudi"
 ---
 

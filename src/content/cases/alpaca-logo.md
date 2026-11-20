@@ -1,7 +1,7 @@
 ---
 title: "Alpaca Brand Evolution"
 subtitle: "Turning a playful fintech identity into a global financial infrastructure brand."
-order: 4
+order: 7
 featured: true
 coverImage: "/images/cases/alpaca-logo-1.webp"
 coverAlt: "Teal Flower"

@@ -1,7 +1,7 @@
 ---
 title: "Spean Luy"
 subtitle: "Repairing Critical Friction in a Microfinance Loan Lifecycle"
-order: 6
+order: 9
 featured: false
 coverImage: "/images/cases/spean-1.png"
 coverAlt: "Yellow Flower"

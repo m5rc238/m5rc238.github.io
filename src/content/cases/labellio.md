@@ -1,7 +1,7 @@
 ---
 title: "Labellio"
 subtitle: "Restructuring ML training so domain experts could improve models independently"
-order: 7
+order: 10
 featured: false
 coverImage: "/images/cases/labellio-1.png"
 coverAlt: "Purple Flower"

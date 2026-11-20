@@ -1,7 +1,7 @@
 ---
 title: "EasyUDI"
 subtitle: "Turning fragmented medical-device data into regulatory-ready records"
-order: 2
+order: 5
 featured: true
 coverImage: "/images/cases/easyudi-1.png"
 coverAlt: "EasyUDI regulatory workflow preview"

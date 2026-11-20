@@ -1,7 +1,7 @@
 ---
 title: "Fans First"
 subtitle: "Designing trust into an NHL ticket resale marketplace"
-order: 5
+order: 8
 featured: false
 coverImage: "/images/cases/fansfirst-1.png"
 coverAlt: "Pink Flower"
