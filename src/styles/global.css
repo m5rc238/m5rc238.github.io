@@ -271,11 +271,6 @@
 		line-height: 1.8;
 	}
 
-	.case-prose :is(h2, h3, h4, ul, ol, blockquote),
-	.case-prose p:not(:has(> img)) {
-		max-width: 65ch;
-	}
-
 	.case-prose > * + * {
 		margin-top: 1.25rem;
 	}
