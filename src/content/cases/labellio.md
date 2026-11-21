@@ -3,6 +3,9 @@ title: "Labellio"
 subtitle: "Restructuring ML training so domain experts could improve models independently"
 order: 10
 featured: false
+category: "product"
+tag: "Shipped Product · Acq. by Kyocera"
+summary: "Restructured computer-vision model training into a human-in-the-loop drag-and-drop workflow so domain experts could iterate without ML engineers; later acquired and integrated by Kyocera Communication Systems."
 coverImage: "/images/cases/labellio-1.png"
 coverAlt: "Purple Flower"
 role: "Product Designer"

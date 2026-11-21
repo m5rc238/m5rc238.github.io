@@ -3,6 +3,9 @@ title: "Alpaca Brand Evolution"
 subtitle: "Turning a playful fintech identity into a global financial infrastructure brand."
 order: 7
 featured: true
+category: "systems-brand"
+tag: "Brand Identity · Fintech"
+summary: "Evolved Alpaca's early mascot identity into a geometric symbol and visual system built to scale across API documentation, institutional partnerships, and global brokerage products."
 coverImage: "/images/cases/alpaca-logo-1.webp"
 coverAlt: "Teal Flower"
 role: "Lead Brand & Visual Designer"

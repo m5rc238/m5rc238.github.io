@@ -3,6 +3,9 @@ title: "EasyUDI"
 subtitle: "Turning fragmented medical-device data into regulatory-ready records"
 order: 5
 featured: true
+category: "product"
+tag: "Product Design · MedTech"
+summary: "Reframed EU medical-device compliance from scattered spreadsheets into a guided 8-step wizard with prioritized validation (Blocker / Warning / Info), document-to-schema traceability, and an auditable state lifecycle."
 coverImage: "/images/cases/easyudi-1.png"
 coverAlt: "EasyUDI regulatory workflow preview"
 role: "Product Designer"

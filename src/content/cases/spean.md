@@ -3,6 +3,9 @@ title: "Spean Luy"
 subtitle: "Repairing Critical Friction in a Microfinance Loan Lifecycle"
 order: 9
 featured: false
+category: "product"
+tag: "Shipped Product · Fintech"
+summary: "Conducted field research and end-to-end UX redesign across a Cambodian microfinance loan lifecycle, repairing critical drop-offs in account verification, Wing validation, and KYC."
 coverImage: "/images/cases/spean-1.png"
 coverAlt: "Yellow Flower"
 role: "Lead Product Designer"

@@ -64,6 +64,47 @@ const nextCase = entry.data.nextSlug
 						<dd class="mt-1 font-medium text-ink">{entry.data.team}</dd>
 					</div>
 				</dl>
+
+				{
+					(entry.data.summary || entry.data.liveUrl || entry.data.repoUrl) && (
+						<div class="mt-6 flex flex-col gap-4 rounded-[8px] border border-ink/12 bg-white/85 px-5 py-4 sm:px-6 sm:py-5">
+							{entry.data.summary && (
+								<div>
+									<p class="font-mono text-[11px] uppercase tracking-wider text-muted">
+										{entry.data.tag ? `At a glance · ${entry.data.tag}` : 'At a glance'}
+									</p>
+									<p class="mt-1.5 font-serif text-base leading-relaxed text-ink">
+										{entry.data.summary}
+									</p>
+								</div>
+							)}
+							{(entry.data.liveUrl || entry.data.repoUrl) && (
+								<div class="flex flex-wrap items-center gap-3">
+									{entry.data.liveUrl && (
+										<a
+											href={entry.data.liveUrl}
+											target="_blank"
+											rel="noopener noreferrer"
+											class="inline-flex items-center gap-1.5 rounded-[6px] bg-ink px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-teal-mid"
+										>
+											Live Demo <span aria-hidden="true">&nearr;</span>
+										</a>
+									)}
+									{entry.data.repoUrl && (
+										<a
+											href={entry.data.repoUrl}
+											target="_blank"
+											rel="noopener noreferrer"
+											class="inline-flex items-center gap-1.5 rounded-[6px] border border-ink/25 bg-white px-4 py-2 text-sm font-medium text-ink transition-colors hover:border-ink hover:bg-mint/30"
+										>
+											GitHub Repo <span aria-hidden="true">&nearr;</span>
+										</a>
+									)}
+								</div>
+							)}
+						</div>
+					)
+				}
 			</header>
 
 			{

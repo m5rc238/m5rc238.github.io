@@ -6,6 +6,25 @@ import site from '../../data/site.json';
 const cases = (await getCollection('cases')).sort(
 	(a, b) => a.data.order - b.data.order,
 );
+
+const filters = [
+	{ id: 'all', label: 'All', count: cases.length },
+	{
+		id: 'product',
+		label: 'Shipped & Product',
+		count: cases.filter((c) => c.data.category === 'product').length,
+	},
+	{
+		id: 'ai-research',
+		label: 'AI & Research',
+		count: cases.filter((c) => c.data.category === 'ai-research').length,
+	},
+	{
+		id: 'systems-brand',
+		label: 'Systems & Brand',
+		count: cases.filter((c) => c.data.category === 'systems-brand').length,
+	},
+] as const;
 ---
 
 <Base
@@ -15,14 +34,43 @@ const cases = (await getCollection('cases')).sort(
 >
 	<section class="py-14 md:py-20">
 		<div class="container-page flex flex-col gap-[39px]">
-			<div class="border-b border-ink/25 py-[17px]">
+			<div class="flex flex-wrap items-center justify-between gap-4 border-b border-ink/25 py-[17px]">
 				<h1 class="section-eyebrow text-ink">ALL CASE STUDIES</h1>
+				<div
+					role="group"
+					aria-label="Filter case studies by category"
+					class="flex flex-wrap items-center gap-2"
+				>
+					{
+						filters.map((filter) => (
+							<button
+								type="button"
+								data-case-filter={filter.id}
+								aria-pressed={filter.id === 'all' ? 'true' : 'false'}
+								class:list={[
+									'inline-flex cursor-pointer items-center gap-1.5 rounded-full border px-3.5 py-1 text-xs font-medium transition-colors',
+									filter.id === 'all'
+										? 'border-ink bg-ink text-white'
+										: 'border-ink/20 bg-white/80 text-ink hover:border-ink/50 hover:bg-white',
+								]}
+							>
+								<span>{filter.label}</span>
+								<span class="font-mono text-[11px] opacity-70">{filter.count}</span>
+							</button>
+						))
+					}
+				</div>
 			</div>
 
 			<div class="grid gap-x-10 gap-y-12 sm:grid-cols-2 lg:grid-cols-3">
 				{
 					cases.map((entry) => (
-						<a href={`/cases/${entry.id}/`} class="framer-case-card reveal group">
+						<a
+							href={`/cases/${entry.id}/`}
+							data-case-card
+							data-category={entry.data.category}
+							class="framer-case-card reveal group"
+						>
 							<div class="framer-case-thumb">
 								<img
 									src={entry.data.coverImage}
@@ -31,6 +79,11 @@ const cases = (await getCollection('cases')).sort(
 								/>
 							</div>
 							<div class="flex flex-col gap-1.5">
+								{entry.data.tag && (
+									<p class="font-mono text-[11px] uppercase tracking-wider text-muted">
+										{entry.data.tag} &middot; {entry.data.timeline}
+									</p>
+								)}
 								<h2 class="text-2xl font-medium leading-snug text-ink transition-colors group-hover:text-teal-mid">
 									{entry.data.title}
 								</h2>
@@ -44,4 +97,43 @@ const cases = (await getCollection('cases')).sort(
 			</div>
 		</div>
 	</section>
+
+	<script>
+		const filterButtons = Array.from(
+			document.querySelectorAll<HTMLButtonElement>('[data-case-filter]'),
+		);
+		const cards = Array.from(document.querySelectorAll<HTMLElement>('[data-case-card]'));
+
+		if (filterButtons.length > 0 && cards.length > 0) {
+			const activeClasses = ['border-ink', 'bg-ink', 'text-white'];
+			const idleClasses = ['border-ink/20', 'bg-white/80', 'text-ink', 'hover:border-ink/50', 'hover:bg-white'];
+
+			const applyFilter = (category: string) => {
+				for (const btn of filterButtons) {
+					const isActive = btn.dataset.caseFilter === category;
+					btn.setAttribute('aria-pressed', String(isActive));
+					btn.classList.toggle(activeClasses[0], isActive);
+					btn.classList.toggle(activeClasses[1], isActive);
+					btn.classList.toggle(activeClasses[2], isActive);
+					for (const cls of idleClasses) {
+						btn.classList.toggle(cls, !isActive);
+					}
+				}
+
+				for (const card of cards) {
+					const matches = category === 'all' || card.dataset.category === category;
+					card.hidden = !matches;
+					if (matches) {
+						card.classList.add('is-visible');
+					}
+				}
+			};
+
+			for (const btn of filterButtons) {
+				btn.addEventListener('click', () => {
+					applyFilter(btn.dataset.caseFilter || 'all');
+				});
+			}
+		}
+	</script>
 </Base>

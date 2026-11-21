@@ -243,6 +243,10 @@
 		text-decoration: none;
 	}
 
+	.framer-case-card[hidden] {
+		display: none;
+	}
+
 	.framer-case-thumb {
 		height: 270px;
 		width: 100%;

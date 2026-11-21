@@ -3,6 +3,9 @@ title: "Fans First"
 subtitle: "Designing trust into an NHL ticket resale marketplace"
 order: 8
 featured: false
+category: "product"
+tag: "Shipped Product · Marketplace"
+summary: "Redesigned buyer and seller flows for a Canadian NHL ticket resale marketplace around transparent fee comparison, seat-map clarity, and a reusable UI kit."
 coverImage: "/images/cases/fansfirst-1.png"
 coverAlt: "Pink Flower"
 role: "Product Designer"

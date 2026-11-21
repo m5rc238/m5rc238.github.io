@@ -6,7 +6,14 @@
   "hero": {
     "greeting": "Hi, I'm Marcel 👋",
     "bio": "I help teams make better product decisions by connecting evidence, systems thinking, and hands-on design and engineering.",
-    "avatar": "/images/avatar.jpg"
+    "avatar": "/images/avatar.jpg",
+    "proof": [
+      "10+ years",
+      "Founding Designer at Alpaca (YC W19)",
+      "Labellio (acq. by Kyocera)",
+      "Fintech · B2B SaaS · Human–AI"
+    ],
+    "availability": "Open to Founding / Staff Product Design roles and select 0→1 engagements"
   },
   "featuredHeading": "FEATURED CASE STUDIES",
   "journalHeading": "JOURNAL",

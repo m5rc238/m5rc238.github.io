@@ -3,6 +3,10 @@ title: "Decision Router"
 subtitle: "Comparing composed LLM pipelines, typed authority boundaries, and deterministic rules under fault injection"
 order: 3
 featured: false
+category: "ai-research"
+tag: "AI Systems · Benchmark"
+summary: "Evaluated five refund-handling architectures—from 10-line deterministic rules to an 8-stage typed router and ReAct—under fault injection and an audited stage-aware grader, reproducible offline with zero API keys."
+repoUrl: "https://github.com/m5rc238/decision-router"
 coverImage: "/images/cases/decision-router-1.png"
 coverAlt: "Decision Router empirical architecture comparison interface"
 role: "Systems Designer · Evaluation Engineer"

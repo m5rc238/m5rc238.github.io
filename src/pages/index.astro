@@ -11,11 +11,14 @@ const featuredCases = allCases
 const journalPosts = (await getCollection('journal')).sort(
 	(a, b) => a.data.order - b.data.order,
 );
+
+const linkedinLink = site.socialLinks.find((l) => l.icon === 'linkedin');
+const githubLink = site.socialLinks.find((l) => l.icon === 'github');
 ---
 
 <Base title={site.siteTitle} description={site.siteDescription}>
 	<!-- Hero Section -->
-	<section data-hero-stage class="hero-stage bg-mint pt-24 pb-28 md:pt-36 md:pb-40">
+	<section data-hero-stage class="hero-stage bg-mint pt-20 pb-24 md:pt-28 md:pb-32">
 		<div class="container-page" data-hero-parallax>
 			<div class="flex flex-col items-start gap-8 md:flex-row">
 				<div class="shrink-0" data-reveal="fade" data-reveal-immediate>
@@ -28,18 +31,75 @@ const journalPosts = (await getCollection('journal')).sort(
 					/>
 				</div>
 
-				<div class="max-w-[1200px] text-[28px] leading-[1.36] tracking-tight text-ink sm:text-[34px] md:text-[37px]">
-					<p class="font-medium" data-reveal="words" data-reveal-immediate>
-						{site.hero.greeting}
-					</p>
-					<h1
-						class="mt-8 font-light md:mt-10"
-						data-reveal="words"
+				<div class="w-full max-w-[1200px]">
+					<div class="text-[28px] leading-[1.36] tracking-tight text-ink sm:text-[34px] md:text-[37px]">
+						<p class="font-medium" data-reveal="words" data-reveal-immediate>
+							{site.hero.greeting}
+						</p>
+						<h1
+							class="mt-6 font-light md:mt-8"
+							data-reveal="words"
+							data-reveal-immediate
+							data-reveal-delay="120"
+						>
+							{site.hero.bio}
+						</h1>
+					</div>
+
+					<!-- First-scan proof strip & availability -->
+					<div
+						class="mt-9 border-t border-ink/15 pt-5"
+						data-reveal="fade"
 						data-reveal-immediate
-						data-reveal-delay="120"
+						data-reveal-delay="220"
 					>
-						{site.hero.bio}
-					</h1>
+						<ul class="flex flex-wrap items-center gap-x-3 gap-y-2 font-mono text-xs tracking-wide text-ink/85 sm:text-[13px]">
+							{
+								site.hero.proof.map((item, idx) => (
+									<li class="inline-flex items-center gap-3">
+										{idx > 0 && <span aria-hidden="true" class="text-ink/35">/</span>}
+										<span>{item}</span>
+									</li>
+								))
+							}
+						</ul>
+
+						<div class="mt-4 flex flex-wrap items-center justify-between gap-4 text-sm text-ink/80">
+							<p class="inline-flex items-center gap-2">
+								<span
+									aria-hidden="true"
+									class="h-2 w-2 shrink-0 rounded-full bg-teal-mid"
+								></span>
+								<span>{site.hero.availability}</span>
+							</p>
+							<div class="flex flex-wrap items-center gap-5 font-medium text-ink">
+								{
+									linkedinLink && (
+										<a
+											href={linkedinLink.href}
+											target="_blank"
+											rel="noopener noreferrer"
+											class="underline decoration-ink/30 underline-offset-4 transition-colors hover:decoration-ink"
+										>
+											LinkedIn &nearr;
+										</a>
+									)
+								}
+								{
+									githubLink && (
+										<a
+											href={githubLink.href}
+											target="_blank"
+											rel="noopener noreferrer"
+											class="underline decoration-ink/30 underline-offset-4 transition-colors hover:decoration-ink"
+										>
+											GitHub &nearr;
+										</a>
+									)
+								}
+							</div>
+						</div>
+					</div>
 				</div>
 			</div>
 		</div>
@@ -92,6 +152,11 @@ const journalPosts = (await getCollection('journal')).sort(
 									/>
 								</div>
 								<div class="flex flex-col gap-1.5">
+									{entry.data.tag && (
+										<p class="font-mono text-[11px] uppercase tracking-wider text-muted">
+											{entry.data.tag} &middot; {entry.data.timeline}
+										</p>
+									)}
 									<h3 class="text-2xl font-medium leading-snug text-ink transition-colors group-hover:text-teal-mid">
 										{entry.data.title}
 									</h3>

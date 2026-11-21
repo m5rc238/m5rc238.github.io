@@ -3,6 +3,11 @@ title: "Epistemia UX"
 subtitle: "Operationalizing seven epistemological fault lines into a 2×2 paper appraisal pilot and interactive UX lab"
 order: 2
 featured: false
+category: "ai-research"
+tag: "Human–AI Research Lab"
+summary: "Operationalized all seven epistemological fault lines from arXiv:2512.19466 into a runnable 2×2 paper appraisal pilot, interactive before/after UX pattern lab, and telemetry dashboard with CSV/JSON export."
+liveUrl: "https://m5rc238.github.io/epistemia-ux/"
+repoUrl: "https://github.com/m5rc238/epistemia-ux"
 coverImage: "/images/cases/epistemia-ux-1.png"
 coverAlt: "Epistemia UX overview and seven epistemological fault lines workbench"
 role: "Product Designer · UX Researcher · Builder"

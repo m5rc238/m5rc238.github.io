@@ -3,6 +3,11 @@ title: "AI Evaluation Study Guide"
 subtitle: "A 7-module visual course and protocol toolkit for evidence-based AI and Human–AI evaluation"
 order: 1
 featured: false
+category: "ai-research"
+tag: "AI Evaluation · Open Source"
+summary: "Built an open-source 7-module, 23-chapter interactive course and evaluation toolkit (Metrics Taxonomy, 12-field Eval Protocol Builder, and SPHERE Card) connecting isolated model scores to workflow and Human–AI outcomes."
+liveUrl: "https://m5rc238.github.io/ai-evals/"
+repoUrl: "https://github.com/m5rc238/ai-evals"
 coverImage: "/images/cases/ai-evals-1.png"
 coverAlt: "AI Evaluation Study Guide 7-module course interface"
 role: "Product Designer · Author · Builder"
