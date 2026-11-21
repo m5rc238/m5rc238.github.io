@@ -7,13 +7,7 @@
     "greeting": "Hi, I'm Marcel 👋",
     "bio": "I help teams make better product decisions by connecting evidence, systems thinking, and hands-on design and engineering.",
     "avatar": "/images/avatar.jpg",
-    "proof": [
-      "10+ years",
-      "Founding Designer at Alpaca (YC W19)",
-      "Labellio (acq. by Kyocera)",
-      "Fintech · B2B SaaS · Human–AI"
-    ],
-    "availability": "Open to Founding / Staff Product Design roles and select 0→1 engagements"
+    "availability": "Open to Senior Product Design roles and select consulting on complex workflows and AI systems"
   },
   "featuredHeading": "FEATURED CASE STUDIES",
   "journalHeading": "JOURNAL",
@@ -22,7 +16,13 @@
     "heading": "EXPERIENCE",
     "bannerImage": "/images/experience-logos.png",
     "bannerAlt": "Y Combinator, Plug and Play, and Alpaca logos",
-    "summary": "I’ve worked with early-stage and scaling teams, including YC- and Plug & Play-backed startups, on products ranging from 0→1 exploration to platform-scale systems. Designed Labellio acquired by Kyocera."
+    "summary": "I’ve worked with early-stage and scaling teams, including YC- and Plug & Play-backed startups, taking ambiguous product problems from initial research and framing through shipped interfaces and platform-scale systems.",
+    "highlights": [
+      { "label": "Experience", "value": "10+ years" },
+      { "label": "Alpaca (YC W19)", "value": "Founding Product Designer" },
+      { "label": "Labellio", "value": "Acquired by Kyocera" },
+      { "label": "Domains", "value": "Fintech · B2B SaaS · Human–AI" }
+    ]
   },
   "cta": {
     "heading": "LET'S TALK",
