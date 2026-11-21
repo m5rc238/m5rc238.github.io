@@ -162,14 +162,10 @@ const journalPosts = (await getCollection('journal')).sort(
 		<!-- Experience Section -->
 		<section class="bg-mint py-[66px] pb-[91px]">
 			<div class="container-page flex flex-col">
-				<div class="flex flex-wrap items-center justify-between gap-4 border-b border-ink/20 py-[17px]">
+				<div class="border-b border-ink/20 py-[17px]">
 					<h2 class="section-eyebrow text-teal-mid" data-reveal="words">
 						{site.experience.heading}
 					</h2>
-					<p class="inline-flex items-center gap-2 text-xs font-medium text-ink/80 sm:text-sm" data-reveal="fade">
-						<span aria-hidden="true" class="h-2 w-2 shrink-0 rounded-full bg-teal-mid"></span>
-						<span>{site.hero.availability}</span>
-					</p>
 				</div>
 
 				<div class="flex flex-wrap items-center justify-between gap-8 border-b border-ink/15 py-7 text-ink/75" data-reveal="scale">
@@ -235,7 +231,7 @@ const journalPosts = (await getCollection('journal')).sort(
 				</div>
 
 				<dl
-					class="grid gap-y-5 border-b border-ink/15 py-6 sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-4 lg:gap-0 lg:divide-x lg:divide-ink/15"
+					class="grid gap-y-5 pt-6 sm:grid-cols-2 sm:gap-x-8 lg:grid-cols-4 lg:gap-0 lg:divide-x lg:divide-ink/15"
 					data-reveal="fade"
 				>
 					{
@@ -251,15 +247,6 @@ const journalPosts = (await getCollection('journal')).sort(
 						))
 					}
 				</dl>
-
-				<div class="pt-6">
-					<p
-						data-reveal="fade"
-						class="text-lg font-light leading-relaxed text-ink md:text-xl"
-					>
-						{site.experience.summary}
-					</p>
-				</div>
 			</div>
 		</section>
 	</div>
