@@ -3,7 +3,7 @@ title: "Tablox"
 subtitle: "A small experiment in browser clutter, attention, and gentle intervention"
 order: 4
 featured: true
-category: "ai-research"
+category: "product"
 tag: "Browser Experiment"
 summary: "Built a lightweight browser extension exploring whether calm, color-coded tab-count signals encourage awareness of browser clutter without blocking or forcing users to close tabs."
 liveUrl: "https://gettablox.github.io/"

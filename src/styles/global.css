@@ -24,9 +24,35 @@
 	font-display: swap;
 }
 
+@font-face {
+	font-family: 'Value Serif Pro';
+	src: url('/fonts/value-serif-pro-regular.ttf') format('truetype');
+	font-weight: 400;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Value Serif Pro';
+	src: url('/fonts/value-serif-pro-medium.ttf') format('truetype');
+	font-weight: 500;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'Value Serif Pro';
+	src: url('/fonts/value-serif-pro-bold.ttf') format('truetype');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
 @theme {
 	--font-sans: 'Circular Air Pro', ui-sans-serif, system-ui, -apple-system, 'Segoe UI', sans-serif;
-	--font-serif: 'Source Serif 4 Variable', Georgia, Cambria, 'Times New Roman', Times, serif;
+	--font-serif: 'Value Serif Pro', 'Source Serif 4 Variable', Georgia, Cambria, 'Times New Roman', Times, serif;
+	/* Reserve serif font in case of reverting from Value Serif Pro */
+	--font-serif-reserve: 'Source Serif 4 Variable', Georgia, Cambria, 'Times New Roman', Times, serif;
 	--font-mono: ui-monospace, 'SF Mono', 'JetBrains Mono', Menlo, monospace;
 
 	--color-mint: #c2f2e4;
