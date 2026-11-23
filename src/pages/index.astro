@@ -11,6 +11,49 @@ const featuredCases = allCases
 const journalPosts = (await getCollection('journal')).sort(
 	(a, b) => a.data.order - b.data.order,
 );
+
+const casesById = new Map(allCases.map((entry) => [entry.id, entry]));
+
+const pillars = [
+	{
+		id: 'evaluation-thinking',
+		number: '01',
+		dotColor: '#f59e0b',
+		title: 'Evaluation Thinking',
+		tagline: 'Knowing what good looks like.',
+		summary: 'Turn vague AI quality into measurable criteria, eval protocols, and inspectable judgment.',
+		description:
+			'AI Evals, critical thinking, quality judgment, experimentation, and the ability to distinguish impressive outputs from genuinely useful ones.',
+		caseIds: ['ai-evals', 'epistemia-ux', 'decision-router', 'tablox'],
+	},
+	{
+		id: 'systems-design',
+		number: '02',
+		dotColor: '#0ea5e9',
+		title: 'Systems Design',
+		tagline: 'Building infrastructure for intelligence.',
+		summary: 'Design tokens, typed workflows, and guardrails that let humans and agents ship consistently.',
+		description:
+			'Design systems, reusable components, structured knowledge, APIs, workflows, and constraints that allow humans and AI agents to create consistently at scale.',
+		caseIds: ['alpaca-ds', 'alpaca-logo', 'decision-router', 'easyudi'],
+	},
+	{
+		id: 'problem-framing',
+		number: '03',
+		dotColor: '#f43f5e',
+		title: 'Problem Framing',
+		tagline: 'Knowing what is worth solving.',
+		summary: 'Cut through ambiguity with field research, sharper problem definitions, and high-leverage bets.',
+		description:
+			'Identifying opportunities, understanding human needs, questioning assumptions, defining problems, and translating ambiguity into valuable outcomes.',
+		caseIds: ['easyudi', 'spean', 'labellio', 'fansfirst'],
+	},
+].map((pillar) => ({
+	...pillar,
+	projects: pillar.caseIds
+		.map((id) => casesById.get(id))
+		.filter((entry): entry is NonNullable<typeof entry> => Boolean(entry)),
+}));
 ---
 
 <Base title={site.siteTitle} description={site.siteDescription}>
@@ -18,7 +61,7 @@ const journalPosts = (await getCollection('journal')).sort(
 	<section
 		id="hero"
 		data-hero-stage
-		class="hero-stage relative flex min-h-[400px] items-center bg-transparent pt-14 pb-20 md:min-h-[460px] md:pt-16 md:pb-24"
+		class="hero-stage relative flex min-h-[420px] items-center bg-transparent pt-16 pb-20 md:min-h-[480px] md:pt-20 md:pb-24"
 	>
 		<div class="container-page relative z-10" data-hero-parallax>
 			<div class="flex flex-col items-center gap-5 text-center md:gap-6">
@@ -49,8 +92,57 @@ const journalPosts = (await getCollection('journal')).sort(
 		</div>
 	</section>
 
-	<div data-hero-sheet class="relative z-10 pb-12 md:pb-16">
-		<div class="container-page flex flex-col gap-6 md:gap-8">
+	<div data-hero-sheet class="relative z-10 pt-2 pb-12 md:pt-4 md:pb-16">
+		<div class="container-page flex flex-col gap-7 md:gap-9">
+			<!-- 3 Practice Pillars + USP -->
+			<section
+				aria-labelledby="pillars-heading"
+				class="overflow-hidden rounded-[24px] border border-teal-border/60 bg-teal-dark px-6 py-10 text-mint-soft shadow-[0_12px_36px_rgba(3,74,67,0.14)] sm:px-10 md:px-12 md:py-12"
+			>
+				<div class="flex flex-col justify-between gap-3 border-b border-teal-accent/15 pb-6 md:flex-row md:items-end">
+					<div>
+						<p class="section-eyebrow text-teal-accent">Three lenses behind the work</p>
+						<h2 id="pillars-heading" class="mt-2 text-2xl font-light tracking-tight text-white sm:text-3xl">
+							How I approach product &amp; AI systems from first principles.
+						</h2>
+					</div>
+				</div>
+
+				<div class="mt-7 grid gap-5 md:grid-cols-3 md:gap-6">
+					{
+						pillars.map((pillar) => (
+							<button
+								type="button"
+								data-pillar-open={pillar.id}
+								class="group flex cursor-pointer flex-col overflow-hidden rounded-[18px] border border-teal-accent/15 bg-forest-deep/75 text-left transition-[transform,border-color,box-shadow] duration-250 hover:-translate-y-1 hover:border-teal-accent/40 hover:shadow-[0_16px_34px_rgba(2,18,18,0.28)]"
+							>
+								<div
+									data-pillar-art={pillar.id}
+									class="relative h-[132px] w-full overflow-hidden border-b border-teal-accent/10 bg-obsidian/60"
+									aria-hidden="true"
+								>
+									<span class="relative z-10 inline-block px-4 pt-3 font-mono text-[11px] uppercase tracking-widest text-teal-accent/90">
+										{pillar.number}
+									</span>
+								</div>
+
+								<div class="p-6">
+									<h3 class="text-xl font-medium tracking-tight text-white">
+										{pillar.title}
+									</h3>
+									<p class="mt-1 text-sm font-medium text-teal-accent">
+										{pillar.tagline}
+									</p>
+									<p class="mt-2.5 font-serif text-sm leading-relaxed text-mint-soft/80">
+										{pillar.summary}
+									</p>
+								</div>
+							</button>
+						))
+					}
+				</div>
+			</section>
+
 			<!-- Featured Case Studies -->
 			<section
 				id="cases"
@@ -259,4 +351,139 @@ const journalPosts = (await getCollection('journal')).sort(
 		</section>
 		</div>
 	</div>
+
+	{
+		pillars.map((pillar) => (
+			<dialog
+				id={`pillar-modal-${pillar.id}`}
+				data-pillar-dialog
+				aria-labelledby={`pillar-modal-title-${pillar.id}`}
+				class="m-auto w-[calc(100%-2rem)] max-w-2xl rounded-[24px] border border-ink/15 bg-canvas p-0 text-ink shadow-[0_24px_60px_rgba(2,18,18,0.28)] backdrop:bg-obsidian/55 backdrop:backdrop-blur-xs"
+			>
+				<div class="flex flex-col gap-6 p-6 sm:p-8">
+					<div class="flex items-start justify-between gap-4 border-b border-ink/12 pb-5">
+						<div>
+							<p class="font-mono text-[11px] uppercase tracking-widest text-teal-mid">
+								{pillar.number} &middot; {pillar.tagline}
+							</p>
+							<h2
+								id={`pillar-modal-title-${pillar.id}`}
+								class="mt-1.5 text-2xl font-medium tracking-tight text-ink sm:text-3xl"
+							>
+								{pillar.title}
+							</h2>
+						</div>
+						<button
+							type="button"
+							data-pillar-close
+							aria-label={`Close ${pillar.title} modal`}
+							class="flex h-9 w-9 shrink-0 cursor-pointer items-center justify-center rounded-full border border-ink/15 text-lg leading-none text-ink transition-colors hover:border-ink hover:bg-ink hover:text-white"
+						>
+							&times;
+						</button>
+					</div>
+
+					<p class="font-serif text-base leading-[1.7] text-ink sm:text-lg">
+						{pillar.description}
+					</p>
+
+					{pillar.projects.length > 0 && (
+						<div class="flex flex-col gap-3">
+							<p class="font-mono text-[11px] uppercase tracking-widest text-muted">
+								Related Portfolio Projects
+							</p>
+							<div class="grid gap-3 sm:grid-cols-2">
+								{pillar.projects.map((project) => (
+									<a
+										href={`/cases/${project.id}/`}
+										class="group flex items-start gap-3.5 rounded-[14px] border border-ink/10 bg-white p-3 transition-[border-color,transform,box-shadow] hover:-translate-y-0.5 hover:border-ink/25 hover:shadow-sm"
+									>
+										<img
+											src={project.data.coverImage}
+											alt={project.data.coverAlt || project.data.title}
+											loading="lazy"
+											class="h-14 w-16 shrink-0 rounded-[8px] border border-ink/10 object-cover"
+										/>
+										<div class="min-w-0">
+											{project.data.tag && (
+												<p class="truncate font-mono text-[10px] uppercase tracking-wider text-muted">
+													{project.data.tag}
+												</p>
+											)}
+											<h3 class="mt-0.5 text-sm font-medium leading-snug text-ink transition-colors group-hover:text-teal-mid">
+												{project.data.title}
+											</h3>
+											<p class="mt-0.5 line-clamp-2 font-serif text-xs leading-relaxed text-muted">
+												{project.data.subtitle}
+											</p>
+										</div>
+									</a>
+								))}
+							</div>
+						</div>
+					)}
+				</div>
+			</dialog>
+		))
+	}
+
+	<script>
+		import { background, constellation, contour, interference } from 'asciify-engine/kit';
+
+		const presetMap = {
+			'evaluation-thinking': contour,
+			'systems-design': interference,
+			'problem-framing': constellation,
+		} as const;
+
+		const artHandles: Array<ReturnType<typeof background>> = [];
+		const artHosts = document.querySelectorAll<HTMLElement>('[data-pillar-art]');
+		for (const host of artHosts) {
+			const id = host.dataset.pillarArt as keyof typeof presetMap | undefined;
+			const preset = id ? presetMap[id] : undefined;
+			if (!preset) continue;
+			artHandles.push(
+				background(host, {
+					preset,
+					clear: [],
+					palette: {
+						light: '#0ce8aa',
+						dark: '#0ce8aa',
+					},
+					accent: '#c9fff0',
+					opacity: 0.72,
+					speed: 0.65,
+					cellSize: 9,
+				}),
+			);
+		}
+
+		window.addEventListener(
+			'pagehide',
+			() => {
+				for (const h of artHandles) h.destroy();
+			},
+			{ once: true },
+		);
+
+		const openButtons = document.querySelectorAll<HTMLButtonElement>('[data-pillar-open]');
+		for (const btn of openButtons) {
+			btn.addEventListener('click', () => {
+				const id = btn.dataset.pillarOpen;
+				const dialog = id
+					? document.querySelector<HTMLDialogElement>(`#pillar-modal-${id}`)
+					: null;
+				dialog?.showModal();
+			});
+		}
+
+		const dialogs = document.querySelectorAll<HTMLDialogElement>('[data-pillar-dialog]');
+		for (const dialog of dialogs) {
+			const closeBtn = dialog.querySelector<HTMLButtonElement>('[data-pillar-close]');
+			closeBtn?.addEventListener('click', () => dialog.close());
+			dialog.addEventListener('click', (e) => {
+				if (e.target === dialog) dialog.close();
+			});
+		}
+	</script>
 </Base>
