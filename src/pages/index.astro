@@ -15,25 +15,29 @@ const journalPosts = (await getCollection('journal')).sort(
 
 <Base title={site.siteTitle} description={site.siteDescription}>
 	<!-- Hero Section -->
-	<section data-hero-stage class="hero-stage bg-mint pt-24 pb-28 md:pt-36 md:pb-40">
-		<div class="container-page" data-hero-parallax>
-			<div class="flex flex-col items-start gap-8 md:flex-row">
+	<section
+		id="hero"
+		data-hero-stage
+		class="hero-stage relative flex min-h-[400px] items-center bg-transparent pt-14 pb-20 md:min-h-[460px] md:pt-16 md:pb-24"
+	>
+		<div class="container-page relative z-10" data-hero-parallax>
+			<div class="flex flex-col items-center gap-5 text-center md:gap-6">
 				<div class="shrink-0" data-reveal="fade" data-reveal-immediate>
 					<img
 						src={site.hero.avatar}
 						alt={site.name}
-						width="52"
-						height="52"
-						class="h-[52px] w-[52px] rounded-full border border-ink/15 object-cover shadow-xs"
+						width="56"
+						height="56"
+						class="h-14 w-14 rounded-full border border-ink/15 object-cover shadow-xs"
 					/>
 				</div>
 
-				<div class="max-w-[1200px] text-[28px] leading-[1.36] tracking-tight text-ink sm:text-[34px] md:text-[37px]">
+				<div class="copy mx-auto max-w-[780px] text-[24px] leading-[1.36] tracking-tight text-ink sm:text-[30px] md:text-[34px]">
 					<p class="font-medium" data-reveal="words" data-reveal-immediate>
 						{site.hero.greeting}
 					</p>
 					<h1
-						class="mt-8 font-light md:mt-10"
+						class="mt-4 font-light md:mt-5"
 						data-reveal="words"
 						data-reveal-immediate
 						data-reveal-delay="120"
@@ -45,10 +49,14 @@ const journalPosts = (await getCollection('journal')).sort(
 		</div>
 	</section>
 
-	<div data-hero-sheet class="relative z-10">
-		<!-- Featured Case Studies -->
-		<section id="cases" class="bg-dot-grid pt-[18px] pb-[77px]">
-			<div class="container-page flex flex-col gap-[39px]">
+	<div data-hero-sheet class="relative z-10 pb-12 md:pb-16">
+		<div class="container-page flex flex-col gap-6 md:gap-8">
+			<!-- Featured Case Studies -->
+			<section
+				id="cases"
+				class="bg-dot-grid overflow-hidden rounded-[24px] border border-ink/10 px-6 pt-[18px] pb-[64px] shadow-[0_12px_36px_rgba(3,74,67,0.08)] sm:px-10 md:px-12"
+			>
+				<div class="flex flex-col gap-[39px]">
 				<!-- Pill divider -->
 				<div class="flex justify-center">
 					<svg width="80" height="4" viewBox="0 0 80 4" fill="none" aria-hidden="true">
@@ -112,8 +120,8 @@ const journalPosts = (await getCollection('journal')).sort(
 		</section>
 
 		<!-- Journal Section -->
-		<section class="bg-forest-deep py-[66px] pb-[91px] text-teal-accent">
-			<div class="container-page">
+		<section class="overflow-hidden rounded-[24px] border border-teal-border/80 bg-forest-deep px-6 py-[56px] pb-[72px] text-teal-accent shadow-[0_12px_36px_rgba(2,18,18,0.16)] sm:px-10 md:px-12">
+			<div>
 				<div class="flex items-center justify-between gap-4 border-b border-teal-border py-[17px]">
 					<h2 class="section-eyebrow text-teal-accent" data-reveal="words">
 						{site.journalHeading}
@@ -160,8 +168,8 @@ const journalPosts = (await getCollection('journal')).sort(
 		</section>
 
 		<!-- Experience Section -->
-		<section class="bg-mint py-[66px] pb-[91px]">
-			<div class="container-page flex flex-col">
+		<section class="overflow-hidden rounded-[24px] border border-ink/12 bg-mint-soft/90 px-6 py-[56px] pb-[72px] shadow-[0_12px_36px_rgba(3,74,67,0.06)] sm:px-10 md:px-12">
+			<div class="flex flex-col">
 				<div class="border-b border-ink/20 py-[17px]">
 					<h2 class="section-eyebrow text-teal-mid" data-reveal="words">
 						{site.experience.heading}
@@ -249,5 +257,6 @@ const journalPosts = (await getCollection('journal')).sort(
 				</dl>
 			</div>
 		</section>
+		</div>
 	</div>
 </Base>

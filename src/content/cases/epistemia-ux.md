@@ -1,17 +1,17 @@
 ---
 title: "Epistemia UX"
-subtitle: "Operationalizing seven epistemological fault lines into a 2×2 paper appraisal pilot and interactive UX lab"
+subtitle: "Seven Human–AI interface patterns that replace fluent guesswork with inspectable judgment"
 order: 2
 featured: false
 category: "ai-research"
-tag: "Human–AI Research Lab"
-summary: "Operationalized all seven epistemological fault lines from arXiv:2512.19466 into a runnable 2×2 paper appraisal pilot, interactive before/after UX pattern lab, and telemetry dashboard with CSV/JSON export."
+tag: "Human–AI UX Patterns"
+summary: "Translated seven epistemological fault lines from arXiv:2512.19466 into side-by-side before/after interface solutions—showing where conventional fluent AI UI fails and how epistemic scaffolding supports critical judgment."
 liveUrl: "https://m5rc238.github.io/epistemia-ux/"
 repoUrl: "https://github.com/m5rc238/epistemia-ux"
-coverImage: "/images/cases/epistemia-ux-1.png"
-coverAlt: "Epistemia UX overview and seven epistemological fault lines workbench"
+coverImage: "/images/cases/epistemia-ux-3.png"
+coverAlt: "Epistemic UX Solutions Lab comparing conventional fluent UI against claim-evidence binding"
 role: "Product Designer · UX Researcher · Builder"
-scope: "Experimental UX design · Interaction prototyping · Epistemic instrumentation · Front-end engineering"
+scope: "Human–AI interaction design · Pattern library · Counterfactual UX prototyping · Front-end engineering"
 timeline: "November 2026"
 team: "Solo + AI-assisted development"
 prevSlug: "ai-evals"
@@ -22,54 +22,62 @@ nextSlug: "decision-router"
 
 In [Quattrociocchi, Capraro & Perc (arXiv:2512.19466)](https://arxiv.org/html/2512.19466v1), **epistemia** describes a failure mode where linguistic plausibility substitutes for epistemic evaluation—producing the *subjective feeling of knowing without the labor of critical judgment*.
 
-A person using an AI summary can receive fluent, factually accurate prose and still lose the ability to notice when an underlying assumption breaks. Standard accuracy metrics rarely catch that failure, because the summary looks right until something decisive changes.
+A person using an AI summary can receive fluent, factually accurate prose and still miss when an underlying assumption breaks. Standard accuracy metrics rarely catch that failure, because the interface looks equally confident whether the claim is grounded, sycophantic, or underdetermined.
 
-I built [Epistemia UX](https://m5rc238.github.io/epistemia-ux/) ([source repository](https://github.com/m5rc238/epistemia-ux)) as a runnable experimental workbench and design laboratory translating all seven epistemological fault lines from the paper into testable interface interventions.
+I built [Epistemia UX](https://m5rc238.github.io/epistemia-ux/) ([source repository](https://github.com/m5rc238/epistemia-ux)) as an interactive **UX Solutions Lab** translating all seven epistemological fault lines from the paper into concrete interface interventions.
 
-## The 2×2 paper appraisal pilot
+## Before & after: conventional fluent UI vs. epistemic scaffolding
 
-The first module is a blinded **2×2 AI-assisted paper appraisal experiment** across three controlled empirical mini-papers in Chronobiology, Learning Analytics, and Urban Policy:
+Rather than proposing abstract guidelines, the lab pairs **Conventional Fluent UI (Epistemia Risk)** directly against an **Epistemic UX Solution** under live counterfactual perturbations. Reviewers can toggle perturbations in the browser—removing a decisive control arm, flipping user preference, or introducing competing causal models—to see where fluent prose stays deceptively confident and how the epistemic pattern responds.
 
-- **Summary Interface:** *Conventional Fluent Summary* vs. *Epistemic-Scaffolded Summary* (exposing the load-bearing assumption and a one-click anchor directly to the decisive passage in the manuscript).
-- **Post-Publication Erratum:** *Decisive* (falsifying the load-bearing assumption) vs. *Non-Decisive* (changing an equally prominent but irrelevant detail, such as rounding or sample typo).
+![Epistemic UX Solutions Lab side-by-side comparison](/images/cases/epistemia-ux-3.png)
 
-Crucially, both interface conditions present the **exact same initial conclusion** and full access to the source manuscript. Only the epistemic scaffolding varies. Measuring **Appropriate Revision** separates two distinct failure modes:
+*Epistemic UX Solutions Lab: side-by-side comparison of Conventional Fluent UI vs. Claim–Evidence Binding & Decisive Cue Strip under live counterfactual perturbations.*
 
-- **Decisive Sensitivity** — revising judgment downward when the load-bearing assumption is falsified (resisting epistemic inertia).
-- **Non-Decisive Specificity** — preserving justified trust when a prominent correction affects only a peripheral detail (ruling out blanket skepticism).
+## Seven epistemic UX solutions
 
-![Epistemia UX 2x2 AI-assisted paper appraisal pilot](/images/cases/epistemia-ux-2.png)
+Each pattern targets a specific breakdown between linguistic fluency and warranted belief:
 
-*Paper Appraisal Pilot: blinded protocol runner (with a Researcher/Demo condition switcher) testing how summary scaffolding affects revision when an erratum arrives.*
+### 1. Grounding — Claim–Evidence Binding & Decisive Cue Strip
+- **Conventional UI trap:** Citations appear as static text tokens (`(Methods §2; Fig. 2)`), so fluent confidence persists even when the cited passage is missing or contradicts the claim.
+- **Epistemic solution:** Binds each claim to live evidence slots and highlights the **decisive cue** (e.g., the sham-control arm). When that cue is removed or contradicted, the claim status shifts from *Grounded & Qualified* to *Unverified* or *Contradicted*.
 
-## Seven fault lines translated into UX interventions
+![Grounding comparison: Conventional Fluent UI vs. Claim-Evidence Binding](/images/cases/epistemia-ux-grounding.png)
 
-The **7 Fault Lines UX Lab** pairs conventional fluent UI baselines against epistemic interface interventions with live counterfactual perturbation controls so each pattern can be stress-tested directly in the browser:
+*Grounding comparison: static unlinked citation tokens vs. live bound evidence slots and decisive-cue verification.*
 
-| # | Fault line | UX pattern intervention | Verification criterion |
-| --- | --- | --- | --- |
-| 1 | **Grounding** | Claim–Evidence Binding & Decisive Cue Strip | Score citation support separately from factual shift when decisive cues are removed or contradicted |
-| 2 | **Parsing** | Semantic Role Preview & Single-Question Disambiguation | Preserve paraphrase invariance while staying sensitive to meaning-reversing role edits |
-| 3 | **Experience** | Dated Epistemic Ledger & Transfer Revision Log | Verify that newer corrections supersede stale entries and learned rules transfer across contexts |
-| 4 | **Motivation** | Premise-Neutral Evidence Ledger (Anti-Sycophancy Guard) | Hold evidence fixed and flip user preference (and vice versa); track evidence across all 4 cells |
-| 5 | **Causality** | Causal Mechanism DAG & Underdetermination Hold | Separate interventional predictions from correlation and abstain when competing models fit equally |
-| 6 | **Metacognition** | Tri-Modal Action Router (`Answer` / `Seek Evidence` / `Abstain`) | Reduce errors at matched answer rates and test whether seeking evidence resolves uncertain cases |
-| 7 | **Value** | Standard Charter, Weight Slider & Contestability Workflow | Expose value trade-offs and test end-to-end reversal through a named decision-maker |
+### 2. Parsing — Semantic Role Preview & Single-Question Disambiguation
+- **Conventional UI trap:** Paraphrases and subtle role reversals (*who did what to whom*) are silently smoothed over into one confident answer.
+- **Epistemic solution:** Exposes parsed semantic roles (`Agent`, `Action`, `Target`, `Condition`) before committing to an interpretation and surfaces a single clarifying question when roles are ambiguous.
 
-![Epistemia UX 7 Fault Lines interactive design lab](/images/cases/epistemia-ux-3.png)
+### 3. Experience — Dated Epistemic Ledger & Transfer Revision Log
+- **Conventional UI trap:** Stale facts and newer corrections blend together in conversational memory with no visible supersession trail.
+- **Epistemic solution:** Maintains a timestamped ledger where newer evidence explicitly supersedes older entries and records how learned rules transfer across contexts.
 
-*7 Fault Lines UX Solutions Lab: side-by-side comparison of conventional fluent UI vs. claim–evidence binding under live counterfactual perturbations.*
+### 4. Motivation — Premise-Neutral Evidence Ledger (Anti-Sycophancy Guard)
+- **Conventional UI trap:** When a user nudges the model toward a preferred conclusion, fluent prose mirrors the user's framing and selectively rationalizes it.
+- **Epistemic solution:** Separates user preference from an invariant evidence ledger, holding supporting and contradicting evidence steady even when the prompt's framing flips.
 
-## Researcher dashboard and verification telemetry
+![Motivation comparison: Conventional Sycophantic AI vs. Premise-Neutral Evidence Ledger](/images/cases/epistemia-ux-motivation.png)
 
-During a pilot run, the workbench logs initial reading time, revision latency, decisive-passage anchor clicks, and written rationales to `localStorage`. The **Researcher Dashboard** aggregates these into cell-level sensitivity, specificity, Youden's *J* discrimination index, and reading-time trade-offs using custom SVG charts, alongside RFC-4180 CSV and JSON export.
+*Motivation comparison: when the user asserts a false positive, the conventional reply agrees sycophantically (50% matrix accuracy), while the evidence-locked ledger corrects the premise against A/B Registry #804 (100% accuracy).*
 
-Measuring time alongside accuracy makes verification effort explicit: an interface that improves revision accuracy only because users spend significantly longer checking claims reveals a clear human-factors trade-off rather than hiding it.
+### 5. Causality — Causal Mechanism DAG & Underdetermination Hold
+- **Conventional UI trap:** Correlational patterns are narrated in causal language, masking when multiple competing mechanisms fit the same data.
+- **Epistemic solution:** Visualizes the assumed causal graph (DAG) alongside competing models and triggers an explicit **Underdetermination Hold** when observational evidence cannot separate them.
 
-![Epistemia UX researcher dashboard with simulated reference pilot data](/images/cases/epistemia-ux-4.png)
+### 6. Metacognition — Tri-Modal Action Router (`Answer` / `Seek Evidence` / `Abstain`)
+- **Conventional UI trap:** Binary answer-or-refuse interfaces push systems toward guessing fluently on borderline queries.
+- **Epistemic solution:** Replaces binary output with a tri-modal router—answering when grounded, **seeking specific evidence** when a targeted lookup can resolve uncertainty, and **abstaining** when evidence is insufficient.
 
-*Researcher Dashboard: custom SVG calibration and effort–judgment charts displaying the toggleable simulated reference cohort (n = 24).*
+![Metacognition comparison: Forced Single-Mode Output vs. Tri-Modal Action Router](/images/cases/epistemia-ux-metacognition.png)
+
+*Metacognition comparison: under an unfamiliar pediatric task shift, forced fluency emits an unsafe guess at 89% token confidence, whereas the tri-modal router detects the shift and routes to `SEEK EVIDENCE`.*
+
+### 7. Value — Standard Charter, Weight Slider & Contestability Workflow
+- **Conventional UI trap:** Normative trade-offs (e.g., speed vs. false-positive risk) are buried inside an ostensibly neutral recommendation.
+- **Epistemic solution:** Surfaces the active value weights with interactive sliders and pairs every recommendation with a named contestability path to inspect or reverse the decision.
 
 ## Status and limits
 
-Epistemia UX is a working experimental instrument and interactive pattern laboratory rather than a completed empirical study. The `n = 24` dataset visible by default in the Researcher Dashboard is explicitly labeled as an **illustrative simulated reference cohort** to demonstrate the scoring pipeline, Youden's *J* calculations, and export format; real human-subject evaluation would require running the blinded protocol with target readers.
+Epistemia UX is a working interactive pattern laboratory rather than an empirical user study. Alongside the 7-pattern Solutions Lab, the live workbench includes a runnable 2×2 paper appraisal pilot and telemetry dashboard for anyone interested in testing how these interventions affect revision behavior.

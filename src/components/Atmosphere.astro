@@ -1,0 +1,91 @@
+---
+interface Props {
+	enabled?: boolean;
+}
+
+const { enabled = true } = Astro.props;
+---
+
+{
+	enabled && (
+		<>
+			<div
+				id="atmosphere-backdrop"
+				class="pointer-events-none fixed inset-0 z-0 h-full w-full"
+				aria-hidden="true"
+			/>
+			<div
+				id="atmosphere-ascii"
+				class="pointer-events-none fixed inset-0 z-0 h-full w-full overflow-hidden"
+				aria-hidden="true"
+			/>
+		</>
+	)
+}
+
+<script>
+	import { background, mesh } from 'asciify-engine/kit';
+
+	const backdrop = document.querySelector<HTMLElement>('#atmosphere-backdrop');
+	const asciiHost = document.querySelector<HTMLElement>('#atmosphere-ascii');
+
+	if (backdrop && asciiHost) {
+		const syncBackdrop = () => {
+			backdrop.style.background = 'linear-gradient(to bottom, #c2f2e4, #c9fff0)';
+		};
+
+		syncBackdrop();
+
+		const bg = background(asciiHost, {
+			preset: mesh,
+			clear: [],
+			cursor: 'lantern',
+			look: {
+				lantern: {
+					radius: 0.16,
+					strength: 1.25,
+					trail: 0.88,
+					follow: 10,
+				},
+			},
+			palette: {
+				light: '#06635a',
+				dark: '#0ce8aa',
+			},
+			accent: '#034a43',
+			opacity: 0.22,
+			speed: 0.7,
+		});
+
+		const onPointerMove = (e: PointerEvent) => {
+			asciiHost.dispatchEvent(
+				new PointerEvent('pointermove', {
+					clientX: e.clientX,
+					clientY: e.clientY,
+					pointerType: e.pointerType,
+				}),
+			);
+		};
+
+		const onPointerLeave = () => {
+			asciiHost.dispatchEvent(new PointerEvent('pointerleave'));
+		};
+
+		window.addEventListener('scroll', syncBackdrop, { passive: true });
+		window.addEventListener('resize', syncBackdrop, { passive: true });
+		window.addEventListener('pointermove', onPointerMove, { passive: true });
+		document.addEventListener('pointerleave', onPointerLeave, { passive: true });
+
+		window.addEventListener(
+			'pagehide',
+			() => {
+				window.removeEventListener('scroll', syncBackdrop);
+				window.removeEventListener('resize', syncBackdrop);
+				window.removeEventListener('pointermove', onPointerMove);
+				document.removeEventListener('pointerleave', onPointerLeave);
+				bg.destroy();
+			},
+			{ once: true },
+		);
+	}
+</script>

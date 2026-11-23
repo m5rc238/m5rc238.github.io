@@ -261,12 +261,30 @@
 		transform: translateY(0);
 	}
 
-	/* Framer borderless case card: framed 8px-radius thumbnail + 24px title + Source Serif 4 subtitle */
+	/* Framed white case card: inset rounded thumbnail + padded editorial text */
 	.framer-case-card {
 		display: flex;
 		flex-direction: column;
-		gap: 20px;
+		padding: 12px;
+		border-radius: 24px;
+		background: #ffffff;
+		border: 1px solid color-mix(in srgb, var(--color-ink) 10%, transparent);
+		box-shadow:
+			0 4px 20px rgba(3, 74, 67, 0.06),
+			0 1px 3px rgba(3, 74, 67, 0.04);
 		text-decoration: none;
+		transition:
+			transform 260ms cubic-bezier(0.16, 1, 0.3, 1),
+			box-shadow 260ms cubic-bezier(0.16, 1, 0.3, 1),
+			border-color 260ms cubic-bezier(0.16, 1, 0.3, 1);
+	}
+
+	.framer-case-card:hover {
+		transform: translateY(-4px);
+		border-color: color-mix(in srgb, var(--color-ink) 18%, transparent);
+		box-shadow:
+			0 14px 32px rgba(3, 74, 67, 0.1),
+			0 2px 6px rgba(3, 74, 67, 0.05);
 	}
 
 	.framer-case-card[hidden] {
@@ -274,12 +292,12 @@
 	}
 
 	.framer-case-thumb {
-		height: 270px;
+		height: 240px;
 		width: 100%;
 		overflow: hidden;
-		border-radius: 8px;
-		border: 1px solid color-mix(in srgb, var(--color-ink) 12%, transparent);
-		background: #ffffff;
+		border-radius: 14px;
+		border: 1px solid color-mix(in srgb, var(--color-ink) 8%, transparent);
+		background: var(--color-paper);
 	}
 
 	.framer-case-thumb img {
@@ -291,6 +309,10 @@
 
 	.framer-case-card:hover .framer-case-thumb img {
 		transform: scale(1.03);
+	}
+
+	.framer-case-card > :not(.framer-case-thumb) {
+		padding: 18px 10px 12px;
 	}
 
 	/* Editorial prose for Markdown case studies */
@@ -592,6 +614,8 @@
 /* Header scrolled state on homepage mint surface (outside @layer to beat utility classes) */
 header[data-site-header][data-surface='mint'][data-scrolled='true'] {
 	background-color: color-mix(in srgb, var(--color-canvas) 92%, transparent);
+	backdrop-filter: blur(12px);
+	-webkit-backdrop-filter: blur(12px);
 }
 
 header[data-site-header][data-scrolled='true'] [data-header-cta] {

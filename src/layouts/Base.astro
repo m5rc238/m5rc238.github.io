@@ -5,6 +5,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import Atmosphere from '../components/Atmosphere.astro';
 import site from '../data/site.json';
 
 interface Props {
@@ -57,7 +58,9 @@ const {
 		></script>
 	</head>
 
-	<body class:list={['flex min-h-dvh flex-col font-sans text-ink antialiased', bodyClass]}>
+	<body class:list={['relative flex min-h-dvh flex-col font-sans text-ink antialiased', bodyClass]}>
+		<Atmosphere enabled={!bodyClass.includes('bg-dot-grid')} />
+
 		<a
 			href="#main"
 			class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:rounded-full focus:bg-teal-dark focus:px-5 focus:py-2 focus:text-sm focus:font-medium focus:text-white"
@@ -66,7 +69,7 @@ const {
 		</a>
 
 		<Header surface={bodyClass.includes('bg-dot-grid') ? 'canvas' : 'mint'} />
-		<main id="main" class="flex-1">
+		<main id="main" class="relative z-10 flex-1">
 			<slot />
 		</main>
 		<Footer />

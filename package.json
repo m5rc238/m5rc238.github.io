@@ -16,6 +16,7 @@
   "dependencies": {
     "@fontsource-variable/source-serif-4": "^5.3.0",
     "@tailwindcss/vite": "^4.3.3",
+    "asciify-engine": "^4.33.0",
     "astro": "^7.3.5",
     "next": "^16.4.2",
     "react": "^19.3.1",
