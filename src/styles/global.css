@@ -355,6 +355,72 @@
 		padding: 16px 6px 6px;
 	}
 
+	/* Compact Post-it cards inside pillar modals */
+	.modal-postit {
+		--note-bg: #fef8c8;
+		position: relative;
+		isolation: isolate;
+		display: flex;
+		align-items: center;
+		gap: 12px;
+		padding: 12px 14px;
+		background: transparent;
+		text-decoration: none;
+		transform: rotate(-0.6deg);
+		filter:
+			drop-shadow(0 1px 2px rgba(3, 74, 67, 0.06))
+			drop-shadow(0 6px 12px rgba(3, 74, 67, 0.1));
+		transition:
+			transform 220ms cubic-bezier(0.16, 1, 0.3, 1),
+			filter 220ms cubic-bezier(0.16, 1, 0.3, 1);
+	}
+
+	.modal-postit::before {
+		content: '';
+		position: absolute;
+		inset: 0;
+		z-index: -1;
+		border-radius: 3px 3px 0 3px;
+		background-color: var(--note-bg);
+		clip-path: polygon(0 0, 100% 0, 100% calc(100% - 14px), calc(100% - 14px) 100%, 0 100%);
+		pointer-events: none;
+	}
+
+	.modal-postit::after {
+		content: '';
+		position: absolute;
+		right: 0;
+		bottom: 0;
+		width: 14px;
+		height: 14px;
+		pointer-events: none;
+		background: color-mix(in srgb, var(--note-bg) 88%, var(--color-ink) 12%);
+		clip-path: polygon(0 0, 100% 0, 0 100%);
+	}
+
+	.modal-postit:nth-child(4n + 2) {
+		--note-bg: #e4faf1;
+		transform: rotate(0.55deg);
+	}
+
+	.modal-postit:nth-child(4n + 3) {
+		--note-bg: #fef0d6;
+		transform: rotate(0.45deg);
+	}
+
+	.modal-postit:nth-child(4n + 4) {
+		--note-bg: #f3eefe;
+		transform: rotate(-0.5deg);
+	}
+
+	.modal-postit:hover {
+		transform: translateY(-3px) rotate(0deg) scale(1.01);
+		z-index: 2;
+		filter:
+			drop-shadow(0 2px 4px rgba(3, 74, 67, 0.08))
+			drop-shadow(0 12px 18px rgba(3, 74, 67, 0.14));
+	}
+
 	/* Editorial prose for Markdown case studies */
 	.case-prose {
 		font-family: var(--font-serif);

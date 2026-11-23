@@ -21,9 +21,8 @@ const pillars = [
 		dotColor: '#f59e0b',
 		title: 'Evaluation Thinking',
 		tagline: 'Knowing what good looks like.',
-		summary: 'Turn vague AI quality into measurable criteria, eval protocols, and inspectable judgment.',
 		description:
-			'AI Evals, critical thinking, quality judgment, experimentation, and the ability to distinguish impressive outputs from genuinely useful ones.',
+			'A demo can look impressive in a controlled test and still fail in real use. I build evaluation criteria, run structured experiments, and use critical judgment to measure whether an AI feature is actually reliable and useful.',
 		caseIds: ['ai-evals', 'epistemia-ux', 'decision-router', 'tablox'],
 	},
 	{
@@ -32,9 +31,8 @@ const pillars = [
 		dotColor: '#0ea5e9',
 		title: 'Systems Design',
 		tagline: 'Building infrastructure for intelligence.',
-		summary: 'Design tokens, typed workflows, and guardrails that let humans and agents ship consistently.',
 		description:
-			'Design systems, reusable components, structured knowledge, APIs, workflows, and constraints that allow humans and AI agents to create consistently at scale.',
+			'Great products rely on clear structure underneath. I design component libraries, shared knowledge, workflows, and practical guardrails so both people and AI agents can work consistently at scale.',
 		caseIds: ['alpaca-ds', 'alpaca-logo', 'decision-router', 'easyudi'],
 	},
 	{
@@ -43,9 +41,8 @@ const pillars = [
 		dotColor: '#f43f5e',
 		title: 'Problem Framing',
 		tagline: 'Knowing what is worth solving.',
-		summary: 'Cut through ambiguity with field research, sharper problem definitions, and high-leverage bets.',
 		description:
-			'Identifying opportunities, understanding human needs, questioning assumptions, defining problems, and translating ambiguity into valuable outcomes.',
+			'Before jumping into solutions, I talk to users, question assumptions, and define what actually matters. Turning an unclear problem into a sharp direction is where the biggest leverage comes from.',
 		caseIds: ['easyudi', 'spean', 'labellio', 'fansfirst'],
 	},
 ].map((pillar) => ({
@@ -99,13 +96,10 @@ const pillars = [
 				aria-labelledby="pillars-heading"
 				class="overflow-hidden rounded-[24px] border border-teal-border/60 bg-teal-dark px-6 py-10 text-mint-soft shadow-[0_12px_36px_rgba(3,74,67,0.14)] sm:px-10 md:px-12 md:py-12"
 			>
-				<div class="flex flex-col justify-between gap-3 border-b border-teal-accent/15 pb-6 md:flex-row md:items-end">
-					<div>
-						<p class="section-eyebrow text-teal-accent">Three lenses behind the work</p>
-						<h2 id="pillars-heading" class="mt-2 text-2xl font-light tracking-tight text-white sm:text-3xl">
-							How I approach product &amp; AI systems from first principles.
-						</h2>
-					</div>
+				<div class="border-b border-teal-accent/15 pb-4">
+					<h2 id="pillars-heading" class="section-eyebrow text-teal-accent">
+						Three lenses behind the work
+					</h2>
 				</div>
 
 				<div class="mt-7 grid gap-5 md:grid-cols-3 md:gap-6">
@@ -130,11 +124,8 @@ const pillars = [
 									<h3 class="text-xl font-medium tracking-tight text-white">
 										{pillar.title}
 									</h3>
-									<p class="mt-1 text-sm font-medium text-teal-accent">
+									<p class="mt-1.5 font-serif text-base leading-relaxed text-mint-soft/85">
 										{pillar.tagline}
-									</p>
-									<p class="mt-2.5 font-serif text-sm leading-relaxed text-mint-soft/80">
-										{pillar.summary}
 									</p>
 								</div>
 							</button>
@@ -146,20 +137,9 @@ const pillars = [
 			<!-- Featured Case Studies -->
 			<section
 				id="cases"
-				class="bg-dot-grid overflow-hidden rounded-[24px] border border-ink/10 px-6 pt-[18px] pb-[64px] shadow-[0_12px_36px_rgba(3,74,67,0.08)] sm:px-10 md:px-12"
+				class="bg-dot-grid overflow-hidden rounded-[24px] border border-ink/10 px-6 pt-10 pb-[64px] shadow-[0_12px_36px_rgba(3,74,67,0.08)] sm:px-10 md:px-12"
 			>
 				<div class="flex flex-col gap-[39px]">
-				<!-- Pill divider -->
-				<div class="flex justify-center">
-					<svg width="80" height="4" viewBox="0 0 80 4" fill="none" aria-hidden="true">
-						<path
-							d="M 0 1.999 C 0 0.895 0.895 0 1.999 0 C 13.086 0 66.91 0 77.999 0 C 79.104 0 80 0.896 80 2.001 C 80 2.001 80 2.001 80 2.002 C 80 3.105 79.105 4 78.002 4 C 66.917 4 13.087 4 2 4 C 0.895 4 0 3.105 0 2 C 0 2 0 2 0 1.999 Z"
-							fill="rgba(3, 74, 67, 0.16)"
-							stroke="rgba(3, 74, 67, 0.06)"
-						/>
-					</svg>
-				</div>
-
 				<!-- Section Header -->
 				<div class="flex items-center justify-between gap-4 border-b border-ink/25 py-[17px]">
 					<h2 class="section-eyebrow text-ink" data-reveal="words" data-reveal-immediate>
@@ -229,25 +209,25 @@ const pillars = [
 					</a>
 				</div>
 
-				<ul class="pt-4">
+				<ul class="divide-y divide-teal-border pt-2">
 					{
 						journalPosts.map((post) => (
-							<li class="border-b border-teal-border">
+							<li>
 								<a
 									href={post.data.url}
 									target="_blank"
 									rel="noopener noreferrer"
-									class="group flex flex-col gap-2 py-5"
+									class="group flex flex-col gap-2 py-6"
 								>
 									<span
 										data-reveal="words"
-										class="text-2xl font-medium leading-[1.3] text-teal-accent transition-opacity group-hover:opacity-80 sm:text-3xl md:text-[40px]"
+										class="text-2xl font-light leading-[1.35] text-mint-soft transition-colors group-hover:text-teal-accent md:text-4xl"
 									>
 										{post.data.title}
 									</span>
 									<span
 										data-reveal="fade"
-										class="text-sm font-medium leading-[1.3] tabular-nums text-teal-accent/65"
+										class="font-mono text-xs uppercase tracking-wider tabular-nums text-teal-accent/65"
 									>
 										{post.data.date}
 									</span>
@@ -358,7 +338,7 @@ const pillars = [
 				id={`pillar-modal-${pillar.id}`}
 				data-pillar-dialog
 				aria-labelledby={`pillar-modal-title-${pillar.id}`}
-				class="m-auto w-[calc(100%-2rem)] max-w-2xl rounded-[24px] border border-ink/15 bg-canvas p-0 text-ink shadow-[0_24px_60px_rgba(2,18,18,0.28)] backdrop:bg-obsidian/55 backdrop:backdrop-blur-xs"
+				class="m-auto w-[calc(100%-2rem)] max-w-2xl overflow-hidden rounded-[24px] border-0 bg-canvas p-0 text-ink shadow-[0_24px_60px_rgba(2,18,18,0.28)] outline-none backdrop:bg-obsidian/55 backdrop:backdrop-blur-xs"
 			>
 				<div class="flex flex-col gap-6 p-6 sm:p-8">
 					<div class="flex items-start justify-between gap-4 border-b border-ink/12 pb-5">
@@ -392,17 +372,17 @@ const pillars = [
 							<p class="font-mono text-[11px] uppercase tracking-widest text-muted">
 								Related Portfolio Projects
 							</p>
-							<div class="grid gap-3 sm:grid-cols-2">
+							<div class="grid gap-3.5 sm:grid-cols-2">
 								{pillar.projects.map((project) => (
 									<a
 										href={`/cases/${project.id}/`}
-										class="group flex items-start gap-3.5 rounded-[14px] border border-ink/10 bg-white p-3 transition-[border-color,transform,box-shadow] hover:-translate-y-0.5 hover:border-ink/25 hover:shadow-sm"
+										class="modal-postit group"
 									>
 										<img
 											src={project.data.coverImage}
 											alt={project.data.coverAlt || project.data.title}
 											loading="lazy"
-											class="h-14 w-16 shrink-0 rounded-[8px] border border-ink/10 object-cover"
+											class="h-12 w-14 shrink-0 rounded-[4px] border border-ink/10 bg-white object-cover"
 										/>
 										<div class="min-w-0">
 											{project.data.tag && (
@@ -413,15 +393,38 @@ const pillars = [
 											<h3 class="mt-0.5 text-sm font-medium leading-snug text-ink transition-colors group-hover:text-teal-mid">
 												{project.data.title}
 											</h3>
-											<p class="mt-0.5 line-clamp-2 font-serif text-xs leading-relaxed text-muted">
-												{project.data.subtitle}
-											</p>
 										</div>
 									</a>
 								))}
 							</div>
 						</div>
 					)}
+				</div>
+
+				<div class="flex flex-col justify-between gap-4 bg-forest-deep px-6 py-6 text-mint-soft sm:flex-row sm:items-center sm:px-8">
+					<div>
+						<p class="font-mono text-[11px] uppercase tracking-widest text-teal-accent">
+							{site.cta.heading}
+						</p>
+						<p class="mt-1 font-serif text-sm text-mint-soft sm:text-base">
+							{site.cta.text}
+						</p>
+					</div>
+					<div class="flex shrink-0 flex-wrap items-center gap-2.5">
+						<a
+							href={`mailto:${site.email}`}
+							class="inline-flex items-center justify-center rounded-[6px] bg-teal-accent px-5 py-2 text-sm font-medium text-obsidian transition-colors hover:bg-mint-soft"
+						>
+							{site.cta.buttonLabel}
+						</a>
+						<button
+							type="button"
+							data-copy-email={site.email}
+							class="inline-flex cursor-pointer items-center justify-center rounded-[6px] border border-teal-accent/40 px-4 py-2 text-sm font-normal text-mint-soft transition-colors hover:border-teal-accent hover:bg-teal-accent/10"
+						>
+							<span data-copy-label>Copy email</span>
+						</button>
+					</div>
 				</div>
 			</dialog>
 		))
