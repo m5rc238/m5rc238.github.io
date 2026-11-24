@@ -13,7 +13,9 @@ export async function getStaticPaths() {
 }
 
 const { entry, allCases } = Astro.props;
-const { Content } = await render(entry);
+const { Content, headings } = await render(entry);
+const tocHeadings = headings.filter((h) => h.depth === 2 || h.depth === 3);
+const hasToc = tocHeadings.length >= 2;
 
 const prevCase = entry.data.prevSlug
 	? allCases.find((c) => c.id === entry.data.prevSlug)
@@ -29,7 +31,8 @@ const nextCase = entry.data.nextSlug
 	bodyClass="bg-dot-grid"
 >
 	<article class="py-14 md:py-20">
-		<div class="container-page max-w-4xl">
+		<div class:list={['container-page', hasToc ? 'max-w-6xl' : 'max-w-4xl']}>
+			<div class={hasToc ? 'max-w-4xl' : ''}>
 			<a
 				href="/cases/"
 				class="inline-flex items-center gap-1.5 text-sm font-medium text-teal-dark transition-colors hover:text-teal-mid"
@@ -121,15 +124,74 @@ const nextCase = entry.data.nextSlug
 					</div>
 				)
 			}
+			</div>
 
-			<div class="case-prose mt-12">
-				<Content />
+			{hasToc && (
+				<details class="mt-8 rounded-[10px] border border-ink/12 bg-white/85 px-5 py-3.5 lg:hidden">
+					<summary class="cursor-pointer font-mono text-xs uppercase tracking-widest text-teal-mid select-none">
+						Table of Contents
+					</summary>
+					<nav aria-label="Table of contents" class="mt-3 border-t border-ink/10 pt-3">
+						<ul class="space-y-2 text-sm">
+							{tocHeadings.map((h) => (
+								<li class={h.depth === 3 ? 'pl-4' : ''}>
+									<a
+										href={`#${h.slug}`}
+										class="block text-ink/80 transition-colors hover:text-teal-mid"
+									>
+										{h.text}
+									</a>
+								</li>
+							))}
+						</ul>
+					</nav>
+				</details>
+			)}
+
+			<div class:list={['mt-12', hasToc && 'lg:grid lg:grid-cols-[minmax(0,1fr)_240px] lg:items-start lg:gap-14']}>
+				<div class="case-prose min-w-0">
+					<Content />
+				</div>
+
+				{hasToc && (
+					<aside class="hidden lg:sticky lg:top-28 lg:block">
+						<div class="rounded-[12px] border border-ink/10 bg-white/75 p-5 backdrop-blur-xs">
+							<p class="font-mono text-[11px] uppercase tracking-widest text-teal-mid">
+								On this page
+							</p>
+							<nav aria-label="Table of contents" class="mt-3.5">
+								<ul class="space-y-1 border-l border-ink/12 text-[13px] leading-snug">
+									{tocHeadings.map((h, idx) => (
+										<li>
+											<a
+												href={`#${h.slug}`}
+												data-toc-link={h.slug}
+												class:list={[
+													'-ml-px block border-l-2 py-1.5 transition-colors',
+													h.depth === 3 ? 'pl-6 text-xs' : 'pl-3.5',
+													idx === 0
+														? 'border-teal-mid font-medium text-ink'
+														: 'border-transparent text-muted hover:border-ink/30 hover:text-ink',
+												]}
+											>
+												{h.text}
+											</a>
+										</li>
+									))}
+								</ul>
+							</nav>
+						</div>
+					</aside>
+				)}
 			</div>
 
 			{(prevCase || nextCase) && (
 				<nav
 					aria-label="Case study pagination"
-					class="mt-16 grid gap-4 border-t border-ink/15 pt-10 sm:grid-cols-2"
+					class:list={[
+						'mt-16 grid gap-4 border-t border-ink/15 pt-10 sm:grid-cols-2',
+						hasToc && 'max-w-4xl',
+					]}
 				>
 					<div>
 						{prevCase && (
@@ -166,4 +228,61 @@ const nextCase = entry.data.nextSlug
 		</div>
 	</article>
 	<ImageLightbox />
+
+	<script>
+		const tocLinks = Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-toc-link]'));
+		if (tocLinks.length > 0) {
+			const targets = tocLinks
+				.map((link) => {
+					const id = link.dataset.tocLink;
+					const el = id ? document.getElementById(id) : null;
+					return el ? { id, el, link } : null;
+				})
+				.filter((item): item is { id: string; el: HTMLElement; link: HTMLAnchorElement } =>
+					Boolean(item),
+				);
+
+			const setActiveToc = (activeId: string) => {
+				for (const { id, link } of targets) {
+					const active = id === activeId;
+					link.classList.toggle('border-teal-mid', active);
+					link.classList.toggle('font-medium', active);
+					link.classList.toggle('text-ink', active);
+					link.classList.toggle('border-transparent', !active);
+					link.classList.toggle('text-muted', !active);
+				}
+			};
+
+			const syncToc = () => {
+				const offset = 160;
+				let currentId = targets[0]?.id || '';
+				for (const { id, el } of targets) {
+					if (el.getBoundingClientRect().top <= offset) {
+						currentId = id;
+					} else {
+						break;
+					}
+				}
+				if (currentId) setActiveToc(currentId);
+			};
+
+			for (const { id, link } of targets) {
+				link.addEventListener('click', () => setActiveToc(id));
+			}
+
+			let ticking = false;
+			const onScroll = () => {
+				if (!ticking) {
+					ticking = true;
+					requestAnimationFrame(() => {
+						ticking = false;
+						syncToc();
+					});
+				}
+			};
+
+			syncToc();
+			window.addEventListener('scroll', onScroll, { passive: true });
+		}
+	</script>
 </Base>
