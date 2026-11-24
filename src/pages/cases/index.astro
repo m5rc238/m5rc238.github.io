@@ -8,20 +8,23 @@ const cases = (await getCollection('cases')).sort(
 );
 
 const filters = [
-	{ id: 'all', label: 'All', count: cases.length },
+	{ id: 'all', label: 'All', i18nKey: 'cases.filter.all', count: cases.length },
 	{
 		id: 'product',
 		label: 'Product',
+		i18nKey: 'cases.filter.product',
 		count: cases.filter((c) => c.data.category === 'product').length,
 	},
 	{
 		id: 'ai-research',
 		label: 'AI & Research',
+		i18nKey: 'cases.filter.ai',
 		count: cases.filter((c) => c.data.category === 'ai-research').length,
 	},
 	{
 		id: 'systems-brand',
 		label: 'Systems & Brand',
+		i18nKey: 'cases.filter.systems',
 		count: cases.filter((c) => c.data.category === 'systems-brand').length,
 	},
 ] as const;
@@ -35,7 +38,7 @@ const filters = [
 	<section class="py-14 md:py-20">
 		<div class="container-page flex flex-col gap-[39px]">
 			<div class="flex flex-wrap items-center justify-between gap-4 border-b border-ink/25 py-[17px]">
-				<h1 class="section-eyebrow text-ink">ALL CASE STUDIES</h1>
+				<h1 class="section-eyebrow text-ink" data-i18n="cases.heading">ALL CASE STUDIES</h1>
 				<div
 					role="group"
 					aria-label="Filter case studies by category"
@@ -54,7 +57,7 @@ const filters = [
 										: 'border-ink/20 bg-white/80 text-ink hover:border-ink/50 hover:bg-white',
 								]}
 							>
-								<span>{filter.label}</span>
+								<span data-i18n={filter.i18nKey}>{filter.label}</span>
 								<span class="font-mono text-[11px] opacity-70">{filter.count}</span>
 							</button>
 						))
@@ -80,14 +83,23 @@ const filters = [
 							</div>
 							<div class="flex flex-col gap-1.5">
 								{entry.data.tag && (
-									<p class="font-mono text-[11px] uppercase tracking-wider text-muted">
+									<p
+										data-i18n={`case.${entry.id}.meta`}
+										class="font-mono text-[11px] uppercase tracking-wider text-muted"
+									>
 										{entry.data.tag} &middot; {entry.data.timeline}
 									</p>
 								)}
-								<h2 class="text-2xl font-medium leading-snug text-ink transition-colors group-hover:text-teal-mid">
+								<h2
+									data-i18n={`case.${entry.id}.title`}
+									class="text-2xl font-medium leading-snug text-ink transition-colors group-hover:text-teal-mid"
+								>
 									{entry.data.title}
 								</h2>
-								<p class="font-serif text-base leading-[1.6] text-ink">
+								<p
+									data-i18n={`case.${entry.id}.subtitle`}
+									class="font-serif text-base leading-[1.6] text-ink"
+								>
 									{entry.data.subtitle}
 								</p>
 							</div>

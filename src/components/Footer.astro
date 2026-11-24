@@ -7,10 +7,11 @@ const linkedinLink = site.socialLinks.find((l) => l.icon === 'linkedin');
 <section class="relative z-10 bg-transparent pt-16 pb-4 text-ink md:pt-24 md:pb-6">
 	<div class="container-page flex flex-col items-start justify-between gap-8 md:flex-row md:items-center">
 		<div class="max-w-2xl">
-			<p class="section-eyebrow text-teal-mid" data-reveal="words">{site.cta.heading}</p>
+			<p class="section-eyebrow text-teal-mid" data-reveal="words" data-i18n="cta.heading">{site.cta.heading}</p>
 			<h2
 				class="mt-4 text-2xl font-light leading-[1.35] text-ink md:text-4xl"
 				data-reveal="words"
+				data-i18n="cta.text"
 			>
 				{site.cta.text}
 			</h2>
@@ -19,6 +20,7 @@ const linkedinLink = site.socialLinks.find((l) => l.icon === 'linkedin');
 		<div class="flex flex-wrap items-center gap-3" data-reveal="fade">
 			<a
 				href={`mailto:${site.email}`}
+				data-i18n="cta.button"
 				class="inline-flex shrink-0 items-center justify-center rounded-[6px] bg-ink px-8 py-2.5 text-base font-medium text-white transition-transform hover:-translate-y-0.5 hover:bg-teal-mid sm:px-10 sm:text-lg"
 			>
 				{site.cta.buttonLabel}
@@ -28,7 +30,7 @@ const linkedinLink = site.socialLinks.find((l) => l.icon === 'linkedin');
 				data-copy-email={site.email}
 				class="inline-flex shrink-0 cursor-pointer items-center justify-center rounded-[6px] border border-ink/30 px-5 py-2.5 text-base font-normal text-ink transition-colors hover:border-ink hover:bg-ink/5 sm:text-lg"
 			>
-				<span data-copy-label>Copy email</span>
+				<span data-copy-label data-i18n="cta.copy">Copy email</span>
 			</button>
 			{
 				linkedinLink && (
@@ -48,6 +50,8 @@ const linkedinLink = site.socialLinks.find((l) => l.icon === 'linkedin');
 </section>
 
 <script>
+	import { translations, type Lang } from '../i18n/translations';
+
 	const copyButtons = document.querySelectorAll<HTMLButtonElement>('[data-copy-email]');
 	for (const btn of copyButtons) {
 		btn.addEventListener('click', async () => {
@@ -55,13 +59,17 @@ const linkedinLink = site.socialLinks.find((l) => l.icon === 'linkedin');
 			if (!email) return;
 			const label = btn.querySelector<HTMLElement>('[data-copy-label]');
 			const status = btn.parentElement?.querySelector<HTMLElement>('[data-copy-status]');
+			const lang = (document.documentElement.lang as Lang) || 'en';
+			const dict = translations[lang] || translations.en;
 
 			try {
 				await navigator.clipboard.writeText(email);
-				if (label) label.textContent = 'Copied!';
+				if (label) label.textContent = dict['cta.copied'] || 'Copied!';
 				if (status) status.textContent = `Copied ${email} to clipboard.`;
 				window.setTimeout(() => {
-					if (label) label.textContent = 'Copy email';
+					const activeLang = (document.documentElement.lang as Lang) || 'en';
+					const activeDict = translations[activeLang] || translations.en;
+					if (label) label.textContent = activeDict['cta.copy'] || 'Copy email';
 					if (status) status.textContent = '';
 				}, 2000);
 			} catch {
@@ -89,7 +97,7 @@ const linkedinLink = site.socialLinks.find((l) => l.icon === 'linkedin');
 		data-reveal="up"
 		class="container-page relative z-10 flex flex-col items-center justify-between gap-6 py-8 sm:flex-row md:py-10"
 	>
-		<p class="order-1 text-sm font-medium text-white/95 drop-shadow-[0_1px_3px_rgba(2,25,22,0.5)] sm:order-0">
+		<p class="order-1 text-sm font-medium text-white/95 drop-shadow-[0_1px_3px_rgba(2,25,22,0.5)] sm:order-0" data-i18n="footer.credit">
 			{site.footer.credit}
 		</p>
 

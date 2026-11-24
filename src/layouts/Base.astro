@@ -75,6 +75,67 @@ const {
 		<Footer />
 
 		<script>
+			import { SUPPORTED_LANGS, translations, type Lang } from '../i18n/translations';
+
+			const isLang = (v: string | null): v is Lang =>
+				Boolean(v && (SUPPORTED_LANGS as readonly string[]).includes(v));
+
+			const resolveInitialLang = (): Lang => {
+				const param = new URLSearchParams(window.location.search).get('lang');
+				if (isLang(param)) return param;
+				try {
+					const stored = localStorage.getItem('site.lang');
+					if (isLang(stored)) return stored;
+				} catch {
+					// ignore storage errors
+				}
+				return 'en';
+			};
+
+			const applyLang = (lang: Lang) => {
+				const dict = translations[lang] || translations.en;
+				document.documentElement.lang = lang;
+				if (window.location.pathname === '/' || window.location.pathname === '') {
+					document.title = dict['site.title'] || document.title;
+				}
+				try {
+					localStorage.setItem('site.lang', lang);
+				} catch {
+					// ignore storage errors
+				}
+
+				const nodes = document.querySelectorAll<HTMLElement>('[data-i18n]');
+				for (const el of nodes) {
+					const key = el.dataset.i18n;
+					if (key && dict[key]) {
+						el.textContent = dict[key];
+					}
+				}
+
+				const langBtns = document.querySelectorAll<HTMLButtonElement>('[data-lang-btn]');
+				for (const btn of langBtns) {
+					const active = btn.dataset.langBtn === lang;
+					btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+					btn.classList.toggle('bg-white', active);
+					btn.classList.toggle('text-ink', active);
+					btn.classList.toggle('font-medium', active);
+					btn.classList.toggle('shadow-xs', active);
+					btn.classList.toggle('text-ink/55', !active);
+				}
+			};
+
+			applyLang(resolveInitialLang());
+
+			const langButtons = document.querySelectorAll<HTMLButtonElement>('[data-lang-btn]');
+			for (const btn of langButtons) {
+				btn.addEventListener('click', () => {
+					const next = btn.dataset.langBtn ?? null;
+					if (isLang(next)) {
+						applyLang(next);
+					}
+				});
+			}
+
 			const reducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 			function splitWords(el: Element) {
