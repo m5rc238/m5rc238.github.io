@@ -188,15 +188,14 @@ const kgNodeMap = new Map(kgNodes.map((n) => [n.id, n]));
 	<!-- Hero Section: Full Viewport Bio + Interactive Knowledge Graph -->
 	<section
 		id="hero"
-		data-hero-stage
 		data-snap-section="hero"
-		class="hero-stage snap-section is-in-view relative flex min-h-[calc(100svh-var(--header-h,84px))] flex-col justify-center bg-transparent pt-3 pb-6 md:pt-4 md:pb-8"
+		class="snap-section is-in-view relative flex min-h-[calc(100svh-var(--header-h,84px))] flex-col justify-center bg-transparent pt-4 pb-6 md:pt-4 md:pb-8"
 	>
-		<div class="container-page relative z-10 flex flex-col items-center" data-hero-parallax>
+		<div class="container-page relative z-10 flex flex-col items-center">
 			<div
 				data-reveal="fade"
 				data-reveal-immediate
-				class="grid w-full overflow-hidden rounded-[24px] border border-ink/12 bg-white/88 shadow-[0_14px_40px_rgba(3,74,67,0.08)] backdrop-blur-sm lg:grid-cols-[1.02fr_1.18fr]"
+				class="grid w-full overflow-hidden rounded-[24px] border border-ink/12 bg-white/88 shadow-[0_14px_40px_rgba(3,74,67,0.08)] backdrop-blur-sm lg:h-[520px] lg:grid-cols-[1.02fr_1.18fr]"
 			>
 				<!-- Left: Short Bio & About with selectable phrases -->
 				<div class="flex flex-col justify-between gap-6 border-b border-ink/10 p-6 sm:p-8 lg:border-r lg:border-b-0 lg:p-10">
@@ -227,12 +226,12 @@ const kgNodeMap = new Map(kgNodes.map((n) => [n.id, n]));
 						</p>
 					</div>
 
-					<!-- Hint + Active Node Detail Preview -->
-					<div class="border-t border-ink/10 pt-4">
+					<!-- Hint + Active Node Detail Preview (fixed height to prevent layout shift) -->
+					<div class="flex min-h-[84px] items-center border-t border-ink/10 pt-4">
 						<p data-kg-hint class="font-mono text-[11px] tracking-wide text-muted">
 							Select or click any highlighted phrase to explore the knowledge graph.
 						</p>
-						<div data-kg-detail class="hidden items-center gap-3.5">
+						<div data-kg-detail class="hidden w-full items-center gap-3.5">
 							<div class="h-12 w-12 shrink-0 overflow-hidden rounded-[10px] border border-ink/12 bg-mint-soft/50 flex items-center justify-center">
 								<img data-kg-detail-img src="" alt="" class="hidden h-full w-full object-cover" />
 								<span data-kg-detail-icon class="hidden text-teal-mid"></span>
@@ -388,8 +387,8 @@ const kgNodeMap = new Map(kgNodes.map((n) => [n.id, n]));
 				</div>
 			</div>
 
-			<!-- Subtle scroll cue so only hero is visible initially -->
-			<div class="mt-5 flex justify-center">
+			<!-- Subtle scroll cue inside hero flow so it scrolls away cleanly with hero -->
+			<div class="mt-6 flex justify-center">
 				<a
 					href="#lenses"
 					class="inline-flex items-center gap-2 rounded-full border border-ink/12 bg-white/75 px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-ink/70 transition-colors hover:border-ink/30 hover:text-ink"
@@ -1274,31 +1273,43 @@ const kgNodeMap = new Map(kgNodes.map((n) => [n.id, n]));
 				}
 			};
 
-			const ratios = new Map<string, number>();
-			const snapIo = new IntersectionObserver(
-				(entries) => {
-					for (const entry of entries) {
-						const id = (entry.target as HTMLElement).dataset.snapSection;
-						if (id) ratios.set(id, entry.isIntersecting ? entry.intersectionRatio : 0);
+			const syncActiveSection = () => {
+				const midY = window.innerHeight * 0.45;
+				if (window.scrollY < (snapSections[0]?.offsetHeight || 600) * 0.45) {
+					setActiveSection('hero');
+					return;
+				}
+				let activeId = 'lenses';
+				let bestDist = Infinity;
+				for (const sec of snapSections) {
+					const id = sec.dataset.snapSection || '';
+					if (!id || id === 'hero') continue;
+					const rect = sec.getBoundingClientRect();
+					const center = rect.top + rect.height * 0.5;
+					const dist = Math.abs(center - midY);
+					if (dist < bestDist) {
+						bestDist = dist;
+						activeId = id;
 					}
-					let bestId = '';
-					let bestRatio = 0;
-					for (const [id, ratio] of ratios.entries()) {
-						if (ratio > bestRatio) {
-							bestRatio = ratio;
-							bestId = id;
-						}
-					}
-					if (bestId && bestRatio > 0.15) {
-						setActiveSection(bestId);
-					}
-				},
-				{ threshold: [0.15, 0.35, 0.6], rootMargin: '-10% 0px -10% 0px' },
-			);
+				}
+				setActiveSection(activeId);
+			};
 
-			for (const sec of snapSections) snapIo.observe(sec);
+			let snapTicking = false;
+			const onSnapScroll = () => {
+				if (!snapTicking) {
+					snapTicking = true;
+					requestAnimationFrame(() => {
+						snapTicking = false;
+						syncActiveSection();
+					});
+				}
+			};
+
+			syncActiveSection();
+			window.addEventListener('scroll', onSnapScroll, { passive: true });
 			cleanups.push(() => {
-				snapIo.disconnect();
+				window.removeEventListener('scroll', onSnapScroll);
 				document.documentElement.classList.remove('has-snap-sections');
 			});
 		} else {
