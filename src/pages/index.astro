@@ -57,48 +57,354 @@ const pillars = [
 		.map((id) => casesById.get(id))
 		.filter((entry): entry is NonNullable<typeof entry> => Boolean(entry)),
 }));
+
+interface KgNode {
+	id: string;
+	label: string;
+	x: number;
+	y: number;
+	pillBg: string;
+	accent: string;
+	image?: string;
+	icon?: 'layers' | 'grid';
+	relation: string;
+	summary: string;
+	href?: string;
+}
+
+const kgNodes: KgNode[] = [
+	{
+		id: 'marcel',
+		label: 'Marcel Akiyama',
+		x: 295,
+		y: 225,
+		pillBg: '#ffe4e6',
+		accent: '#e11d48',
+		image: '/images/avatar.jpg',
+		relation: 'Product Designer & Builder',
+		summary: 'Connecting evidence, systems thinking, and hands-on code.',
+	},
+	{
+		id: 'alpaca',
+		label: 'Alpaca (YC W19)',
+		x: 120,
+		y: 80,
+		pillBg: '#fef3c7',
+		accent: '#d97706',
+		image: '/images/cases/alpaca-logo-1.webp',
+		relation: 'Founding Product Designer',
+		summary: 'Shaped the brand identity, developer platform, and design system from early YC days.',
+		href: '/cases/alpaca-ds/',
+	},
+	{
+		id: 'fintech',
+		label: 'Fintech & SaaS',
+		x: 315,
+		y: 68,
+		pillBg: '#e0f2fe',
+		accent: '#0284c7',
+		icon: 'layers',
+		relation: '10+ Years Experience',
+		summary: 'Designing high-trust financial workflows, B2B tools, and complex product surfaces.',
+		href: '/cases/easyudi/',
+	},
+	{
+		id: 'labellio',
+		label: 'Labellio',
+		x: 515,
+		y: 92,
+		pillBg: '#ede9fe',
+		accent: '#7c3aed',
+		image: '/images/cases/labellio-1.png',
+		relation: 'Acquired by Kyocera',
+		summary: 'Built visual recognition and human-in-the-loop machine learning tooling.',
+		href: '/cases/labellio/',
+	},
+	{
+		id: 'systems',
+		label: 'Systems Design',
+		x: 512,
+		y: 230,
+		pillBg: '#d1fae5',
+		accent: '#059669',
+		icon: 'grid',
+		relation: 'Infrastructure for Intelligence',
+		summary: 'Component libraries, shared knowledge, and guardrails for people and AI agents.',
+		href: '/cases/decision-router/',
+	},
+	{
+		id: 'evals',
+		label: 'Evaluation Thinking',
+		x: 485,
+		y: 374,
+		pillBg: '#ccfbf1',
+		accent: '#0d9488',
+		image: '/images/cases/ai-evals-1.png',
+		relation: 'Knowing What Good Looks Like',
+		summary: 'Structured rubrics and experiments to verify whether AI features truly help users.',
+		href: '/cases/ai-evals/',
+	},
+	{
+		id: 'human-ai',
+		label: 'Human-AI UX',
+		x: 285,
+		y: 386,
+		pillBg: '#e0e7ff',
+		accent: '#4f46e5',
+		image: '/images/cases/epistemia-ux-1.png',
+		relation: 'Interaction Patterns',
+		summary: 'Interfaces for calibration, grounding, and shared agency between people and models.',
+		href: '/cases/epistemia-ux/',
+	},
+	{
+		id: 'code',
+		label: 'Hands-on Code',
+		x: 108,
+		y: 344,
+		pillBg: '#ffedd5',
+		accent: '#ea580c',
+		image: '/images/cases/tablox-1.png',
+		relation: 'Prototyping & Shipping',
+		summary: 'Rapidly building working prototypes, browser tools, and production UI.',
+		href: '/cases/tablox/',
+	},
+];
+
+const kgEdges = [
+	{ id: 'marcel-alpaca', from: 'marcel', to: 'alpaca', label: 'founding designer', color: '#d97706' },
+	{ id: 'marcel-fintech', from: 'marcel', to: 'fintech', label: '10+ yrs across', color: '#0284c7' },
+	{ id: 'marcel-labellio', from: 'marcel', to: 'labellio', label: 'co-built', color: '#7c3aed' },
+	{ id: 'marcel-systems', from: 'marcel', to: 'systems', label: 'architects', color: '#059669' },
+	{ id: 'marcel-human-ai', from: 'marcel', to: 'human-ai', label: 'shapes', color: '#4f46e5' },
+	{ id: 'marcel-code', from: 'marcel', to: 'code', label: 'ships with', color: '#ea580c' },
+	{ id: 'systems-evals', from: 'systems', to: 'evals', label: 'grounded in', color: '#0d9488' },
+	{ id: 'evals-human-ai', from: 'evals', to: 'human-ai', label: 'validates', color: '#0d9488' },
+];
+
+const kgNodeMap = new Map(kgNodes.map((n) => [n.id, n]));
 ---
 
 <Base title={site.siteTitle} description={site.siteDescription}>
-	<!-- Hero Section -->
+	<!-- Hero Section: Full Viewport Bio + Interactive Knowledge Graph -->
 	<section
 		id="hero"
 		data-hero-stage
-		class="hero-stage relative flex min-h-[420px] items-center bg-transparent pt-16 pb-20 md:min-h-[480px] md:pt-20 md:pb-24"
+		data-snap-section="hero"
+		class="hero-stage snap-section is-in-view relative flex min-h-[calc(100svh-var(--header-h,84px))] flex-col justify-center bg-transparent pt-3 pb-6 md:pt-4 md:pb-8"
 	>
-		<div class="container-page relative z-10" data-hero-parallax>
-			<div class="flex flex-col items-center gap-5 text-center md:gap-6">
-				<div class="shrink-0" data-reveal="fade" data-reveal-immediate>
-					<img
-						src={site.hero.avatar}
-						alt={site.name}
-						width="56"
-						height="56"
-						class="h-14 w-14 rounded-full border border-ink/15 object-cover shadow-xs"
-					/>
+		<div class="container-page relative z-10 flex flex-col items-center" data-hero-parallax>
+			<div
+				data-reveal="fade"
+				data-reveal-immediate
+				class="grid w-full overflow-hidden rounded-[24px] border border-ink/12 bg-white/88 shadow-[0_14px_40px_rgba(3,74,67,0.08)] backdrop-blur-sm lg:grid-cols-[1.02fr_1.18fr]"
+			>
+				<!-- Left: Short Bio & About with selectable phrases -->
+				<div class="flex flex-col justify-between gap-6 border-b border-ink/10 p-6 sm:p-8 lg:border-r lg:border-b-0 lg:p-10">
+					<div
+						data-kg-bio
+						class="space-y-4 font-serif text-[18px] leading-[1.72] text-ink/90 sm:text-[19px]"
+					>
+						<p>
+							<button type="button" data-kg-trigger="marcel" data-kg-nodes="marcel" class="kg-token kg-token-rose">Marcel Akiyama</button>
+							{' '}designs{' '}
+							<button type="button" data-kg-trigger="systems" data-kg-nodes="systems,marcel" data-kg-edges="marcel-systems" class="kg-token kg-token-emerald">AI systems &amp; products</button>
+							{' '}with 10+ years across{' '}
+							<button type="button" data-kg-trigger="fintech" data-kg-nodes="fintech,marcel" data-kg-edges="marcel-fintech" class="kg-token kg-token-sky">fintech &amp; B2B SaaS</button>
+							{' '}and{' '}
+							<button type="button" data-kg-trigger="human-ai" data-kg-nodes="human-ai,marcel" data-kg-edges="marcel-human-ai" class="kg-token kg-token-indigo">human-AI UX</button>.
+						</p>
+						<p>
+							Previously Founding Product Designer at{' '}
+							<button type="button" data-kg-trigger="alpaca" data-kg-nodes="alpaca,marcel" data-kg-edges="marcel-alpaca" class="kg-token kg-token-amber">Alpaca (YC W19)</button>
+							{' '}and co-builder of{' '}
+							<button type="button" data-kg-trigger="labellio" data-kg-nodes="labellio,marcel" data-kg-edges="marcel-labellio" class="kg-token kg-token-violet">Labellio</button>
+							{' '}(acquired by Kyocera). Today he connects{' '}
+							<button type="button" data-kg-trigger="evals" data-kg-nodes="evals,systems,human-ai" data-kg-edges="systems-evals,evals-human-ai" class="kg-token kg-token-teal">evaluation thinking</button>,{' '}
+							<button type="button" data-kg-trigger="systems" data-kg-nodes="systems,evals" data-kg-edges="marcel-systems,systems-evals" class="kg-token kg-token-emerald">systems design</button>,
+							{' '}and{' '}
+							<button type="button" data-kg-trigger="code" data-kg-nodes="code,marcel" data-kg-edges="marcel-code" class="kg-token kg-token-orange">hands-on code</button>
+							{' '}to turn messy problems into clear direction.
+						</p>
+					</div>
+
+					<!-- Hint + Active Node Detail Preview -->
+					<div class="border-t border-ink/10 pt-4">
+						<p data-kg-hint class="font-mono text-[11px] tracking-wide text-muted">
+							Select or click any highlighted phrase to explore the knowledge graph.
+						</p>
+						<div data-kg-detail class="hidden items-center gap-3.5">
+							<div class="h-12 w-12 shrink-0 overflow-hidden rounded-[10px] border border-ink/12 bg-mint-soft/50 flex items-center justify-center">
+								<img data-kg-detail-img src="" alt="" class="hidden h-full w-full object-cover" />
+								<span data-kg-detail-icon class="hidden text-teal-mid"></span>
+							</div>
+							<div class="min-w-0 flex-1">
+								<p data-kg-detail-rel class="font-mono text-[10px] uppercase tracking-widest text-teal-mid"></p>
+								<p data-kg-detail-title class="text-sm font-medium text-ink"></p>
+								<p data-kg-detail-summary class="mt-0.5 text-xs leading-relaxed text-ink/75"></p>
+							</div>
+							<div class="flex shrink-0 items-center gap-2">
+								<a
+									data-kg-detail-link
+									href="#"
+									class="hidden rounded-[6px] border border-ink/20 px-3 py-1.5 font-mono text-[10px] uppercase tracking-wider text-ink transition-colors hover:bg-ink hover:text-white"
+								>
+									View &rarr;
+								</a>
+								<button
+									type="button"
+									data-kg-reset
+									aria-label="Reset selection"
+									class="hidden cursor-pointer rounded-full border border-ink/15 px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-muted transition-colors hover:border-ink/40 hover:text-ink"
+								>
+									Reset
+								</button>
+							</div>
+						</div>
+					</div>
 				</div>
 
-				<div class="copy mx-auto max-w-[780px] text-[24px] leading-[1.36] tracking-tight text-ink sm:text-[30px] md:text-[34px]">
-					<p class="font-medium" data-reveal="words" data-reveal-immediate data-i18n="hero.greeting">
-						{site.hero.greeting}
-					</p>
-					<h1
-						class="mt-4 font-light md:mt-5"
-						data-reveal="words"
-						data-reveal-immediate
-						data-reveal-delay="120"
-						data-i18n="hero.bio"
-					>
-						{site.hero.bio}
-					</h1>
+				<!-- Right: Interactive Knowledge Graph -->
+				<div class="bg-dot-grid relative min-h-[380px] overflow-hidden p-4 sm:min-h-[440px] lg:min-h-[480px]">
+					<div class="pointer-events-none absolute top-4 left-5 z-10 flex items-center gap-2">
+						<span class="h-2 w-2 rounded-full bg-teal-accent"></span>
+						<span class="font-mono text-[10px] uppercase tracking-widest text-muted">
+							Knowledge Graph
+						</span>
+					</div>
+
+					<div data-kg-canvas class="relative h-full min-h-[360px] w-full sm:min-h-[420px] lg:min-h-[450px]">
+						<svg
+							viewBox="0 0 640 460"
+							preserveAspectRatio="none"
+							class="pointer-events-none absolute inset-0 h-full w-full"
+							aria-hidden="true"
+						>
+							<defs>
+								{kgEdges.map((edge) => (
+									<marker
+										id={`kg-arrow-${edge.id}`}
+										viewBox="0 0 10 10"
+										refX="8"
+										refY="5"
+										markerWidth="6"
+										markerHeight="6"
+										orient="auto-start-reverse"
+									>
+										<path d="M 0 1.5 L 9 5 L 0 8.5 z" fill={edge.color} />
+									</marker>
+								))}
+							</defs>
+							{kgEdges.map((edge) => {
+								const from = kgNodeMap.get(edge.from)!;
+								const to = kgNodeMap.get(edge.to)!;
+								const dx = to.x - from.x;
+								const dy = to.y - from.y;
+								const dist = Math.hypot(dx, dy) || 1;
+								const padStart = 32;
+								const padEnd = 36;
+								const x1 = from.x + (dx / dist) * padStart;
+								const y1 = from.y + (dy / dist) * padStart;
+								const x2 = to.x - (dx / dist) * padEnd;
+								const y2 = to.y - (dy / dist) * padEnd;
+								const mx = (x1 + x2) / 2;
+								const my = (y1 + y2) / 2;
+								return (
+									<g
+										data-kg-edge={edge.id}
+										class="kg-edge transition-opacity duration-200"
+									>
+										<line
+											x1={x1}
+											y1={y1}
+											x2={x2}
+											y2={y2}
+											stroke={edge.color}
+											stroke-width="2"
+											stroke-opacity="0.45"
+											marker-end={`url(#kg-arrow-${edge.id})`}
+										/>
+										<rect
+											x={mx - 44}
+											y={my - 9}
+											width="88"
+											height="18"
+											rx="9"
+											fill="rgba(255,255,255,0.9)"
+										/>
+										<text
+											x={mx}
+											y={my + 3.5}
+											text-anchor="middle"
+											fill="#034a43"
+											font-size="10"
+											font-family="ui-monospace, SFMono-Regular, Menlo, monospace"
+										>
+											{edge.label}
+										</text>
+									</g>
+								);
+							})}
+						</svg>
+
+						{kgNodes.map((node) => (
+							<button
+								type="button"
+								data-kg-node={node.id}
+								data-kg-label={node.label}
+								data-kg-rel={node.relation}
+								data-kg-summary={node.summary}
+								data-kg-img={node.image || ''}
+								data-kg-icon={node.icon || ''}
+								data-kg-href={node.href || ''}
+								style={`left: ${(node.x / 640) * 100}%; top: ${(node.y / 460) * 100}%; --node-bg: ${node.pillBg}; --node-accent: ${node.accent};`}
+								class="kg-node group absolute -translate-x-1/2 -translate-y-1/2 cursor-pointer select-none"
+							>
+								<span class="kg-node-badge">
+									{node.image ? (
+										<img
+											src={node.image}
+											alt={node.label}
+											class="h-full w-full object-cover"
+										/>
+									) : node.icon === 'layers' ? (
+										<svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+											<polygon points="12 2 2 7 12 12 22 7 12 2" />
+											<polyline points="2 17 12 22 22 17" />
+											<polyline points="2 12 12 17 22 12" />
+										</svg>
+									) : (
+										<svg viewBox="0 0 24 24" class="h-4 w-4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+											<rect x="3" y="3" width="7" height="7" rx="1.5" />
+											<rect x="14" y="3" width="7" height="7" rx="1.5" />
+											<rect x="14" y="14" width="7" height="7" rx="1.5" />
+											<rect x="3" y="14" width="7" height="7" rx="1.5" />
+										</svg>
+									)}
+								</span>
+								<span class="kg-node-label">{node.label}</span>
+							</button>
+						))}
+					</div>
 				</div>
+			</div>
+
+			<!-- Subtle scroll cue so only hero is visible initially -->
+			<div class="mt-5 flex justify-center">
+				<a
+					href="#lenses"
+					class="inline-flex items-center gap-2 rounded-full border border-ink/12 bg-white/75 px-4 py-1.5 font-mono text-[10px] uppercase tracking-widest text-ink/70 transition-colors hover:border-ink/30 hover:text-ink"
+				>
+					<span>Scroll to explore</span>
+					<span aria-hidden="true">&darr;</span>
+				</a>
 			</div>
 		</div>
 	</section>
 
-	<div data-hero-sheet class="relative z-10 pt-2 pb-12 md:pt-4 md:pb-16">
-		<div class="container-page flex flex-col gap-7 md:gap-9">
+	<div data-hero-sheet class="relative z-10 pb-8 md:pb-12">
+		<div class="container-page flex flex-col gap-6 md:gap-0">
 			<!-- 3 Practice Pillars + USP -->
+			<div id="lenses" data-snap-section="lenses" class="snap-section">
 			<section
 				aria-labelledby="pillars-heading"
 				class="overflow-hidden rounded-[24px] border border-teal-border/60 bg-teal-dark px-6 py-10 text-mint-soft shadow-[0_12px_36px_rgba(3,74,67,0.14)] sm:px-10 md:px-12 md:py-12"
@@ -141,10 +447,11 @@ const pillars = [
 					}
 				</div>
 			</section>
+			</div>
 
 			<!-- Featured Case Studies -->
+			<div id="cases" data-snap-section="cases" class="snap-section">
 			<section
-				id="cases"
 				class="bg-dot-grid overflow-hidden rounded-[24px] border border-ink/10 px-6 pt-10 pb-[64px] shadow-[0_12px_36px_rgba(3,74,67,0.08)] sm:px-10 md:px-12"
 			>
 				<div class="flex flex-col gap-[39px]">
@@ -208,8 +515,10 @@ const pillars = [
 				</div>
 			</div>
 		</section>
+		</div>
 
 		<!-- Journal Section -->
+		<div id="journal" data-snap-section="journal" class="snap-section">
 		<section class="overflow-hidden rounded-[24px] border border-teal-border/80 bg-forest-deep px-6 py-[56px] pb-[72px] text-teal-accent shadow-[0_12px_36px_rgba(2,18,18,0.16)] sm:px-10 md:px-12">
 			<div>
 				<div class="flex items-center justify-between gap-4 border-b border-teal-border py-[17px]">
@@ -259,8 +568,10 @@ const pillars = [
 				</ul>
 			</div>
 		</section>
+		</div>
 
 		<!-- Experience Section -->
+		<div id="experience" data-snap-section="experience" class="snap-section">
 		<section class="overflow-hidden rounded-[24px] border border-ink/12 bg-mint-soft/90 px-6 py-[56px] pb-[72px] shadow-[0_12px_36px_rgba(3,74,67,0.06)] sm:px-10 md:px-12">
 			<div class="flex flex-col">
 				<div class="border-b border-ink/20 py-[17px]">
@@ -357,7 +668,33 @@ const pillars = [
 			</div>
 		</section>
 		</div>
+		</div>
 	</div>
+
+	<!-- Right-edge section progress dots on large viewports -->
+	<nav
+		aria-label="Page sections"
+		data-snap-nav
+		class="fixed top-1/2 right-5 z-30 hidden -translate-y-1/2 flex-col gap-2.5 rounded-full border border-ink/10 bg-white/75 px-2 py-3 shadow-xs backdrop-blur-sm xl:flex"
+	>
+		{[
+			{ id: 'hero', label: 'Bio' },
+			{ id: 'lenses', label: 'Lenses' },
+			{ id: 'cases', label: 'Case Studies' },
+			{ id: 'journal', label: 'Journal' },
+			{ id: 'experience', label: 'Experience' },
+		].map((sec, idx) => (
+			<a
+				href={`#${sec.id}`}
+				data-snap-dot={sec.id}
+				aria-label={sec.label}
+				title={sec.label}
+				class={`block h-2 w-2 rounded-full transition-all duration-200 ${
+					idx === 0 ? 'scale-125 bg-ink' : 'bg-ink/25 hover:bg-ink/55'
+				}`}
+			></a>
+		))}
+	</nav>
 
 	{
 		pillars.map((pillar) => (
@@ -720,6 +1057,252 @@ const pillars = [
 			dialog.addEventListener('click', (e) => {
 				if (e.target === dialog) dialog.close();
 			});
+		}
+
+		// Interactive Bio + Knowledge Graph
+		const kgBio = document.querySelector<HTMLElement>('[data-kg-bio]');
+		const kgTriggers = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-kg-trigger]'));
+		const kgNodes = Array.from(document.querySelectorAll<HTMLButtonElement>('[data-kg-node]'));
+		const kgEdges = Array.from(document.querySelectorAll<SVGGElement>('[data-kg-edge]'));
+		const kgResetBtn = document.querySelector<HTMLButtonElement>('[data-kg-reset]');
+		const kgHint = document.querySelector<HTMLElement>('[data-kg-hint]');
+		const kgDetail = document.querySelector<HTMLElement>('[data-kg-detail]');
+		const kgDetailImg = document.querySelector<HTMLImageElement>('[data-kg-detail-img]');
+		const kgDetailIcon = document.querySelector<HTMLElement>('[data-kg-detail-icon]');
+		const kgDetailRel = document.querySelector<HTMLElement>('[data-kg-detail-rel]');
+		const kgDetailTitle = document.querySelector<HTMLElement>('[data-kg-detail-title]');
+		const kgDetailSummary = document.querySelector<HTMLElement>('[data-kg-detail-summary]');
+		const kgDetailLink = document.querySelector<HTMLAnchorElement>('[data-kg-detail-link]');
+
+		const iconSvgs: Record<string, string> = {
+			layers: '<svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="12 2 2 7 12 12 22 7 12 2"/><polyline points="2 17 12 22 22 17"/><polyline points="2 12 12 17 22 12"/></svg>',
+			grid: '<svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="3" width="7" height="7" rx="1.5"/><rect x="14" y="14" width="7" height="7" rx="1.5"/><rect x="3" y="14" width="7" height="7" rx="1.5"/></svg>',
+		};
+
+		let lockedPrimary: string | null = null;
+
+		const applyGraphHighlight = (
+			primaryId: string | null,
+			nodeIds: Set<string>,
+			edgeIds: Set<string>,
+		) => {
+			const hasActive = nodeIds.size > 0;
+
+			for (const trigger of kgTriggers) {
+				const trigPrimary = trigger.dataset.kgTrigger || '';
+				const trigNodes = (trigger.dataset.kgNodes || '').split(',').filter(Boolean);
+				const isMatch =
+					hasActive &&
+					(trigPrimary === primaryId || (primaryId !== null && trigNodes.includes(primaryId)));
+				trigger.classList.toggle('is-active', isMatch);
+				trigger.classList.toggle('is-dimmed', hasActive && !isMatch);
+			}
+
+			for (const node of kgNodes) {
+				const id = node.dataset.kgNode || '';
+				const isActive = hasActive && nodeIds.has(id);
+				node.classList.toggle('is-active', isActive);
+				node.classList.toggle('is-primary', id === primaryId);
+				node.classList.toggle('is-dimmed', hasActive && !isActive);
+			}
+
+			for (const edge of kgEdges) {
+				const id = edge.dataset.kgEdge || '';
+				const isActive = hasActive && edgeIds.has(id);
+				edge.classList.toggle('is-active', isActive);
+				edge.classList.toggle('is-dimmed', hasActive && !isActive);
+			}
+
+			kgResetBtn?.classList.toggle('hidden', !lockedPrimary);
+
+			const primaryNode = primaryId
+				? kgNodes.find((n) => n.dataset.kgNode === primaryId)
+				: null;
+
+			if (primaryNode && kgDetail && kgHint) {
+				kgHint.classList.add('hidden');
+				kgDetail.classList.remove('hidden');
+				kgDetail.classList.add('flex');
+
+				const img = primaryNode.dataset.kgImg || '';
+				const icon = primaryNode.dataset.kgIcon || '';
+				const href = primaryNode.dataset.kgHref || '';
+
+				if (kgDetailImg && kgDetailIcon) {
+					if (img) {
+						kgDetailImg.src = img;
+						kgDetailImg.alt = primaryNode.dataset.kgLabel || '';
+						kgDetailImg.classList.remove('hidden');
+						kgDetailIcon.classList.add('hidden');
+					} else {
+						kgDetailImg.classList.add('hidden');
+						kgDetailIcon.innerHTML = iconSvgs[icon] || iconSvgs.grid;
+						kgDetailIcon.classList.remove('hidden');
+					}
+				}
+
+				if (kgDetailRel) kgDetailRel.textContent = primaryNode.dataset.kgRel || '';
+				if (kgDetailTitle) kgDetailTitle.textContent = primaryNode.dataset.kgLabel || '';
+				if (kgDetailSummary) kgDetailSummary.textContent = primaryNode.dataset.kgSummary || '';
+				if (kgDetailLink) {
+					if (href) {
+						kgDetailLink.href = href;
+						kgDetailLink.classList.remove('hidden');
+					} else {
+						kgDetailLink.classList.add('hidden');
+					}
+				}
+			} else if (kgDetail && kgHint) {
+				kgDetail.classList.add('hidden');
+				kgDetail.classList.remove('flex');
+				kgHint.classList.remove('hidden');
+			}
+		};
+
+		const highlightFromTrigger = (trigger: HTMLButtonElement) => {
+			const primaryId = trigger.dataset.kgTrigger || null;
+			const nodes = new Set((trigger.dataset.kgNodes || '').split(',').filter(Boolean));
+			const edges = new Set((trigger.dataset.kgEdges || '').split(',').filter(Boolean));
+			applyGraphHighlight(primaryId, nodes, edges);
+		};
+
+		const highlightFromNode = (nodeId: string) => {
+			const connectedNodes = new Set<string>([nodeId]);
+			const connectedEdges = new Set<string>();
+			for (const edge of kgEdges) {
+				const id = edge.dataset.kgEdge || '';
+				const parts = id.split('-');
+				if (id.startsWith(`${nodeId}-`) || id.endsWith(`-${nodeId}`) || parts.includes(nodeId)) {
+					connectedEdges.add(id);
+					for (const n of kgNodes) {
+						const nid = n.dataset.kgNode || '';
+						if (nid && id.includes(nid)) connectedNodes.add(nid);
+					}
+				}
+			}
+			applyGraphHighlight(nodeId, connectedNodes, connectedEdges);
+		};
+
+		const resetGraph = () => {
+			lockedPrimary = null;
+			applyGraphHighlight(null, new Set(), new Set());
+		};
+
+		for (const trigger of kgTriggers) {
+			trigger.addEventListener('click', () => {
+				const id = trigger.dataset.kgTrigger || null;
+				if (lockedPrimary === id) {
+					resetGraph();
+				} else {
+					lockedPrimary = id;
+					highlightFromTrigger(trigger);
+				}
+			});
+
+			trigger.addEventListener('mouseenter', () => {
+				if (!lockedPrimary) highlightFromTrigger(trigger);
+			});
+
+			trigger.addEventListener('mouseleave', () => {
+				if (!lockedPrimary) applyGraphHighlight(null, new Set(), new Set());
+			});
+		}
+
+		for (const node of kgNodes) {
+			const id = node.dataset.kgNode || '';
+			node.addEventListener('click', () => {
+				if (lockedPrimary === id) {
+					resetGraph();
+				} else {
+					lockedPrimary = id;
+					highlightFromNode(id);
+				}
+			});
+		}
+
+		kgResetBtn?.addEventListener('click', resetGraph);
+
+		// Support real text selection inside the bio paragraph
+		const handleBioSelection = () => {
+			if (!kgBio) return;
+			const sel = window.getSelection();
+			if (!sel || sel.isCollapsed || sel.rangeCount === 0) return;
+			const range = sel.getRangeAt(0);
+			if (!kgBio.contains(range.commonAncestorContainer)) return;
+
+			const matchedNodes = new Set<string>();
+			const matchedEdges = new Set<string>();
+			let firstPrimary: string | null = null;
+
+			for (const trigger of kgTriggers) {
+				if (sel.containsNode(trigger, true)) {
+					if (!firstPrimary) firstPrimary = trigger.dataset.kgTrigger || null;
+					for (const n of (trigger.dataset.kgNodes || '').split(',')) {
+						if (n) matchedNodes.add(n);
+					}
+					for (const e of (trigger.dataset.kgEdges || '').split(',')) {
+						if (e) matchedEdges.add(e);
+					}
+				}
+			}
+
+			if (matchedNodes.size > 0) {
+				lockedPrimary = firstPrimary;
+				applyGraphHighlight(firstPrimary, matchedNodes, matchedEdges);
+			}
+		};
+
+		kgBio?.addEventListener('mouseup', handleBioSelection);
+		kgBio?.addEventListener('keyup', handleBioSelection);
+
+		// One-section-at-a-time snap + active focus observer
+		const snapSections = Array.from(document.querySelectorAll<HTMLElement>('[data-snap-section]'));
+		const snapDots = Array.from(document.querySelectorAll<HTMLAnchorElement>('[data-snap-dot]'));
+
+		if (snapSections.length > 0 && !reducedMotion) {
+			document.documentElement.classList.add('has-snap-sections');
+
+			const setActiveSection = (activeId: string) => {
+				for (const sec of snapSections) {
+					sec.classList.toggle('is-in-view', sec.dataset.snapSection === activeId);
+				}
+				for (const dot of snapDots) {
+					const isActive = dot.dataset.snapDot === activeId;
+					dot.classList.toggle('scale-125', isActive);
+					dot.classList.toggle('bg-ink', isActive);
+					dot.classList.toggle('bg-ink/25', !isActive);
+				}
+			};
+
+			const ratios = new Map<string, number>();
+			const snapIo = new IntersectionObserver(
+				(entries) => {
+					for (const entry of entries) {
+						const id = (entry.target as HTMLElement).dataset.snapSection;
+						if (id) ratios.set(id, entry.isIntersecting ? entry.intersectionRatio : 0);
+					}
+					let bestId = '';
+					let bestRatio = 0;
+					for (const [id, ratio] of ratios.entries()) {
+						if (ratio > bestRatio) {
+							bestRatio = ratio;
+							bestId = id;
+						}
+					}
+					if (bestId && bestRatio > 0.15) {
+						setActiveSection(bestId);
+					}
+				},
+				{ threshold: [0.15, 0.35, 0.6], rootMargin: '-10% 0px -10% 0px' },
+			);
+
+			for (const sec of snapSections) snapIo.observe(sec);
+			cleanups.push(() => {
+				snapIo.disconnect();
+				document.documentElement.classList.remove('has-snap-sections');
+			});
+		} else {
+			for (const sec of snapSections) sec.classList.add('is-in-view');
 		}
 	</script>
 </Base>
