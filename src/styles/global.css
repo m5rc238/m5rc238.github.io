@@ -865,7 +865,7 @@
 
 /* Header scrolled state on homepage mint surface (outside @layer to beat utility classes) */
 header[data-site-header][data-surface='mint'][data-scrolled='true'] {
-	background-color: color-mix(in srgb, var(--color-canvas) 92%, transparent);
+	background-color: color-mix(in srgb, var(--color-mint) 92%, transparent);
 	backdrop-filter: blur(12px);
 	-webkit-backdrop-filter: blur(12px);
 }

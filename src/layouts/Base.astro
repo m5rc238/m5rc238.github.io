@@ -223,6 +223,29 @@ const {
 			const heroSheet = document.querySelector<HTMLElement>('[data-hero-sheet]');
 			const siteHeader = document.querySelector<HTMLElement>('[data-site-header]');
 
+			if (siteHeader) {
+				let headerTicking = false;
+				const syncHeaderOnScroll = () => {
+					headerTicking = false;
+					const headerH = siteHeader.offsetHeight || 84;
+					document.documentElement.style.setProperty('--header-h', `${headerH}px`);
+					if (window.scrollY > 12) {
+						siteHeader.setAttribute('data-scrolled', 'true');
+					} else {
+						siteHeader.removeAttribute('data-scrolled');
+					}
+				};
+				const onHeaderScroll = () => {
+					if (!headerTicking) {
+						headerTicking = true;
+						requestAnimationFrame(syncHeaderOnScroll);
+					}
+				};
+				syncHeaderOnScroll();
+				window.addEventListener('scroll', onHeaderScroll, { passive: true });
+				window.addEventListener('resize', syncHeaderOnScroll);
+			}
+
 			if (heroStage && heroParallax && heroSheet) {
 				let headerH = siteHeader?.offsetHeight || 84;
 				let stickyEnabled = false;
