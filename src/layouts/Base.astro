@@ -73,7 +73,7 @@ const {
 		<main id="main" class="relative z-10 flex-1">
 			<slot />
 		</main>
-		<Footer />
+		<Footer surface={bodyClass.includes('bg-dot-grid') ? 'canvas' : 'mint'} />
 
 		<script>
 			import { SUPPORTED_LANGS, translations, type Lang } from '../i18n/translations';
