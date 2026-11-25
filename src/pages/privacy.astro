@@ -1,0 +1,93 @@
+---
+import Base from '../layouts/Base.astro';
+import site from '../data/site.json';
+---
+
+<Base
+	title={`Privacy Policy | ${site.name}`}
+	description={`Privacy policy for ${site.name}'s portfolio website.`}
+	bodyClass="bg-dot-grid"
+>
+	<article class="py-14 md:py-20">
+		<div class="container-page max-w-3xl">
+			<a
+				href="/"
+				class="inline-flex items-center gap-1.5 text-sm font-medium text-teal-dark transition-colors hover:text-teal-mid"
+			>
+				<span aria-hidden="true">&larr;</span>
+				Home
+			</a>
+
+			<header class="mt-8 border-b border-ink/15 pb-6">
+				<p class="section-eyebrow text-teal-mid">Legal</p>
+				<h1 class="mt-3 text-3xl font-medium leading-[1.12] tracking-tight text-ink md:text-5xl">
+					Privacy Policy
+				</h1>
+				<p class="mt-3 font-mono text-xs uppercase tracking-wider text-muted">
+					Last updated: November 25, 2026
+				</p>
+			</header>
+
+			<div class="mt-10 space-y-8 font-serif text-base leading-[1.75] text-ink md:text-lg">
+				<section class="space-y-3">
+					<h2 class="font-sans text-xl font-medium tracking-tight text-ink">Overview</h2>
+					<p>
+						This website is a personal portfolio for {site.name}. It does not require user
+						accounts, does not include contact forms, and does not sell or share personal
+						information.
+					</p>
+				</section>
+
+				<section class="space-y-3">
+					<h2 class="font-sans text-xl font-medium tracking-tight text-ink">Analytics</h2>
+					<p>
+						This site uses Umami Cloud for privacy-focused, cookieless website analytics
+						(such as page views, referrers, and general device/browser metrics). You can
+						opt out of Umami tracking at any time by appending{' '}
+						<code class="rounded bg-ink/8 px-1.5 py-0.5 font-mono text-sm">?umami=off</code>{' '}
+						to any page URL (and re-enable it with{' '}
+						<code class="rounded bg-ink/8 px-1.5 py-0.5 font-mono text-sm">?umami=on</code>).
+					</p>
+				</section>
+
+				<section class="space-y-3">
+					<h2 class="font-sans text-xl font-medium tracking-tight text-ink">Local Browser Storage</h2>
+					<p>
+						The site stores minimal preferences locally in your browser&rsquo;s{' '}
+						<code class="rounded bg-ink/8 px-1.5 py-0.5 font-mono text-sm">localStorage</code>:
+						your selected language (<code class="rounded bg-ink/8 px-1.5 py-0.5 font-mono text-sm">site.lang</code>)
+						and, if you opt out of analytics,{' '}
+						<code class="rounded bg-ink/8 px-1.5 py-0.5 font-mono text-sm">umami.disabled</code>.
+					</p>
+				</section>
+
+				<section class="space-y-3">
+					<h2 class="font-sans text-xl font-medium tracking-tight text-ink">
+						Hosting &amp; Third-Party Embeds
+					</h2>
+					<p>
+						This site is hosted on GitHub Pages, which may process standard HTTP request
+						metadata (such as IP addresses and user-agent headers) in server access logs.
+						Individual case study pages may also include embedded videos via YouTube
+						(privacy-enhanced <code class="rounded bg-ink/8 px-1.5 py-0.5 font-mono text-sm">youtube-nocookie.com</code>)
+						or Vimeo, as well as links to external sites such as Substack, GitHub, and
+						LinkedIn, which are governed by their respective privacy policies.
+					</p>
+				</section>
+
+				<section class="space-y-3">
+					<h2 class="font-sans text-xl font-medium tracking-tight text-ink">Contact</h2>
+					<p>
+						If you have any questions about this policy, you can reach out directly at{' '}
+						<a
+							href={`mailto:${site.email}`}
+							class="font-medium text-teal-dark underline decoration-ink/30 underline-offset-4 hover:text-teal-mid"
+						>
+							{site.email}
+						</a>.
+					</p>
+				</section>
+			</div>
+		</div>
+	</article>
+</Base>
