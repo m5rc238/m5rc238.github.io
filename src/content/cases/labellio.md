@@ -12,6 +12,7 @@ role: "Product Designer"
 scope: "Product framing · UX Design · Front-end Development"
 timeline: "2016 (2 Months from Prototype to MVP)"
 team: "Founders · ML engineers · Backend engineers"
+vimeoId: "131267606"
 prevSlug: "spean"
 ---
 
@@ -108,6 +109,6 @@ The leverage was not raw compute power. It was compressing the distance between 
 
 ## External Validation
 
-Labellio received technical validation through NVIDIA coverage highlighting its scalable multi-GPU architecture.
+Labellio received technical validation through NVIDIA coverage ([NVIDIA Developer Blog](https://developer.nvidia.com/blog/labellio-scalable-cloud-architecture-efficient-multi-gpu-deep-learning/)) highlighting its scalable multi-GPU architecture.
 
 Following its early traction and technical validation, the technology was later acquired and integrated into Kyocera Communication Systems, extending its application within enterprise contexts.

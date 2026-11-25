@@ -21,6 +21,7 @@ const cases = defineCollection({
 		timeline: z.string(),
 		team: z.string(),
 		youtubeId: z.string().optional(),
+		vimeoId: z.string().optional(),
 		prevSlug: z.string().optional(),
 		nextSlug: z.string().optional(),
 	}),
