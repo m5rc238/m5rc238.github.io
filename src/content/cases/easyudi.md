@@ -18,13 +18,13 @@ nextSlug: "alpaca-ds"
 
 ## Context
 
-EasyUDI is a regulatory workflow product for medical-device manufacturers. Its purpose is to turn fragmented compliance work—UDI management, regulatory-document preparation, validation, and EUDAMED submission—into one auditable flow.
+EasyUDI is a regulatory workflow product for medical-device manufacturers. Its purpose is to turn fragmented compliance work (UDI management, regulatory-document preparation, validation, and EUDAMED submission) into one auditable flow.
 
 This case study focuses on the product-design challenge: helping Regulatory and Quality teams move from incomplete source material to a validated, submission-ready device record without losing context or trust.
 
 ![EasyUDI three-level information architecture concept](/images/cases/easyudi-2.png)
 
-*Concept view: a three-level information architecture—Basic UDI-DI, device group, and individual device—keeps regulatory hierarchy visible while preserving a focused workspace.*
+*Concept view: a three-level information architecture (Basic UDI-DI, device group, and individual device) keeps regulatory hierarchy visible while preserving a focused workspace.*
 
 ## The challenge
 
@@ -113,15 +113,15 @@ A validation-status dashboard and an audit trail make the automation inspectable
 
 ![EasyUDI upload and parsing pipeline concept](/images/cases/easyudi-5.png)
 
-*Upload and parsing concept: the interface makes the system’s internal pipeline legible—uploaded, parsed, organized, and structured—so automation can be reviewed rather than merely trusted.*
+*Upload and parsing concept: the interface makes the system’s internal pipeline legible (uploaded, parsed, organized, and structured) so automation can be reviewed rather than merely trusted.*
 
 ## Information architecture and search
 
 The product distinguishes three levels of identity:
 
-- **Basic UDI-DI** — family-level grouping.
-- **UDI-DI** — specific device model or version.
-- **UDI-PI** — lot, batch, or serial-level traceability.
+- **Basic UDI-DI**: family-level grouping.
+- **UDI-DI**: specific device model or version.
+- **UDI-PI**: lot, batch, or serial-level traceability.
 
 The primary interface should optimize for Basic UDI-DI and UDI-DI because those support regulatory reporting and device-level compliance. UDI-PI is a different search problem focused on logistics, expiry, recall, and post-market traceability.
 

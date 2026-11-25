@@ -29,7 +29,7 @@ Instead of starting from a benchmark metric or grading library, the guide asks:
 
 **What decision is the evaluation supposed to inform, and what unit of evidence actually supports that claim?**
 
-Across seven modules, every concept ties back to three explicit components—**Dataset (Stimulus)**, **Rubric (Criteria)**, and **Judge (Scorer)**—alongside **Construct Validity** (whether the rubric measures the real goal rather than surface polish) and **External Validity** (whether clean test inputs generalize to real users and shifting data).
+Across seven modules, every concept ties back to three explicit components: **Dataset (Stimulus)**, **Rubric (Criteria)**, and **Judge (Scorer)**, alongside **Construct Validity** (whether the rubric measures the real goal rather than surface polish) and **External Validity** (whether clean test inputs generalize to real users and shifting data).
 
 ## Seven evaluation layers and units of analysis
 
@@ -55,13 +55,13 @@ The central principle across layers is explicit: passing a lower-layer eval alon
 
 The curriculum spans **7 modules and 23 chapters**, each pairing dedicated **Theory**, an interactive **Practice Lab**, and an **End-of-Module Quiz** with local progress tracking:
 
-1. **Foundations of AI Evaluation** — Evals vs. unit tests, the 7 layers, validity, and the Four Operating Rules (*start with the decision*, *treat the eval as the spec*, *account for contamination*, *watch for Goodhart's Law*).
-2. **Scoping & Datasets** — Testing simpler non-AI baselines first, pinning the full execution harness, separating exploratory from confirmatory runs, and building ordinary, ambiguous, and escalation cases.
-3. **Rubrics, Judges & Aggregation** — Deriving observable rubrics from reviewer disagreements, deterministic vs. LLM vs. human judges, inter-rater agreement (κ, α, ICC), and avoiding Simpson's paradox.
-4. **Comparing Versions, Statistics & Validity** — Paired difference intervals, clustering at the unit of analysis, Rule of Three bounds, and an interactive 12-question Statistical Workbench.
-5. **Real-World Workflows & Production Monitoring** — Environment-state checks for agents (Layer 4), total human task time across drafting, checking, and correction (Layer 5), and separate evaluator versioning.
-6. **Human–AI Interaction & Epistemic Risk** — Complementarity, calibrated reliance, oversight cost, and anti-epistemia interface evaluation.
-7. **Auditing Benchmarks & Vendor Claims** — How leaderboards mislead, a 4-question audit checklist, and calibrated reporting.
+1. **Foundations of AI Evaluation**: Evals vs. unit tests, the 7 layers, validity, and the Four Operating Rules (*start with the decision*, *treat the eval as the spec*, *account for contamination*, *watch for Goodhart's Law*).
+2. **Scoping & Datasets**: Testing simpler non-AI baselines first, pinning the full execution harness, separating exploratory from confirmatory runs, and building ordinary, ambiguous, and escalation cases.
+3. **Rubrics, Judges & Aggregation**: Deriving observable rubrics from reviewer disagreements, deterministic vs. LLM vs. human judges, inter-rater agreement (κ, α, ICC), and avoiding Simpson's paradox.
+4. **Comparing Versions, Statistics & Validity**: Paired difference intervals, clustering at the unit of analysis, Rule of Three bounds, and an interactive 12-question Statistical Workbench.
+5. **Real-World Workflows & Production Monitoring**: Environment-state checks for agents (Layer 4), total human task time across drafting, checking, and correction (Layer 5), and separate evaluator versioning.
+6. **Human–AI Interaction & Epistemic Risk**: Complementarity, calibrated reliance, oversight cost, and anti-epistemia interface evaluation.
+7. **Auditing Benchmarks & Vendor Claims**: How leaderboards mislead, a 4-question audit checklist, and calibrated reporting.
 
 Alongside the core chapters, the app includes **Optional Advanced Tracks (A–G)** (covering RAG, Agents, Safety, Multimodal, Advanced Measurement, Organizational Evals, and Deep Human–AI Research & SPHERE by Zhao et al., ACL 2025) and three interactive builder tools: the **Metrics Taxonomy Tool**, a **12-field Eval Protocol & Decision Builder** with Exploratory/Confirmatory modes and `.md` / `.json` export, and a **SPHERE Card Tool**.
 
@@ -71,7 +71,7 @@ Alongside the core chapters, the app includes **Optional Advanced Tracks (A–G)
 
 ## Worked capstone without hiding uncertainty
 
-Rather than ending with abstract guidelines, the **Final Capstone Project** walks through a complete 22-element evaluation proposal for a **fictional** internal tool—the *Meridian Research Assistant v2.1*—paired with a reusable 22-field template, mixed fictional results, sample statistical interpretation, a sample final report, and a 4-level grading rubric.
+Rather than ending with abstract guidelines, the **Final Capstone Project** walks through a complete 22-element evaluation proposal for a **fictional** internal tool (*Meridian Research Assistant v2.1*), paired with a reusable 22-field template, mixed fictional results, sample statistical interpretation, a sample final report, and a 4-level grading rubric.
 
 Showing mixed fictional outcomes alongside explicit scope boundaries models how real product evaluations report trade-offs: where citation quality improved, where verification time offset speed gains, and what remained unproven.
 
@@ -81,4 +81,4 @@ Showing mixed fictional outcomes alongside explicit scope boundaries models how 
 
 ## Scope and limits
 
-The AI Evaluation Study Guide is an open-source educational curriculum and protocol toolkit, not an empirically evaluated training intervention. All examples inside the Meridian capstone—and the worked example data in the protocol builder—are explicitly fictional illustrations designed to teach methodological rigor rather than report real product outcomes.
+The AI Evaluation Study Guide is an open-source educational curriculum and protocol toolkit, not an empirically evaluated training intervention. All examples inside the Meridian capstone, and the worked example data in the protocol builder, are explicitly fictional illustrations designed to teach methodological rigor rather than report real product outcomes.

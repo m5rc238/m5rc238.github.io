@@ -4,7 +4,7 @@ export const SUPPORTED_LANGS: readonly Lang[] = ['en', 'pt', 'ja'];
 
 export const translations: Record<Lang, Record<string, string>> = {
 	en: {
-		'site.title': 'Marcel Akiyama — Product Designer',
+		'site.title': 'Marcel Akiyama | Product Designer',
 		'nav.home': 'Home',
 		'nav.cases': 'Case Studies',
 		'nav.journal': 'Journal',
@@ -125,7 +125,7 @@ export const translations: Record<Lang, Record<string, string>> = {
 		'case.labellio.meta': 'Shipped Product · Acq. by Kyocera · 2016 (2 Months from Prototype to MVP)',
 	},
 	pt: {
-		'site.title': 'Marcel Akiyama — Designer de Produto',
+		'site.title': 'Marcel Akiyama | Designer de Produto',
 		'nav.home': 'Início',
 		'nav.cases': 'Estudos de Caso',
 		'nav.journal': 'Artigos',
@@ -246,7 +246,7 @@ export const translations: Record<Lang, Record<string, string>> = {
 		'case.labellio.meta': 'Produto Lançado · Adq. pela Kyocera · 2016 (2 meses do protótipo ao MVP)',
 	},
 	ja: {
-		'site.title': 'Marcel Akiyama — プロダクトデザイナー',
+		'site.title': 'Marcel Akiyama | プロダクトデザイナー',
 		'nav.home': 'ホーム',
 		'nav.cases': 'ケーススタディ',
 		'nav.journal': 'ジャーナル',

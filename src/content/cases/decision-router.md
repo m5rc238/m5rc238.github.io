@@ -5,7 +5,7 @@ order: 3
 featured: false
 category: "ai-research"
 tag: "AI Systems · Benchmark"
-summary: "Evaluated five refund-handling architectures—from 10-line deterministic rules to an 8-stage typed router and ReAct—under fault injection and an audited stage-aware grader, reproducible offline with zero API keys."
+summary: "Evaluated five refund-handling architectures, from 10-line deterministic rules to an 8-stage typed router and ReAct, under fault injection and an audited stage-aware grader, reproducible offline with zero API keys."
 repoUrl: "https://github.com/m5rc238/decision-router"
 coverImage: "/images/cases/decision-router-1.png"
 coverAlt: "Decision Router empirical architecture comparison interface"
@@ -57,14 +57,14 @@ Three findings stood out after auditing the saved traces:
 
 ## Auditing the grader and validator ceiling
 
-A central lesson in the project came from fixing the evaluation harness itself. The original `grader-v1` passed any Router error or triage whenever `request_review` was expected—silently grading a **241.5-second composer timeout** (after a wrong approval) and two **null-decision halts** with missing triage notes as successes.
+A central lesson in the project came from fixing the evaluation harness itself. The original `grader-v1` passed any Router error or triage whenever `request_review` was expected, silently grading a **241.5-second composer timeout** (after a wrong approval) and two **null-decision halts** with missing triage notes as successes.
 
 Under `grader-v2.0`, those **3 passes flipped to FAIL**, **10 historical Router halt runs** were marked honestly as **unverifiable (`U`)** because v1 JSON logs omitted stage traces, and `scripts/eval.ts` was patched to stop masking upstream HTTP 429 quota errors as safe halts.
 
 Running a 3-version audit on the deterministic validator revealed a parallel lesson about over-fitting to test fixtures:
 
 - **`validator-v1.0-frozen`** memorized the 4 original regression fixtures (`4/4`) but missed `8/8` reworded challenge faults and false-stopped `3/4` valid inputs.
-- **`validator-v2.0-structural`** caught those challenge faults (`8/8`), yet failed 3 post-v2 audit cases—including prompt injection via flat-string customer `CASE:` text.
+- **`validator-v2.0-structural`** caught those challenge faults (`8/8`), yet failed 3 post-v2 audit cases, including prompt injection via flat-string customer `CASE:` text.
 - **`validator-v2.1-structured`** accepts structured `serviceOutputs` (closing the injection path) and validates Direct-LLM's own draft (`3/3`), while deliberately leaving `regex-stress-v1.0` at **`0/4`** (`2` missed paraphrases such as *"reversed the charge"*, `2` false-stops on long negations) to expose the structural ceiling of regex-based contradiction checks.
 
 ![Decision Router authority boundaries and ASD-STE100 evaluation report](/images/cases/decision-router-3.png)
