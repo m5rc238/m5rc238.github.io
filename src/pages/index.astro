@@ -670,11 +670,11 @@ const kgNodeMap = new Map(kgNodes.map((n) => [n.id, n]));
 		</div>
 	</div>
 
-	<!-- Right-edge section progress dots on large viewports -->
+	<!-- Right-edge section progress indicator on large viewports -->
 	<nav
 		aria-label="Page sections"
 		data-snap-nav
-		class="fixed top-1/2 right-5 z-30 hidden -translate-y-1/2 flex-col gap-2.5 rounded-full border border-ink/10 bg-white/75 px-2 py-3 shadow-xs backdrop-blur-sm xl:flex"
+		class="snap-nav fixed top-1/2 right-5 z-30 hidden -translate-y-1/2 flex-col items-end gap-1.5 rounded-[22px] border border-ink/12 bg-white/75 px-2.5 py-3 shadow-xs backdrop-blur-md xl:flex"
 	>
 		{[
 			{ id: 'hero', label: 'Bio' },
@@ -687,11 +687,14 @@ const kgNodeMap = new Map(kgNodes.map((n) => [n.id, n]));
 				href={`#${sec.id}`}
 				data-snap-dot={sec.id}
 				aria-label={sec.label}
-				title={sec.label}
-				class={`block h-2 w-2 rounded-full transition-all duration-200 ${
-					idx === 0 ? 'scale-125 bg-ink' : 'bg-ink/25 hover:bg-ink/55'
-				}`}
-			></a>
+				aria-current={idx === 0 ? 'location' : undefined}
+				class:list={['snap-nav-item group', idx === 0 && 'is-active']}
+			>
+				<span class="snap-nav-label font-mono text-[10px] uppercase tracking-wider text-ink/55 group-hover:text-ink">
+					{sec.label}
+				</span>
+				<span class="snap-nav-dot" aria-hidden="true"></span>
+			</a>
 		))}
 	</nav>
 
@@ -1267,9 +1270,12 @@ const kgNodeMap = new Map(kgNodes.map((n) => [n.id, n]));
 				}
 				for (const dot of snapDots) {
 					const isActive = dot.dataset.snapDot === activeId;
-					dot.classList.toggle('scale-125', isActive);
-					dot.classList.toggle('bg-ink', isActive);
-					dot.classList.toggle('bg-ink/25', !isActive);
+					dot.classList.toggle('is-active', isActive);
+					if (isActive) {
+						dot.setAttribute('aria-current', 'location');
+					} else {
+						dot.removeAttribute('aria-current');
+					}
 				}
 			};
 
