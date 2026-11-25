@@ -72,9 +72,9 @@ export const translations: Record<Lang, Record<string, string>> = {
 
 		'case.epistemia-ux.title': 'Epistemia UX',
 		'case.epistemia-ux.subtitle':
-			'Seven Human–AI interface patterns that replace fluent guesswork with inspectable judgment',
-		'case.epistemia-ux.tag': 'Human–AI UX Patterns',
-		'case.epistemia-ux.meta': 'Human–AI UX Patterns · November 2026',
+			'Seven Human–AI chatbot patterns tested with 12 practitioners to replace fluent guesswork with inspectable judgment',
+		'case.epistemia-ux.tag': 'Human–AI UX Research',
+		'case.epistemia-ux.meta': 'Human–AI UX Research · November 2026',
 
 		'case.decision-router.title': 'Decision Router',
 		'case.decision-router.subtitle':
@@ -193,9 +193,9 @@ export const translations: Record<Lang, Record<string, string>> = {
 
 		'case.epistemia-ux.title': 'Epistemia UX',
 		'case.epistemia-ux.subtitle':
-			'Sete padrões de interface Humano–IA que substituem palpites fluentes por julgamento inspecionável',
-		'case.epistemia-ux.tag': 'Padrões UX Humano–IA',
-		'case.epistemia-ux.meta': 'Padrões UX Humano–IA · Novembro 2026',
+			'Sete padrões de chatbot Humano–IA testados com 12 profissionais para substituir palpites fluentes por julgamento inspecionável',
+		'case.epistemia-ux.tag': 'Pesquisa UX Humano–IA',
+		'case.epistemia-ux.meta': 'Pesquisa UX Humano–IA · Novembro 2026',
 
 		'case.decision-router.title': 'Decision Router',
 		'case.decision-router.subtitle':
@@ -314,9 +314,9 @@ export const translations: Record<Lang, Record<string, string>> = {
 
 		'case.epistemia-ux.title': 'Epistemia UX',
 		'case.epistemia-ux.subtitle':
-			'流暢な推測を検証可能な判断へと置き換える、7つのHuman–AIインターフェースパターン',
-		'case.epistemia-ux.tag': 'Human–AI UXパターン',
-		'case.epistemia-ux.meta': 'Human–AI UXパターン · 2026年11月',
+			'12名の実務者と検証した、流暢な推測を検証可能な判断へ置き換える7つのHuman–AIチャットボットパターン',
+		'case.epistemia-ux.tag': 'Human–AI UXリサーチ',
+		'case.epistemia-ux.meta': 'Human–AI UXリサーチ · 2026年11月',
 
 		'case.decision-router.title': 'Decision Router',
 		'case.decision-router.subtitle':
